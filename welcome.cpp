@@ -11,4 +11,5 @@ Welcome::Welcome(QWidget *parent) :
 Welcome::~Welcome()
 {
     delete ui;
+
 }
