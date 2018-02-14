@@ -15,6 +15,11 @@ public:
     explicit Welcome(QWidget *parent = 0);
     ~Welcome();
 
+private slots:
+    void on_signupButton_clicked();
+
+    void on_signinbutton_clicked();
+
 private:
     Ui::Welcome *ui;
 };

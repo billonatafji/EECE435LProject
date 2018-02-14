@@ -15,6 +15,9 @@ public:
     explicit SignUp(QWidget *parent = 0);
     ~SignUp();
 
+private slots:
+    void on_cancelButton_clicked();
+
 private:
     Ui::SignUp *ui;
 };

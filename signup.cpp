@@ -12,3 +12,8 @@ SignUp::~SignUp()
 {
     delete ui;
 }
+
+void SignUp::on_cancelButton_clicked()
+{
+    this->close();
+}
