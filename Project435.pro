@@ -27,14 +27,17 @@ SOURCES += \
         welcome.cpp \
     signup.cpp \
     main.cpp \
-    signin.cpp
+    signin.cpp \
+    home.cpp
 
 HEADERS += \
         welcome.h \
     signup.h \
-    signin.h
+    signin.h \
+    home.h
 
 FORMS += \
         welcome.ui \
     signup.ui \
-    signin.ui
+    signin.ui \
+    home.ui

@@ -6,158 +6,344 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>339</width>
-    <height>395</height>
+    <width>479</width>
+    <height>361</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>310</y>
-     <width>186</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="cancelButton">
-      <property name="text">
-       <string>Cancel</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="signUpButton">
-      <property name="text">
-       <string>Sign Up</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>0</y>
-     <width>291</width>
-     <height>301</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Sign Up Form</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-   </property>
-   <property name="checkable">
-    <bool>false</bool>
-   </property>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>274</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <layout class="QFormLayout" name="formLayout">
-     <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::ExpandingFieldsGrow</enum>
-     </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="userNameLabel">
-       <property name="text">
-        <string>UserName</string>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
+       <property name="title">
+        <string>Sign Up Form</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="formValidationLabel">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: red;</string>
+          </property>
+          <property name="text">
+           <string>Please Fill Out All Fields</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>-119</y>
+             <width>419</width>
+             <height>415</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="userNameLabel">
+                <property name="text">
+                 <string>UserName</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                 <widget class="QLineEdit" name="userNameEdit"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="userNameValidationLabel">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color:red;</string>
+                  </property>
+                  <property name="text">
+                   <string>The Username Is Already Taken</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="firstNameLabel">
+                <property name="text">
+                 <string>First Name</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QLineEdit" name="firstNameEdit"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="firstNameValidationLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color:red;</string>
+                  </property>
+                  <property name="text">
+                   <string>Your First Name Is Required</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="lastNameLabel">
+                <property name="text">
+                 <string>Last Name</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QLineEdit" name="lastNameEdit"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lastNameValidationLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color:red;</string>
+                  </property>
+                  <property name="text">
+                   <string>Your Last Name Is Required</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="dateOfBirthLabel">
+                <property name="text">
+                 <string>Date Of Birth</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QDateEdit" name="birthDayEdit">
+                <property name="dateTime">
+                 <datetime>
+                  <hour>0</hour>
+                  <minute>0</minute>
+                  <second>0</second>
+                  <year>2018</year>
+                  <month>2</month>
+                  <day>1</day>
+                 </datetime>
+                </property>
+                <property name="date">
+                 <date>
+                  <year>2018</year>
+                  <month>2</month>
+                  <day>1</day>
+                 </date>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="passwordLabel">
+                <property name="text">
+                 <string>Password</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QLineEdit" name="passwordEdit">
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="passwordValidationLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color:red;</string>
+                  </property>
+                  <property name="text">
+                   <string>The Password Is Invalid</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="confirmPasswordLabel">
+                <property name="text">
+                 <string>Confirm Password</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QLineEdit" name="confirmPasswordEdit">
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="confirmPasswordValidationLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color:red;</string>
+                  </property>
+                  <property name="text">
+                   <string>Passwords Do Not Match</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="genderLabel">
+                <property name="text">
+                 <string>Gender</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QRadioButton" name="femaleRadioButton">
+                  <property name="text">
+                   <string>Male</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="maleRadioButton">
+                  <property name="text">
+                   <string>Female</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Profile Picture</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <item>
+                   <widget class="QPushButton" name="browseButton">
+                    <property name="text">
+                     <string>Browse</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="profilePictureLabel">
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QLabel" name="profilePictureValidationLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color:red;
+</string>
+                  </property>
+                  <property name="text">
+                   <string>Your Profile Picture Is Required</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+       <zorder>formValidationLabel</zorder>
+       <zorder>layoutWidget</zorder>
+       <zorder>scrollArea</zorder>
+       <zorder>scrollArea</zorder>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="userNameEdit"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="firstNameLabel">
-       <property name="text">
-        <string>First Name</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="firstNameEdit"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="lastNameLabel">
-       <property name="text">
-        <string>Last Name</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="lastNameEdit"/>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="dateOfBirthLabel">
-       <property name="text">
-        <string>Date Of Birth</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QDateEdit" name="birthDayEdit"/>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="passwordLabel">
-       <property name="text">
-        <string>Password</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="passwordEdit"/>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="confirmPasswordLabel">
-       <property name="text">
-        <string>Confirm Password</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="confirmPasswordEdit"/>
-     </item>
-     <item row="6" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QRadioButton" name="maleRadioButton">
+        <widget class="QPushButton" name="cancelButton">
          <property name="text">
-          <string>Female</string>
+          <string>Cancel</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="femaleRadioButton">
+        <widget class="QPushButton" name="signUpButton">
          <property name="text">
-          <string>Male</string>
+          <string>Sign Up</string>
          </property>
         </widget>
        </item>
       </layout>
      </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Gender</string>
-       </property>
-      </widget>
-     </item>
     </layout>
-   </widget>
-  </widget>
+   </item>
+  </layout>
+  <zorder>layoutWidget</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>browseButton</zorder>
+  <zorder>profilePictureLabel</zorder>
+  <zorder>userNameValidationLabel</zorder>
+  <zorder>userNameEdit</zorder>
+  <zorder>firstNameValidationLabel</zorder>
+  <zorder>passwordValidationLabel</zorder>
+  <zorder>lastNameValidationLabel</zorder>
+  <zorder>confirmPasswordValidationLabel</zorder>
+  <zorder>firstNameEdit</zorder>
+  <zorder>lastNameEdit</zorder>
+  <zorder>passwordEdit</zorder>
+  <zorder>confirmPasswordEdit</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder></zorder>
+  <zorder>profilePictureValidationLabel</zorder>
+  <zorder></zorder>
  </widget>
  <resources/>
  <connections/>

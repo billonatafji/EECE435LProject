@@ -18,6 +18,11 @@ public:
 private slots:
     void on_cancelButton_clicked();
 
+    void on_signUpButton_clicked();
+
+
+    void on_browseButton_clicked();
+
 private:
     Ui::SignUp *ui;
 };
