@@ -66,6 +66,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QPushButton" name="cancelButton">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="text">
           <string>Cancel</string>
          </property>
@@ -75,6 +78,9 @@
         <widget class="QPushButton" name="signInButton">
          <property name="text">
           <string>Sign In</string>
+         </property>
+         <property name="default">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

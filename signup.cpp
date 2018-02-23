@@ -1,9 +1,5 @@
 #include "signup.h"
 #include "ui_signup.h"
-#include "home.h"
-#include <QFileDialog>
-#include <QRegExp>
-
 
 SignUp::SignUp(QWidget *parent) :
     QDialog(parent),
@@ -76,9 +72,16 @@ void SignUp::on_signUpButton_clicked()
     }
 
     if(canSubmit){
+
+        User user(ui->userNameEdit->text(),
+                  ui->passwordEdit->text(),
+                  ui->firstNameEdit->text(),
+                  ui->lastNameEdit->text(),
+                  ui->dateOfBirthEdit->text(),
+                  ui->maleRadioButton->isChecked() ? ui->maleRadioButton->text() :ui->femaleRadioButton->text(),
+                  QPixmap(profilePictureEdit).scaled(100,100).toImage());
+        User::AddUser(user);
         this->close();
-        Home home(NULL,QString("test"));
-        home.exec();
     }
     else{
         ui->formValidationLabel->show();
@@ -88,8 +91,6 @@ void SignUp::on_signUpButton_clicked()
 
 void SignUp::on_browseButton_clicked()
 {
-    QString filePath = QFileDialog::getOpenFileName(this,tr("Open Image"), "/home", tr("Image Files (*.png *.jpg *.bmp)"));
-    qDebug(filePath.toLatin1());
-    ui->profilePictureLabel->setPixmap(QPixmap(filePath).scaled(20,20));
-
+    this->profilePictureEdit = QFileDialog::getOpenFileName(this,tr("Open Image"), "/home", tr("Image Files (*.png *.jpg *.bmp)"));
+    ui->profilePictureLabel->setPixmap(QPixmap(profilePictureEdit).scaled(20,20));
 }

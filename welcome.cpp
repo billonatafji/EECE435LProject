@@ -8,6 +8,33 @@ Welcome::Welcome(QWidget *parent) :
     ui(new Ui::Welcome)
 {
     ui->setupUi(this);
+
+    QFile file("Users.txt");
+
+    QJsonDocument document;
+
+    if (file.open(QFile::ReadOnly)) {
+        document = QJsonDocument().fromJson(file.readAll());
+        file.close();
+    }
+    if(file.open(QFile::WriteOnly)){
+        QJsonObject rootObject = document.object();
+
+        QJsonObject gameObject;
+        gameObject["HighestScore"] = "";
+        gameObject["HighestScoreUser"] = "";
+
+        if(!rootObject.contains("Game1")){
+            rootObject["Game1"] = gameObject;
+        }
+        if(!rootObject.contains("Game2")){
+            rootObject["Game2"] = gameObject;
+        }
+        document.setObject(rootObject);
+        file.write(document.toJson());
+        file.close();
+
+    }
 }
 
 Welcome::~Welcome()

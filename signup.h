@@ -2,6 +2,10 @@
 #define SIGNUP_H
 
 #include <QDialog>
+#include <QFileDialog>
+#include <QRegExp>
+#include "user.h"
+#include "home.h"
 
 namespace Ui {
 class SignUp;
@@ -13,6 +17,7 @@ class SignUp : public QDialog
 
 public:
     explicit SignUp(QWidget *parent = 0);
+    QString profilePictureEdit;
     ~SignUp();
 
 private slots:

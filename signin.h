@@ -2,6 +2,8 @@
 #define SIGNIN_H
 
 #include <QDialog>
+#include "user.h"
+#include "home.h"
 
 namespace Ui {
 class SignIn;
@@ -17,6 +19,8 @@ public:
 
 private slots:
     void on_cancelButton_clicked();
+
+    void on_signInButton_clicked();
 
 private:
     Ui::SignIn *ui;
