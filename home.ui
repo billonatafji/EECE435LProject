@@ -6,94 +6,144 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>365</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="welcomeLabel">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>20</y>
-     <width>241</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;h1&gt;Welcome&lt;/h1&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="profilePictureLabel">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>100</width>
-     <height>100</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>260</y>
-     <width>101</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Play !</string>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="scoresList">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>120</y>
-     <width>41</width>
-     <height>131</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="previousScoresLabel">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>90</y>
-     <width>121</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>&lt;h4&gt;Previous Scores&lt;/h4&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="highestScoreLabel">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>140</y>
-     <width>121</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;Highest Score &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="welcomeLabel">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:xx-large; font-weight:600;&quot;&gt;Welcome&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="profilePictureLabel">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Game 1</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="previousScoresLabel">
+          <property name="text">
+           <string>&lt;h4&gt;Previous Scores&lt;/h4&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="game1ScoresList"/>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="game1HighestScoreLabel">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;Highest Score &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="newGame1Button">
+          <property name="text">
+           <string>New Game</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="resumeGame1Button">
+          <property name="text">
+           <string>Resume</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Game 2</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="1">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="game2HighestScoreLabel">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:medium; font-weight:600;&quot;&gt;Highest Score &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="newGameButton_2">
+          <property name="text">
+           <string>New Game</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="resumeGame2Button">
+          <property name="text">
+           <string>Resume</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="previousScoresLabel_2">
+          <property name="text">
+           <string>&lt;h4&gt;Previous Scores&lt;/h4&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="game2ScoresList"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

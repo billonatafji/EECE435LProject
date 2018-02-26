@@ -31,7 +31,10 @@ SOURCES += \
     signin.cpp \
     home.cpp \
     user.cpp \
-    scores.cpp
+    scores.cpp \
+    game1.cpp \
+    game2.cpp \
+    game.cpp
 
 HEADERS += \
         welcome.h \
@@ -39,10 +42,15 @@ HEADERS += \
     signin.h \
     home.h \
     user.h \
-    scores.h
+    scores.h \
+    game1.h \
+    game2.h \
+    game.h
 
 FORMS += \
         welcome.ui \
     signup.ui \
     signin.ui \
-    home.ui
+    home.ui \
+    game1.ui \
+    game2.ui
