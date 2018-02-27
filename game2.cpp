@@ -22,7 +22,9 @@ void Game2::on_backButton_clicked()
 void Game2::on_playButton_clicked()
 {
     if(ui->easyRadioButton->isChecked() ||  ui->mediumRadioButton->isChecked() || ui->hardRadioButton->isChecked()){
-        Scores::AddScore(user->Username,QString::number(rand() % 10),Game2::name);
+        if(this->user->Username != ""){
+            Scores::AddScore(user->Username,QString::number(rand() % 10),Game2::name);
+        }
         Game::SetDifficulty(ui->easyRadioButton->isChecked(), ui->mediumRadioButton->isChecked(), ui->hardRadioButton->isChecked());
         this->close();
     }

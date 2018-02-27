@@ -56,3 +56,17 @@ void Welcome::on_signinbutton_clicked()
     signIn.setModal(true);
     signIn.exec();
 }
+
+void Welcome::on_userGame1Button_clicked()
+{
+    Game1 game1;
+    game1.setModal(true);
+    game1.exec();
+}
+
+void Welcome::on_userGame2Button_clicked()
+{
+    Game2 game2;
+    game2.setModal(true);
+    game2.exec();
+}
