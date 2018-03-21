@@ -20,7 +20,7 @@ void SignIn::on_cancelButton_clicked()
 
 void SignIn::on_signInButton_clicked()
 {
-    User* user = User::GetUser("billo","Abcd1234");
+    User* user = User::GetUser(ui->userNameEdit->text(),ui->passwordEdit->text());
     if(user->Username == ui->userNameEdit->text() && ui->userNameEdit->text() != ""){
         this->close();
         Home home(NULL, user);

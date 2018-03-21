@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>479</width>
-    <height>361</height>
+    <width>542</width>
+    <height>370</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,8 +56,8 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-176</y>
-             <width>419</width>
+             <y>0</y>
+             <width>482</width>
              <height>415</height>
             </rect>
            </property>
@@ -298,10 +298,6 @@
          </widget>
         </item>
        </layout>
-       <zorder>formValidationLabel</zorder>
-       <zorder>layoutWidget</zorder>
-       <zorder>scrollArea</zorder>
-       <zorder>scrollArea</zorder>
       </widget>
      </item>
      <item>
@@ -325,24 +321,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>layoutWidget</zorder>
-  <zorder>groupBox</zorder>
-  <zorder>browseButton</zorder>
-  <zorder>profilePictureLabel</zorder>
-  <zorder>userNameValidationLabel</zorder>
-  <zorder>userNameEdit</zorder>
-  <zorder>firstNameValidationLabel</zorder>
-  <zorder>passwordValidationLabel</zorder>
-  <zorder>lastNameValidationLabel</zorder>
-  <zorder>confirmPasswordValidationLabel</zorder>
-  <zorder>firstNameEdit</zorder>
-  <zorder>lastNameEdit</zorder>
-  <zorder>passwordEdit</zorder>
-  <zorder>confirmPasswordEdit</zorder>
-  <zorder>groupBox</zorder>
-  <zorder>verticalLayoutWidget</zorder>
-  <zorder></zorder>
-  <zorder>profilePictureValidationLabel</zorder>
   <zorder></zorder>
  </widget>
  <resources/>

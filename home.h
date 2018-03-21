@@ -3,10 +3,11 @@
 
 #include <QDialog>
 #include <user.h>
-#include <QTableWidget>
 #include <QDateTime>
 #include <scores.h>
 #include "stdlib.h"
+#include "history.h"
+#include "gamemenu.h"
 #include "game1.h"
 #include "game2.h"
 
@@ -21,19 +22,18 @@ class Home : public QDialog
 public:
     explicit Home(QWidget *parent = 0, User* user = new User());
     User* user;
-    void LoadScores(QString game);
 
     ~Home();
 
 private slots:
 
-    void on_newGame1Button_clicked();
+    void on_historyButton_clicked();
 
-    void on_resumeGame1Button_clicked();
+    void on_game1Button_clicked();
 
-    void on_newGameButton_2_clicked();
+    void on_game2Button_clicked();
 
-    void on_resumeGame2Button_clicked();
+    void on_backButton_clicked();
 
 private:
     Ui::Home *ui;

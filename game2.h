@@ -2,7 +2,6 @@
 #define GAME2_H
 
 #include <QDialog>
-#include "scores.h"
 #include "game.h"
 
 namespace Ui {

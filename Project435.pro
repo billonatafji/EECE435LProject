@@ -5,7 +5,6 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,7 +33,10 @@ SOURCES += \
     scores.cpp \
     game1.cpp \
     game2.cpp \
-    game.cpp
+    game.cpp \
+    gamemenu.cpp \
+    history.cpp \
+    description.cpp
 
 HEADERS += \
         welcome.h \
@@ -45,7 +47,10 @@ HEADERS += \
     scores.h \
     game1.h \
     game2.h \
-    game.h
+    game.h \
+    gamemenu.h \
+    history.h \
+    description.h
 
 FORMS += \
         welcome.ui \
@@ -53,4 +58,7 @@ FORMS += \
     signin.ui \
     home.ui \
     game1.ui \
-    game2.ui
+    game2.ui \
+    gamemenu.ui \
+    history.ui \
+    description.ui
