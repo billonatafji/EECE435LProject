@@ -12,7 +12,7 @@ void Game::SetDifficulty(bool easyRadio, bool mediumRadio, bool hardRadio){
     else if(mediumRadio){
         this->Difficulty =  medium;
     }
-    else{
+    else if(hardRadio){
         this->Difficulty = hard;
     }
 }

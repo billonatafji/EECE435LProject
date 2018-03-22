@@ -19,28 +19,26 @@
  * constructs the game1scene and all of its attributes, starts the timers, and connects the signal with its slot
  */
 
-game1scene::game1scene()
+game1scene::game1scene(int difficulty)
 {
+    this->Difficulty = difficulty;
+
     this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.png")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
 
-//    this->cleanlinessMeter = new CleanlinessMeter();
-//    cleanlinessMeter->setPos(10,20);
-//    this->addItem(cleanlinessMeter);
 
-    this->immunityMeter = new ImmunityMeter();
-    this->immunityMeter->setPos(5,5);
-    this->addItem(this->immunityMeter);
-
-
-    this->spongeBobInstance = new spongeBob();
+    this->spongeBobInstance = new SpongeBob();
     this->spongeBobInstance->setFlag(QGraphicsItem::ItemIsFocusable);
     this->spongeBobInstance->setFocus();
     this->spongeBobInstance->setPos(300,0);
     this->spongeBobInstance->installEventFilter(this);
     this->addItem(spongeBobInstance);
+
+    this->header = new Header(this->spongeBobInstance,this->Difficulty);
+    this->header->setPos(5,5);
+    this->addItem(this->header);
 
     this->addhuItemstimer= new QTimer();
     this->addbacteriatimer= new QTimer();
@@ -52,6 +50,8 @@ game1scene::game1scene()
     this->addvirustimer= new QTimer();
     connect(addvirustimer,SIGNAL(timeout()),this,SLOT(addvirus()));
     addvirustimer->start(50000);
+
+    //connect(this->spongeBobInstance, SIGNAL(v));
 
 
 }
@@ -74,7 +74,7 @@ void game1scene::addhuItems()
     int r =(rand() % 20);
     huItem *huItem1;
 
-    huItem1= new huItem();
+    huItem1= new huItem(this->header);
     huItem1->setPixmap((QPixmap("../Project435/images/bee_1.png")).scaledToHeight(45));
     huItem1->setPos(5+(r)*45,0);
 
@@ -102,7 +102,7 @@ void game1scene::addbacteria()
 
     bacteria *bacteria1;
 
-    bacteria1= new bacteria(strength,1-2*direction,1,3,2,20,starty,spongeBobInstance);
+    bacteria1= new bacteria(strength,1-2*direction,1,3,2,20,starty, this->header);
     bacteria1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45 + strength*45/2));
     bacteria1->setPos(startx,starty);
 
@@ -127,7 +127,7 @@ void game1scene::addvirus()
 
     virus *virus1;
 
-    virus1= new virus(1-2*direction,1,3,2,20,starty,spongeBobInstance);
+    virus1= new virus(1-2*direction,1,3,2,20,starty, this->header);
     virus1->setPixmap((QPixmap("../Project435/images/virus.png")).scaledToHeight(70));
     virus1->setPos(startx,starty);
 

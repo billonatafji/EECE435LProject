@@ -9,8 +9,9 @@
 #include "huItem.h"
 #include "stdlib.h"
 
-huItem::huItem( QObject *parent) : QObject(parent)
+huItem::huItem(Header* header, QObject *parent) : QObject(parent)
 {
+    this->header = header;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(100);
@@ -34,19 +35,15 @@ void huItem::update()
         {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
             foreach(QGraphicsItem * i , collidelist)
             {
-                spongeBob * item= dynamic_cast<spongeBob *>(i);
+                SpongeBob * item= dynamic_cast<SpongeBob *>(i);
                 if (item)
                 {
                     this->scene()->removeItem(this);
+                    this->header->SetCleanliness(+1);
                     delete this;
                 }
             }
-
-
         }
-
-
-
     }
 
 }

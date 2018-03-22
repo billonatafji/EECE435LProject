@@ -53,14 +53,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="hardRadioButton">
+         <widget class="QRadioButton" name="mediumRadioButton">
           <property name="text">
            <string>Medium</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="mediumRadioButton">
+         <widget class="QRadioButton" name="hardRadioButton">
           <property name="text">
            <string>Hard</string>
           </property>

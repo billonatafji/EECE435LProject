@@ -6,7 +6,6 @@
 #include<QKeyEvent>
 #include <QTimer>
 #include <QGraphicsPixmapItem>
-#include "huItem.h"
 
 /**
 *\spongeBob.h
@@ -14,13 +13,15 @@
 *
 * This creates an instance of the bear.
 */
-class spongeBob : public QObject, public QGraphicsPixmapItem
+class SpongeBob : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit spongeBob(QObject *parent = nullptr);///< constructor
+    explicit SpongeBob(QObject *parent = nullptr);///< constructor
     bool followme;
     QTimer *followTimer; ///< timer attribute that specifies the timer
+    int cleanliness;
+    int immunity;
 
     /**
 *\brief Detects key strokes pressed

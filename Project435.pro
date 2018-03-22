@@ -45,7 +45,7 @@ SOURCES += \
     gameview.cpp \
     cleanlinessmeter.cpp \
     cheat.cpp \
-    immunitymeter.cpp
+    header.cpp
 
 HEADERS += \
     signup.h \
@@ -68,7 +68,7 @@ HEADERS += \
     gameview.h \
     cleanlinessmeter.h \
     cheat.h \
-    immunitymeter.h
+    header.h
 
 FORMS += \
     signup.ui \

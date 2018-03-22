@@ -9,7 +9,7 @@
 #include "virus.h"
 #include "stdlib.h"
 
-virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, spongeBob* player, QObject *parent) : QObject(parent)
+virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline,  Header* header,QObject *parent) : QObject(parent)
 {
     this->direction=direction;
     this->directionY=directionY;
@@ -17,7 +17,7 @@ virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int f
     this->Yvelocity=Yvelocity;
     this->foobar=foobar;
     this->centerline=centerline;
-    this->player=player;
+    this->header = header;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(20);
@@ -44,7 +44,7 @@ void virus::update()
             QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
             foreach(QGraphicsItem * i , collidelist)
             {
-                spongeBob * item= dynamic_cast<spongeBob *>(i);
+                SpongeBob * item= dynamic_cast<SpongeBob *>(i);
                 if (item)
                 {
                     item->followme=true;

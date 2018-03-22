@@ -7,6 +7,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include "spongeBob.h"
+#include "header.h"
 
 /**
 *\virus.h
@@ -17,7 +18,7 @@ class virus : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit virus(int direction,int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, spongeBob* player, QObject *parent= nullptr);
+    explicit virus(int direction,int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, Header* header,QObject *parent= nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
     int direction; ///< direction attribute that specifies the direction of movement of the virus
     int directionY;
@@ -25,7 +26,7 @@ public:
     int Yvelocity;
     int foobar;
     int centerline;
-    spongeBob *player;
+    Header* header;
 signals:
 
 public slots:

@@ -9,7 +9,7 @@
 
 #include "spongeBob.h"
 
-spongeBob::spongeBob(QObject *parent) : QObject(parent)
+SpongeBob::SpongeBob(QObject *parent) : QObject(parent)
 {
     this->followme=0;
     followTimer= new QTimer();
@@ -57,14 +57,14 @@ QSet<int> pressedKeys;
 
 //    }
 
-void spongeBob::toggleFollow()
+void SpongeBob::toggleFollow()
 {
     if (this->followme==1)
         this->followme=0;
 
 }
 
-void spongeBob::keyPressEvent(QKeyEvent *event)
+void SpongeBob::keyPressEvent(QKeyEvent *event)
 {
 
     pressedKeys += ((QKeyEvent*)event)->key();
@@ -86,7 +86,7 @@ void spongeBob::keyPressEvent(QKeyEvent *event)
         this->setPos(this->pos().x()+10,this->pos().y());
     }
 }
-void spongeBob::keyReleaseEvent(QKeyEvent *event)
+void SpongeBob::keyReleaseEvent(QKeyEvent *event)
 {
     pressedKeys -= ((QKeyEvent*)event)->key();
 }

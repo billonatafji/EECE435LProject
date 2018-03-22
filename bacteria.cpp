@@ -9,7 +9,7 @@
 #include "bacteria.h"
 #include "stdlib.h"
 
-bacteria::bacteria(int strength, int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, spongeBob* player, QObject *parent) : QObject(parent)
+bacteria::bacteria(int strength, int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, Header* header,QObject *parent) : QObject(parent)
 {
     this->strength=strength;
     this->direction=direction;
@@ -18,7 +18,7 @@ bacteria::bacteria(int strength, int direction, int directionY, int Xvelocity, i
     this->Yvelocity=Yvelocity;
     this->foobar=foobar;
     this->centerline=centerline;
-    this->player=player;
+    this->header = header;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(20);
@@ -38,7 +38,7 @@ void bacteria::update()
         {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
             foreach(QGraphicsItem * i , collidelist)
             {
-                spongeBob * item= dynamic_cast<spongeBob *>(i);
+                SpongeBob * item= dynamic_cast<SpongeBob *>(i);
                 if (item)
                 {
                     this->scene()->removeItem(this);
@@ -50,10 +50,10 @@ void bacteria::update()
         }
 
     }
-    if( player->followme==true)
+    if( this->header->player->followme==true)
     {
-        int bearx= player->x();
-        int beary= player->y();
+        int bearx= this->header->player->x();
+        int beary= this->header->player->y();
         double diry = beary - y();
         double dirx= bearx - x();
         double hyp = sqrt(dirx*dirx + diry*diry);

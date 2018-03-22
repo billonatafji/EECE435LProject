@@ -34,7 +34,7 @@ void Game1::on_playButton_clicked()
         }
         Game::SetDifficulty(ui->easyRadioButton->isChecked(), ui->mediumRadioButton->isChecked(), ui->hardRadioButton->isChecked());
 
-        game1scene* scene1 = new game1scene();
+        game1scene* scene1 = new game1scene(this->Difficulty);
         GameView gameView(NULL, scene1);
         gameView.setModal(true);
         gameView.exec();

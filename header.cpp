@@ -1,12 +1,13 @@
-#include "immunitymeter.h"
+#include "header.h"
 
-ImmunityMeter::ImmunityMeter()
+Header::Header(SpongeBob* player, int level)
 {
+    this->player = player;
     this->time = 120;
     this->score = 0;
-    this->level = 0;
+    this->level = level;
 
-    SetProgress(0);
+    SetCleanliness(0);
     AddCleanlMeter(0,5);
     AddTime(450,5);
     AddHeart(550,0,0);
@@ -21,18 +22,46 @@ ImmunityMeter::ImmunityMeter()
 
 }
 
-void ImmunityMeter::SetProgress(int val)
+void Header::SetCleanliness(int val)
 {
-    this->Progress = (double)val/100;
+    if(this->player->cleanliness + val > 0 && this->player->cleanliness + val < 100)
+    {
+        this->player->cleanliness = this->player->cleanliness + val;
+
+    }
+    else if(this->player->cleanliness + val < 0){
+
+    }
+    else if(this->player->cleanliness + val < 100){
+
+    }
+    Render();
+
 }
-void ImmunityMeter::AddCleanlMeter(int x, int y)
+void Header::SetImmunity(int val)
+{
+    if(this->player->immunity + val > 0 && this->player->immunity + val < 100)
+    {
+        this->player->immunity = this->player->immunity + val;
+
+    }
+    else if(this->player->immunity + val < 0){
+
+    }
+    else if(this->player->immunity + val < 100){
+
+    }
+    Render();
+
+}
+void Header::AddCleanlMeter(int x, int y)
 {
     this->cleanlinessMeter = new CleanlinessMeter();
     cleanlinessMeter->setPos(x,y);
     this->addToGroup(cleanlinessMeter);
 }
 
-void ImmunityMeter::AddChart(int x, int y, int width, int height, int startAngle, int spanAngle, QColor color)
+void Header::AddChart(int x, int y, int width, int height, int startAngle, int spanAngle, QColor color)
 {
     QGraphicsEllipseItem* item = new QGraphicsEllipseItem(x, y, width, height);
     item->setPen(QPen(color));
@@ -42,20 +71,20 @@ void ImmunityMeter::AddChart(int x, int y, int width, int height, int startAngle
     this->addToGroup(item);
 }
 
-void ImmunityMeter::AddHeart(int x, int y, int number){
+void Header::AddHeart(int x, int y, int number){
     this->hearts[number] = new QGraphicsPixmapItem(QPixmap("../Project435/images/heart.png").scaledToHeight(50));
     this->hearts[number]->setPos(x,y);
     this->addToGroup(this->hearts[number]);
 }
 
-void ImmunityMeter::AddTime(int x, int y){
+void Header::AddTime(int x, int y){
     this->timeLabel = new QGraphicsTextItem();
     timeLabel->setPlainText(QString::number(time/60) + QString(":") + QString::number(time%60));
     timeLabel->setPos(x,y);
     this->addToGroup(this->timeLabel);
 }
 
-void ImmunityMeter::AddLevel(int x, int y){
+void Header::AddLevel(int x, int y){
     this->levelLabel = new QGraphicsTextItem();
     this->levelLabel->setPlainText(QString("Level: ").append(QString::number(this->level)));
     this->levelLabel->setPos(x, y);
@@ -63,16 +92,20 @@ void ImmunityMeter::AddLevel(int x, int y){
 
 }
 
-void ImmunityMeter::AddScore(int x, int y){
+void Header::AddScore(int x, int y){
     this->scoreLabel = new QGraphicsTextItem();
     this->scoreLabel->setPlainText(QString("Score: ").append(QString::number(this->score)));
     this->scoreLabel->setPos(x, y);
     this->addToGroup(this->scoreLabel);
 }
 
-void ImmunityMeter::AddNeedle(int x, int y){
+void Header::AddNeedle(int x, int y){
     this->needle = new  QGraphicsLineItem(x,y,x,y+50);
-    this->needle->setPen(QPen(Qt::black));
+    this->needle->setPen(QPen(Qt::blue));
     this->addToGroup(this->needle);
 
+}
+
+void Header::Render(){
+    //this->cleanlinessMeter->
 }

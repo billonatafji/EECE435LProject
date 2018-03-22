@@ -6,7 +6,7 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-#include"spongeBob.h"
+#include "header.h"
 
 /**
 *\huItem.h
@@ -17,8 +17,9 @@ class huItem : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit huItem( QObject *parent = nullptr);
+    explicit huItem(Header* header, QObject *parent = nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
+    Header* header;
 signals:
 
 public slots:

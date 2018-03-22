@@ -8,7 +8,7 @@ CleanlinessMeter::CleanlinessMeter()
     this->ProgressBar = new QProgressBar();
     this->ProgressBar->setOrientation(Qt::Horizontal);
     this->ProgressBar->setRange(0,100);
-    this->ProgressBar->setValue(100);
+    this->ProgressBar->setValue(0);
     this->ProgressBar->setFixedHeight(30);
     this->ProgressBar->setFixedWidth(300);
 

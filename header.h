@@ -4,13 +4,12 @@
 #include <QGraphicsProxyWidget>
 #include <QPen>
 #include "cleanlinessmeter.h"
+#include "spongeBob.h"
 
-class ImmunityMeter:  public QGraphicsItemGroup
+class Header:  public QGraphicsItemGroup
 {
 public:
-    ImmunityMeter();
-
-    double Progress;
+    Header(SpongeBob* player,int level);
 
     QGraphicsItem* cleanlinessMeter;
     QGraphicsPixmapItem* hearts[3];
@@ -19,12 +18,14 @@ public:
     QGraphicsTextItem* scoreLabel;
     QGraphicsLineItem* needle;
 
+    SpongeBob* player;
 
     int time;
     int level;
     int score;
 
-    void SetProgress(int val);
+    void SetCleanliness(int val);
+    void SetImmunity(int val);
 
     void AddCleanlMeter(int x, int y);
     void AddChart(int x, int y, int width, int height, int startAngle, int spanAngle, QColor color);
@@ -34,6 +35,10 @@ public:
     void AddScore(int x, int y);
     void AddNeedle(int x, int y);
 
+    void Render();
+
+public slots:
+    void ValueChanged();
 
 };
 

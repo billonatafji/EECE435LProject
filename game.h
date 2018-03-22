@@ -11,7 +11,7 @@ public:
     Game();
     User* user;
     int Difficulty;
-    enum GameDifficulty{easy, medium, hard};
+    enum GameDifficulty{easy = 1, medium = 2, hard = 3};
 
     void SetDifficulty(bool easyRadio, bool mediumRadio, bool hardRadio);
 };
