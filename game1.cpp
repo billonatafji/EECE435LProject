@@ -1,6 +1,13 @@
 #include "game1.h"
 #include "ui_game1.h"
 
+#include <QGraphicsItem>
+#include <QGraphicsRectItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include "game1scene.h"
+#include "gameview.h"
+
 Game1::Game1(QWidget *parent, User* user) :
     QDialog(parent),
     ui(new Ui::Game1)
@@ -26,9 +33,13 @@ void Game1::on_playButton_clicked()
             Scores::AddScore(user->Username,QString::number(rand() % 10),Game1::name);
         }
         Game::SetDifficulty(ui->easyRadioButton->isChecked(), ui->mediumRadioButton->isChecked(), ui->hardRadioButton->isChecked());
+
+        game1scene* scene1 = new game1scene();
+        GameView gameView(NULL, scene1);
+        gameView.setModal(true);
+        gameView.exec();
         this->close();
     }
-
 }
 
 QString Game1::name = "Game1";

@@ -31,8 +31,26 @@ void bacteria::update()
     {
         this->scene()->removeItem(this);
         delete this;
+        return;
     }
-    else if( player->followme==true)
+    if(!this->scene()->collidingItems(this).isEmpty())
+    {
+        {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+            foreach(QGraphicsItem * i , collidelist)
+            {
+                spongeBob * item= dynamic_cast<spongeBob *>(i);
+                if (item)
+                {
+                    this->scene()->removeItem(this);
+                    delete this;
+                }
+            }
+
+
+        }
+
+    }
+    if( player->followme==true)
     {
         int bearx= player->x();
         int beary= player->y();
@@ -44,7 +62,6 @@ void bacteria::update()
         centerline=this->y();
         this-> setPos(this->x()+ dirx * Xvelocity, this->y()+ diry *Yvelocity);
     }
-
     else
     {
         this-> setPos(this->x()+direction * Xvelocity, this->y()+ directionY *Yvelocity);

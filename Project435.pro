@@ -24,7 +24,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        welcome.cpp \
     signup.cpp \
     main.cpp \
     signin.cpp \
@@ -36,10 +35,19 @@ SOURCES += \
     game.cpp \
     gamemenu.cpp \
     history.cpp \
-    description.cpp
+    description.cpp \
+    welcome.cpp \
+    virus.cpp \
+    spongeBob.cpp \
+    huItem.cpp \
+    game1scene.cpp \
+    bacteria.cpp \
+    gameview.cpp \
+    cleanlinessmeter.cpp \
+    cheat.cpp \
+    immunitymeter.cpp
 
 HEADERS += \
-        welcome.h \
     signup.h \
     signin.h \
     home.h \
@@ -50,10 +58,19 @@ HEADERS += \
     game.h \
     gamemenu.h \
     history.h \
-    description.h
+    description.h \
+    welcome.h \
+    virus.h \
+    spongeBob.h \
+    huItem.h \
+    game1scene.h \
+    bacteria.h \
+    gameview.h \
+    cleanlinessmeter.h \
+    cheat.h \
+    immunitymeter.h
 
 FORMS += \
-        welcome.ui \
     signup.ui \
     signin.ui \
     home.ui \
@@ -61,4 +78,12 @@ FORMS += \
     game2.ui \
     gamemenu.ui \
     history.ui \
-    description.ui
+    description.ui \
+    welcome.ui \
+    gameview.ui \
+    cheat.ui
+
+SUBDIRS += \
+    Project435.pro
+
+DISTFILES +=

@@ -14,7 +14,7 @@ spongeBob::spongeBob(QObject *parent) : QObject(parent)
     this->followme=0;
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
-    setPixmap((QPixmap("../Project435/images/spongebob.png")).scaled(100,100));
+    setPixmap((QPixmap("../Project435/images/spongebob.png")).scaledToHeight(100));
 
 }
 

@@ -8,6 +8,8 @@
 #include "bacteria.h"
 #include "virus.h"
 #include <QTimer>
+#include "cleanlinessmeter.h"
+#include "immunitymeter.h"
 
 /**
 *\game1scene.h
@@ -20,10 +22,13 @@ class game1scene : public QGraphicsScene
 public:
     explicit game1scene();///< constructor
     spongeBob *spongeBobInstance; //!< Brief description after the member
+
+    QGraphicsItemGroup* immunityMeter;
     QTimer *addhuItemstimer;//!< QTimer attribute,
     QTimer *addbacteriatimer;//!< QTimer attribute,
     QTimer *addvirustimer;//!< QTimer attribute,
     QTimer *followtimer;//!< QTimer attribute,
+
 
 
 signals:
