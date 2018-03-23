@@ -1,3 +1,4 @@
+
 #ifndef VIRUS_H
 #define VIRUS_H
 
@@ -6,7 +7,6 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-#include "spongeBob.h"
 #include "header.h"
 
 /**

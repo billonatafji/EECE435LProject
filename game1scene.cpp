@@ -28,6 +28,9 @@ game1scene::game1scene(int difficulty)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
 
+//    this->cleanlinessMeter = new CleanlinessMeter();
+//    cleanlinessMeter->setPos(10,20);
+//    this->addItem(cleanlinessMeter);
 
     this->spongeBobInstance = new SpongeBob();
     this->spongeBobInstance->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -43,9 +46,9 @@ game1scene::game1scene(int difficulty)
     this->addhuItemstimer= new QTimer();
     this->addbacteriatimer= new QTimer();
     connect(addhuItemstimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
-    addhuItemstimer->start(2000);
+    addhuItemstimer->start(200);
     connect(addbacteriatimer,SIGNAL(timeout()),this,SLOT(addbacteria()));
-    addbacteriatimer->start(2000);
+    addbacteriatimer->start(1000);
 
     this->addvirustimer= new QTimer();
     connect(addvirustimer,SIGNAL(timeout()),this,SLOT(addvirus()));
@@ -63,7 +66,7 @@ game1scene::game1scene(int difficulty)
 void game1scene::addhuItems()
 {
     /**
-     * a random number is first choosen between 0 and 3
+     * a random number is first choosen between 0 and 20
      * a huItem instance is created
      * if the random number is less than 2, the direction is set from left to right
      * else it is set from right to left
@@ -71,12 +74,15 @@ void game1scene::addhuItems()
      * the position is calculated by tho following equation : 50 + randomnumber *100
      * so the results can be: 50, 150, 250, 350
      */
-    int r =(rand() % 20);
+    int randXPos =(rand() % 20);
+    int randType =(rand() % 2);
+    int randPic =(rand() % 4)+1;
     huItem *huItem1;
+    std::string path = "../Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";
 
-    huItem1= new huItem(this->header);
-    huItem1->setPixmap((QPixmap("../Project435/images/bee_1.png")).scaledToHeight(45));
-    huItem1->setPos(5+(r)*45,0);
+    huItem1= new huItem(randType,this->header);
+    huItem1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45));
+    huItem1->setPos(5+(randXPos)*45,0);
 
     this->addItem(huItem1);
 
@@ -87,7 +93,7 @@ void game1scene::addbacteria()
 {
     /**
      * a random number is first choosen between 0 and 3
-     * a huItem bacteria is created
+     * a bacteria is created
      * if the random number is less than 2, the direction is set from left to right
      * else it is set from right to left
      *
@@ -113,8 +119,8 @@ void game1scene::addbacteria()
 void game1scene::addvirus()
 {
     /**
-     * a random number is first bacteria1choosen between 0 and 3
-     * a huItem bacteria is created
+     * a random number is first choosen between 0 and 3
+     * a virus is created
      * if the random number is less than 2, the direction is set from left to right
      * else it is set from right to left
      *
@@ -122,7 +128,7 @@ void game1scene::addvirus()
      * so the results can be: 50, 150, 250, 350
      */
     int direction=(rand() % 2);
-    int startx=direction*990;
+    int startx=direction*980+5;
     int starty =50+(rand() % 4)*100;
 
     virus *virus1;

@@ -1,3 +1,12 @@
+/**
+* \file game1.cpp
+* \brief game1 class definition
+*
+*  the class game1 is used to select the difficulty of the game, add the score and create the scene of game1
+*\author Bilal Natafgi
+*\date 21-2-2018
+*/
+
 #include "game1.h"
 #include "ui_game1.h"
 

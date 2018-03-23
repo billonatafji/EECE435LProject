@@ -9,14 +9,14 @@
 #include "bacteria.h"
 #include "stdlib.h"
 
-bacteria::bacteria(int strength, int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, Header* header,QObject *parent) : QObject(parent)
+bacteria::bacteria(int strength, int direction, int directionY, int Xvelocity, int Yvelocity, int upperlimit, int centerline, Header* header,QObject *parent) : QObject(parent)
 {
     this->strength=strength;
     this->direction=direction;
     this->directionY=directionY;
     this->Xvelocity=Xvelocity;
     this->Yvelocity=Yvelocity;
-    this->foobar=foobar;
+    this->upperlimit=upperlimit;
     this->centerline=centerline;
     this->header = header;
     QTimer *timer= new QTimer();
@@ -52,10 +52,10 @@ void bacteria::update()
     }
     if( this->header->player->followme==true)
     {
-        int bearx= this->header->player->x();
-        int beary= this->header->player->y();
-        double diry = beary - y();
-        double dirx= bearx - x();
+        int playerx= this->header->player->x();
+        int playery= this->header->player->y();
+        double diry = playery - y();
+        double dirx= playerx - x();
         double hyp = sqrt(dirx*dirx + diry*diry);
         dirx /= hyp;
         diry /= hyp;
@@ -66,9 +66,9 @@ void bacteria::update()
     {
         this-> setPos(this->x()+direction * Xvelocity, this->y()+ directionY *Yvelocity);
 
-        if (y() < centerline-foobar)
+        if (y() < centerline-upperlimit)
             directionY=1;
-        else if (y() >centerline+foobar)
+        else if (y() >centerline+upperlimit)
             directionY=-1;
     }
 

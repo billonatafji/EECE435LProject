@@ -26,7 +26,7 @@ void Header::SetCleanliness(int val)
 {
     if(this->player->cleanliness + val > 0 && this->player->cleanliness + val < 100)
     {
-        this->player->cleanliness = this->player->cleanliness + val;
+        this->player->cleanliness += val;
 
     }
     else if(this->player->cleanliness + val < 0){
@@ -42,7 +42,7 @@ void Header::SetImmunity(int val)
 {
     if(this->player->immunity + val > 0 && this->player->immunity + val < 100)
     {
-        this->player->immunity = this->player->immunity + val;
+        this->player->immunity += val;
 
     }
     else if(this->player->immunity + val < 0){

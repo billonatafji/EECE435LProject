@@ -11,14 +11,14 @@
 *\spongeBob.h
 *\brief spongeBob class
 *
-* This creates an instance of the bear.
+* This creates an instance of the spongebob.
 */
 class SpongeBob : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
     explicit SpongeBob(QObject *parent = nullptr);///< constructor
-    bool followme;
+    bool followme;///< followme attribute that specifies if the bacteria should follow spongebob or not
     QTimer *followTimer; ///< timer attribute that specifies the timer
     int cleanliness;
     int immunity;
@@ -28,6 +28,10 @@ public:
 *\param *event first argument, keystroke event
 */
     void keyPressEvent(QKeyEvent *event);
+    /**
+    *\brief Detects key release events
+    *\param *event first argument, key release event
+    */
     void keyReleaseEvent(QKeyEvent *event);
     // bool eventFilter(QObject * obj, QEvent * event);
 signals:

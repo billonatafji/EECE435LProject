@@ -1,9 +1,17 @@
+/**
+* \file CleanlinessMeter.cpp
+* \brief CleanlinessMeter class definition
+*
+*  TODO
+*\author Bilal Natafgi
+*\date 21-3-2018
+*/
+
 #include "cleanlinessmeter.h"
 #include <Qt>
 #include <QVBoxLayout>
 CleanlinessMeter::CleanlinessMeter()
 {
-    //QVBoxLayout* formLayout = new QVBoxLayout();
 
     this->ProgressBar = new QProgressBar();
     this->ProgressBar->setOrientation(Qt::Horizontal);
@@ -13,11 +21,6 @@ CleanlinessMeter::CleanlinessMeter()
     this->ProgressBar->setFixedWidth(300);
 
     this->setWidget(this->ProgressBar);
-
-//    this->ProgressBar->setGeometry(30,30,30,300);
-//    formLayout->addWidget(this->ProgressBar);
-
-//    this->setLayout(this->ProgressBar->layout());
 }
 
 void CleanlinessMeter::UpdateValue(){

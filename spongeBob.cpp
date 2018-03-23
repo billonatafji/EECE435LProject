@@ -4,19 +4,22 @@
 *
 * a spongeBob instance
 *\author Abdel Jawad Alami
-*\date 22-2-2018
+*\date 18-3-2018
 */
 
 #include "spongeBob.h"
 
 SpongeBob::SpongeBob(QObject *parent) : QObject(parent)
 {
+
     this->followme=0;
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
     setPixmap((QPixmap("../Project435/images/spongebob.png")).scaledToHeight(100));
 
 }
+
+
 
 /**
  * @brief spongeBob::keyPressEvent
@@ -29,34 +32,10 @@ SpongeBob::SpongeBob(QObject *parent) : QObject(parent)
  */
 QSet<int> pressedKeys;
 
-
-//void spongeBob:: keyPressEvent(QKeyEvent *event)
-//{
-
-//    if ( event->key() == Qt::Key_Left && x()>0)
-//    {
-//       this->setPos(this->pos().x()-10,this->pos().y());
-//    }
-
-//    if ( event->key() == Qt::Key_Right&&x()<900)
-//    {
-//        this->setPos(this->pos().x()+10,this->pos().y());
-//    }
-
-//    if ( event->key() == Qt::Key_Up&&y()>0)
-//    {
-//        this->setPos(this->pos().x(),this->pos().y()-10);
-//    }
-
-//    if ( event->key() == Qt::Key_Down&&y()<400)
-//    {
-//     this->setPos(this->pos().x(),this->pos().y()+10);
-//     }
-
-
-
-//    }
-
+/**
+ * @brief spongeBob::toggleFollow
+ * toggles the follow me to false when the timer ends
+ */
 void SpongeBob::toggleFollow()
 {
     if (this->followme==1)
@@ -64,6 +43,19 @@ void SpongeBob::toggleFollow()
 
 }
 
+
+
+/**
+ * @brief spongeBob::keyPressEvent
+ * @param event
+ *
+ * the keypress event detects all key strokes on the keyboard.
+ * we are only interested in the up,down,left, and right strokes
+ * when one of those keys is pressed, spongebob moves accoringly when possible.
+ * it also moves diagonally if multiple of these keys are pressed at the same time.
+ * Sponge bob moves diagonally faster than horizontally and vertically
+ * if the location of spongebob is on the edges of the screen, the position isnt updated if this will result in leaving the screen
+ */
 void SpongeBob::keyPressEvent(QKeyEvent *event)
 {
 
@@ -86,6 +78,13 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
         this->setPos(this->pos().x()+10,this->pos().y());
     }
 }
+
+/**
+ * @brief spongeBob::keyReleaseEvent
+ * @param event
+ *
+ * this collects key release events and removes them from the set of pressed keys
+ */
 void SpongeBob::keyReleaseEvent(QKeyEvent *event)
 {
     pressedKeys -= ((QKeyEvent*)event)->key();

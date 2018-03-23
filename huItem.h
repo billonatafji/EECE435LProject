@@ -17,9 +17,10 @@ class huItem : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit huItem(Header* header, QObject *parent = nullptr);
+    explicit huItem(bool type,Header* header, QObject *parent = nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
-    Header* header;
+    Header *header;
+    bool type;
 signals:
 
 public slots:

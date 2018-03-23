@@ -17,14 +17,14 @@ class bacteria : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit bacteria(int strength,int direction,int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, Header* header = NULL, QObject *parent= nullptr);
+    explicit bacteria(int strength,int direction,int directionY, int Xvelocity, int Yvelocity, int upperlimit, int centerline, Header* header = NULL, QObject *parent= nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
     int strength;
     int direction; ///< direction attribute that specifies the direction of movement of the bacteria
     int directionY;
     int Xvelocity;
     int Yvelocity;
-    int foobar;
+    int upperlimit;
     int centerline;
     Header *header;
 signals:

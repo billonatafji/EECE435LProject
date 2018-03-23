@@ -2,13 +2,25 @@
 * \file virus.cpp
 * \brief virus class definition
 *
-* a virus is an object in the game that gets eaten by the bear when they collide
+* a virus is an object in the game that if eaten by spongebob, makes the bacteria follow him.
 *\author Abdel Jawad Alami
-*\date 22-2-2018
+*\date 18-3-2018
 */
 #include "virus.h"
 #include "stdlib.h"
-
+/**
+ * @brief virus::virus
+ * @param direction
+ * @param directionY
+ * @param Xvelocity
+ * @param Yvelocity
+ * @param foobar
+ * @param centerline
+ * @param player
+ * @param parent
+ *
+ * constructor
+ */
 virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline,  Header* header,QObject *parent) : QObject(parent)
 {
     this->direction=direction;
@@ -48,7 +60,7 @@ void virus::update()
                 if (item)
                 {
                     item->followme=true;
-                    item->followTimer->start(1000);
+                    item->followTimer->start(5000);
                     this->scene()->removeItem(this);
                     delete this;
                 }
