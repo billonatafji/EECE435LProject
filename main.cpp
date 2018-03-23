@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Welcome w;
+    srand(time(NULL));
 
     ////////////////////////////////////////////////////////
     /// \brief setting window in the middle of the screen

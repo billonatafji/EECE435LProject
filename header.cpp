@@ -6,8 +6,9 @@ Header::Header(SpongeBob* player, int level)
     this->time = 120;
     this->score = 0;
     this->level = level;
+    this->cleanliness=100;
 
-    SetCleanliness(0);
+    //SetCleanliness(100);
     AddCleanlMeter(0,5);
     AddTime(450,5);
     AddHeart(550,0,0);
@@ -24,15 +25,15 @@ Header::Header(SpongeBob* player, int level)
 
 void Header::SetCleanliness(int val)
 {
-    if(this->player->cleanliness + val > 0 && this->player->cleanliness + val < 100)
+    if(this->cleanliness + val > 0 && this->cleanliness + val < 100)
     {
-        this->player->cleanliness += val;
+        this->cleanliness += val;
 
     }
-    else if(this->player->cleanliness + val < 0){
+    else if(this->cleanliness + val < 0){
 
     }
-    else if(this->player->cleanliness + val < 100){
+    else if(this->cleanliness + val < 100){
 
     }
     Render();
@@ -40,7 +41,7 @@ void Header::SetCleanliness(int val)
 }
 void Header::SetImmunity(int val)
 {
-    if(this->player->immunity + val > 0 && this->player->immunity + val < 100)
+    if(this->player->immunity + val >= 0 && this->player->immunity + val <= 100)
     {
         this->player->immunity += val;
 

@@ -23,6 +23,8 @@ public:
     int time;
     int level;
     int score;
+    int cleanliness;
+
 
     void SetCleanliness(int val);
     void SetImmunity(int val);

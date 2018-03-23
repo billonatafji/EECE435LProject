@@ -20,7 +20,7 @@ public:
     explicit SpongeBob(QObject *parent = nullptr);///< constructor
     bool followme;///< followme attribute that specifies if the bacteria should follow spongebob or not
     QTimer *followTimer; ///< timer attribute that specifies the timer
-    int cleanliness;
+    //int cleanliness;
     int immunity;
 
     /**

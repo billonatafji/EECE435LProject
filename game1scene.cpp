@@ -50,9 +50,12 @@ game1scene::game1scene(int difficulty)
     connect(addbacteriatimer,SIGNAL(timeout()),this,SLOT(addbacteria()));
     addbacteriatimer->start(1000);
 
+if (difficulty>1)
+{
     this->addvirustimer= new QTimer();
     connect(addvirustimer,SIGNAL(timeout()),this,SLOT(addvirus()));
     addvirustimer->start(50000);
+}
 
     //connect(this->spongeBobInstance, SIGNAL(v));
 
@@ -75,10 +78,10 @@ void game1scene::addhuItems()
      * so the results can be: 50, 150, 250, 350
      */
     int randXPos =(rand() % 20);
-    int randType =(rand() % 2);
+    bool randType =(rand() % 100)>(Difficulty)*25;
     int randPic =(rand() % 4)+1;
     huItem *huItem1;
-    std::string path = "../Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";
+    std::string path = "../Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
 
     huItem1= new huItem(randType,this->header);
     huItem1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45));
@@ -107,10 +110,11 @@ void game1scene::addbacteria()
     std::string path = "../Project435/images/bacteria"+ std::to_string(strength)+".png";
 
     bacteria *bacteria1;
-
     bacteria1= new bacteria(strength,1-2*direction,1,3,2,20,starty, this->header);
     bacteria1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45 + strength*45/2));
     bacteria1->setPos(startx,starty);
+
+    this->header->SetCleanliness(-strength);
 
     this->addItem(bacteria1);
 
@@ -132,10 +136,10 @@ void game1scene::addvirus()
     int starty =50+(rand() % 4)*100;
 
     virus *virus1;
-
     virus1= new virus(1-2*direction,1,3,2,20,starty, this->header);
     virus1->setPixmap((QPixmap("../Project435/images/virus.png")).scaledToHeight(70));
     virus1->setPos(startx,starty);
+    this->header->SetCleanliness(-5);
 
     this->addItem(virus1);
 

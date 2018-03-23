@@ -48,6 +48,7 @@ void virus::update()
     {
         this->scene()->removeItem(this);
         delete this;
+        this->header->SetCleanliness(+5);
     }
 
     else if(!this->scene()->collidingItems(this).isEmpty())
@@ -62,6 +63,7 @@ void virus::update()
                     item->followme=true;
                     item->followTimer->start(5000);
                     this->scene()->removeItem(this);
+                    this->header->SetCleanliness(+5);
                     delete this;
                 }
             }
