@@ -27,9 +27,11 @@ public:
     SpongeBob* player;
     QString username;
     QString game;
+    QTimer* timer;
     int time;
     int difficulty;
     bool completed;
+
 
     void SetCleanliness(int val);
     void SetImmunity(int val);
@@ -45,15 +47,12 @@ public:
     void AddScore(int x, int y);
     void AddNeedle(int x, int y);
 
-
     void Render();
 
 signals:
 
 public slots:
     void CountDown();
-    void PauseGame();
-
 };
 
 #endif // IMMUNITYMETER_H

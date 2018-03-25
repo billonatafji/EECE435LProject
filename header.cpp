@@ -23,7 +23,7 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     AddChart(875,0,100,100,120*16,180*16/3,Qt::red);
     AddNeedle(925,50);
 
-    QTimer *timer = new QTimer();
+    this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
     //QObject::connect(this->pause,SIGNAL(QGraphicsItem::mouseReleaseEvent()),this,SLOT(PauseGame()));
     timer->start(1000);
@@ -37,13 +37,13 @@ void Header::SetCleanliness(int val)
     if(this->player->cleanliness + val > 0 && this->player->cleanliness + val < 100)
     {
         this->player->cleanliness += val;
-
     }
     else if(this->player->cleanliness + val <= 0){
         this->player->cleanliness += 0;
     }
     else if(this->player->cleanliness + val >= 100){
         this->player->cleanliness = 100;
+        ((game1scene*)this->scene())->WonGame();
     }
     Render();
 
@@ -149,6 +149,8 @@ void Header::RemoveLife(){
     if(this->player->lives>0){
         this->scene()->removeItem(this->hearts[--this->player->lives]);
         delete this->hearts[this->player->lives];
+    }else{
+        ((game1scene*)this->scene())->GameOver();
     }
 }
 
@@ -161,12 +163,3 @@ void Header::CountDown(){
 
     }
 }
-
-void Header::PauseGame(){
-    if(this->username != ""){
-        User::PauseGameForUser(this, false);
-    }
-    ((game1scene*)this->scene())->deleteLater();
-    QApplication::activeWindow()->close();
-}
-

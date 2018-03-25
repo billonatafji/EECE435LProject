@@ -9,6 +9,7 @@
 #include <QTimer>
 #include "header.h"
 #include "game.h"
+#include "gameview.h"
 
 /**
 *\game1scene.h
@@ -19,14 +20,28 @@ class game1scene : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    explicit game1scene(int gameMode, QString username, int difficulty = 1, Header* header = nullptr);///< constructor
+    explicit game1scene(GameView* gameView, int gameMode, QString username, int difficulty = 1, Header* header = nullptr, bool paused = false);///< constructor
 
-    SpongeBob *spongeBobInstance; //!< Brief description after the member
+    //SpongeBob *spongeBobInstance; //!< Brief description after the member
     Header* header;
     QTimer *addhuItemstimer;//!< QTimer attribute,
     QTimer *addbacteriatimer;//!< QTimer attribute,
     QTimer *addvirustimer;//!< QTimer attribute,
     QTimer *followtimer;//!< QTimer attribute,
+    GameView* gameView;
+    bool paused;
+
+    void GameOver();
+    void WonGame();
+    void PauseGame();
+
+    void keyPressEvent(QKeyEvent *event);
+    /**
+    *\brief Detects key release events
+    *\param *event first argument, key release event
+    */
+    void keyReleaseEvent(QKeyEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent* event);
 
     ~game1scene();
 
@@ -37,6 +52,7 @@ public slots:
     void addhuItems();///< add huItems on the screen
     void addbacteria();
     void addvirus();
+    void CloseView();
 };
 
 #endif // GAME1SCENE_H

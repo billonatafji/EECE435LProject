@@ -32,7 +32,8 @@ public:
     static User* JsonToUser(QJsonObject object, QString username);
     static void PauseGameForUser(Header* header, bool completed);
     static Header* ResumeGameForUser(QString game, QString username);
-
+    static int GetUserLevel(QString game, QString username);
+    static void UpgradeUserToLevel(QString game, QString username, int level);
 
 };
 

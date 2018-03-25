@@ -14,37 +14,96 @@
 #include <QGraphicsLinearLayout>
 #include <QColorDialog>
 #include "game1.h"
+#include "scores.h"
 /**
  * @brief game1scene::game1scene
  * constructs the game1scene and all of its attributes, starts the timers, and connects the signal with its slot
  */
 
-game1scene::game1scene(int gameMode, QString username ,int difficulty, Header* header)
+game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int difficulty, Header* header, bool paused)
 {
+
+    this->gameView = gameView;
+    this->paused = paused;
 
     this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.png")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
 
-    if(gameMode == Game::New){
+    if(gameMode == Game::Over){
+        QTimer* closeWindowTimer = new QTimer();
+        connect(closeWindowTimer,SIGNAL(timeout()),this,SLOT(CloseView()));
 
-        this->spongeBobInstance = new SpongeBob(0,50,3,0,QPoint(300,0));
-        this->header = new Header(this->spongeBobInstance, difficulty, username, Game1::name, false, 120);
+        QGraphicsTextItem* gameOverLabel = new QGraphicsTextItem();
+
+        gameOverLabel->setHtml("<h1>GAME OVER</h1>");
+        gameOverLabel->setPos(400,200);
+
+        this->addItem(gameOverLabel);
+
+        closeWindowTimer->start(5000);
+
+        return;
+
+    }
+    else if(gameMode == Game::Win){
+
+        this->header = header;
+
+        QTimer* closeWindowTimer = new QTimer();
+        connect(closeWindowTimer,SIGNAL(timeout()),this,SLOT(CloseView()));
+
+        QGraphicsTextItem* winLabel = new QGraphicsTextItem();
+        QGraphicsTextItem* scoreLabel = new QGraphicsTextItem();
+
+        winLabel->setHtml("<h1>Congratulations, You Won!</h1>");
+        scoreLabel->setHtml("<h2>Score: "+ QString::number(this->header->player->score) + "</h2>");
+
+        winLabel->setPos(300,200);
+        scoreLabel->setPos(430,250);
+
+        this->addItem(winLabel);
+        this->addItem(scoreLabel);
+
+        closeWindowTimer->start(5000);
+
+        return;
+    }
+
+    else if(gameMode == Game::Pause){
+
+        this->header = header;
+        this->header->timer->stop();
+
+        QGraphicsTextItem* pauseLabel = new QGraphicsTextItem();
+
+        pauseLabel->setHtml("<h1>Paused</h1>");
+        pauseLabel->setPos(450,200);
+
+        this->addItem(pauseLabel);
+        return;
+
+    }
+
+    else if(gameMode == Game::New){
+
+        this->header->player = new SpongeBob(0,50,3,0,QPoint(300,0));
+        this->header = new Header(this->header->player, difficulty, username, Game1::name, false, 120);
 
 
     }else if(gameMode == Game::Resume){
 
         this->header = header;
-        this->spongeBobInstance = this->header->player;
+        //this->spongeBobInstance = this->header->player;
 
     }
 
-    this->spongeBobInstance->setFlag(QGraphicsItem::ItemIsFocusable);
-    this->spongeBobInstance->setFocus();
-    this->spongeBobInstance->setPos(this->spongeBobInstance->currentPos);
-    this->spongeBobInstance->installEventFilter(this);
-    this->addItem(this->spongeBobInstance);
+    this->header->player->setFlag(QGraphicsItem::ItemIsFocusable);
+    this->header->player->setFocus();
+    this->header->player->setPos(this->header->player->currentPos);
+    this->header->player->installEventFilter(this);
+    this->addItem(this->header->player);
 
     this->header->setPos(5,5);
     this->header->pause->installEventFilter(this);
@@ -154,4 +213,76 @@ void game1scene::addvirus()
 
 game1scene::~game1scene(){
     this->clear();
+}
+
+void game1scene::GameOver(){
+
+   User::PauseGameForUser(this->header,true);
+   game1scene* newScene = new game1scene(this->gameView,Game::Over,this->header->username);
+   this->gameView->setScene(newScene);
+   this->deleteLater();
+}
+
+void game1scene::CloseView(){
+    this->gameView->close();
+    this->deleteLater();
+}
+
+void game1scene::WonGame(){
+    if(User::GetUserLevel(Game1::name,this->header->username) == this->header->difficulty && this->header->difficulty != 3){
+        User::UpgradeUserToLevel(Game1::name,this->header->username,this->header->difficulty+1);
+    }
+    Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game1::name);
+    User::PauseGameForUser(this->header,true);
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+    Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->completed,this->header->time);
+    game1scene* newScene = new game1scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
+    this->gameView->setScene(newScene);
+    this->deleteLater();
+}
+
+void game1scene::PauseGame(){
+    if(!this->paused){
+        if(this->header->username != ""){
+            User::PauseGameForUser(this->header, false);
+        }
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+        Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->completed,this->header->time);
+        game1scene* newScene = new game1scene(this->gameView,Game::Pause,newheader->username,newheader->difficulty,newheader, true);
+        this->gameView->setScene(newScene);
+        this->deleteLater();
+    }else{
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+        Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->completed,this->header->time);
+        game1scene* newScene = new game1scene(this->gameView,Game::Resume,newheader->username,newheader->difficulty,newheader, false);
+        this->gameView->setScene(newScene);
+        this->deleteLater();
+    }
+
+}
+
+void game1scene::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape){
+        this->PauseGame();
+    }else if(!this->paused){
+        this->header->player->keyPressEvent(event);
+    }
+}
+
+/**
+ * @brief game1scene::keyReleaseEvent
+ * @param event
+ *
+ * this collects key release events and removes them from the set of pressed keys
+ */
+void game1scene::keyReleaseEvent(QKeyEvent *event)
+{
+    if(!this->paused){
+        this->header->player->keyReleaseEvent(event);
+    }
+}
+
+void game1scene::mouseReleaseEvent(QGraphicsSceneMouseEvent* event){
+    PauseGame();
 }

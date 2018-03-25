@@ -78,8 +78,9 @@ QJsonObject User::UserToJson(User user){
 
 
     QJsonObject gameObject;
-    gameObject["Scores"] ="";
+    gameObject["Scores"] = "";
     gameObject["State"] = stateObject;
+    gameObject["Level"] = 1;
 
     QByteArray data;
     QBuffer buffer(&data);
@@ -129,8 +130,7 @@ void User::PauseGameForUser(Header* header, bool completed){
         stateObject["score"] = header->player->score;
         stateObject["immunity"] = header->player->immunity;
         stateObject["cleanliness"] = header->player->cleanliness;
-        stateObject["time"] = header->time;
-
+        stateObject["time"] = (int)header->time;
         stateObject["completed"] = completed;
 
         userGameObject["State"] = stateObject;
@@ -174,5 +174,51 @@ Header* User::ResumeGameForUser(QString game, QString username){
         file.close();
     }
     return header;
+}
+
+int User::GetUserLevel(QString game, QString username){
+
+    int level = 0;
+    QFile file("Users.txt");
+
+    if (file.open(QFile::ReadOnly)) {
+        QJsonDocument document = QJsonDocument().fromJson(file.readAll());
+        QJsonObject rootObject = document.object();
+
+        QJsonObject userObject = rootObject.find(username).value().toObject();
+        QJsonObject userGameObject = userObject.find(game).value().toObject();
+        level = userGameObject.find("Level").value().toInt();
+
+        file.close();
+    }
+    return level;
+}
+
+void User::UpgradeUserToLevel(QString game, QString username, int level){
+
+    QFile file("Users.txt");
+
+    if (file.open(QFile::ReadOnly)) {
+
+        QJsonDocument document = QJsonDocument().fromJson(file.readAll());
+        QJsonObject rootObject = document.object();
+
+        QJsonObject userObject = rootObject.find(username).value().toObject();
+        QJsonObject userGameObject = userObject.find(game).value().toObject();
+
+        userGameObject["Level"] = level;
+        userObject[game] = userGameObject;
+        rootObject[username] = userObject;
+
+        document.setObject(rootObject);
+
+        file.close();
+
+        if(file.open(QFile::WriteOnly)){
+            file.write(document.toJson());
+            file.close();
+        }
+    }
+
 }
 

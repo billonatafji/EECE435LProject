@@ -65,32 +65,25 @@ void SpongeBob::toggleFollow()
  */
 void SpongeBob::keyPressEvent(QKeyEvent *event)
 {
+    pressedKeys += ((QKeyEvent*)event)->key();
 
-    if(event->key() == Qt::Key_Escape){
-
-        ((game1scene*)this->scene())->header->PauseGame();
-
-    }else{
-        pressedKeys += ((QKeyEvent*)event)->key();
-
-        if( pressedKeys.contains(Qt::Key_Up) )
-        {
-            this->setPos(this->pos().x(),this->pos().y()-10);
-        }
-        if( pressedKeys.contains(Qt::Key_Left) )
-        {
-            this->setPos(this->pos().x()-10,this->pos().y());
-        }
-        if( pressedKeys.contains(Qt::Key_Down) )
-        {
-            this->setPos(this->pos().x(),this->pos().y()+10);
-        }
-        if( pressedKeys.contains(Qt::Key_Right) )
-        {
-            this->setPos(this->pos().x()+10,this->pos().y());
-        }
-        this->currentPos = QPoint(this->pos().x(),this->pos().y());
+    if( pressedKeys.contains(Qt::Key_Up) )
+    {
+        this->setPos(this->pos().x(),this->pos().y()-10);
     }
+    if( pressedKeys.contains(Qt::Key_Left) )
+    {
+        this->setPos(this->pos().x()-10,this->pos().y());
+    }
+    if( pressedKeys.contains(Qt::Key_Down) )
+    {
+        this->setPos(this->pos().x(),this->pos().y()+10);
+    }
+    if( pressedKeys.contains(Qt::Key_Right) )
+    {
+        this->setPos(this->pos().x()+10,this->pos().y());
+    }
+    this->currentPos = QPoint(this->pos().x(),this->pos().y());
 
 
 }
