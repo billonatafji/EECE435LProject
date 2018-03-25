@@ -12,7 +12,6 @@ Gamemenu::Gamemenu(QWidget *parent, QString game, User* user) :
     ui->setupUi(this);
     this->Game = game;
     this->user = user;
-
     ui->highestScoreLabel->setText(QString("<h4>Highest Score <br /><br /> %1</h4>").arg(Scores::GetHighestScore(this->Game)));
     ui->gameLabel->setText(QString("<h1>%1</h1>").arg(this->Game));
 }
@@ -36,10 +35,11 @@ void Gamemenu::on_resumeGameButton_clicked()
 
         Header* header = User::ResumeGameForUser(this->Game,this->user->Username);
         if(!header->completed){
-            game1scene* scene1 = new game1scene(Game::Resume,this->user->Username, 0, header);
-            GameView gameView(NULL, scene1);
-            gameView.setModal(true);
-            gameView.exec();
+            GameView* gameView = new GameView();
+            game1scene* scene1 = new game1scene(gameView, Game::Resume,this->user->Username, 0, header, false);
+            gameView->setScene(scene1);
+            gameView->setModal(true);
+            gameView->exec();
             this->close();
         }else{
             Error err(QString("No Resumable Game Available"));

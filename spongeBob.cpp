@@ -66,11 +66,7 @@ void SpongeBob::toggleFollow()
 void SpongeBob::keyPressEvent(QKeyEvent *event)
 {
 
-    if(event->key() == Qt::Key_Escape){
-
-        ((game1scene*)this->scene())->header->PauseGame();
-
-    }else{
+    
         pressedKeys += ((QKeyEvent*)event)->key();
 
         if( pressedKeys.contains(Qt::Key_Up) && this->y()>0 )
@@ -90,7 +86,6 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
             this->setPos(this->pos().x()+10,this->pos().y());
         }
         this->currentPos = QPoint(this->pos().x(),this->pos().y());
-    }
 
 
 }
