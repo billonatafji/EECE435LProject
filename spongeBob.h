@@ -17,12 +17,13 @@ class SpongeBob : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit SpongeBob(QObject *parent = nullptr);///< constructor
+    explicit SpongeBob(int cleanliness, int immunity, int lives, int score,QObject *parent = nullptr);///< constructor
     bool followme;///< followme attribute that specifies if the bacteria should follow spongebob or not
     QTimer *followTimer; ///< timer attribute that specifies the timer
-    //int cleanliness;
+    int cleanliness;
     int immunity;
-
+    int lives;
+    int score;
     /**
 *\brief Detects key strokes pressed
 *\param *event first argument, keystroke event

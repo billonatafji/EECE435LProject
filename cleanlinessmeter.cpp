@@ -18,7 +18,7 @@ CleanlinessMeter::CleanlinessMeter()
     this->ProgressBar->setRange(0,100);
     this->ProgressBar->setValue(0);
     this->ProgressBar->setFixedHeight(30);
-    this->ProgressBar->setFixedWidth(300);
+    this->ProgressBar->setFixedWidth(200);
 
     this->setWidget(this->ProgressBar);
 }

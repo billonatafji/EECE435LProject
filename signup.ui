@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>542</width>
-    <height>370</height>
+    <width>544</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,9 +56,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
-             <width>482</width>
-             <height>415</height>
+             <y>-35</y>
+             <width>484</width>
+             <height>449</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
@@ -85,7 +85,7 @@
                    <string notr="true">color:red;</string>
                   </property>
                   <property name="text">
-                   <string>The Username Is Already Taken</string>
+                   <string>The Username Is Taken</string>
                   </property>
                  </widget>
                 </item>
@@ -153,15 +153,18 @@
                   <hour>0</hour>
                   <minute>0</minute>
                   <second>0</second>
-                  <year>2018</year>
-                  <month>2</month>
+                  <year>2000</year>
+                  <month>1</month>
                   <day>1</day>
                  </datetime>
                 </property>
+                <property name="displayFormat">
+                 <string>M/d/yyyy</string>
+                </property>
                 <property name="date">
                  <date>
-                  <year>2018</year>
-                  <month>2</month>
+                  <year>2000</year>
+                  <month>1</month>
                   <day>1</day>
                  </date>
                 </property>
@@ -189,7 +192,10 @@
                    <string notr="true">color:red;</string>
                   </property>
                   <property name="text">
-                   <string>The Password Is Invalid</string>
+                   <string>The Password Should Contain an Uppercase, a Lowercase, and a Digit and Should Be at Least  8 Characters Long</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>

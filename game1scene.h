@@ -8,7 +8,6 @@
 #include "bacteria.h"
 #include "virus.h"
 #include <QTimer>
-#include "cleanlinessmeter.h"
 #include "header.h"
 
 /**

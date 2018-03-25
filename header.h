@@ -5,13 +5,19 @@
 #include <QPen>
 #include "cleanlinessmeter.h"
 #include "spongeBob.h"
+#include <QGraphicsScene>
+#include <QTimer>
+#include <pause.h>
 
-class Header:  public QGraphicsItemGroup
+
+class Header: public QObject, public QGraphicsItemGroup
 {
+    Q_OBJECT
 public:
     Header(SpongeBob* player,int level);
 
-    QGraphicsItem* cleanlinessMeter;
+    CleanlinessMeter* cleanlinessMeter;
+    Pause* pause;
     QGraphicsPixmapItem* hearts[3];
     QGraphicsTextItem* timeLabel;
     QGraphicsTextItem* levelLabel;
@@ -21,26 +27,30 @@ public:
     SpongeBob* player;
 
     int time;
-    int level;
-    int score;
-    int cleanliness;
-
+    int difficulty;
 
     void SetCleanliness(int val);
     void SetImmunity(int val);
+    void SetScore(int val);
+    void RemoveLife();
 
     void AddCleanlMeter(int x, int y);
     void AddChart(int x, int y, int width, int height, int startAngle, int spanAngle, QColor color);
     void AddHeart(int x, int y, int number);
     void AddTime(int x, int y);
+    void AddPause(int x, int y);
     void AddLevel(int x, int y);
     void AddScore(int x, int y);
     void AddNeedle(int x, int y);
 
+
     void Render();
 
+signals:
+
 public slots:
-    void ValueChanged();
+    void CountDown();
+    void PauseGame();
 
 };
 

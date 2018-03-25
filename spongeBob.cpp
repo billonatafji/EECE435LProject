@@ -9,12 +9,16 @@
 
 #include "spongeBob.h"
 
-SpongeBob::SpongeBob(QObject *parent) : QObject(parent)
+SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QObject *parent) : QObject(parent)
 {
 
+    this->cleanliness = cleanliness;
+    this->immunity = immunity;
+    this->lives = lives;
     this->followme=0;
+    this->score = score;
+
     followTimer= new QTimer();
-    this->immunity=50;
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
     setPixmap((QPixmap("../Project435/images/spongebob.png")).scaledToHeight(100));
 

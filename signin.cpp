@@ -1,5 +1,6 @@
 #include "signin.h"
 #include "ui_signin.h"
+#include "error.h"
 
 SignIn::SignIn(QWidget *parent) :
     QDialog(parent),
@@ -25,6 +26,10 @@ void SignIn::on_signInButton_clicked()
         this->close();
         Home home(NULL, user);
         home.exec();
+    }
+    else{
+        Error error;
+        error.exec();
     }
 }
 

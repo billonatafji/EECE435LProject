@@ -34,12 +34,16 @@ bool User::AddUser(User user){
             rootObject[user.Username] = UserToJson(user);
 
             document.setObject(rootObject);
+            file.close();
+            if(didWrite = file.open(QFile::WriteOnly)){
+                file.write(document.toJson());
+                file.close();
+            }
         }
-        file.close();
-        if(didWrite = file.open(QFile::WriteOnly)){
-            file.write(document.toJson());
+        else{
             file.close();
         }
+
     }
     return didWrite;
 }

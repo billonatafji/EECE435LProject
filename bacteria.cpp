@@ -49,6 +49,7 @@ void bacteria::update()
                         //todo
                         //update life and reset stats
                         this->scene()->removeItem(this);
+                        this->header->RemoveLife();
                         delete this;
 
                     }

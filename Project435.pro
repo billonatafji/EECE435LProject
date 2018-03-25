@@ -45,7 +45,9 @@ SOURCES += \
     gameview.cpp \
     cleanlinessmeter.cpp \
     cheat.cpp \
-    header.cpp
+    header.cpp \
+    error.cpp \
+    pause.cpp
 
 HEADERS += \
     signup.h \
@@ -68,7 +70,9 @@ HEADERS += \
     gameview.h \
     cleanlinessmeter.h \
     cheat.h \
-    header.h
+    header.h \
+    error.h \
+    pause.h
 
 FORMS += \
     signup.ui \
@@ -81,7 +85,8 @@ FORMS += \
     description.ui \
     welcome.ui \
     gameview.ui \
-    cheat.ui
+    cheat.ui \
+    error.ui
 
 SUBDIRS += \
     Project435.pro

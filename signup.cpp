@@ -31,6 +31,7 @@ void SignUp::on_signUpButton_clicked()
 
     if(ui->userNameEdit->text().isEmpty()){
         canSubmit = false;
+        ui->userNameValidationLabel->setText("Your Username is Required.");
         ui->userNameValidationLabel->show();
     }else{
         ui->userNameValidationLabel->hide();
@@ -80,8 +81,14 @@ void SignUp::on_signUpButton_clicked()
                   ui->dateOfBirthEdit->text(),
                   ui->maleRadioButton->isChecked() ? ui->maleRadioButton->text() :ui->femaleRadioButton->text(),
                   QPixmap(profilePictureEdit).scaled(100,100).toImage());
-        User::AddUser(user);
-        this->close();
+        if(User::AddUser(user)){
+            this->close();
+        }
+        else{
+            ui->userNameValidationLabel->setText("The Username is Taken");
+            ui->userNameValidationLabel->show();
+        }
+
     }
     else{
         ui->formValidationLabel->show();
@@ -92,5 +99,5 @@ void SignUp::on_signUpButton_clicked()
 void SignUp::on_browseButton_clicked()
 {
     this->profilePictureEdit = QFileDialog::getOpenFileName(this,tr("Open Image"), "/home", tr("Image Files (*.png *.jpg *.bmp)"));
-    ui->profilePictureLabel->setPixmap(QPixmap(profilePictureEdit).scaled(20,20));
+    ui->profilePictureLabel->setPixmap(QPixmap(profilePictureEdit).scaledToHeight(20));
 }

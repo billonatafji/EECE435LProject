@@ -28,11 +28,7 @@ game1scene::game1scene(int difficulty)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
 
-//    this->cleanlinessMeter = new CleanlinessMeter();
-//    cleanlinessMeter->setPos(10,20);
-//    this->addItem(cleanlinessMeter);
-
-    this->spongeBobInstance = new SpongeBob();
+    this->spongeBobInstance = new SpongeBob(0,50,3,0);
     this->spongeBobInstance->setFlag(QGraphicsItem::ItemIsFocusable);
     this->spongeBobInstance->setFocus();
     this->spongeBobInstance->setPos(300,0);
@@ -41,6 +37,7 @@ game1scene::game1scene(int difficulty)
 
     this->header = new Header(this->spongeBobInstance,this->Difficulty);
     this->header->setPos(5,5);
+    this->header->pause->installEventFilter(this);
     this->addItem(this->header);
 
     this->addhuItemstimer= new QTimer();
