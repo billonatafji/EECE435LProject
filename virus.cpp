@@ -71,3 +71,6 @@ void virus::update()
     }
 }
 
+virus::~virus(){
+}
+

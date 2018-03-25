@@ -28,7 +28,8 @@ void SignIn::on_signInButton_clicked()
         home.exec();
     }
     else{
-        Error error;
+        Error error(QString("The Username or Password You Entered  is Incorrect"));
+        error.setModal(true);
         error.exec();
     }
 }

@@ -21,6 +21,9 @@ public:
     QTimer *timer; ///< timer attribute that specifies the timer
     Header *header;
     bool type;
+
+    ~huItem();
+
 signals:
 
 public slots:

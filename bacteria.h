@@ -29,6 +29,9 @@ public:
     int upperlimit;
     int centerline;
     Header *header;
+
+    ~bacteria();
+
 signals:
 
 public slots:

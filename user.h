@@ -10,6 +10,7 @@
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QVariant>
+#include "header.h"
 
 class User
 {
@@ -29,6 +30,9 @@ public:
     static User* GetUser(QString username, QString password);
     static QJsonObject UserToJson(User user);
     static User* JsonToUser(QJsonObject object, QString username);
+    static void PauseGameForUser(Header* header, bool completed);
+    static Header* ResumeGameForUser(QString game, QString username);
+
 
 };
 

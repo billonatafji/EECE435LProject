@@ -1,5 +1,9 @@
 #include "gamemenu.h"
 #include "ui_gamemenu.h"
+#include "game1scene.h"
+#include "gameview.h"
+#include "game.h"
+#include "error.h"
 
 Gamemenu::Gamemenu(QWidget *parent, QString game, User* user) :
     QDialog(parent),
@@ -27,7 +31,24 @@ void Gamemenu::on_descriptionButton_clicked()
 
 void Gamemenu::on_resumeGameButton_clicked()
 {
-    Scores::AddScore(this->user->Username,QString::number(rand() % 10), this->Game);
+    //Scores::AddScore(this->user->Username,QString::number(rand() % 10), this->Game);
+    if(this->Game == Game1::name){
+
+        Header* header = User::ResumeGameForUser(this->Game,this->user->Username);
+        if(!header->completed){
+            game1scene* scene1 = new game1scene(Game::Resume,this->user->Username, 0, header);
+            GameView gameView(NULL, scene1);
+            gameView.setModal(true);
+            gameView.exec();
+            this->close();
+        }else{
+            Error err(QString("No Resumable Game Available"));
+            err.setModal(true);
+            err.exec();
+        }
+
+    }
+
 }
 
 void Gamemenu::on_newGameButton_clicked()

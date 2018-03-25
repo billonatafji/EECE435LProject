@@ -3,12 +3,12 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
-#include "spongeBob.h"
 #include "huItem.h"
 #include "bacteria.h"
 #include "virus.h"
 #include <QTimer>
 #include "header.h"
+#include "game.h"
 
 /**
 *\game1scene.h
@@ -19,17 +19,16 @@ class game1scene : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    explicit game1scene(int difficulty);///< constructor
-    SpongeBob *spongeBobInstance; //!< Brief description after the member
+    explicit game1scene(int gameMode, QString username, int difficulty = 1, Header* header = nullptr);///< constructor
 
+    SpongeBob *spongeBobInstance; //!< Brief description after the member
     Header* header;
     QTimer *addhuItemstimer;//!< QTimer attribute,
     QTimer *addbacteriatimer;//!< QTimer attribute,
     QTimer *addvirustimer;//!< QTimer attribute,
     QTimer *followtimer;//!< QTimer attribute,
 
-    int Difficulty;
-
+    ~game1scene();
 
 
 signals:

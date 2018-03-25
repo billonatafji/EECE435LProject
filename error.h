@@ -12,7 +12,7 @@ class Error : public QDialog
     Q_OBJECT
 
 public:
-    explicit Error(QWidget *parent = 0);
+    Error(QString msg, QWidget *parent = 0);
     ~Error();
 
 private slots:

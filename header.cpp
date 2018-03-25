@@ -1,17 +1,21 @@
 #include "header.h"
+#include "user.h"
+#include "game1scene.h"
+#include <QApplication>
 
-Header::Header(SpongeBob* player, int difficulty)
+Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool completed, int time)
 {
     this->player = player;
-    this->time = 120;
     this->difficulty = difficulty;
+    this->username = username;
+    this->game = game;
+    this->completed = completed;
+    this->time = time;
 
     AddCleanlMeter(0,5);
     AddPause(450,0);
     AddTime(500,10);
-    AddHeart(625,0,2);
-    AddHeart(675,0,1);
-    AddHeart(725,0,0);
+    AddHearts(725,0);
     AddLevel(800,0);
     AddScore(800,20);
     AddChart(875,0,100,100,0*16,180*16/3,Qt::green);
@@ -61,8 +65,12 @@ void Header::SetImmunity(int val)
 }
 void Header::AddCleanlMeter(int x, int y)
 {
+    QGraphicsTextItem* cleanlinessLabel = new QGraphicsTextItem();
+    cleanlinessLabel->setPlainText(QString("Cleanliness"));
+    cleanlinessLabel->setPos(x,y);
+    this->addToGroup(cleanlinessLabel);
     this->cleanlinessMeter = new CleanlinessMeter();
-    cleanlinessMeter->setPos(x,y);
+    cleanlinessMeter->setPos(x+90,y);
     this->addToGroup(cleanlinessMeter);
 }
 
@@ -79,10 +87,12 @@ void Header::AddChart(int x, int y, int width, int height, int startAngle, int s
     this->addToGroup(item);
 }
 
-void Header::AddHeart(int x, int y, int number){
-    this->hearts[number] = new QGraphicsPixmapItem(QPixmap("../Project435/images/heart.png").scaledToHeight(50));
-    this->hearts[number]->setPos(x,y);
-    this->addToGroup(this->hearts[number]);
+void Header::AddHearts(int x, int y){
+    for(int i= 0; i<this->player->lives;i++){
+        this->hearts[i] = new QGraphicsPixmapItem(QPixmap("../Project435/images/heart.png").scaledToHeight(50));
+        this->hearts[i]->setPos(x-i*50,y);
+        this->addToGroup(this->hearts[i]);
+    }
 }
 
 void Header::AddTime(int x, int y){
@@ -143,7 +153,9 @@ void Header::RemoveLife(){
 }
 
 void Header::CountDown(){
-    this->time--;
+    if(this->time>0){
+        this->time--;
+    }
     Render();
     if(this->time<=0){
 
@@ -151,6 +163,10 @@ void Header::CountDown(){
 }
 
 void Header::PauseGame(){
-    int i = 0;
+    if(this->username != ""){
+        User::PauseGameForUser(this, false);
+    }
+    ((game1scene*)this->scene())->deleteLater();
+    QApplication::activeWindow()->close();
 }
 

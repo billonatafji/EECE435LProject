@@ -8,8 +8,9 @@
 */
 
 #include "spongeBob.h"
+#include "game1scene.h"
 
-SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QObject *parent) : QObject(parent)
+SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QObject *parent) : QObject(parent)
 {
 
     this->cleanliness = cleanliness;
@@ -17,6 +18,7 @@ SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QObjec
     this->lives = lives;
     this->followme=0;
     this->score = score;
+    this->currentPos = pos;
 
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
@@ -64,24 +66,33 @@ void SpongeBob::toggleFollow()
 void SpongeBob::keyPressEvent(QKeyEvent *event)
 {
 
-    pressedKeys += ((QKeyEvent*)event)->key();
+    if(event->key() == Qt::Key_Escape){
 
-    if( pressedKeys.contains(Qt::Key_Up) )
-    {
-        this->setPos(this->pos().x(),this->pos().y()-10);
+        ((game1scene*)this->scene())->header->PauseGame();
+
+    }else{
+        pressedKeys += ((QKeyEvent*)event)->key();
+
+        if( pressedKeys.contains(Qt::Key_Up) )
+        {
+            this->setPos(this->pos().x(),this->pos().y()-10);
+        }
+        if( pressedKeys.contains(Qt::Key_Left) )
+        {
+            this->setPos(this->pos().x()-10,this->pos().y());
+        }
+        if( pressedKeys.contains(Qt::Key_Down) )
+        {
+            this->setPos(this->pos().x(),this->pos().y()+10);
+        }
+        if( pressedKeys.contains(Qt::Key_Right) )
+        {
+            this->setPos(this->pos().x()+10,this->pos().y());
+        }
+        this->currentPos = QPoint(this->pos().x(),this->pos().y());
     }
-    if( pressedKeys.contains(Qt::Key_Left) )
-    {
-        this->setPos(this->pos().x()-10,this->pos().y());
-    }
-    if( pressedKeys.contains(Qt::Key_Down) )
-    {
-        this->setPos(this->pos().x(),this->pos().y()+10);
-    }
-    if( pressedKeys.contains(Qt::Key_Right) )
-    {
-        this->setPos(this->pos().x()+10,this->pos().y());
-    }
+
+
 }
 
 /**
@@ -95,3 +106,5 @@ void SpongeBob::keyReleaseEvent(QKeyEvent *event)
     pressedKeys -= ((QKeyEvent*)event)->key();
 }
 
+SpongeBob::~SpongeBob(){
+}

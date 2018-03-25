@@ -92,4 +92,6 @@ void bacteria::update()
 
 }
 
+bacteria::~bacteria(){
+}
 

@@ -64,3 +64,6 @@ void huItem::update()
     }
 
 }
+
+huItem::~huItem(){
+}

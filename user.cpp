@@ -64,8 +64,22 @@ User* User::GetUser(QString username, QString password){
 }
 QJsonObject User::UserToJson(User user){
 
+    QJsonObject stateObject;
+
+    stateObject["difficulty"] = 0;
+    stateObject["x"] = 0;
+    stateObject["y"] = 0;
+    stateObject["lives"] = 0;
+    stateObject["score"] = 0;
+    stateObject["immunity"] = 0;
+    stateObject["cleanliness"] = 0;
+    stateObject["time"] = 0;
+    stateObject["completed"] = true;
+
+
     QJsonObject gameObject;
     gameObject["Scores"] ="";
+    gameObject["State"] = stateObject;
 
     QByteArray data;
     QBuffer buffer(&data);
@@ -94,3 +108,71 @@ User* User::JsonToUser(QJsonObject object, QString username){
 
     return user;
 }
+
+void User::PauseGameForUser(Header* header, bool completed){
+
+    QFile file("Users.txt");
+
+    if (file.open(QFile::ReadOnly)) {
+
+        QJsonDocument document = QJsonDocument().fromJson(file.readAll());
+        QJsonObject rootObject = document.object();
+
+        QJsonObject userObject = rootObject.find(header->username).value().toObject();
+        QJsonObject userGameObject = userObject.find(header->game).value().toObject();
+        QJsonObject stateObject;
+
+        stateObject["difficulty"] = header->difficulty;
+        stateObject["x"] = header->player->currentPos.x();
+        stateObject["y"] = header->player->currentPos.y();
+        stateObject["lives"] = header->player->lives;
+        stateObject["score"] = header->player->score;
+        stateObject["immunity"] = header->player->immunity;
+        stateObject["cleanliness"] = header->player->cleanliness;
+        stateObject["time"] = header->time;
+
+        stateObject["completed"] = completed;
+
+        userGameObject["State"] = stateObject;
+        userObject[header->game] = userGameObject;
+        rootObject[header->username] = userObject;
+
+        document.setObject(rootObject);
+
+        file.close();
+
+        if(file.open(QFile::WriteOnly)){
+            file.write(document.toJson());
+            file.close();
+        }
+
+    }
+}
+
+Header* User::ResumeGameForUser(QString game, QString username){
+
+    QFile file("Users.txt");
+    Header* header;
+
+    if (file.open(QFile::ReadOnly)) {
+
+        QJsonDocument document = QJsonDocument().fromJson(file.readAll());
+        QJsonObject rootObject = document.object();
+
+        QJsonObject userObject = rootObject.find(username).value().toObject();
+        QJsonObject userGameObject = userObject.find(game).value().toObject();
+        QJsonObject stateObject = userGameObject.find("State").value().toObject();
+
+        SpongeBob* player = new SpongeBob(stateObject.find("cleanliness").value().toInt(),
+                                          stateObject.find("immunity").value().toInt(),
+                                          stateObject.find("lives").value().toInt(),
+                                          stateObject.find("score").value().toInt(),
+                                          QPoint(stateObject.find("x").value().toInt(),stateObject.find("y").value().toInt()));
+
+        header = new Header(player,stateObject.find("difficulty").value().toInt(), username, game, stateObject.find("completed").value().toBool(), stateObject.find("time").value().toInt());
+
+        file.close();
+    }
+    return header;
+}
+

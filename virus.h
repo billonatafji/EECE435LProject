@@ -27,6 +27,9 @@ public:
     int foobar;
     int centerline;
     Header* header;
+
+    ~virus();
+
 signals:
 
 public slots:

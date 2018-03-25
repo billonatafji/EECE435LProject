@@ -13,29 +13,39 @@
 #include <QPainter>
 #include <QGraphicsLinearLayout>
 #include <QColorDialog>
-
+#include "game1.h"
 /**
  * @brief game1scene::game1scene
  * constructs the game1scene and all of its attributes, starts the timers, and connects the signal with its slot
  */
 
-game1scene::game1scene(int difficulty)
+game1scene::game1scene(int gameMode, QString username ,int difficulty, Header* header)
 {
-    this->Difficulty = difficulty;
 
     this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.png")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
 
-    this->spongeBobInstance = new SpongeBob(0,50,3,0);
+    if(gameMode == Game::New){
+
+        this->spongeBobInstance = new SpongeBob(0,50,3,0,QPoint(300,0));
+        this->header = new Header(this->spongeBobInstance, difficulty, username, Game1::name, false, 120);
+
+
+    }else if(gameMode == Game::Resume){
+
+        this->header = header;
+        this->spongeBobInstance = this->header->player;
+
+    }
+
     this->spongeBobInstance->setFlag(QGraphicsItem::ItemIsFocusable);
     this->spongeBobInstance->setFocus();
-    this->spongeBobInstance->setPos(300,0);
+    this->spongeBobInstance->setPos(this->spongeBobInstance->currentPos);
     this->spongeBobInstance->installEventFilter(this);
-    this->addItem(spongeBobInstance);
+    this->addItem(this->spongeBobInstance);
 
-    this->header = new Header(this->spongeBobInstance,this->Difficulty);
     this->header->setPos(5,5);
     this->header->pause->installEventFilter(this);
     this->addItem(this->header);
@@ -75,7 +85,7 @@ void game1scene::addhuItems()
      * so the results can be: 50, 150, 250, 350
      */
     int randXPos =(rand() % 20);
-    bool randType =(rand() % 100)>(Difficulty)*25;
+    bool randType =(rand() % 100)>(this->header->difficulty)*25;
     int randPic =(rand() % 4)+1;
     huItem *huItem1;
     std::string path = "../Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
@@ -142,3 +152,6 @@ void game1scene::addvirus()
 
 }
 
+game1scene::~game1scene(){
+    this->clear();
+}
