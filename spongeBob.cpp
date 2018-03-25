@@ -73,19 +73,19 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
     }else{
         pressedKeys += ((QKeyEvent*)event)->key();
 
-        if( pressedKeys.contains(Qt::Key_Up) )
+        if( pressedKeys.contains(Qt::Key_Up) && this->y()>0 )
         {
             this->setPos(this->pos().x(),this->pos().y()-10);
         }
-        if( pressedKeys.contains(Qt::Key_Left) )
+        if( pressedKeys.contains(Qt::Key_Left)&& this->x()>0 )
         {
             this->setPos(this->pos().x()-10,this->pos().y());
         }
-        if( pressedKeys.contains(Qt::Key_Down) )
+        if( pressedKeys.contains(Qt::Key_Down)&& this->y()<500  )
         {
             this->setPos(this->pos().x(),this->pos().y()+10);
         }
-        if( pressedKeys.contains(Qt::Key_Right) )
+        if( pressedKeys.contains(Qt::Key_Right)&& this->x()<920 )
         {
             this->setPos(this->pos().x()+10,this->pos().y());
         }

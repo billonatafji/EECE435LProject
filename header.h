@@ -29,6 +29,7 @@ public:
     QString game;
     int time;
     int difficulty;
+    int currentBacteriaCountInScene;
     bool completed;
 
     void SetCleanliness(int val);

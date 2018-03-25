@@ -11,6 +11,7 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     this->game = game;
     this->completed = completed;
     this->time = time;
+    this->currentBacteriaCountInScene=0;
 
     AddCleanlMeter(0,5);
     AddPause(450,0);
@@ -22,7 +23,7 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     AddChart(875,0,100,100,60*16,180*16/3,Qt::yellow);
     AddChart(875,0,100,100,120*16,180*16/3,Qt::red);
     AddNeedle(925,50);
-
+    SetCleanliness(80);
     QTimer *timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
     //QObject::connect(this->pause,SIGNAL(QGraphicsItem::mouseReleaseEvent()),this,SLOT(PauseGame()));
@@ -31,15 +32,21 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     Render();
 
 }
-
+/**
+ * @brief Header::SetCleanliness
+ * @param val
+ *
+ * the val is added(or subtracted if negative) from the total cleanliness level
+ * if the level is less than 0 or greater than 100, the value is reseted to zero or 100
+ */
 void Header::SetCleanliness(int val)
 {
-    if(this->player->cleanliness + val > 0 && this->player->cleanliness + val < 100)
+    if(this->player->cleanliness + val >= 0 && this->player->cleanliness + val < 100)
     {
         this->player->cleanliness += val;
 
     }
-    else if(this->player->cleanliness + val <= 0){
+    else if(this->player->cleanliness + val < 0){
         this->player->cleanliness += 0;
     }
     else if(this->player->cleanliness + val >= 100){
@@ -48,6 +55,13 @@ void Header::SetCleanliness(int val)
     Render();
 
 }
+/**
+ * @brief Header::SetImmunity
+ * @param val
+ *
+ * this sets the immunity by adding(or subtracting) the value of val from the current immmunity level
+ *
+ */
 void Header::SetImmunity(int val)
 {
     if(this->player->immunity + val >= 0 && this->player->immunity + val <= 100)
@@ -63,6 +77,14 @@ void Header::SetImmunity(int val)
     Render();
 
 }
+/**
+ * @brief Header::AddCleanlMeter
+ * @param x
+ * @param y
+ *
+ * adds the cleanliness meter to the scene,
+ * the position of the meter is set by the x and y coordinates
+ */
 void Header::AddCleanlMeter(int x, int y)
 {
     QGraphicsTextItem* cleanlinessLabel = new QGraphicsTextItem();
@@ -138,8 +160,13 @@ void Header::Render(){
     this->cleanlinessMeter->ProgressBar->setValue(this->player->cleanliness);
     this->scoreLabel->setPlainText(QString("Score: ").append(QString::number(this->player->score)));
     this->timeLabel->setPlainText(QString::number(time/60) + QString(":") + QString::number(time%60));
-    int x2 = this->needle->line().x1() - 30*cos(this->player->immunity*M_PI/100.0) ;
-    int y2 = this->needle->line().y1() - 30*sin(this->player->immunity*M_PI/100.0) ;
+
+    int immunity=0;
+    if(player->followme==0)
+    immunity=this->player->immunity;
+
+    int x2 = this->needle->line().x1() - 30*cos(immunity*M_PI/100.0) ;
+    int y2 = this->needle->line().y1() - 30*sin(immunity*M_PI/100.0) ;
 
     this->needle->setLine(this->needle->line().x1(),this->needle->line().y1(),x2,y2);
 
@@ -158,6 +185,7 @@ void Header::CountDown(){
     }
     Render();
     if(this->time<=0){
+//todo game lost
 
     }
 }

@@ -17,25 +17,25 @@ class bacteria : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit bacteria(int strength,int direction,int directionY, int Xvelocity, int Yvelocity, int upperlimit, int centerline, Header* header = NULL, QObject *parent= nullptr);
+    explicit bacteria(int strength,int direction,int directionY, double Xvelocity, double Yvelocity, int deviationLimit, int centerline, Header* header = NULL, QObject *parent= nullptr);
 
 
     QTimer *timer; ///< timer attribute that specifies the timer
     int strength;
     int direction; ///< direction attribute that specifies the direction of movement of the bacteria
-    int directionY;
-    int Xvelocity;
-    int Yvelocity;
-    int upperlimit;
-    int centerline;
-    Header *header;
+    int directionY;///<  attribute that specifies the Y direction of movement of the virus
+    int Xvelocity;///<  attribute that specifies the X velocity of the virus
+    int Yvelocity;///<  attribute that specifies the X velocity of the virus
+    int deviationLimit;///< specifies maximum deviation from center line
+    int centerline;///< specifies the center of propagation of the virus
+    Header* header;///< pointer to the header
 
     ~bacteria();
 
 signals:
 
 public slots:
-    void update(); ///< update the location on the screen
+    void update(); ///< update the location on the screen and detects collisions
 };
 
 #endif // BACTERIA_H

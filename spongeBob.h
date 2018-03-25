@@ -20,11 +20,11 @@ public:
     explicit SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QObject *parent = nullptr);///< constructor
     bool followme;///< followme attribute that specifies if the bacteria should follow spongebob or not
     QTimer *followTimer; ///< timer attribute that specifies the timer
-    int cleanliness;
-    int immunity;
-    int lives;
-    int score;
-    QPoint currentPos;
+    int cleanliness;     ///< cleanliness of the tank
+    int immunity;///< immunity level of spongebob
+    int lives;///<number of lives
+    int score;///< total score
+    QPoint currentPos;///< current position
 
     ~SpongeBob();
 
@@ -42,7 +42,7 @@ public:
 signals:
 
 public slots:
-    void toggleFollow();
+    void toggleFollow();///<change from follow me to dont follow me
 };
 
 #endif // spongeBob_H

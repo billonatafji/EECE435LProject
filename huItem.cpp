@@ -49,9 +49,17 @@ void huItem::update()
                 {
                     this->scene()->removeItem(this);
                     if (this->type==1)
+                    {
                         this->header->SetImmunity(+6/this->header->difficulty);
+                        this->header->player->score+=3;
+                    }
+
                     else
+                    {
                         this->header->SetImmunity(-6/this->header->difficulty);
+                        this->header->player->score-=3;
+                    }
+
                     delete this;
                 }
             }

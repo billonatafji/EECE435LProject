@@ -14,6 +14,7 @@
 #include <QGraphicsLinearLayout>
 #include <QColorDialog>
 #include "game1.h"
+
 /**
  * @brief game1scene::game1scene
  * constructs the game1scene and all of its attributes, starts the timers, and connects the signal with its slot
@@ -22,7 +23,7 @@
 game1scene::game1scene(int gameMode, QString username ,int difficulty, Header* header)
 {
 
-    this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.png")
+    this->setBackgroundBrush(QBrush(QImage("../Project435/images/backgaround.png")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
@@ -53,16 +54,23 @@ game1scene::game1scene(int gameMode, QString username ,int difficulty, Header* h
     this->addhuItemstimer= new QTimer();
     this->addbacteriatimer= new QTimer();
     connect(addhuItemstimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
-    addhuItemstimer->start(200);
+    addhuItemstimer->start(800);
     connect(addbacteriatimer,SIGNAL(timeout()),this,SLOT(addbacteria()));
     addbacteriatimer->start(1000);
 
-if (difficulty>1)
+if (difficulty==2)
 {
     this->addvirustimer= new QTimer();
     connect(addvirustimer,SIGNAL(timeout()),this,SLOT(addvirus()));
-    addvirustimer->start(50000);
+    addvirustimer->start(20000);
 }
+if (difficulty==3)
+{
+    this->addfungustimer= new QTimer();
+    connect(addfungustimer,SIGNAL(timeout()),this,SLOT(addfungus()));
+    addfungustimer->start(20000);
+}
+
 
     //connect(this->spongeBobInstance, SIGNAL(v));
 
@@ -98,46 +106,62 @@ void game1scene::addhuItems()
 
 }
 
-
+/**
+ * @brief game1scene::addbacteria
+ *
+ * first we check if the cleanness is less than 100
+ * if true, we continue with the procedure of adding a bacteria to the scene
+ * a random number is first choosen between 0 and 3
+ * a bacteria is created
+ * if the random number is less than 2, the direction is set from left to right
+ * else it is set from right to left
+ *
+ * the position is calculated by the following equation : 50 + randomnumber *100
+ * so the results can be: 50, 150, 250, 350
+ *
+ * the strength of the bacteria is also generated randomly
+ *
+ * velocity is generated randomly with an influance of the difficulty of the game
+ * the harder the game, the faster the bacteria
+ *
+ */
 void game1scene::addbacteria()
 {
-    /**
-     * a random number is first choosen between 0 and 3
-     * a bacteria is created
-     * if the random number is less than 2, the direction is set from left to right
-     * else it is set from right to left
-     *
-     * the position is calculated by the following equation : 50 + randomnumber *100
-     * so the results can be: 50, 150, 250, 350
-     */
+
+    int addableAmmount=(100- this->spongeBobInstance->cleanliness) - this->header->currentBacteriaCountInScene;
+    if (addableAmmount>0)
+    {
     int direction=(rand() % 2);
     int startx=direction*990;
     int starty =50+(rand() % 4)*100;
     int strength=(rand() % 3)+1;
+    double xvelocity=(rand() % 6)/3+(this->header->difficulty);
+    double yvelocity=(rand() % 6)/3+(this->header->difficulty/2.0);
+    if (addableAmmount==2 || addableAmmount==1)
+        strength=addableAmmount;
     std::string path = "../Project435/images/bacteria"+ std::to_string(strength)+".png";
 
     bacteria *bacteria1;
-    bacteria1= new bacteria(strength,1-2*direction,1,3,2,20,starty, this->header);
+    bacteria1= new bacteria(strength,1-2*direction,1,xvelocity,yvelocity,20,starty, this->header);
     bacteria1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45 + strength*45/2));
     bacteria1->setPos(startx,starty);
 
-    this->header->SetCleanliness(-strength);
-
+    this->header->currentBacteriaCountInScene +=strength;
     this->addItem(bacteria1);
-
+    }
 }
 
+/**
+ * @brief game1scene::addvirus
+ *
+ * this is a function to add a virus to the screen
+ * a random number is first choosen between 0 and 1 to set direction
+ * the starting y posiion is then chosen randomly
+ * a virus is created
+ */
 void game1scene::addvirus()
 {
-    /**
-     * a random number is first choosen between 0 and 3
-     * a virus is created
-     * if the random number is less than 2, the direction is set from left to right
-     * else it is set from right to left
-     *
-     * the position is calculated by the following equation : 50 + randomnumber *100
-     * so the results can be: 50, 150, 250, 350
-     */
+
     int direction=(rand() % 2);
     int startx=direction*980+5;
     int starty =50+(rand() % 4)*100;
@@ -146,9 +170,42 @@ void game1scene::addvirus()
     virus1= new virus(1-2*direction,1,3,2,20,starty, this->header);
     virus1->setPixmap((QPixmap("../Project435/images/virus.png")).scaledToHeight(70));
     virus1->setPos(startx,starty);
-    this->header->SetCleanliness(-5);
 
     this->addItem(virus1);
+
+}
+
+/**
+ * @brief game1scene::addfungus
+ *
+ *
+ * a random number is first choosen for the x and y positions
+ * then the distance to the player is calculated
+ * if the distance is less than 250, the position is randomly generated again
+ *
+ * when the distance criteria is met, an instance of the fungus is created with the generated coordinates
+ *
+ */
+void game1scene::addfungus()
+{
+
+   positionselection:
+    int startx=(rand() % 960);
+    int starty =(rand() % 550);
+    int playerx= this->header->player->x();
+    int playery= this->header->player->y();
+    double diry = playery - starty;
+    double dirx= playerx - startx;
+    double hyp = sqrt(dirx*dirx + diry*diry);
+    if(hyp<250)
+    goto positionselection;
+
+    fungus *fungus1;
+    fungus1= new fungus(this->header);
+    fungus1->setPixmap((QPixmap("../Project435/images/fungus.png")).scaledToHeight(70));
+    fungus1->setPos(startx,starty);
+
+    this->addItem(fungus1);
 
 }
 

@@ -8,7 +8,7 @@
 */
 #include "bacteria.h"
 #include "stdlib.h"
-bacteria::bacteria(int strength, int direction, int directionY, int Xvelocity, int Yvelocity, int upperlimit, int centerline, Header* header,QObject *parent) : QObject(parent)
+bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity, double Yvelocity, int upperlimit, int centerline, Header* header,QObject *parent) : QObject(parent)
 {
     this->strength=strength;
     this->direction=direction;
@@ -29,9 +29,8 @@ void bacteria::update()
     if (this->pos().x()<0 || this->pos().x()>1000)
     {
         this->scene()->removeItem(this);
+         this->header->currentBacteriaCountInScene-=strength;
         delete this;
-        this->header->SetCleanliness(+this->strength);
-
         return;
     }
     if(!this->scene()->collidingItems(this).isEmpty())
@@ -44,21 +43,30 @@ void bacteria::update()
                 {
                     int playerstrength=(item->immunity/33)+1;
 
-                    if((playerstrength-this->strength)<0)//player isnt strong enough to kill the bacteria, he should lose a life.
+                    if((playerstrength-this->strength)<0 || item->followme==1)//player isnt strong enough to kill the bacteria, he should lose a life.
                     {
                         //todo
                         //update life and reset stats
                         this->scene()->removeItem(this);
+                        this->header->currentBacteriaCountInScene-=strength;
+                        this->header->SetCleanliness(+this->strength);
                         this->header->RemoveLife();
+                        if (item->lives==0)
+                        {
+
+                        }
                         delete this;
 
                     }
                 else
                     {
+                        this->header->player->score+=strength*2*(this->header->player->immunity/33);
+                        this->header->currentBacteriaCountInScene-=strength;
                         this->header->SetCleanliness(+this->strength);
                         this->scene()->removeItem(this);
                         delete this;
                     }
+
 
                 }
             }

@@ -47,7 +47,8 @@ SOURCES += \
     cheat.cpp \
     header.cpp \
     error.cpp \
-    pause.cpp
+    pause.cpp \
+    fungus.cpp
 
 HEADERS += \
     signup.h \
@@ -72,7 +73,8 @@ HEADERS += \
     cheat.h \
     header.h \
     error.h \
-    pause.h
+    pause.h \
+    fungus.h
 
 FORMS += \
     signup.ui \
@@ -92,3 +94,6 @@ SUBDIRS += \
     Project435.pro
 
 DISTFILES +=
+
+RESOURCES += \
+    res.qrc

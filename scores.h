@@ -9,7 +9,11 @@
 #include <QJsonValue>
 #include <QVariant>
 #include <QVector>
-
+/**
+ * @brief The Scores class
+ *
+ * this class containes everything related to scores and manipulating them
+ */
 class Scores
 {
 public:

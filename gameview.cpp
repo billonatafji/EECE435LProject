@@ -18,3 +18,4 @@ GameView::~GameView()
 {
     delete ui;
 }
+

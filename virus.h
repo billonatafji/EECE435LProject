@@ -18,22 +18,22 @@ class virus : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit virus(int direction,int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline, Header* header,QObject *parent= nullptr);
+    explicit virus(int direction,int directionY, int Xvelocity, int Yvelocity, int deviationLimit, int centerline, Header* header,QObject *parent= nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
-    int direction; ///< direction attribute that specifies the direction of movement of the virus
-    int directionY;
-    int Xvelocity;
-    int Yvelocity;
-    int foobar;
-    int centerline;
-    Header* header;
+    int direction; ///<  attribute that specifies the X direction of movement of the virus
+    int directionY;///<  attribute that specifies the Y direction of movement of the virus
+    int Xvelocity;///<  attribute that specifies the X velocity of the virus
+    int Yvelocity;///<  attribute that specifies the X velocity of the virus
+    int deviationLimit;///< specifies maximum deviation from center line
+    int centerline;///< specifies the center of propagation of the virus
+    Header* header;///< pointer to the header
 
     ~virus();
 
 signals:
 
 public slots:
-    void update(); ///< update the location on the screen
+    void update(); ///< update the location on the screen and detects collision
 };
 
 #endif // VIRUS_H
