@@ -26,7 +26,6 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     SetCleanliness(80);
     this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
-    //QObject::connect(this->pause,SIGNAL(QGraphicsItem::mouseReleaseEvent()),this,SLOT(PauseGame()));
     timer->start(1000);
 
     Render();
@@ -41,19 +40,25 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
  */
 void Header::SetCleanliness(int val)
 {
-    if(this->player->cleanliness + val >= 0 && this->player->cleanliness + val < 100)
-    {
-        this->player->cleanliness += val;
+    if(!this->completed){
+        if(this->player->cleanliness + val >= 0 && this->player->cleanliness + val < 100)
+        {
+            this->player->cleanliness += val;
+        }
+        else if(this->player->cleanliness + val < 0){
+            this->player->cleanliness += 0;
+        }
+        else if(this->player->cleanliness + val >= 100){
+            this->player->cleanliness = 100;
 
+        }
+        Render();
+
+        if(this->player->cleanliness == 100){
+            this->completed = true;
+            ((game1scene*)this->scene())->WonGame();
+        }
     }
-    else if(this->player->cleanliness + val < 0){
-        this->player->cleanliness += 0;
-    }
-    else if(this->player->cleanliness + val >= 100){
-        this->player->cleanliness = 100;
-        ((game1scene*)this->scene())->WonGame();
-    }
-    Render();
 
 }
 /**
@@ -65,18 +70,19 @@ void Header::SetCleanliness(int val)
  */
 void Header::SetImmunity(int val)
 {
-    if(this->player->immunity + val >= 0 && this->player->immunity + val <= 100)
-    {
-        this->player->immunity += val;
+    if(!this->completed){
+        if(this->player->immunity + val >= 0 && this->player->immunity + val <= 100)
+        {
+            this->player->immunity += val;
+        }
+        else if(this->player->immunity + val < 0){
+            this->player->immunity = 0;
+        }
+        else if(this->player->immunity + val > 100){
+            this->player->immunity = 100;
+        }
+        Render();
     }
-    else if(this->player->immunity + val < 0){
-        this->player->immunity = 0;
-    }
-    else if(this->player->immunity + val > 100){
-        this->player->immunity = 100;
-    }
-    Render();
-
 }
 /**
  * @brief Header::AddCleanlMeter
@@ -174,30 +180,27 @@ void Header::Render(){
 }
 
 void Header::RemoveLife(){
-    if(this->player->lives>0){
-        this->scene()->removeItem(this->hearts[--this->player->lives]);
-        delete this->hearts[this->player->lives];
-    }else{
-        ((game1scene*)this->scene())->GameOver();
+    if(!this->completed){
+        if(this->player->lives>0){
+            this->scene()->removeItem(this->hearts[--this->player->lives]);
+            delete this->hearts[this->player->lives];
+        }else{
+            ((game1scene*)this->scene())->GameOver();
+        }
     }
 }
 
 void Header::CountDown(){
-    if(this->time>0){
-        this->time--;
-    }
-    Render();
-    if(this->time<=0){
-//todo game lost
+    if(!this->completed){
+        if(this->time>0){
+            this->time--;
+        }
+        Render();
+        if(this->time<=0){
+    //todo game lost
 
+        }
     }
 }
 
-void Header::PauseGame(){
-    if(this->username != ""){
-        User::PauseGameForUser(this, false);
-    }
-    ((game1scene*)this->scene())->deleteLater();
-    QApplication::activeWindow()->close();
-}
 

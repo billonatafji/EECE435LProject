@@ -27,7 +27,7 @@ public:
     int deviationLimit;///< specifies maximum deviation from center line
     int centerline;///< specifies the center of propagation of the virus
     Header* header;///< pointer to the header
-
+    int foobar;
     ~virus();
 
 signals:

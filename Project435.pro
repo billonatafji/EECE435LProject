@@ -93,7 +93,3 @@ FORMS += \
 SUBDIRS += \
     Project435.pro
 
-DISTFILES +=
-
-RESOURCES += \
-    res.qrc

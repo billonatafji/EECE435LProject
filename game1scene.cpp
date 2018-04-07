@@ -26,12 +26,14 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
     this->gameView = gameView;
     this->paused = paused;
 
-    this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.png")
+    this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.jpg")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
 
     if(gameMode == Game::Over){
+
+        this->header = header;
         QTimer* closeWindowTimer = new QTimer();
         connect(closeWindowTimer,SIGNAL(timeout()),this,SLOT(CloseView()));
 
@@ -88,14 +90,13 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        this->header->player = new SpongeBob(0,50,3,0,QPoint(300,0));
-        this->header = new Header(this->header->player, difficulty, username, Game1::name, false, 120);
+        SpongeBob* player = new SpongeBob(0,50,0,0,QPoint(300,0));
+        this->header = new Header(player, difficulty, username, Game1::name, false, 120);
 
 
     }else if(gameMode == Game::Resume){
 
         this->header = header;
-        //this->spongeBobInstance = this->header->player;
 
     }
 
@@ -186,7 +187,7 @@ void game1scene::addhuItems()
 void game1scene::addbacteria()
 {
 
-    int addableAmmount=(100- this->spongeBobInstance->cleanliness) - this->header->currentBacteriaCountInScene;
+    int addableAmmount=(100- this->header->player->cleanliness) - this->header->currentBacteriaCountInScene;
     if (addableAmmount>0)
     {
     int direction=(rand() % 2);
@@ -268,11 +269,13 @@ void game1scene::addfungus()
 
 }
 void game1scene::GameOver(){
-
-   User::PauseGameForUser(this->header,true);
-   game1scene* newScene = new game1scene(this->gameView,Game::Over,this->header->username);
-   this->gameView->setScene(newScene);
-   this->deleteLater();
+    this->header->completed = true;
+    User::PauseGameForUser(this->header,true);
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+    Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->completed,this->header->time);
+    game1scene* newScene = new game1scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
+    this->gameView->setScene(newScene);
+    this->deleteLater();
 }
 
 void game1scene::CloseView(){
@@ -281,11 +284,14 @@ void game1scene::CloseView(){
 }
 
 void game1scene::WonGame(){
-    if(User::GetUserLevel(Game1::name,this->header->username) == this->header->difficulty && this->header->difficulty != 3){
-        User::UpgradeUserToLevel(Game1::name,this->header->username,this->header->difficulty+1);
+    this->header->completed = true;
+    if(this->header->username != ""){
+        if(User::GetUserLevel(Game1::name,this->header->username) == this->header->difficulty && this->header->difficulty != 3){
+            User::UpgradeUserToLevel(Game1::name,this->header->username,this->header->difficulty+1);
+        }
+        Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game1::name);
+        User::PauseGameForUser(this->header,true);
     }
-    Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game1::name);
-    User::PauseGameForUser(this->header,true);
     SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->completed,this->header->time);
     game1scene* newScene = new game1scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
@@ -295,6 +301,7 @@ void game1scene::WonGame(){
 
 void game1scene::PauseGame(){
     if(!this->paused){
+        this->header->completed = true;
         if(this->header->username != ""){
             User::PauseGameForUser(this->header, false);
         }
@@ -304,10 +311,12 @@ void game1scene::PauseGame(){
         this->gameView->setScene(newScene);
         this->deleteLater();
     }else{
+
         SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
         Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->completed,this->header->time);
         game1scene* newScene = new game1scene(this->gameView,Game::Resume,newheader->username,newheader->difficulty,newheader, false);
         this->gameView->setScene(newScene);
+        newScene->header->completed = false;
         this->deleteLater();
     }
 
@@ -339,3 +348,6 @@ void game1scene::mouseReleaseEvent(QGraphicsSceneMouseEvent* event){
     PauseGame();
 }
 
+game1scene::~game1scene(){
+    this->clear();
+}
