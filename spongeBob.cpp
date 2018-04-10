@@ -9,9 +9,10 @@
 
 #include "spongeBob.h"
 #include "game1scene.h"
+#include "game1.h"
+#include "game2.h"
 
-
-SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QObject *parent) : QObject(parent)
+SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game, QObject *parent) : QObject(parent)
 {
 
     this->cleanliness = cleanliness;
@@ -20,6 +21,8 @@ SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint
     this->followme=0;
     this->score = score;
     this->currentPos = pos;
+    this->game = game;
+    this->translation = 0;
 
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
@@ -67,8 +70,7 @@ void SpongeBob::toggleFollow()
  */
 void SpongeBob::keyPressEvent(QKeyEvent *event)
 {
-
-    
+    if(this->game == Game1::name){
         pressedKeys += ((QKeyEvent*)event)->key();
 
         if( pressedKeys.contains(Qt::Key_Up) && this->y()>0 )
@@ -89,7 +91,19 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
         }
         this->currentPos = QPoint(this->pos().x(),this->pos().y());
 
+    }else if(this->game == Game2::name){
 
+        pressedKeys += ((QKeyEvent*)event)->key();
+
+        if(pressedKeys.contains(Qt::Key_Left)){
+            this->translation += 5;
+        }
+        if(pressedKeys.contains(Qt::Key_Right)){
+            this->translation -= 5;
+        }
+        this->setTransformOriginPoint(50,50);
+        this->setRotation(this->translation);
+    }
 }
 
 /**

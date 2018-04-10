@@ -8,13 +8,13 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include "header.h"
-
+#include "grabbable.h"
 /**
 *\fungus.h
 *\brief fungus class
 *
 * A fungus is an element on screen that moves periodically following spongebob.*/
-class fungus : public QObject, public QGraphicsPixmapItem
+class fungus : public QObject,  public Grabbable
 {
     Q_OBJECT
 public:
@@ -25,7 +25,6 @@ public:
     Header* header;///< pointer to header
     int timetolive;///< specifies time left to die
     QString game;
-
 
     ~fungus();
 

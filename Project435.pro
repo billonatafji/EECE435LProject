@@ -51,7 +51,8 @@ SOURCES += \
     fungus.cpp \
     game2scene.cpp \
     weapon.cpp \
-    hook.cpp
+    hook.cpp \
+    grabbable.cpp
 
 HEADERS += \
     signup.h \
@@ -80,7 +81,8 @@ HEADERS += \
     fungus.h \
     game2scene.h \
     weapon.h \
-    hook.h
+    hook.h \
+    grabbable.h
 
 FORMS += \
     signup.ui \

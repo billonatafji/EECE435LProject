@@ -7,13 +7,13 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include "header.h"
-
+#include "grabbable.h"
 /**
 *\bacteria.h
 *\brief bacteria class
 *
 * A bacteria is an element on screen that moves periodically in a predefined direction.*/
-class bacteria : public QObject, public QGraphicsPixmapItem
+class bacteria :  public QObject, public Grabbable
 {
     Q_OBJECT
 public:

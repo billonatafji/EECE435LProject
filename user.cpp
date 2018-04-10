@@ -167,7 +167,8 @@ Header* User::ResumeGameForUser(QString game, QString username){
                                           stateObject.find("immunity").value().toInt(),
                                           stateObject.find("lives").value().toInt(),
                                           stateObject.find("score").value().toInt(),
-                                          QPoint(stateObject.find("x").value().toInt(),stateObject.find("y").value().toInt()));
+                                          QPoint(stateObject.find("x").value().toInt(),stateObject.find("y").value().toInt()),
+                                          game);
 
         header = new Header(player,stateObject.find("difficulty").value().toInt(), username, game, stateObject.find("completed").value().toBool(), stateObject.find("time").value().toInt());
 

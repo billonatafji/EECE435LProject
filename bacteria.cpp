@@ -10,6 +10,7 @@
 #include "stdlib.h"
 #include "game1.h"
 #include "game2.h"
+#include "hook.h"
 bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity, double Yvelocity, int upperlimit, int centerline, Header* header,QString game,QObject *parent) : QObject(parent)
 {
     this->strength=strength;
@@ -21,6 +22,7 @@ bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity
     this->centerline=centerline;
     this->header = header;
     this->game = game;
+    this->grabbed = false;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(20);
@@ -34,7 +36,7 @@ void bacteria::update()
         if (this->pos().x()<0 || this->pos().x()>1000)
         {
             this->scene()->removeItem(this);
-             this->header->currentBacteriaCountInScene-=strength;
+            this->header->currentBacteriaCountInScene-=strength;
             delete this;
             return;
         }
@@ -63,7 +65,7 @@ void bacteria::update()
                             delete this;
 
                         }
-                    else
+                        else
                         {
                             this->header->player->score+=strength*2*(this->header->player->immunity/33);
                             this->header->currentBacteriaCountInScene-=strength;
@@ -104,13 +106,45 @@ void bacteria::update()
         }
     }else if(this->game == Game2::name){
 
-        if (this->pos().y()<30)
-        {
-            this->scene()->removeItem(this);
-            this->header->currentBacteriaCountInScene-=strength;
-            delete this;
-            return;
 
+        if(this->grabbed){
+            if(!this->scene()->collidingItems(this).isEmpty())
+            {
+                {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+                    foreach(QGraphicsItem * i , collidelist)
+                    {
+                        SpongeBob * item= dynamic_cast<SpongeBob *>(i);
+                        if (item)
+                        {
+                            item->weapon->grabbedItem = nullptr;
+                            int playerstrength=(item->immunity/33)+1;
+
+                            if((playerstrength-this->strength)<0 || item->followme==1)//player isnt strong enough to kill the bacteria, he should lose a life.
+                            {
+                                //todo
+                                //update life and reset stats
+                                this->scene()->removeItem(this);
+                                this->header->currentBacteriaCountInScene-=strength;
+                                this->header->SetCleanliness(+this->strength);
+                                this->header->RemoveLife();
+                                if (item->lives==0)
+                                {
+
+                                }
+                                this->deleteLater();
+                            }
+                            else
+                            {
+                                this->header->player->score+=strength*2*(this->header->player->immunity/33);
+                                this->header->currentBacteriaCountInScene-=strength;
+                                this->header->SetCleanliness(+this->strength);
+                                this->scene()->removeItem(this);
+                                this->deleteLater();
+                            }
+                        }
+                    }
+                }
+            }
         }else{
 
             double A = 300;
@@ -118,8 +152,18 @@ void bacteria::update()
             qreal newX = this->x()+1;
             qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
             this->setPos(newX, newY);
+            if (this->pos().y()<30)
+            {
+                this->scene()->removeItem(this);
+                this->header->currentBacteriaCountInScene-=strength;
+                delete this;
+                return;
+
+            }
 
         }
+
+
 
     }
 }

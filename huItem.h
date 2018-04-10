@@ -7,13 +7,13 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include "header.h"
-
+#include "grabbable.h"
 /**
 *\huItem.h
 *\brief huItem class
 *
 * A huItems is an element on screen that moves periodically in a predefined direction.*/
-class huItem : public QObject, public QGraphicsPixmapItem
+class huItem : public QObject, public Grabbable
 {
     Q_OBJECT
 public:
@@ -22,6 +22,7 @@ public:
     Header *header;
     bool type;
     QString game;
+
 
     ~huItem();
 

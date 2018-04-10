@@ -8,13 +8,14 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include "header.h"
+#include "grabbable.h"
 
 /**
 *\virus.h
 *\brief virus class
 *
 * A virus is an element on screen that moves periodically in a predefined direction.*/
-class virus : public QObject, public QGraphicsPixmapItem
+class virus : public QObject, public Grabbable
 {
     Q_OBJECT
 public:

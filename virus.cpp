@@ -25,6 +25,7 @@
  */
 virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline,  Header* header, QString game, QObject *parent) : QObject(parent)
 {
+    this->grabbed = false;
     this->direction=direction;
     this->directionY=directionY;
     this->Xvelocity=Xvelocity;
@@ -42,7 +43,7 @@ virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int f
 void virus::update()
 {
     if(this->game == Game1::name){
-        this-> setPos(this->x()+ direction * Xvelocity, this->y()+ directionY *Yvelocity);
+        this->setPos(this->x()+ direction * Xvelocity, this->y()+ directionY *Yvelocity);
 
         if (y() < centerline-foobar)
             directionY=1;
@@ -74,12 +75,26 @@ void virus::update()
     }
     else if(this->game == Game2::name){
 
-        if (this->pos().y()<30)
+        if (this->grabbed)
         {
-            this->scene()->removeItem(this);
-            delete this;
-            return;
-
+            if(!this->scene()->collidingItems(this).isEmpty())
+            {
+                {
+                    QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+                    foreach(QGraphicsItem * i , collidelist)
+                    {
+                        SpongeBob * item= dynamic_cast<SpongeBob *>(i);
+                        if (item)
+                        {
+                            item->weapon->grabbedItem = nullptr;
+                            item->followme=true;
+                            item->followTimer->start(5000);
+                            this->scene()->removeItem(this);
+                            delete this;
+                        }
+                    }
+                }
+            }
         }else{
 
             double A = 300;
@@ -87,6 +102,13 @@ void virus::update()
             qreal newX = this->x()+1;
             qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
             this->setPos(newX, newY);
+            if (this->pos().y()<30)
+            {
+                this->scene()->removeItem(this);
+                delete this;
+                return;
+
+            }
 
         }
 

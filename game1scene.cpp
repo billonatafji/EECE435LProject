@@ -91,7 +91,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,50,0,0,QPoint(300,0));
+        SpongeBob* player = new SpongeBob(0,50,0,0,QPoint(300,0), Game1::name);
         this->header = new Header(player, difficulty, username, Game1::name, false, 120);
 
 
@@ -272,7 +272,7 @@ positionselection:
 void game1scene::GameOver(){
     this->header->paused = true;
     User::PauseGameForUser(this->header,true);
-    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game1::name);
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     game1scene* newScene = new game1scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
@@ -293,7 +293,7 @@ void game1scene::WonGame(){
         Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game1::name);
         User::PauseGameForUser(this->header,true);
     }
-    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game1::name);
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     game1scene* newScene = new game1scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
@@ -306,14 +306,14 @@ void game1scene::PauseGame(){
         if(this->header->username != ""){
             User::PauseGameForUser(this->header, false);
         }
-        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game1::name);
         Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
         game1scene* newScene = new game1scene(this->gameView,Game::Pause,newheader->username,newheader->difficulty,newheader, true);
         this->gameView->setScene(newScene);
         this->deleteLater();
     }else{
 
-        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game1::name);
         Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
         game1scene* newScene = new game1scene(this->gameView,Game::Resume,newheader->username,newheader->difficulty,newheader, false);
         this->gameView->setScene(newScene);

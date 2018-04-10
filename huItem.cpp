@@ -13,6 +13,7 @@
 
 huItem::huItem(bool type,Header *header, QString game, QObject *parent) : QObject(parent)
 {
+    this->grabbed = false;
     this->header = header;
     this->type = type;
     this->game = game;
@@ -71,11 +72,39 @@ void huItem::update()
     }
     else if(this->game == Game2::name){
 
-        if (this->pos().y()<30)
+        if (this->grabbed)
         {
-            this->scene()->removeItem(this);
-            delete this;
-            return;
+            if(!this->scene()->collidingItems(this).isEmpty())
+            {
+                {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+                    foreach(QGraphicsItem * i , collidelist)
+                    {
+                        SpongeBob * item= dynamic_cast<SpongeBob *>(i);
+                        if (item)
+                        {
+                            item->weapon->grabbedItem = nullptr;
+                            this->scene()->removeItem(this);
+                            if (this->type==1)
+                            {
+                                this->header->SetImmunity(+6/this->header->difficulty);
+                                this->header->player->score+=3;
+                            }
+
+                            else
+                            {
+                                this->header->SetImmunity(-6/this->header->difficulty);
+                                this->header->player->score-=3;
+                            }
+
+                            delete this;
+                        }
+                    }
+
+
+                }
+
+                this-> setPos(this->x(), this->y()+10);
+            }
 
         }else{
 
@@ -84,6 +113,13 @@ void huItem::update()
             qreal newX = this->x()+1;
             qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
             this->setPos(newX, newY);
+            if (this->pos().y()<30)
+            {
+                this->scene()->removeItem(this);
+                delete this;
+                return;
+
+            }
 
         }
 

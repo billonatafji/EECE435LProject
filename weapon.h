@@ -14,6 +14,9 @@ public:
     QGraphicsPixmapItem* head;
     QGraphicsLineItem* rope;
     QTimer* throwTimer;
+    bool thrown;
+    bool grabbingItem;
+    QGraphicsItem* grabbedItem;
 
     void keyReleaseEvent(QKeyEvent *event);
 
