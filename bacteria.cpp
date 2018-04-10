@@ -8,7 +8,9 @@
 */
 #include "bacteria.h"
 #include "stdlib.h"
-bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity, double Yvelocity, int upperlimit, int centerline, Header* header,QObject *parent) : QObject(parent)
+#include "game1.h"
+#include "game2.h"
+bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity, double Yvelocity, int upperlimit, int centerline, Header* header,QString game,QObject *parent) : QObject(parent)
 {
     this->strength=strength;
     this->direction=direction;
@@ -18,6 +20,7 @@ bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity
     this->upperlimit=upperlimit;
     this->centerline=centerline;
     this->header = header;
+    this->game = game;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(20);
@@ -26,78 +29,99 @@ bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity
 
 void bacteria::update()
 {
-    if (this->pos().x()<0 || this->pos().x()>1000)
-    {
-        this->scene()->removeItem(this);
-         this->header->currentBacteriaCountInScene-=strength;
-        delete this;
-        return;
-    }
-    if(!this->scene()->collidingItems(this).isEmpty())
-    {
-        {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-            foreach(QGraphicsItem * i , collidelist)
-            {
-                SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-                if (item)
-                {
-                    int playerstrength=(item->immunity/33)+1;
+    if(this->game == Game1::name){
 
-                    if((playerstrength-this->strength)<0 || item->followme==1)//player isnt strong enough to kill the bacteria, he should lose a life.
+        if (this->pos().x()<0 || this->pos().x()>1000)
+        {
+            this->scene()->removeItem(this);
+             this->header->currentBacteriaCountInScene-=strength;
+            delete this;
+            return;
+        }
+        if(!this->scene()->collidingItems(this).isEmpty())
+        {
+            {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+                foreach(QGraphicsItem * i , collidelist)
+                {
+                    SpongeBob * item= dynamic_cast<SpongeBob *>(i);
+                    if (item)
                     {
-                        //todo
-                        //update life and reset stats
-                        this->scene()->removeItem(this);
-                        this->header->currentBacteriaCountInScene-=strength;
-                        this->header->SetCleanliness(+this->strength);
-                        this->header->RemoveLife();
-                        if (item->lives==0)
+                        int playerstrength=(item->immunity/33)+1;
+
+                        if((playerstrength-this->strength)<0 || item->followme==1)//player isnt strong enough to kill the bacteria, he should lose a life.
                         {
+                            //todo
+                            //update life and reset stats
+                            this->scene()->removeItem(this);
+                            this->header->currentBacteriaCountInScene-=strength;
+                            this->header->SetCleanliness(+this->strength);
+                            this->header->RemoveLife();
+                            if (item->lives==0)
+                            {
+
+                            }
+                            delete this;
 
                         }
-                        delete this;
+                    else
+                        {
+                            this->header->player->score+=strength*2*(this->header->player->immunity/33);
+                            this->header->currentBacteriaCountInScene-=strength;
+                            this->header->SetCleanliness(+this->strength);
+                            this->scene()->removeItem(this);
+                            delete this;
+                        }
+
 
                     }
-                else
-                    {
-                        this->header->player->score+=strength*2*(this->header->player->immunity/33);
-                        this->header->currentBacteriaCountInScene-=strength;
-                        this->header->SetCleanliness(+this->strength);
-                        this->scene()->removeItem(this);
-                        delete this;
-                    }
-
-
                 }
+
+
             }
 
+        }
+
+        if( this->header->player->followme==true)
+        {
+            int playerx= this->header->player->x();
+            int playery= this->header->player->y();
+            double diry = playery - y();
+            double dirx= playerx - x();
+            double hyp = sqrt(dirx*dirx + diry*diry);
+            dirx /= hyp;
+            diry /= hyp;
+            centerline=this->y();
+            this-> setPos(this->x()+ dirx * Xvelocity, this->y()+ diry *Yvelocity);
+        }
+        else
+        {
+            this-> setPos(this->x()+direction * Xvelocity, this->y()+ directionY *Yvelocity);
+
+            if (y() < centerline-upperlimit)
+                directionY=1;
+            else if (y() >centerline+upperlimit)
+                directionY=-1;
+        }
+    }else if(this->game == Game2::name){
+
+        if (this->pos().y()<30)
+        {
+            this->scene()->removeItem(this);
+            this->header->currentBacteriaCountInScene-=strength;
+            delete this;
+            return;
+
+        }else{
+
+            double A = 300;
+            double B = 450;
+            qreal newX = this->x()+1;
+            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
+            this->setPos(newX, newY);
 
         }
 
     }
-
-    if( this->header->player->followme==true)
-    {
-        int playerx= this->header->player->x();
-        int playery= this->header->player->y();
-        double diry = playery - y();
-        double dirx= playerx - x();
-        double hyp = sqrt(dirx*dirx + diry*diry);
-        dirx /= hyp;
-        diry /= hyp;
-        centerline=this->y();
-        this-> setPos(this->x()+ dirx * Xvelocity, this->y()+ diry *Yvelocity);
-    }
-    else
-    {
-        this-> setPos(this->x()+direction * Xvelocity, this->y()+ directionY *Yvelocity);
-
-        if (y() < centerline-upperlimit)
-            directionY=1;
-        else if (y() >centerline+upperlimit)
-            directionY=-1;
-    }
-
 }
 
 bacteria::~bacteria(){

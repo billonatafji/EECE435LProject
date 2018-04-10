@@ -8,6 +8,8 @@
 */
 #include "fungus.h"
 #include "stdlib.h"
+#include "game1.h"
+#include "game2.h"
 /**
  * @brief fungus::fungus
  * @param header
@@ -16,13 +18,14 @@
  * constructor of a fungus, creates an instance and provides is with a velocity, time to live, and a pointer to the header
  *
  */
-fungus::fungus(Header* header,QObject *parent) : QObject(parent)
+fungus::fungus(Header* header,QString game, QObject *parent) : QObject(parent)
 {
 
     this->Xvelocity = 2;
     this->Yvelocity=2;
     this->header = header;
     this->timetolive=this->header->time-4;
+    this->game = game;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(20);
@@ -36,50 +39,73 @@ fungus::fungus(Header* header,QObject *parent) : QObject(parent)
  */
 void fungus::update()
 {
-    if (this->pos().x()<0 || this->pos().x()>1000 || this->header->time < this->timetolive)
-    {
-        this->scene()->removeItem(this);
-        delete this;
-        return;
-    }
-    if(!this->scene()->collidingItems(this).isEmpty())
-    {   ///
-        /// \brief collidelist
-        ///this creates a list of all colliding items.
-        /// it then dynamically casts each detected item to an instance of spongebob
-        /// if any item returns true which means that it exists, this means that a collision with spongebob has occured
-        /// this leads to some procedures
-        QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-        foreach(QGraphicsItem * i , collidelist)
-        {
-            SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-            if (item)
-            {
-                item->immunity/=2;/// immunity is halved
-                item->cleanliness/=2;/// cleanliness is halved
-                item->followme=1;/// instructs batceria to follow him
-                item->followTimer->start(5000);/// timer for following starts
+    if(this->game == Game1::name){
 
-                this->scene()->removeItem(this);
-                delete this;
+        if (this->pos().x()<0 || this->pos().x()>1000 || this->header->time < this->timetolive)
+        {
+            this->scene()->removeItem(this);
+            delete this;
+            return;
+        }
+        if(!this->scene()->collidingItems(this).isEmpty())
+        {   ///
+            /// \brief collidelist
+            ///this creates a list of all colliding items.
+            /// it then dynamically casts each detected item to an instance of spongebob
+            /// if any item returns true which means that it exists, this means that a collision with spongebob has occured
+            /// this leads to some procedures
+            QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+            foreach(QGraphicsItem * i , collidelist)
+            {
+                SpongeBob * item= dynamic_cast<SpongeBob *>(i);
+                if (item)
+                {
+                    item->immunity/=2;/// immunity is halved
+                    item->cleanliness/=2;/// cleanliness is halved
+                    item->followme=1;/// instructs batceria to follow him
+                    item->followTimer->start(5000);/// timer for following starts
+
+                    this->scene()->removeItem(this);
+                    delete this;
+                }
             }
+
+
+
+
+        }
+        //////////////////////////////////////////////////////
+        /// this is an algorithm to detect the position of spongebob and follow him
+        int playerx= this->header->player->x();
+        int playery= this->header->player->y();
+        double diry = playery - y();
+        double dirx= playerx - x();
+        double hyp = sqrt(dirx*dirx + diry*diry);
+        dirx /= hyp;
+        diry /= hyp;
+        this-> setPos(this->x()+ dirx * Xvelocity, this->y()+ diry *Yvelocity);
+        /////////////////////////////////////////////////////////
+    }
+    else if(this->game == Game2::name){
+
+        if (this->pos().y()<30)
+        {
+            this->scene()->removeItem(this);
+            delete this;
+            return;
+
+        }else{
+
+            double A = 300;
+            double B = 450;
+            qreal newX = this->x()+1;
+            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
+            this->setPos(newX, newY);
+
         }
 
-
-
-
     }
-//////////////////////////////////////////////////////
-/// this is an algorithm to detect the position of spongebob and follow him
-    int playerx= this->header->player->x();
-    int playery= this->header->player->y();
-    double diry = playery - y();
-    double dirx= playerx - x();
-    double hyp = sqrt(dirx*dirx + diry*diry);
-    dirx /= hyp;
-    diry /= hyp;
-    this-> setPos(this->x()+ dirx * Xvelocity, this->y()+ diry *Yvelocity);
-/////////////////////////////////////////////////////////
+
 }
 
 fungus::~fungus(){

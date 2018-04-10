@@ -14,7 +14,7 @@ class Header: public QObject, public QGraphicsItemGroup
 {
     Q_OBJECT
 public:
-    Header(SpongeBob* player, int difficulty, QString username, QString game, bool completed, int time);
+    Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time);
 
     CleanlinessMeter* cleanlinessMeter;
     Pause* pause;
@@ -31,7 +31,7 @@ public:
     int time;
     int difficulty;
     int currentBacteriaCountInScene;
-    bool completed;
+    bool paused;
 
 
     void SetCleanliness(int val);

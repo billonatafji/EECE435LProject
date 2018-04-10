@@ -6,6 +6,7 @@
 #include<QKeyEvent>
 #include <QTimer>
 #include <QGraphicsPixmapItem>
+#include "weapon.h"
 
 /**
 *\spongeBob.h
@@ -25,6 +26,8 @@ public:
     int lives;///<number of lives
     int score;///< total score
     QPoint currentPos;///< current position
+    Weapon* weapon;
+
 
     ~SpongeBob();
 

@@ -34,7 +34,7 @@ void Gamemenu::on_resumeGameButton_clicked()
     if(this->Game == Game1::name){
 
         Header* header = User::ResumeGameForUser(this->Game,this->user->Username);
-        if(!header->completed){
+        if(!header->paused){
             GameView* gameView = new GameView();
             game1scene* scene1 = new game1scene(gameView, Game::Resume,this->user->Username, 0, header, false);
             gameView->setScene(scene1);

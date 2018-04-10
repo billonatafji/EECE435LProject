@@ -18,12 +18,14 @@ class fungus : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit fungus(Header* header,QObject *parent= nullptr);
+    explicit fungus(Header* header,QString name = "", QObject *parent= nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
     int Xvelocity;///< y velocity of fungus
     int Yvelocity;///< x velocity of fungus
     Header* header;///< pointer to header
     int timetolive;///< specifies time left to die
+    QString game;
+
 
     ~fungus();
 

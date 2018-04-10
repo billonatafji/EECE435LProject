@@ -17,10 +17,11 @@ class huItem : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit huItem(bool type,Header* header, QObject *parent = nullptr);
+    explicit huItem(bool type,Header* header, QString game = "", QObject *parent = nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
     Header *header;
     bool type;
+    QString game;
 
     ~huItem();
 

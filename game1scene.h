@@ -23,19 +23,20 @@ class game1scene : public QGraphicsScene
 public:
     explicit game1scene(GameView* gameView, int gameMode, QString username, int difficulty = 1, Header* header = nullptr, bool paused = false);///< constructor
 
-   //SpongeBob *spongeBobInstance; //!< Brief description after the member
     Header* header;///< pointer to header
     QTimer *addhuItemstimer;//!< QTimer attribute,
     QTimer *addbacteriatimer;//!< QTimer attribute,
     QTimer *addvirustimer;//!< QTimer attribute,
     QTimer *followtimer;//!< QTimer attribute,
-     QTimer *addfungustimer;//!< QTimer attribute,
- GameView* gameView;
+    QTimer *addfungustimer;//!< QTimer attribute,
+    GameView* gameView;
     bool paused;
+    bool completed;
 
     void GameOver();
     void WonGame();
     void PauseGame();
+
 
     void keyPressEvent(QKeyEvent *event);
     /**

@@ -8,11 +8,14 @@
 */
 #include "huItem.h"
 #include "stdlib.h"
+#include "game1.h"
+#include "game2.h"
 
-huItem::huItem(bool type,Header *header, QObject *parent) : QObject(parent)
+huItem::huItem(bool type,Header *header, QString game, QObject *parent) : QObject(parent)
 {
     this->header = header;
     this->type = type;
+    this->game = game;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     timer->start(100);
@@ -29,47 +32,64 @@ huItem::huItem(bool type,Header *header, QObject *parent) : QObject(parent)
  */
 void huItem::update()
 {
-
-    this-> setPos(this->x(), this->y()+10);
-
-    if (this->pos().y()>500)
-    {
-        this->scene()->removeItem(this);
-        delete this;
-    }
-
-
-    else if(!this->scene()->collidingItems(this).isEmpty())
-    {
-        {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-            foreach(QGraphicsItem * i , collidelist)
-            {
-                SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-                if (item)
+    if(this->game == Game1::name){
+        if (this->pos().y()>500)
+        {
+            this->scene()->removeItem(this);
+            delete this;
+        }
+        else if(!this->scene()->collidingItems(this).isEmpty())
+        {
+            {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+                foreach(QGraphicsItem * i , collidelist)
                 {
-                    this->scene()->removeItem(this);
-                    if (this->type==1)
+                    SpongeBob * item= dynamic_cast<SpongeBob *>(i);
+                    if (item)
                     {
-                        this->header->SetImmunity(+6/this->header->difficulty);
-                        this->header->player->score+=3;
-                    }
+                        this->scene()->removeItem(this);
+                        if (this->type==1)
+                        {
+                            this->header->SetImmunity(+6/this->header->difficulty);
+                            this->header->player->score+=3;
+                        }
 
-                    else
-                    {
-                        this->header->SetImmunity(-6/this->header->difficulty);
-                        this->header->player->score-=3;
-                    }
+                        else
+                        {
+                            this->header->SetImmunity(-6/this->header->difficulty);
+                            this->header->player->score-=3;
+                        }
 
-                    delete this;
+                        delete this;
+                    }
                 }
+
+
             }
 
+            this-> setPos(this->x(), this->y()+10);
+        }
+    }
+    else if(this->game == Game2::name){
+
+        if (this->pos().y()<30)
+        {
+            this->scene()->removeItem(this);
+            delete this;
+            return;
+
+        }else{
+
+            double A = 300;
+            double B = 450;
+            qreal newX = this->x()+1;
+            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
+            this->setPos(newX, newY);
 
         }
 
-
-
     }
+
+
 
 }
 

@@ -48,7 +48,10 @@ SOURCES += \
     header.cpp \
     error.cpp \
     pause.cpp \
-    fungus.cpp
+    fungus.cpp \
+    game2scene.cpp \
+    weapon.cpp \
+    hook.cpp
 
 HEADERS += \
     signup.h \
@@ -74,7 +77,10 @@ HEADERS += \
     header.h \
     error.h \
     pause.h \
-    fungus.h
+    fungus.h \
+    game2scene.h \
+    weapon.h \
+    hook.h
 
 FORMS += \
     signup.ui \

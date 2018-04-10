@@ -8,6 +8,8 @@
 */
 #include "virus.h"
 #include "stdlib.h"
+#include "game1.h"
+#include "game2.h"
 /**
  * @brief virus::virus
  * @param direction
@@ -21,7 +23,7 @@
  *
  * constructor
  */
-virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline,  Header* header,QObject *parent) : QObject(parent)
+virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int foobar, int centerline,  Header* header, QString game, QObject *parent) : QObject(parent)
 {
     this->direction=direction;
     this->directionY=directionY;
@@ -30,6 +32,7 @@ virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int f
     this->foobar=foobar;
     this->centerline=centerline;
     this->header = header;
+    this->game = game;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));/// for periodic update of the position
     timer->start(20);
@@ -38,35 +41,57 @@ virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int f
 
 void virus::update()
 {
-    this-> setPos(this->x()+ direction * Xvelocity, this->y()+ directionY *Yvelocity);
+    if(this->game == Game1::name){
+        this-> setPos(this->x()+ direction * Xvelocity, this->y()+ directionY *Yvelocity);
 
-    if (y() < centerline-foobar)
-        directionY=1;
-    else if (y() >centerline+foobar)
-        directionY=-1;
-    if (this->pos().x()<0 ||this->pos().x()>1000 )
-    {
-        this->scene()->removeItem(this);
-        delete this;
-    }
-
-    else if(!this->scene()->collidingItems(this).isEmpty())
-    {
+        if (y() < centerline-foobar)
+            directionY=1;
+        else if (y() >centerline+foobar)
+            directionY=-1;
+        if (this->pos().x()<0 ||this->pos().x()>1000 )
         {
-            QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-            foreach(QGraphicsItem * i , collidelist)
+            this->scene()->removeItem(this);
+            delete this;
+        }
+
+        else if(!this->scene()->collidingItems(this).isEmpty())
+        {
             {
-                SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-                if (item)
+                QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+                foreach(QGraphicsItem * i , collidelist)
                 {
-                    item->followme=true;
-                    item->followTimer->start(5000);
-                    this->scene()->removeItem(this);
-                    delete this;
+                    SpongeBob * item= dynamic_cast<SpongeBob *>(i);
+                    if (item)
+                    {
+                        item->followme=true;
+                        item->followTimer->start(5000);
+                        this->scene()->removeItem(this);
+                        delete this;
+                    }
                 }
             }
         }
     }
+    else if(this->game == Game2::name){
+
+        if (this->pos().y()<30)
+        {
+            this->scene()->removeItem(this);
+            delete this;
+            return;
+
+        }else{
+
+            double A = 300;
+            double B = 450;
+            qreal newX = this->x()+1;
+            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
+            this->setPos(newX, newY);
+
+        }
+
+    }
+
 }
 
 virus::~virus(){

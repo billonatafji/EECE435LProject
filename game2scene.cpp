@@ -1,26 +1,27 @@
 /**
-* \file game1scene.cpp
-* \brief game1scene class definition
+* \file Game2Scene.cpp
+* \brief Game2Scene class definition
 *
-* a game1scene contains all the interactions in the game
+* a Game2Scene contains all the interactions in the game
 *\author Abdel Jawad Alami
 *\date 22-2-2018
 */
-#include "game1scene.h"
+#include "game2scene.h"
 #include"stdlib.h"
 #include <QGraphicsProxyWidget>
 #include <QGraphicsEllipseItem>
 #include <QPainter>
 #include <QGraphicsLinearLayout>
 #include <QColorDialog>
-#include "game1.h"
+#include "game2.h"
 #include "scores.h"
+#include "hook.h"
 /**
- * @brief game1scene::game1scene
- * constructs the game1scene and all of its attributes, starts the timers, and connects the signal with its slot
+ * @brief Game2Scene::Game2Scene
+ * constructs the Game2Scene and all of its attributes, starts the timers, and connects the signal with its slot
  */
 
-game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int difficulty, Header* header, bool paused)
+Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int difficulty, Header* header, bool paused)
 {
 
     this->gameView = gameView;
@@ -44,13 +45,12 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
         this->addItem(gameOverLabel);
 
-        closeWindowTimer->start(4000);
+        closeWindowTimer->start(5000);
 
         return;
 
     }
     else if(gameMode == Game::Win){
-
         this->completed = true;
         this->header = header;
 
@@ -91,8 +91,8 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,50,0,0,QPoint(300,0));
-        this->header = new Header(player, difficulty, username, Game1::name, false, 120);
+        SpongeBob* player = new SpongeBob(0,50,0,0,QPoint(500-50,300-50));
+        this->header = new Header(player, difficulty, username, Game2::name, false, 120);
 
 
     }else if(gameMode == Game::Resume){
@@ -101,47 +101,60 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
     }
 
+
+
     this->header->player->setFlag(QGraphicsItem::ItemIsFocusable);
     this->header->player->setFocus();
     this->header->player->setPos(this->header->player->currentPos);
     this->header->player->installEventFilter(this);
     this->addItem(this->header->player);
 
+    Hook* hook = new Hook();
+    hook->setPos(QPoint(this->header->player->currentPos.x(),this->header->player->currentPos.y()));
+    this->addItem(hook);
+    this->header->player->weapon = hook;
+
     this->header->setPos(5,5);
     this->header->pause->installEventFilter(this);
     this->addItem(this->header);
 
-    this->addhuItemstimer= new QTimer();
-    this->addbacteriatimer= new QTimer();
-    connect(addhuItemstimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
-    addhuItemstimer->start(800);
-    connect(addbacteriatimer,SIGNAL(timeout()),this,SLOT(addbacteria()));
-    addbacteriatimer->start(1000);
-
-    if (difficulty==2)
-    {
-        this->addvirustimer= new QTimer();
-        connect(addvirustimer,SIGNAL(timeout()),this,SLOT(addvirus()));
-        addvirustimer->start(20000);
-    }
-    if (difficulty==3)
-    {
-        this->addfungustimer= new QTimer();
-        connect(addfungustimer,SIGNAL(timeout()),this,SLOT(addfungus()));
-        addfungustimer->start(20000);
-    }
-
-
-    //connect(this->spongeBobInstance, SIGNAL(v));
-
+    this->addItemToQueueTimer = new QTimer();
+    connect(this->addItemToQueueTimer,SIGNAL(timeout()),this,SLOT(addItemToQueue()));
+    this->addItemToQueueTimer->start(5000);
 
 }
+void Game2Scene::addItemToQueue(){
+ int xPos = 300;
+
+ int randItem = rand()%2;
+
+ if (this->header->difficulty == 2)
+ {
+     randItem = rand()%3;
+ }
+ if (this->header->difficulty == 3)
+ {
+     randItem = rand()%4;
+ }
+
+ if(randItem == 0){
+    addhuItems();
+ }else if(randItem == 1){
+    addbacteria();
+ }else if(randItem == 2){
+    addvirus();
+ }else if(randItem == 3){
+    addfungus();
+ }
+
+}
+
 /**
- * @brief game1scene::addhuItems
+ * @brief Game2Scene::addhuItems
  *
  * creates new huItems with a random direction and starting position
  */
-void game1scene::addhuItems()
+void Game2Scene::addhuItems()
 {
     /**
      * a random number is first choosen between 0 and 20
@@ -158,16 +171,16 @@ void game1scene::addhuItems()
     huItem *huItem1;
     std::string path = "../Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
 
-    huItem1= new huItem(randType,this->header, Game1::name);
+    huItem1= new huItem(randType,this->header, Game2::name);
     huItem1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45));
-    huItem1->setPos(5+(randXPos)*45,0);
+    huItem1->setPos(150,50);
 
     this->addItem(huItem1);
 
 }
 
 /**
- * @brief game1scene::addbacteria
+ * @brief Game2Scene::addbacteria
  *
  * first we check if the cleanness is less than 100
  * if true, we continue with the procedure of adding a bacteria to the scene
@@ -185,7 +198,7 @@ void game1scene::addhuItems()
  * the harder the game, the faster the bacteria
  *
  */
-void game1scene::addbacteria()
+void Game2Scene::addbacteria()
 {
 
     int addableAmmount=(100- this->header->player->cleanliness) - this->header->currentBacteriaCountInScene;
@@ -202,9 +215,9 @@ void game1scene::addbacteria()
         std::string path = "../Project435/images/bacteria"+ std::to_string(strength)+".png";
 
         bacteria *bacteria1;
-        bacteria1= new bacteria(strength,1-2*direction,1,xvelocity,yvelocity,20,starty, this->header, Game1::name);
+        bacteria1= new bacteria(strength,1-2*direction,1,xvelocity,yvelocity,20,starty, this->header, Game2::name);
         bacteria1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45 + strength*45/2));
-        bacteria1->setPos(startx,starty);
+        bacteria1->setPos(150,50);
 
         this->header->currentBacteriaCountInScene +=strength;
         this->addItem(bacteria1);
@@ -212,14 +225,14 @@ void game1scene::addbacteria()
 }
 
 /**
- * @brief game1scene::addvirus
+ * @brief Game2Scene::addvirus
  *
  * this is a function to add a virus to the screen
  * a random number is first choosen between 0 and 1 to set direction
  * the starting y posiion is then chosen randomly
  * a virus is created
  */
-void game1scene::addvirus()
+void Game2Scene::addvirus()
 {
 
     int direction=(rand() % 2);
@@ -227,9 +240,9 @@ void game1scene::addvirus()
     int starty =50+(rand() % 4)*100;
 
     virus *virus1;
-    virus1= new virus(1-2*direction,1,3,2,20,starty, this->header, Game1::name);
+    virus1= new virus(1-2*direction,1,3,2,20,starty, this->header, Game2::name);
     virus1->setPixmap((QPixmap("../Project435/images/virus.png")).scaledToHeight(70));
-    virus1->setPos(startx,starty);
+    virus1->setPos(150,50);
 
 
     this->addItem(virus1);
@@ -237,7 +250,7 @@ void game1scene::addvirus()
 }
 
 /**
- * @brief game1scene::addfungus
+ * @brief Game2Scene::addfungus
  *
  *
  * a random number is first choosen for the x and y positions
@@ -247,7 +260,7 @@ void game1scene::addvirus()
  * when the distance criteria is met, an instance of the fungus is created with the generated coordinates
  *
  */
-void game1scene::addfungus()
+void Game2Scene::addfungus()
 {
 
 positionselection:
@@ -262,45 +275,45 @@ positionselection:
         goto positionselection;
 
     fungus *fungus1;
-    fungus1= new fungus(this->header, Game1::name);
+    fungus1= new fungus(this->header, Game2::name);
     fungus1->setPixmap((QPixmap("../Project435/images/fungus.png")).scaledToHeight(70));
-    fungus1->setPos(startx,starty);
+    fungus1->setPos(150,50);
 
     this->addItem(fungus1);
 
 }
-void game1scene::GameOver(){
+void Game2Scene::GameOver(){
     this->header->paused = true;
     User::PauseGameForUser(this->header,true);
     SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
-    game1scene* newScene = new game1scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
+    Game2Scene* newScene = new Game2Scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
     this->deleteLater();
 }
 
-void game1scene::CloseView(){
+void Game2Scene::CloseView(){
     this->gameView->close();
     this->deleteLater();
 }
 
-void game1scene::WonGame(){
+void Game2Scene::WonGame(){
     this->header->paused = true;
     if(this->header->username != ""){
-        if(User::GetUserLevel(Game1::name,this->header->username) == this->header->difficulty && this->header->difficulty != 3){
-            User::UpgradeUserToLevel(Game1::name,this->header->username,this->header->difficulty+1);
+        if(User::GetUserLevel(Game2::name,this->header->username) == this->header->difficulty && this->header->difficulty != 3){
+            User::UpgradeUserToLevel(Game2::name,this->header->username,this->header->difficulty+1);
         }
-        Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game1::name);
+        Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game2::name);
         User::PauseGameForUser(this->header,true);
     }
     SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
-    game1scene* newScene = new game1scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
+    Game2Scene* newScene = new Game2Scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
     this->deleteLater();
 }
 
-void game1scene::PauseGame(){
+void Game2Scene::PauseGame(){
     if(!this->paused){
         this->header->paused = true;
         if(this->header->username != ""){
@@ -308,14 +321,14 @@ void game1scene::PauseGame(){
         }
         SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
         Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
-        game1scene* newScene = new game1scene(this->gameView,Game::Pause,newheader->username,newheader->difficulty,newheader, true);
+        Game2Scene* newScene = new Game2Scene(this->gameView,Game::Pause,newheader->username,newheader->difficulty,newheader, true);
         this->gameView->setScene(newScene);
         this->deleteLater();
     }else{
 
         SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos);
         Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
-        game1scene* newScene = new game1scene(this->gameView,Game::Resume,newheader->username,newheader->difficulty,newheader, false);
+        Game2Scene* newScene = new Game2Scene(this->gameView,Game::Resume,newheader->username,newheader->difficulty,newheader, false);
         this->gameView->setScene(newScene);
         newScene->header->paused = false;
         this->deleteLater();
@@ -323,7 +336,7 @@ void game1scene::PauseGame(){
 
 }
 
-void game1scene::keyPressEvent(QKeyEvent *event)
+void Game2Scene::keyPressEvent(QKeyEvent *event)
 {
     if(event->key() == Qt::Key_Escape && !this->completed){
         this->PauseGame();
@@ -333,25 +346,30 @@ void game1scene::keyPressEvent(QKeyEvent *event)
 }
 
 /**
- * @brief game1scene::keyReleaseEvent
+ * @brief Game2Scene::keyReleaseEvent
  * @param event
  *
  * this collects key release events and removes them from the set of pressed keys
  */
-void game1scene::keyReleaseEvent(QKeyEvent *event)
+void Game2Scene::keyReleaseEvent(QKeyEvent *event)
 {
     if(!this->completed){
-        this->header->player->keyReleaseEvent(event);
+        if(event->key() == Qt::Key_X ||event->key() == Qt::Key_Z){
+            this->header->player->weapon->keyReleaseEvent(event);
+        }else{
+            this->header->player->keyReleaseEvent(event);
+        }
+
     }
 }
 
-void game1scene::mouseReleaseEvent(QGraphicsSceneMouseEvent* event){
+void Game2Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent* event){
     if(!this->completed){
         PauseGame();
     }
 
 }
 
-game1scene::~game1scene(){
+Game2Scene::~Game2Scene(){
     this->clear();
 }

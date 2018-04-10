@@ -18,7 +18,7 @@ class virus : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit virus(int direction,int directionY, int Xvelocity, int Yvelocity, int deviationLimit, int centerline, Header* header,QObject *parent= nullptr);
+    explicit virus(int direction,int directionY, int Xvelocity, int Yvelocity, int deviationLimit, int centerline, Header* header, QString game = "", QObject *parent= nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
     int direction; ///<  attribute that specifies the X direction of movement of the virus
     int directionY;///<  attribute that specifies the Y direction of movement of the virus
@@ -28,6 +28,7 @@ public:
     int centerline;///< specifies the center of propagation of the virus
     Header* header;///< pointer to the header
     int foobar;
+    QString game;
     ~virus();
 
 signals:

@@ -1,5 +1,7 @@
 #include "game2.h"
 #include "ui_game2.h"
+#include "gameview.h"
+#include "game2scene.h"
 
 Game2::Game2(QWidget *parent, User* user) :
     QDialog(parent),
@@ -22,10 +24,16 @@ void Game2::on_backButton_clicked()
 void Game2::on_playButton_clicked()
 {
     if(ui->easyRadioButton->isChecked() ||  ui->mediumRadioButton->isChecked() || ui->hardRadioButton->isChecked()){
-        if(this->user->Username != ""){
-            Scores::AddScore(user->Username,QString::number(rand() % 10),Game2::name);
-        }
         Game::SetDifficulty(ui->easyRadioButton->isChecked(), ui->mediumRadioButton->isChecked(), ui->hardRadioButton->isChecked());
+
+        GameView* gameView = new GameView();
+
+        Game2Scene* scene = new Game2Scene(gameView,Game::New, this->user->Username,this->Difficulty);
+
+        gameView->setScene(scene);
+
+        gameView->setModal(true);
+        gameView->exec();
         this->close();
     }
 }

@@ -1,15 +1,16 @@
 #include "header.h"
 #include "user.h"
 #include "game1scene.h"
+#include "game2scene.h"
 #include <QApplication>
 
-Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool completed, int time)
+Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time)
 {
     this->player = player;
     this->difficulty = difficulty;
     this->username = username;
     this->game = game;
-    this->completed = completed;
+    this->paused = paused;
     this->time = time;
     this->currentBacteriaCountInScene=0;
 
@@ -40,7 +41,7 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
  */
 void Header::SetCleanliness(int val)
 {
-    if(!this->completed){
+    if(!this->paused){
         if(this->player->cleanliness + val >= 0 && this->player->cleanliness + val < 100)
         {
             this->player->cleanliness += val;
@@ -55,7 +56,7 @@ void Header::SetCleanliness(int val)
         Render();
 
         if(this->player->cleanliness == 100){
-            this->completed = true;
+            this->paused = true;
             ((game1scene*)this->scene())->WonGame();
         }
     }
@@ -70,7 +71,7 @@ void Header::SetCleanliness(int val)
  */
 void Header::SetImmunity(int val)
 {
-    if(!this->completed){
+    if(!this->paused){
         if(this->player->immunity + val >= 0 && this->player->immunity + val <= 100)
         {
             this->player->immunity += val;
@@ -180,18 +181,23 @@ void Header::Render(){
 }
 
 void Header::RemoveLife(){
-    if(!this->completed){
+    if(!this->paused){
         if(this->player->lives>0){
             this->scene()->removeItem(this->hearts[--this->player->lives]);
             delete this->hearts[this->player->lives];
         }else{
-            ((game1scene*)this->scene())->GameOver();
+            if(dynamic_cast<game1scene *>(this->scene())){
+                dynamic_cast<game1scene *>(this->scene())->GameOver();
+            }else if(dynamic_cast<Game2Scene *>(this->scene())){
+                dynamic_cast<Game2Scene *>(this->scene())->GameOver();
+            }
+
         }
     }
 }
 
 void Header::CountDown(){
-    if(!this->completed){
+    if(!this->paused){
         if(this->time>0){
             this->time--;
         }

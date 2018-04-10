@@ -17,7 +17,7 @@ class bacteria : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit bacteria(int strength,int direction,int directionY, double Xvelocity, double Yvelocity, int deviationLimit, int centerline, Header* header = NULL, QObject *parent= nullptr);
+    explicit bacteria(int strength,int direction,int directionY, double Xvelocity, double Yvelocity, int deviationLimit, int centerline, Header* header = NULL, QString game = "", QObject *parent= nullptr);
 
 
     QTimer *timer; ///< timer attribute that specifies the timer
@@ -30,6 +30,7 @@ public:
     int centerline;///< specifies the center of propagation of the virus
     Header* header;///< pointer to the header
     int upperlimit;
+    QString game;
 
     ~bacteria();
 
