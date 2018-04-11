@@ -4,3 +4,7 @@ Weapon::Weapon(QObject *parent) : QObject(parent)
 {
 
 }
+
+void Weapon::update(){
+
+}

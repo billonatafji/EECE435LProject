@@ -8,7 +8,7 @@
 #include <QGraphicsScene>
 #include <QTimer>
 #include <pause.h>
-
+#include "babyspongebob.h"
 
 class Header: public QObject, public QGraphicsItemGroup
 {
@@ -25,6 +25,7 @@ public:
     QGraphicsLineItem* needle;
 
     SpongeBob* player;
+    BabySpongeBob* baby;
     QString username;
     QString game;
     QTimer* timer;
@@ -47,6 +48,7 @@ public:
     void AddLevel(int x, int y);
     void AddScore(int x, int y);
     void AddNeedle(int x, int y);
+    void AddBaby(int x, int y);
 
     void Render();
 

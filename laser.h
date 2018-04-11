@@ -1,19 +1,18 @@
-#ifndef HOOK_H
-#define HOOK_H
-
+#ifndef LASER_H
+#define LASER_H
 #include <QObject>
+
 #include "weapon.h"
 
-class Hook : public Weapon
+class Laser: public Weapon
 {
 public:
-    Hook();
+    Laser();
 
 signals:
 
 public slots:
     void update();
-
 };
 
-#endif // HOOK_H
+#endif // LASER_H

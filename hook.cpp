@@ -21,7 +21,7 @@ Hook::Hook()
     pen.setWidth(3);
     this->rope->setPen(pen);
 
-    this->head = new QGraphicsPixmapItem(QPixmap("../Project435/images/hook.png").scaledToHeight(40));
+    this->head = new QGraphicsPixmapItem(QPixmap(":/Project435/images/hook.png").scaledToHeight(40));
     this->head->setPos(this->rope->line().p2().x()-10,this->rope->line().p2().y());
 
     connect(this->throwTimer,SIGNAL(timeout()),this,SLOT(update()));
@@ -29,21 +29,11 @@ Hook::Hook()
     this->addToGroup(this->rope);
     this->addToGroup(this->head);
 
-
+    this->ready = true;
 }
 
-void Weapon::keyReleaseEvent(QKeyEvent *event)
-{
-    if(event->key() == Qt::Key_X){
-        this->thrown = !this->thrown;
-        this->throwTimer->start(10);
 
-    }else if(event->key() == Qt::Key_Z){
-
-    }
-}
-
-void Weapon::update(){
+void Hook::update(){
     this->rope->setLine(this->rope->line().x1(),this->rope->line().y1(),this->rope->line().x2(),this->rope->line().y2() + (this->thrown ? +2 : -2));
     this->head->setPos(this->rope->line().p2().x()-10,this->rope->line().p2().y());
     if(this->rope->line().p1() == this->rope->line().p2()){
@@ -51,7 +41,7 @@ void Weapon::update(){
         this->grabbingItem = false;
     }
     if(abs(this->rope->line().p2().y() - this->rope->line().p1().y()) > 200){
-        this->thrown = !this->thrown;
+        this->thrown = false;
     }
     if(!this->grabbingItem){
         QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this->head);
@@ -64,6 +54,7 @@ void Weapon::update(){
                 item->setPos(this->head->pos());
                 this->grabbingItem = true;
                 this->grabbedItem = item;
+                this->thrown = false;
 
             }
         }

@@ -52,7 +52,10 @@ SOURCES += \
     game2scene.cpp \
     weapon.cpp \
     hook.cpp \
-    grabbable.cpp
+    grabbable.cpp \
+    laser.cpp \
+    bomb.cpp \
+    babyspongebob.cpp
 
 HEADERS += \
     signup.h \
@@ -82,7 +85,10 @@ HEADERS += \
     game2scene.h \
     weapon.h \
     hook.h \
-    grabbable.h
+    grabbable.h \
+    laser.h \
+    bomb.h \
+    babyspongebob.h
 
 FORMS += \
     signup.ui \
@@ -100,4 +106,7 @@ FORMS += \
 
 SUBDIRS += \
     Project435.pro
+
+RESOURCES += \
+    resources.qrc
 

@@ -16,6 +16,7 @@
 #include "game2.h"
 #include "scores.h"
 #include "hook.h"
+#include "laser.h"
 /**
  * @brief Game2Scene::Game2Scene
  * constructs the Game2Scene and all of its attributes, starts the timers, and connects the signal with its slot
@@ -27,7 +28,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
     this->gameView = gameView;
     this->paused = paused;
 
-    this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.jpg")
+    this->setBackgroundBrush(QBrush(QImage(":/Project435/images/background.jpg")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
@@ -69,7 +70,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
         this->addItem(winLabel);
         this->addItem(scoreLabel);
 
-        closeWindowTimer->start(5000);
+        closeWindowTimer->start(3500);
 
         return;
     }
@@ -109,10 +110,11 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
     this->header->player->installEventFilter(this);
     this->addItem(this->header->player);
 
-    Hook* hook = new Hook();
-    hook->setParentItem(this->header->player);
-    this->addItem(hook);
-    this->header->player->weapon = hook;
+    Laser* weapon = new Laser();
+    weapon->setParentItem(this->header->player);
+
+    this->addItem(weapon);
+    this->header->player->weapon = weapon;
 
     this->header->setPos(5,5);
     this->header->pause->installEventFilter(this);
@@ -169,7 +171,7 @@ void Game2Scene::addhuItems()
     bool randType =(rand() % 100)>(this->header->difficulty)*25;
     int randPic =(rand() % 4)+1;
     huItem *huItem1;
-    std::string path = "../Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
+    std::string path = ":/Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
 
     huItem1= new huItem(randType,this->header, Game2::name);
     huItem1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45));
@@ -212,7 +214,7 @@ void Game2Scene::addbacteria()
         double yvelocity=(rand() % 6)/3+(this->header->difficulty/2.0);
         if (addableAmmount==2 || addableAmmount==1)
             strength=addableAmmount;
-        std::string path = "../Project435/images/bacteria"+ std::to_string(strength)+".png";
+        std::string path = ":/Project435/images/bacteria"+ std::to_string(strength)+".png";
 
         bacteria *bacteria1;
         bacteria1= new bacteria(strength,1-2*direction,1,xvelocity,yvelocity,20,starty, this->header, Game2::name);
@@ -241,7 +243,7 @@ void Game2Scene::addvirus()
 
     virus *virus1;
     virus1= new virus(1-2*direction,1,3,2,20,starty, this->header, Game2::name);
-    virus1->setPixmap((QPixmap("../Project435/images/virus.png")).scaledToHeight(70));
+    virus1->setPixmap((QPixmap(":/Project435/images/virus.png")).scaledToHeight(70));
     virus1->setPos(150,50);
 
 
@@ -276,7 +278,7 @@ positionselection:
 
     fungus *fungus1;
     fungus1= new fungus(this->header, Game2::name);
-    fungus1->setPixmap((QPixmap("../Project435/images/fungus.png")).scaledToHeight(70));
+    fungus1->setPixmap((QPixmap(":/Project435/images/fungus.png")).scaledToHeight(70));
     fungus1->setPos(150,50);
 
     this->addItem(fungus1);
@@ -289,7 +291,6 @@ void Game2Scene::GameOver(){
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     Game2Scene* newScene = new Game2Scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
-    this->deleteLater();
 }
 
 void Game2Scene::CloseView(){
@@ -310,7 +311,6 @@ void Game2Scene::WonGame(){
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     Game2Scene* newScene = new Game2Scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
-    this->deleteLater();
 }
 
 void Game2Scene::PauseGame(){
@@ -354,12 +354,7 @@ void Game2Scene::keyPressEvent(QKeyEvent *event)
 void Game2Scene::keyReleaseEvent(QKeyEvent *event)
 {
     if(!this->completed){
-        if(event->key() == Qt::Key_X ||event->key() == Qt::Key_Z){
-            this->header->player->weapon->keyReleaseEvent(event);
-        }else{
-            this->header->player->keyReleaseEvent(event);
-        }
-
+        this->header->player->keyReleaseEvent(event);
     }
 }
 

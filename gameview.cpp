@@ -12,10 +12,12 @@ GameView::GameView(QWidget *parent) :
 GameView::~GameView()
 {
     delete ui;
+    delete this->gameScene;
 }
 
 void GameView::setScene(QGraphicsScene* gameScene){
-    ui->graphicsView->setScene(gameScene);
+    this->gameScene = gameScene;
+    ui->graphicsView->setScene(this->gameScene);
     ui->graphicsView->setFixedSize(1000,600);
     ui->graphicsView->setHorizontalScrollBarPolicy((Qt::ScrollBarAlwaysOff));
     ui->graphicsView->setVerticalScrollBarPolicy((Qt::ScrollBarAlwaysOff));
@@ -23,4 +25,5 @@ void GameView::setScene(QGraphicsScene* gameScene){
     ui->graphicsView->setFocus();
 
 }
+
 

@@ -11,6 +11,10 @@
 #include "game1scene.h"
 #include "game1.h"
 #include "game2.h"
+#include "laser.h"
+#include "hook.h"
+#include "bomb.h"
+#include <QThread>
 
 SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game, QObject *parent) : QObject(parent)
 {
@@ -26,7 +30,7 @@ SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint
 
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
-    setPixmap((QPixmap("../Project435/images/spongebob.png")).scaledToHeight(100));
+    setPixmap((QPixmap(":/Project435/images/spongebob.png")).scaledToHeight(100));
 
 
 }
@@ -97,12 +101,48 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
 
         if(pressedKeys.contains(Qt::Key_Left)){
             this->translation += 5;
+            this->setTransformOriginPoint(50,50);
+            this->setRotation(this->translation);
         }
         if(pressedKeys.contains(Qt::Key_Right)){
             this->translation -= 5;
+            this->setTransformOriginPoint(50,50);
+            this->setRotation(this->translation);
         }
-        this->setTransformOriginPoint(50,50);
-        this->setRotation(this->translation);
+        if(pressedKeys.contains(Qt::Key_X)){
+            if(this->weapon->ready){
+                if(dynamic_cast<Bomb*>(this->weapon)){
+
+                    this->weapon->setParentItem(nullptr);
+                    this->weapon->setTransformOriginPoint(this->transformOriginPoint());
+                    this->weapon->setRotation(this->rotation());
+                    this->weapon->setPos(this->pos());
+
+                    this->weapon->thrown = !this->weapon->thrown;
+                    this->weapon->throwTimer->start(10);
+
+                    this->weapon = new Bomb();
+                    this->weapon->setParentItem(this);
+                }
+                else{
+                    this->weapon->thrown = !this->weapon->thrown;
+                    this->weapon->throwTimer->start(10);
+                }
+            }
+        }
+        if(pressedKeys.contains(Qt::Key_Z)){
+            if(dynamic_cast<Hook*>(this->weapon)){
+                delete this->weapon;
+                this->weapon = new Laser();
+            }else if(dynamic_cast<Laser*>(this->weapon)){
+                delete this->weapon;
+                this->weapon = new Bomb();
+            }else{
+                delete this->weapon;
+                this->weapon = new Hook();
+            }
+            this->weapon->setParentItem(this);
+        }
     }
 }
 

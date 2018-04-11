@@ -10,6 +10,10 @@ public:
 
     bool grabbed;
 
+    void wasShot();
+
+    void reachedBaby();
+
 };
 
 #endif // GRABBABLE_H

@@ -3,6 +3,7 @@
 #include "game1scene.h"
 #include "game2scene.h"
 #include <QApplication>
+#include "game2.h"
 
 Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time)
 {
@@ -14,7 +15,7 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     this->time = time;
     this->currentBacteriaCountInScene=0;
 
-    AddCleanlMeter(0,5);
+    AddCleanlMeter(0,10);
     AddPause(450,0);
     AddTime(500,10);
     AddHearts(725,0);
@@ -24,6 +25,9 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     AddChart(875,0,100,100,60*16,180*16/3,Qt::yellow);
     AddChart(875,0,100,100,120*16,180*16/3,Qt::red);
     AddNeedle(925,50);
+    if(this->game == Game2::name){
+        AddBaby(750,70);
+    }
     SetCleanliness(80);
     this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
@@ -119,7 +123,7 @@ void Header::AddChart(int x, int y, int width, int height, int startAngle, int s
 
 void Header::AddHearts(int x, int y){
     for(int i= 0; i<this->player->lives;i++){
-        this->hearts[i] = new QGraphicsPixmapItem(QPixmap("../Project435/images/heart.png").scaledToHeight(50));
+        this->hearts[i] = new QGraphicsPixmapItem(QPixmap(":/Project435/images/heart.png").scaledToHeight(50));
         this->hearts[i]->setPos(x-i*50,y);
         this->addToGroup(this->hearts[i]);
     }
@@ -158,9 +162,15 @@ void Header::AddNeedle(int x, int y){
 
 void Header::AddPause(int x, int y){
     this->pause = new Pause();
-    this->pause->setPixmap(QPixmap("../Project435/images/pause.png").scaledToHeight(50));
+    this->pause->setPixmap(QPixmap(":/Project435/images/pause.png").scaledToHeight(50));
     this->pause->setPos(x,y);
     this->addToGroup(this->pause);
+}
+
+void Header::AddBaby(int x, int y){
+    this->baby = new BabySpongeBob();
+    this->baby->setPos(x,y);
+    this->addToGroup(this->baby);
 }
 
 void Header::Render(){
@@ -203,8 +213,11 @@ void Header::CountDown(){
         }
         Render();
         if(this->time<=0){
-    //todo game lost
-
+            if(dynamic_cast<game1scene *>(this->scene())){
+                dynamic_cast<game1scene *>(this->scene())->GameOver();
+            }else if(dynamic_cast<Game2Scene *>(this->scene())){
+                dynamic_cast<Game2Scene *>(this->scene())->GameOver();
+            }
         }
     }
 }

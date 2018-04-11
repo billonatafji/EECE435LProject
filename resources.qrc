@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/Project435">
+        <file>images/virus.png</file>
+        <file>images/spongebob.png</file>
+        <file>images/pause.png</file>
+        <file>images/laser.png</file>
+        <file>images/hook.png</file>
+        <file>images/heart.png</file>
+        <file>images/fungus.png</file>
+        <file>images/explosion.png</file>
+        <file>images/bomb.png</file>
+        <file>images/bacteria3.png</file>
+        <file>images/bacteria2.png</file>
+        <file>images/bacteria1.png</file>
+        <file>images/background.jpg</file>
+        <file>images/baby.png</file>
+        <file>images/huItem14.png</file>
+        <file>images/huItem13.png</file>
+        <file>images/huItem12.png</file>
+        <file>images/huItem11.png</file>
+        <file>images/huItem04.png</file>
+        <file>images/huItem03.png</file>
+        <file>images/huItem02.png</file>
+        <file>images/huItem01.png</file>
+    </qresource>
+</RCC>

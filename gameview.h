@@ -15,6 +15,8 @@ class GameView : public QDialog
 public:
     explicit GameView(QWidget *parent = 0);
 
+    QGraphicsScene* gameScene;
+
     void setScene(QGraphicsScene* gameScene);
 
     ~GameView();

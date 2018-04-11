@@ -26,7 +26,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
     this->gameView = gameView;
     this->paused = paused;
 
-    this->setBackgroundBrush(QBrush(QImage("../Project435/images/background.jpg")
+    this->setBackgroundBrush(QBrush(QImage(":/Project435/images/background.jpg")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
@@ -156,7 +156,7 @@ void game1scene::addhuItems()
     bool randType =(rand() % 100)>(this->header->difficulty)*25;
     int randPic =(rand() % 4)+1;
     huItem *huItem1;
-    std::string path = "../Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
+    std::string path = ":/Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
 
     huItem1= new huItem(randType,this->header, Game1::name);
     huItem1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45));
@@ -228,7 +228,7 @@ void game1scene::addvirus()
 
     virus *virus1;
     virus1= new virus(1-2*direction,1,3,2,20,starty, this->header, Game1::name);
-    virus1->setPixmap((QPixmap("../Project435/images/virus.png")).scaledToHeight(70));
+    virus1->setPixmap((QPixmap(":/Project435/images/virus.png")).scaledToHeight(70));
     virus1->setPos(startx,starty);
 
 
@@ -263,7 +263,7 @@ positionselection:
 
     fungus *fungus1;
     fungus1= new fungus(this->header, Game1::name);
-    fungus1->setPixmap((QPixmap("../Project435/images/fungus.png")).scaledToHeight(70));
+    fungus1->setPixmap((QPixmap(":/Project435/images/fungus.png")).scaledToHeight(70));
     fungus1->setPos(startx,starty);
 
     this->addItem(fungus1);

@@ -14,16 +14,17 @@ public:
     QGraphicsPixmapItem* head;
     QGraphicsLineItem* rope;
     QTimer* throwTimer;
+    QTimer* prepareTimer;
     bool thrown;
     bool grabbingItem;
+    bool ready;
     QGraphicsItem* grabbedItem;
-
-    void keyReleaseEvent(QKeyEvent *event);
+    int step;
 
 signals:
 
 public slots:
-    void update();
+    virtual void update();
 };
 
 #endif // WEAPON_H

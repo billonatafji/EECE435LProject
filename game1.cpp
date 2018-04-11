@@ -35,6 +35,7 @@ Game1::Game1(QWidget *parent, User* user) :
 Game1::~Game1()
 {
     delete ui;
+    delete this->gameView;
 }
 
 void Game1::on_backButton_clicked()
@@ -48,17 +49,19 @@ void Game1::on_playButton_clicked()
         if(this->user->Username != ""){
             Scores::AddScore(user->Username,QString::number(rand() % 10),Game1::name);
         }
+        this->close();
+
         Game::SetDifficulty(ui->easyRadioButton->isChecked(), ui->mediumRadioButton->isChecked(), ui->hardRadioButton->isChecked());
 
-        GameView* gameView = new GameView();
+        this->gameView = new GameView();
 
-        game1scene* scene1 = new game1scene(gameView,Game::New, this->user->Username,this->Difficulty);
+        game1scene* scene1 = new game1scene(this->gameView,Game::New, this->user->Username,this->Difficulty);
 
         gameView->setScene(scene1);
 
         gameView->setModal(true);
         gameView->exec();
-        this->close();
+
     }
 }
 
