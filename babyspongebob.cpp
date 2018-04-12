@@ -2,10 +2,8 @@
 #include "grabbable.h"
 #include <QGraphicsScene>
 
-
 BabySpongeBob::BabySpongeBob(QObject *parent) : QObject(parent)
 {
-
     this->setPixmap(QPixmap(":/Project435/images/baby.png").scaledToHeight(80));
     this->timer = new QTimer();
 

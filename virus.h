@@ -27,7 +27,6 @@ public:
     int Yvelocity;///<  attribute that specifies the X velocity of the virus
     int deviationLimit;///< specifies maximum deviation from center line
     int centerline;///< specifies the center of propagation of the virus
-    Header* header;///< pointer to the header
     int foobar;
     QString game;
     ~virus();

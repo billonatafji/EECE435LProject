@@ -22,7 +22,6 @@ public:
     QTimer *timer; ///< timer attribute that specifies the timer
     int Xvelocity;///< y velocity of fungus
     int Yvelocity;///< x velocity of fungus
-    Header* header;///< pointer to header
     int timetolive;///< specifies time left to die
     QString game;
 

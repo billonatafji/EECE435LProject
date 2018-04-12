@@ -19,7 +19,6 @@ class huItem : public QObject, public Grabbable
 public:
     explicit huItem(bool type,Header* header, QString game = "", QObject *parent = nullptr);
     QTimer *timer; ///< timer attribute that specifies the timer
-    Header *header;
     bool type;
     QString game;
 

@@ -121,35 +121,11 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
     this->addItem(this->header);
 
     this->addItemToQueueTimer = new QTimer();
-    connect(this->addItemToQueueTimer,SIGNAL(timeout()),this,SLOT(addItemToQueue()));
-    this->addItemToQueueTimer->start(5000);
+    connect(this->addItemToQueueTimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
+    this->addItemToQueueTimer->start(1000);
 
 }
-void Game2Scene::addItemToQueue(){
- int xPos = 300;
 
- int randItem = rand()%2;
-
- if (this->header->difficulty == 2)
- {
-     randItem = rand()%3;
- }
- if (this->header->difficulty == 3)
- {
-     randItem = rand()%4;
- }
-
- if(randItem == 0){
-    addhuItems();
- }else if(randItem == 1){
-    addbacteria();
- }else if(randItem == 2){
-    addvirus();
- }else if(randItem == 3){
-    addfungus();
- }
-
-}
 
 /**
  * @brief Game2Scene::addhuItems
@@ -181,109 +157,6 @@ void Game2Scene::addhuItems()
 
 }
 
-/**
- * @brief Game2Scene::addbacteria
- *
- * first we check if the cleanness is less than 100
- * if true, we continue with the procedure of adding a bacteria to the scene
- * a random number is first choosen between 0 and 3
- * a bacteria is created
- * if the random number is less than 2, the direction is set from left to right
- * else it is set from right to left
- *
- * the position is calculated by the following equation : 50 + randomnumber *100
- * so the results can be: 50, 150, 250, 350
- *
- * the strength of the bacteria is also generated randomly
- *
- * velocity is generated randomly with an influance of the difficulty of the game
- * the harder the game, the faster the bacteria
- *
- */
-void Game2Scene::addbacteria()
-{
-
-    int addableAmmount=(100- this->header->player->cleanliness) - this->header->currentBacteriaCountInScene;
-    if (addableAmmount>0)
-    {
-        int direction=(rand() % 2);
-        int startx=direction*990;
-        int starty =50+(rand() % 4)*100;
-        int strength=(rand() % 3)+1;
-        double xvelocity=(rand() % 6)/3+(this->header->difficulty);
-        double yvelocity=(rand() % 6)/3+(this->header->difficulty/2.0);
-        if (addableAmmount==2 || addableAmmount==1)
-            strength=addableAmmount;
-        std::string path = ":/Project435/images/bacteria"+ std::to_string(strength)+".png";
-
-        bacteria *bacteria1;
-        bacteria1= new bacteria(strength,1-2*direction,1,xvelocity,yvelocity,20,starty, this->header, Game2::name);
-        bacteria1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45 + strength*45/2));
-        bacteria1->setPos(150,50);
-
-        this->header->currentBacteriaCountInScene +=strength;
-        this->addItem(bacteria1);
-    }
-}
-
-/**
- * @brief Game2Scene::addvirus
- *
- * this is a function to add a virus to the screen
- * a random number is first choosen between 0 and 1 to set direction
- * the starting y posiion is then chosen randomly
- * a virus is created
- */
-void Game2Scene::addvirus()
-{
-
-    int direction=(rand() % 2);
-    int startx=direction*980+5;
-    int starty =50+(rand() % 4)*100;
-
-    virus *virus1;
-    virus1= new virus(1-2*direction,1,3,2,20,starty, this->header, Game2::name);
-    virus1->setPixmap((QPixmap(":/Project435/images/virus.png")).scaledToHeight(70));
-    virus1->setPos(150,50);
-
-
-    this->addItem(virus1);
-
-}
-
-/**
- * @brief Game2Scene::addfungus
- *
- *
- * a random number is first choosen for the x and y positions
- * then the distance to the player is calculated
- * if the distance is less than 250, the position is randomly generated again
- *
- * when the distance criteria is met, an instance of the fungus is created with the generated coordinates
- *
- */
-void Game2Scene::addfungus()
-{
-
-positionselection:
-    int startx=(rand() % 960);
-    int starty =(rand() % 550);
-    int playerx= this->header->player->x();
-    int playery= this->header->player->y();
-    double diry = playery - starty;
-    double dirx= playerx - startx;
-    double hyp = sqrt(dirx*dirx + diry*diry);
-    if(hyp<250)
-        goto positionselection;
-
-    fungus *fungus1;
-    fungus1= new fungus(this->header, Game2::name);
-    fungus1->setPixmap((QPixmap(":/Project435/images/fungus.png")).scaledToHeight(70));
-    fungus1->setPos(150,50);
-
-    this->addItem(fungus1);
-
-}
 void Game2Scene::GameOver(){
     this->header->paused = true;
     User::PauseGameForUser(this->header,true);

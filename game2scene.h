@@ -34,11 +34,6 @@ public:
     void WonGame();
     void PauseGame();
 
-    void addhuItems();///< add huItems on the screen
-    void addbacteria();///< add bacteria on the screen
-    void addvirus();///< add viruses on the screen
-    void addfungus();///< add fungii on the screen
-
     void keyPressEvent(QKeyEvent *event);
     /**
     *\brief Detects key release events
@@ -53,7 +48,7 @@ public:
 signals:
 
 public slots:
-    void addItemToQueue();
+    void addhuItems();///< add huItems on the screen
 
     void CloseView();
 };

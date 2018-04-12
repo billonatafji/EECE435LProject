@@ -10,13 +10,8 @@ Grabbable::Grabbable()
 }
 void Grabbable::wasShot(){
 
-    if(dynamic_cast<bacteria*>(this)){
 
-    }else if(dynamic_cast<huItem*>(this)){
-
-    }else if(dynamic_cast<virus*>(this)){
-
-    }else if(dynamic_cast<fungus*>(this)){
+    if(dynamic_cast<huItem*>(this)){
 
     }
 
@@ -24,13 +19,7 @@ void Grabbable::wasShot(){
 }
 
 void Grabbable::reachedBaby(){
-    if(dynamic_cast<bacteria*>(this)){
-
-    }else if(dynamic_cast<huItem*>(this)){
-
-    }else if(dynamic_cast<virus*>(this)){
-
-    }else if(dynamic_cast<fungus*>(this)){
+    if(dynamic_cast<huItem*>(this)){
 
     }
 

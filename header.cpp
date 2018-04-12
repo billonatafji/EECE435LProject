@@ -175,6 +175,7 @@ void Header::AddPause(int x, int y){
 void Header::AddBaby(int x, int y){
     this->baby = new BabySpongeBob();
     this->baby->setPos(x,y);
+    this->baby->setParentItem(this);
     this->addToGroup(this->baby);
 }
 
