@@ -22,5 +22,6 @@
         <file>images/huItem03.png</file>
         <file>images/huItem02.png</file>
         <file>images/huItem01.png</file>
+        <file>images/background2.jpg</file>
     </qresource>
 </RCC>

@@ -28,7 +28,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
     this->gameView = gameView;
     this->paused = paused;
 
-    this->setBackgroundBrush(QBrush(QImage(":/Project435/images/background.jpg")
+    this->setBackgroundBrush(QBrush(QImage(":/Project435/images/background2.jpg")
                                     .scaledToHeight(600)
                                     .scaledToWidth(1000)));
     this->setSceneRect(0,0,1000,600);
