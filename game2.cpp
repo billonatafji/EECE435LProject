@@ -9,6 +9,7 @@ Game2::Game2(QWidget *parent, User* user) :
 {
     ui->setupUi(this);
     this->user = user;
+    this->gameView = new GameView();
 }
 
 Game2::~Game2()
@@ -29,8 +30,6 @@ void Game2::on_playButton_clicked()
         this->close();
 
         Game::SetDifficulty(ui->easyRadioButton->isChecked(), ui->mediumRadioButton->isChecked(), ui->hardRadioButton->isChecked());
-
-        this->gameView = new GameView();
 
         Game2Scene* scene = new Game2Scene(gameView,Game::New, this->user->Username,this->Difficulty);
 

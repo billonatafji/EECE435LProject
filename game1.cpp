@@ -23,6 +23,8 @@ Game1::Game1(QWidget *parent, User* user) :
 {
     ui->setupUi(this);
     this->user = user;
+    this->gameView = new GameView();
+
     int userLevel = User::GetUserLevel(Game1::name,this->user->Username);
     if(userLevel<2){
         ui->mediumRadioButton->setEnabled(false);
@@ -30,6 +32,7 @@ Game1::Game1(QWidget *parent, User* user) :
     if(userLevel<3){
         ui->hardRadioButton->setEnabled(false);
     }
+
 }
 
 Game1::~Game1()
@@ -52,8 +55,6 @@ void Game1::on_playButton_clicked()
         this->close();
 
         Game::SetDifficulty(ui->easyRadioButton->isChecked(), ui->mediumRadioButton->isChecked(), ui->hardRadioButton->isChecked());
-
-        this->gameView = new GameView();
 
         game1scene* scene1 = new game1scene(this->gameView,Game::New, this->user->Username,this->Difficulty);
 

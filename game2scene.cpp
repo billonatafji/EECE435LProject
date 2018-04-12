@@ -291,6 +291,7 @@ void Game2Scene::GameOver(){
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     Game2Scene* newScene = new Game2Scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
+    this->deleteLater();
 }
 
 void Game2Scene::CloseView(){
@@ -311,6 +312,7 @@ void Game2Scene::WonGame(){
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     Game2Scene* newScene = new Game2Scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
+    this->deleteLater();
 }
 
 void Game2Scene::PauseGame(){

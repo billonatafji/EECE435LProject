@@ -3,6 +3,7 @@
 #include "game1scene.h"
 #include "game2scene.h"
 #include <QApplication>
+#include "game1.h"
 #include "game2.h"
 
 Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time)
@@ -61,7 +62,11 @@ void Header::SetCleanliness(int val)
 
         if(this->player->cleanliness == 100){
             this->paused = true;
-            ((game1scene*)this->scene())->WonGame();
+            if(this->game == Game1::name){
+                ((game1scene*)this->scene())->WonGame();
+            }else{
+                ((Game2Scene*)this->scene())->WonGame();
+            }
         }
     }
 

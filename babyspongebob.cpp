@@ -15,13 +15,15 @@ BabySpongeBob::BabySpongeBob(QObject *parent) : QObject(parent)
 }
 
 void BabySpongeBob::update(){
-
-    QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-    foreach(QGraphicsItem * i , collidelist)
-    {
-        if (Grabbable* item = dynamic_cast<Grabbable *>(i) )
+    if(this->scene()){
+        QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
+        foreach(QGraphicsItem * i , collidelist)
         {
-            item->reachedBaby();
+            if (Grabbable* item = dynamic_cast<Grabbable *>(i) )
+            {
+                item->reachedBaby();
+            }
         }
     }
+
 }
