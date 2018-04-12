@@ -27,14 +27,12 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     AddChart(875,0,100,100,120*16,180*16/3,Qt::red);
     AddNeedle(925,50);
     if(this->game == Game2::name){
-        AddBaby(750,70);
+        AddBaby(700,70);
     }
 
     this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
     timer->start(1000);
-
-    Render();
 
 }
 /**
@@ -86,16 +84,27 @@ void Header::SetCleanliness(int val)
 void Header::SetImmunity(int val)
 {
     if(!this->paused){
-        if(this->player->immunity + val >= 0 && this->player->immunity + val <= 100)
-        {
-            this->player->immunity += val;
+        if(this->game == Game1::name){
+            if(this->player->immunity + val >= 0 && this->player->immunity + val <= 100)
+            {
+                this->player->immunity += val;
+            }
+            else if(this->player->immunity + val < 0){
+                this->player->immunity = 0;
+            }
+            else if(this->player->immunity + val > 100){
+                this->player->immunity = 100;
+            }
+        }else if(this->game == Game2::name){
+            if(this->player->weapon->strength + val < 0){
+                this->player->weapon->strength = 0;
+            }else if(this->player->weapon->strength + val > 3){
+                this->player->weapon->strength = 3;
+            }else{
+                this->player->weapon->strength += val;
+            }
         }
-        else if(this->player->immunity + val < 0){
-            this->player->immunity = 0;
-        }
-        else if(this->player->immunity + val > 100){
-            this->player->immunity = 100;
-        }
+
         Render();
     }
 }
@@ -110,11 +119,11 @@ void Header::SetImmunity(int val)
 void Header::AddCleanlMeter(int x, int y)
 {
     QGraphicsTextItem* cleanlinessLabel = new QGraphicsTextItem();
-    cleanlinessLabel->setPlainText(QString(this->game == Game1::name ? "Cleanliness" : "Baby Health"));
+    cleanlinessLabel->setPlainText(QString(this->game == Game1::name ? "Cleanliness" : "Baby's Health"));
     cleanlinessLabel->setPos(x,y);
     this->addToGroup(cleanlinessLabel);
     this->cleanlinessMeter = new CleanlinessMeter();
-    cleanlinessMeter->setPos(x+90,y);
+    cleanlinessMeter->setPos(x+100,y);
     this->addToGroup(cleanlinessMeter);
 }
 
@@ -168,6 +177,11 @@ void Header::AddNeedle(int x, int y){
     this->needle->setPen(pen);
     this->addToGroup(this->needle);
 
+    QGraphicsTextItem* immunityLabel = new QGraphicsTextItem();
+    immunityLabel->setPlainText(QString(this->game == Game1::name ? "Immunity Level" : "Weapon Strength"));
+    immunityLabel->setPos(x-70, y);
+    this->addToGroup(immunityLabel);
+
 }
 
 void Header::AddPause(int x, int y){
@@ -190,12 +204,17 @@ void Header::Render(){
     this->scoreLabel->setPlainText(QString("Score: ").append(QString::number(this->player->score)));
     this->timeLabel->setPlainText(QString::number(time/60) + QString(":") + QString::number(time%60));
 
-    int immunity=0;
-    if(player->followme==0)
-    immunity=this->player->immunity;
+    int immunity= 0;
+    if(this->game == Game1::name){
+        if(player->followme==0)
+            immunity=this->player->immunity;
+    }else{
+        immunity = this->player->weapon->strength;
+    }
 
-    int x2 = this->needle->line().x1() - 30*cos(immunity*M_PI/100.0) ;
-    int y2 = this->needle->line().y1() - 30*sin(immunity*M_PI/100.0) ;
+
+    int x2 = this->needle->line().x1() - 30*cos(immunity*M_PI/(this->game == Game1::name ? 100.0 : 3)) ;
+    int y2 = this->needle->line().y1() - 30*sin(immunity*M_PI/(this->game == Game1::name ? 100.0 : 3)) ;
 
     this->needle->setLine(this->needle->line().x1(),this->needle->line().y1(),x2,y2);
 

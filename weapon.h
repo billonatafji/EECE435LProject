@@ -20,6 +20,7 @@ public:
     bool ready;
     QGraphicsItem* grabbedItem;
     int step;
+    int strength;
 
 signals:
 

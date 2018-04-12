@@ -21,7 +21,6 @@ public:
 
 
     QTimer *timer; ///< timer attribute that specifies the timer
-    int strength;
     int direction; ///< direction attribute that specifies the direction of movement of the bacteria
     int directionY;///<  attribute that specifies the Y direction of movement of the virus
     int Xvelocity;///<  attribute that specifies the X velocity of the virus

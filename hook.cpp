@@ -59,7 +59,7 @@ void Hook::update(){
             }
         }
     }
-    if(this->grabbedItem != nullptr){
+    if(this->grabbedItem){
             this->grabbedItem->setPos(this->head->pos());
             ((Grabbable*)this->grabbedItem)->wasGrabbed();
     }

@@ -11,15 +11,16 @@
 #include "game1.h"
 #include "game2.h"
 
-huItem::huItem(bool type,Header *header, QString game, QObject *parent) : QObject(parent)
+huItem::huItem(bool type,Header *header, QString game, QObject *parent, int strength) : QObject(parent)
 {
     this->grabbed = false;
     this->header = header;
     this->type = type;
     this->game = game;
+    this->strength = strength;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
-    timer->start(100);
+    timer->start(50);
 
 }
 
@@ -66,34 +67,39 @@ void huItem::update()
 
 
             }
-
-            this-> setPos(this->x(), this->y()+10);
         }
+        this-> setPos(this->x(), this->y()+10);
+
     }
     else if(this->game == Game2::name){
-
+        //this->timer->setInterval(10);
         if(!this->grabbed){
 
-            double A = 300;
-            double B = 450;
-            qreal newX = this->x()+5;
-            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
-            this->setPos(newX, newY);
+            if(this->x() >= 710){
+                int y = this->y();
+                this->setPos(this->x(), this->y()-2);
+            }
+
+            else if(this->y() > 385){
+                int A = 265;
+                int B = 225;
+                int newX = this->x()+1;
+                qreal newY = sqrt(pow(B,2)*(1-pow(newX-470,2)/pow(A,2))) + 300;
+                this->setPos(newX, newY);
+            }
+            else {
+                this->setPos(this->x(), this->y()+2);
+            }
             if (this->pos().y()<30)
             {
                 this->scene()->removeItem(this);
                 delete this;
                 return;
-
             }
-
         }
 
     }
 
-
-
 }
-
 huItem::~huItem(){
 }

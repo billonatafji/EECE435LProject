@@ -92,7 +92,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,50,3,0,QPoint(500-50,300-50), Game2::name, nullptr, ceil(3/difficulty));
+        SpongeBob* player = new SpongeBob(0,1,3,0,QPoint(460,280), Game2::name, nullptr, ceil(3/difficulty));
         this->header = new Header(player, difficulty, username, Game2::name, false, 120);
 
 
@@ -101,7 +101,6 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
         this->header = header;
 
     }
-
     this->header->player->setFlag(QGraphicsItem::ItemIsFocusable);
     this->header->player->setFocus();
     this->header->player->setPos(this->header->player->currentPos);
@@ -147,9 +146,9 @@ void Game2Scene::addhuItems()
     huItem *huItem1;
     std::string path = ":/Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
 
-    huItem1= new huItem(randType,this->header, Game2::name);
+    huItem1= new huItem(randType,this->header, Game2::name, nullptr, this->header->difficulty);
     huItem1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45));
-    huItem1->setPos(150,50);
+    huItem1->setPos(225,50);
 
     this->addItem(huItem1);
 

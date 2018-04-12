@@ -2,10 +2,7 @@
 #include <QPen>
 #include "spongeBob.h"
 #include <QGraphicsScene>
-#include "bacteria.h"
 #include "huItem.h"
-#include "virus.h"
-#include "fungus.h"
 #include <QPointer>
 #include "grabbable.h"
 
@@ -40,16 +37,18 @@ void Bomb::update(){
         QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this->head);
         foreach(QGraphicsItem * i , collidelist)
         {
-            if (Grabbable* item = dynamic_cast<Grabbable *>(i) )
+            if (Grabbable* item = dynamic_cast<Grabbable *>(i))
             {
-
-                this->head->setPixmap(QPixmap(":/Project435/images/explosion.png").scaledToHeight(170));
-                if(!this->grabbingItem){
-                    this->head->setPos(this->head->pos().x()-50, this->head->pos().y()-30);
+                if(!(dynamic_cast<Weapon*>(item->header->player->weapon) && ((Weapon*)item->header->player->weapon)->grabbedItem == item)){
+                    this->head->setPixmap(QPixmap(":/Project435/images/explosion.png").scaledToHeight(170));
+                    if(!this->grabbingItem){
+                        this->head->setPos(this->head->pos().x()-50, this->head->pos().y()-30);
+                    }
+                    this->grabbingItem = true;
+                    item->wasShot(this);
+                    this->thrown = false;
                 }
-                this->grabbingItem = true;
-                item->wasShot();
-                this->thrown = false;
+
             }
         }
         if(this->step > 350){

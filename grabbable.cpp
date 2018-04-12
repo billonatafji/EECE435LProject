@@ -1,5 +1,7 @@
 #include "grabbable.h"
 #include "huItem.h"
+#include "bomb.h"
+#include "laser.h"
 
 Grabbable::Grabbable()
 {
@@ -20,12 +22,12 @@ void Grabbable::wasGrabbed(){
                 this->scene()->removeItem(this);
                 if (((huItem*)this)->type==1)
                 {
-                    this->header->SetImmunity(+6/this->header->difficulty);
+                    this->header->SetImmunity(+1);
                     this->header->SetTime(+10);
                 }
                 else
                 {
-                    this->header->SetImmunity(-6/this->header->difficulty);
+                    this->header->SetImmunity(-1);
                     this->header->SetTime(-10);
                 }
 
@@ -36,24 +38,32 @@ void Grabbable::wasGrabbed(){
     this-> setPos(this->x(), this->y()+10);
 }
 
-void Grabbable::wasShot(){
-
+void Grabbable::wasShot(Weapon* by){
 
     if(dynamic_cast<huItem*>(this)){
 
-        if (((huItem*)this)->type==0)
+        if(dynamic_cast<Bomb*>(by)){
+            ((huItem*)this)->strength = 0;
+        }
+        else{
+            ((huItem*)this)->strength -= this->strength;
+        }
+
+        if (((huItem*)this)->type==0 )
         {
-            this->header->SetScore(+3);
+            if(((huItem*)this)->strength == 0){
+                this->header->SetScore(+3);
+                delete this;
+            }
         }
         else
         {
             this->header->SetScore(-3);
+            delete this;
         }
-
     }
-
-    delete this;
 }
+
 
 void Grabbable::reachedBaby(){
     if(dynamic_cast<huItem*>(this)){

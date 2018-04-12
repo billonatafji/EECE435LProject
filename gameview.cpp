@@ -13,7 +13,7 @@ GameView::GameView(QWidget *parent) :
 GameView::~GameView()
 {
     delete ui;
-    //delete this->gameScene;
+    delete this->gameScene;
 }
 
 void GameView::setScene(QGraphicsScene* gameScene){

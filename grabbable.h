@@ -3,6 +3,7 @@
 
 #include <QGraphicsPixmapItem>
 #include "header.h"
+#include "weapon.h"
 
 class Grabbable :  public QGraphicsPixmapItem
 {
@@ -10,14 +11,11 @@ public:
     Grabbable();
 
     Header* header;///< pointer to the header
-
-
+    int strength;
     bool grabbed;
 
     void wasGrabbed();
-
-    void wasShot();
-
+    void wasShot(Weapon* by);
     void reachedBaby();
 
 };

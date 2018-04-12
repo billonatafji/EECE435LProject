@@ -144,6 +144,7 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
                     this->weapon = new Hook();
                 }
             }else{
+                delete this->weapon;
                 this->weapon = new Hook();
             }
             this->weapon->setParentItem(this);

@@ -41,7 +41,7 @@ void Laser::update(){
     if(this->rope->line().p1() == this->rope->line().p2()){
         this->throwTimer->stop();
     }
-    if(abs(this->rope->line().p2().y() - this->rope->line().p1().y()) > 350){
+    if(abs(this->rope->line().p2().y() - this->rope->line().p1().y()) > 100 + 50*this->strength){
         this->thrown = false;
     }
     QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this->rope);
@@ -53,7 +53,7 @@ void Laser::update(){
             this->throwTimer->stop();
             this->rope->setLine(QLineF( this->rope->line().p1(),this->rope->line().p1()));
             this->thrown = false;
-            item->wasShot();
+            item->wasShot(this);
         }
     }
 }
