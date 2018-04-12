@@ -23,7 +23,7 @@ Bomb::Bomb()
     connect(this->throwTimer,SIGNAL(timeout()),this,SLOT(update()));
     this->addToGroup(this->head);
 
-    this->prepareTimer->start(2000);
+    this->prepareTimer->start(100);
 }
 void Bomb::update(){
 

@@ -73,47 +73,6 @@ void virus::update()
             }
         }
     }
-    else if(this->game == Game2::name){
-
-        if (this->grabbed)
-        {
-            if(!this->scene()->collidingItems(this).isEmpty())
-            {
-                {
-                    QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-                    foreach(QGraphicsItem * i , collidelist)
-                    {
-                        SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-                        if (item)
-                        {
-                            item->weapon->grabbedItem = nullptr;
-                            item->followme=true;
-                            item->followTimer->start(5000);
-                            this->scene()->removeItem(this);
-                            delete this;
-                        }
-                    }
-                }
-            }
-        }else{
-
-            double A = 300;
-            double B = 450;
-            qreal newX = this->x()+1;
-            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
-            this->setPos(newX, newY);
-            if (this->pos().y()<30)
-            {
-                this->scene()->removeItem(this);
-                delete this;
-                return;
-
-            }
-
-        }
-
-    }
-
 }
 
 virus::~virus(){

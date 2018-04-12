@@ -92,7 +92,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,50,0,0,QPoint(500-50,300-50), Game2::name);
+        SpongeBob* player = new SpongeBob(0,50,3,0,QPoint(500-50,300-50), Game2::name, nullptr, ceil(3/difficulty));
         this->header = new Header(player, difficulty, username, Game2::name, false, 120);
 
 
@@ -101,8 +101,6 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
         this->header = header;
 
     }
-
-
 
     this->header->player->setFlag(QGraphicsItem::ItemIsFocusable);
     this->header->player->setFocus();
@@ -122,7 +120,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
     this->addItemToQueueTimer = new QTimer();
     connect(this->addItemToQueueTimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
-    this->addItemToQueueTimer->start(1000);
+    this->addItemToQueueTimer->start(3000);
 
 }
 

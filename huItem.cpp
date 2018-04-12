@@ -72,45 +72,11 @@ void huItem::update()
     }
     else if(this->game == Game2::name){
 
-        if (this->grabbed)
-        {
-            if(!this->scene()->collidingItems(this).isEmpty())
-            {
-                {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-                    foreach(QGraphicsItem * i , collidelist)
-                    {
-                        SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-                        if (item)
-                        {
-                            item->weapon->grabbedItem = nullptr;
-                            this->scene()->removeItem(this);
-                            if (this->type==1)
-                            {
-                                this->header->SetImmunity(+6/this->header->difficulty);
-                                this->header->player->score+=3;
-                            }
-
-                            else
-                            {
-                                this->header->SetImmunity(-6/this->header->difficulty);
-                                this->header->player->score-=3;
-                            }
-
-                            delete this;
-                        }
-                    }
-
-
-                }
-
-                this-> setPos(this->x(), this->y()+10);
-            }
-
-        }else{
+        if(!this->grabbed){
 
             double A = 300;
             double B = 450;
-            qreal newX = this->x()+1;
+            qreal newX = this->x()+5;
             qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
             this->setPos(newX, newY);
             if (this->pos().y()<30)

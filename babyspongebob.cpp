@@ -6,6 +6,7 @@ BabySpongeBob::BabySpongeBob(QObject *parent) : QObject(parent)
 {
     this->setPixmap(QPixmap(":/Project435/images/baby.png").scaledToHeight(80));
     this->timer = new QTimer();
+    this->healthItemsFed = 0;
 
     connect(this->timer,SIGNAL(timeout()),this,SLOT(update()));
 

@@ -85,52 +85,6 @@ void fungus::update()
         diry /= hyp;
         this-> setPos(this->x()+ dirx * Xvelocity, this->y()+ diry *Yvelocity);
         /////////////////////////////////////////////////////////
-    }
-    else if(this->game == Game2::name){
-
-        if (this->grabbed)
-        {
-            if(!this->scene()->collidingItems(this).isEmpty())
-            {   ///
-                /// \brief collidelist
-                ///this creates a list of all colliding items.
-                /// it then dynamically casts each detected item to an instance of spongebob
-                /// if any item returns true which means that it exists, this means that a collision with spongebob has occured
-                /// this leads to some procedures
-                QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-                foreach(QGraphicsItem * i , collidelist)
-                {
-                    SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-                    if (item)
-                    {
-                        item->weapon->grabbedItem = nullptr;
-                        item->immunity/=2;/// immunity is halved
-                        item->cleanliness/=2;/// cleanliness is halved
-                        item->followme=1;/// instructs batceria to follow him
-                        item->followTimer->start(5000);/// timer for following starts
-
-                        this->scene()->removeItem(this);
-                        delete this;
-                    }
-                }
-            }
-
-        }else{
-
-            double A = 300;
-            double B = 450;
-            qreal newX = this->x()+1;
-            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
-            this->setPos(newX, newY);
-            if (this->pos().y()<30)
-            {
-                this->scene()->removeItem(this);
-                delete this;
-                return;
-
-            }
-
-        }
 
     }
 

@@ -12,6 +12,8 @@ public:
 
     QTimer* timer;
 
+    int healthItemsFed;
+
 signals:
 
 public slots:

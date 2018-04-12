@@ -16,7 +16,7 @@
 #include "bomb.h"
 #include <QThread>
 
-SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game, QObject *parent) : QObject(parent)
+SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent, int bombs) : QObject(parent)
 {
 
     this->cleanliness = cleanliness;
@@ -27,6 +27,7 @@ SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint
     this->currentPos = pos;
     this->game = game;
     this->translation = 0;
+    this->bombs = bombs;
 
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
@@ -120,8 +121,8 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
 
                     this->weapon->thrown = !this->weapon->thrown;
                     this->weapon->throwTimer->start(10);
-
-                    this->weapon = new Bomb();
+                    this->bombs -= 1;
+                    this->weapon = new Hook();
                     this->weapon->setParentItem(this);
                 }
                 else{
@@ -136,9 +137,13 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
                 this->weapon = new Laser();
             }else if(dynamic_cast<Laser*>(this->weapon)){
                 delete this->weapon;
-                this->weapon = new Bomb();
+                if(this->score > 0 && this->bombs > 0){
+                    this->weapon = new Bomb();
+                    this->weapon->setParentItem(this);
+                }else{
+                    this->weapon = new Hook();
+                }
             }else{
-                delete this->weapon;
                 this->weapon = new Hook();
             }
             this->weapon->setParentItem(this);

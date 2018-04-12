@@ -38,6 +38,7 @@ public:
     void SetCleanliness(int val);
     void SetImmunity(int val);
     void SetScore(int val);
+    void SetTime(int val);
     void RemoveLife();
 
     void AddCleanlMeter(int x, int y);

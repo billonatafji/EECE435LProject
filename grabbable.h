@@ -14,6 +14,8 @@ public:
 
     bool grabbed;
 
+    void wasGrabbed();
+
     void wasShot();
 
     void reachedBaby();

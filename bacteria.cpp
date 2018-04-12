@@ -104,67 +104,6 @@ void bacteria::update()
             else if (y() >centerline+upperlimit)
                 directionY=-1;
         }
-    }else if(this->game == Game2::name){
-
-
-        if(this->grabbed){
-            if(!this->scene()->collidingItems(this).isEmpty())
-            {
-                {       QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this);
-                    foreach(QGraphicsItem * i , collidelist)
-                    {
-                        SpongeBob * item= dynamic_cast<SpongeBob *>(i);
-                        if (item)
-                        {
-                            item->weapon->grabbedItem = nullptr;
-                            int playerstrength=(item->immunity/33)+1;
-
-                            if((playerstrength-this->strength)<0 || item->followme==1)//player isnt strong enough to kill the bacteria, he should lose a life.
-                            {
-                                //todo
-                                //update life and reset stats
-                                this->scene()->removeItem(this);
-                                this->header->currentBacteriaCountInScene-=strength;
-                                this->header->SetCleanliness(+this->strength);
-                                this->header->RemoveLife();
-                                if (item->lives==0)
-                                {
-
-                                }
-                                this->deleteLater();
-                            }
-                            else
-                            {
-                                this->header->player->score+=strength*2*(this->header->player->immunity/33);
-                                this->header->currentBacteriaCountInScene-=strength;
-                                this->header->SetCleanliness(+this->strength);
-                                this->scene()->removeItem(this);
-                                this->deleteLater();
-                            }
-                        }
-                    }
-                }
-            }
-        }else{
-
-            double A = 300;
-            double B = 450;
-            qreal newX = this->x()+1;
-            qreal newY = sqrt(pow(B,2)*(1-pow(newX-450,2)/pow(A,2))) + 0;
-            this->setPos(newX, newY);
-            if (this->pos().y()<30)
-            {
-                this->scene()->removeItem(this);
-                this->header->currentBacteriaCountInScene-=strength;
-                delete this;
-                return;
-
-            }
-
-        }
-
-
-
     }
 }
 

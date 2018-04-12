@@ -29,7 +29,7 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     if(this->game == Game2::name){
         AddBaby(750,70);
     }
-    SetCleanliness(80);
+
     this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
     timer->start(1000);
@@ -47,29 +47,34 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
 void Header::SetCleanliness(int val)
 {
     if(!this->paused){
-        if(this->player->cleanliness + val >= 0 && this->player->cleanliness + val < 100)
-        {
-            this->player->cleanliness += val;
-        }
-        else if(this->player->cleanliness + val < 0){
-            this->player->cleanliness += 0;
-        }
-        else if(this->player->cleanliness + val >= 100){
-            this->player->cleanliness = 100;
+        if(this->game == Game1::name){
+            if(this->player->cleanliness + val >= 0 && this->player->cleanliness + val < 100)
+            {
+                this->player->cleanliness += val;
+            }
+            else if(this->player->cleanliness + val < 0){
+                this->player->cleanliness = 0;
+            }
+            else if(this->player->cleanliness + val >= 100){
+                this->player->cleanliness = 100;
+            }
+            Render();
+            if(this->player->cleanliness == 100){
+                this->paused = true;
 
-        }
-        Render();
-
-        if(this->player->cleanliness == 100){
-            this->paused = true;
-            if(this->game == Game1::name){
                 ((game1scene*)this->scene())->WonGame();
-            }else{
+
+            }
+        }else if(this->game == Game2::name){
+            this->baby->healthItemsFed += val;
+            Render();
+
+            if(this->baby->healthItemsFed == 100){
+                this->paused = true;
                 ((Game2Scene*)this->scene())->WonGame();
             }
         }
     }
-
 }
 /**
  * @brief Header::SetImmunity
@@ -105,7 +110,7 @@ void Header::SetImmunity(int val)
 void Header::AddCleanlMeter(int x, int y)
 {
     QGraphicsTextItem* cleanlinessLabel = new QGraphicsTextItem();
-    cleanlinessLabel->setPlainText(QString("Cleanliness"));
+    cleanlinessLabel->setPlainText(QString(this->game == Game1::name ? "Cleanliness" : "Baby Health"));
     cleanlinessLabel->setPos(x,y);
     this->addToGroup(cleanlinessLabel);
     this->cleanlinessMeter = new CleanlinessMeter();
@@ -181,7 +186,7 @@ void Header::AddBaby(int x, int y){
 
 void Header::Render(){
 
-    this->cleanlinessMeter->ProgressBar->setValue(this->player->cleanliness);
+    this->cleanlinessMeter->ProgressBar->setValue(this->game == Game1::name ? this->player->cleanliness : this->baby->healthItemsFed);
     this->scoreLabel->setPlainText(QString("Score: ").append(QString::number(this->player->score)));
     this->timeLabel->setPlainText(QString::number(time/60) + QString(":") + QString::number(time%60));
 
@@ -215,10 +220,10 @@ void Header::RemoveLife(){
 void Header::CountDown(){
     if(!this->paused){
         if(this->time>0){
-            this->time--;
+            this->time--;        
+            Render();
         }
-        Render();
-        if(this->time<=0){
+        else{
             if(dynamic_cast<game1scene *>(this->scene())){
                 dynamic_cast<game1scene *>(this->scene())->GameOver();
             }else if(dynamic_cast<Game2Scene *>(this->scene())){
@@ -226,6 +231,19 @@ void Header::CountDown(){
             }
         }
     }
+}
+
+void Header::SetTime(int val){
+    this->time += val;
+    Render();
+}
+void Header::SetScore(int val){
+    if(this->player->score + val < 0){
+        this->player->score = 0;
+    }else{
+        this->player->score += val;
+    }
+    Render();
 }
 
 

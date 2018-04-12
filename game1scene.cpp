@@ -91,7 +91,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,50,0,0,QPoint(300,0), Game1::name);
+        SpongeBob* player = new SpongeBob(0,50,3,0,QPoint(300,0), Game1::name);
         this->header = new Header(player, difficulty, username, Game1::name, false, 120);
 
 
