@@ -1,7 +1,7 @@
 #include "bomb.h"
 #include <QPen>
 #include "spongeBob.h"
-#include <QGraphicsScene>
+#include <game2scene.h>
 #include "huItem.h"
 #include <QPointer>
 #include "grabbable.h"
@@ -22,7 +22,7 @@ Bomb::Bomb(int strength)
     connect(this->throwTimer,SIGNAL(timeout()),this,SLOT(update()));
     this->addToGroup(this->head);
 
-    this->prepareTimer->start(100);
+    this->prepareTimer->start(500*(this->strength+1));
 }
 void Bomb::update(){
 

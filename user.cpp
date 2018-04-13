@@ -1,6 +1,9 @@
 #include "user.h"
 #include "game1.h"
 #include "game2.h"
+#include "bomb.h"
+#include "laser.h"
+#include "hook.h"
 
 User::User(){
 
@@ -180,14 +183,43 @@ Header* User::ResumeGameForUser(QString game, QString username){
         QJsonObject userGameObject = userObject.find(game).value().toObject();
         QJsonObject stateObject = userGameObject.find("State").value().toObject();
 
-        SpongeBob* player = new SpongeBob(stateObject.find("cleanliness").value().toInt(),
-                                          stateObject.find("immunity").value().toInt(),
-                                          stateObject.find("lives").value().toInt(),
-                                          stateObject.find("score").value().toInt(),
-                                          QPoint(stateObject.find("x").value().toInt(),stateObject.find("y").value().toInt()),
-                                          game);
+        if(game == Game1::name){
+            SpongeBob* player = new SpongeBob(stateObject.find("cleanliness").value().toInt(),
+                                              stateObject.find("immunity").value().toInt(),
+                                              stateObject.find("lives").value().toInt(),
+                                              stateObject.find("score").value().toInt(),
+                                              QPoint(stateObject.find("x").value().toInt(),stateObject.find("y").value().toInt()),
+                                              game);
+            header = new Header(player,
+                                stateObject.find("difficulty").value().toInt(),
+                                username,
+                                game,
+                                stateObject.find("completed").value().toBool(),
+                                stateObject.find("time").value().toInt());
 
-        header = new Header(player,stateObject.find("difficulty").value().toInt(), username, game, stateObject.find("completed").value().toBool(), stateObject.find("time").value().toInt());
+        }else if(game == Game2::name){
+
+            SpongeBob* player = new SpongeBob(stateObject.find("cleanliness").value().toInt(),
+                                              stateObject.find("immunity").value().toInt(),
+                                              stateObject.find("lives").value().toInt(),
+                                              stateObject.find("score").value().toInt(),
+                                              QPoint(stateObject.find("x").value().toInt(),stateObject.find("y").value().toInt()),
+                                              game,
+                                              nullptr,
+                                              stateObject.find("bombs").value().toInt(),
+                                              stateObject.find("requiredBombScore").value().toInt(),
+                                              stateObject.find("translation").value().toInt(),
+                                              stateObject.find("weapon").value().toString(),
+                                              stateObject.find("weaponStrength").value().toInt());
+
+            header = new Header(player,
+                                stateObject.find("difficulty").value().toInt(),
+                                username,
+                                game,
+                                stateObject.find("completed").value().toBool(),
+                                stateObject.find("time").value().toInt(),
+                                stateObject.find("healthyItemsFed").value().toInt());
+        }
 
         file.close();
     }

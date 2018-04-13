@@ -6,7 +6,7 @@
 #include "game1.h"
 #include "game2.h"
 
-Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time)
+Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time, int healthyItemsFed)
 {
     this->player = player;
     this->difficulty = difficulty;
@@ -14,11 +14,12 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     this->game = game;
     this->paused = paused;
     this->time = time;
-    this->currentBacteriaCountInScene=0;
+    this->currentBacteriaCountInScene = 0;
+    this->counter = 0;
 
     if(this->game == Game1::name){
 
-        AddCleanlMeter(0,10);
+        AddCleanlMeter(20,10);
         AddHearts(750,10);
         AddChart(875,0,100,100,0*16,180*16/3,Qt::green);
         AddChart(875,0,100,100,60*16,180*16/3,Qt::yellow);
@@ -31,18 +32,19 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
         AddChart(40,0,100,100,60*16,180*16/3,Qt::yellow);
         AddChart(40,0,100,100,120*16,180*16/3,Qt::red);
         AddNeedle(90,50);
-        AddBombs(250,10);
+        AddBombs(175,10);
 
         AddHearts(680,10);
         AddCleanlMeter(750,10);
-        AddBaby(700,70);
+        AddBaby(700,70,healthyItemsFed);
 
     }
 
     AddLevel(380,10);
     AddPause(450,0);
     AddTime(452,40);
-    AddScore(510,10);
+    AddScoreCalculation(452,60);
+    AddScore(500,10);
 
     this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
@@ -169,7 +171,7 @@ void Header::AddHearts(int x, int y){
 void Header::AddBombs(int x, int y){
     for(int i= 0; i<this->player->bombs;i++){
         this->bombs[i] = new QGraphicsPixmapItem(QPixmap(":/Project435/images/bomb.png").scaledToHeight(40));
-        this->bombs[i]->setPos(x-i*40,y);
+        this->bombs[i]->setPos(x+i*40,y);
         this->addToGroup(this->bombs[i]);
     }
 }
@@ -197,6 +199,12 @@ void Header::AddScore(int x, int y){
     this->addToGroup(this->scoreLabel);
 }
 
+void Header::AddScoreCalculation(int x, int y){
+    this->scoreCalculationLabel = new QGraphicsTextItem();
+    this->scoreCalculationLabel->setPos(x, y);
+    this->addToGroup(this->scoreCalculationLabel);
+}
+
 void Header::AddNeedle(int x, int y){
     this->needle = new  QGraphicsLineItem(x,y,x,y);
     QPen pen(Qt::black);
@@ -205,8 +213,8 @@ void Header::AddNeedle(int x, int y){
     this->addToGroup(this->needle);
 
     QGraphicsTextItem* immunityLabel = new QGraphicsTextItem();
-    immunityLabel->setPlainText(QString(this->game == Game1::name ? "Immunity Level" : "Weapon Strength"));
-    immunityLabel->setPos(x-70, y);
+    immunityLabel->setPlainText(QString(this->game == Game1::name ? "Immunity Level" : "Weapon Level"));
+    immunityLabel->setPos(x-55, y);
     this->addToGroup(immunityLabel);
 
 }
@@ -218,12 +226,14 @@ void Header::AddPause(int x, int y){
     this->addToGroup(this->pause);
 }
 
-void Header::AddBaby(int x, int y){
-    this->baby = new BabySpongeBob();
+void Header::AddBaby(int x, int y, int healthyItemsFed ){
+    this->baby = new BabySpongeBob(healthyItemsFed);
     this->baby->setPos(x,y);
     this->baby->setParentItem(this);
     this->addToGroup(this->baby);
 }
+
+
 
 void Header::Render(){
 
@@ -243,6 +253,12 @@ void Header::Render(){
     int y2 = this->needle->line().y1() - 30*sin(immunity*M_PI/(this->game == Game1::name ? 100.0 : 3)) ;
 
     this->needle->setLine(this->needle->line().x1(),this->needle->line().y1(),x2,y2);
+
+    if(this->counter == 2){
+        this->scoreCalculationLabel->setHtml("");
+    }
+
+    this->counter++;
 
 }
 
@@ -293,7 +309,12 @@ void Header::SetScore(int val){
     }else{
         this->player->score += val;
     }
+    counter = 0;
+    this->scoreCalculationLabel->setHtml(QString("<h2>").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));
     Render();
 }
+
+
+
 
 

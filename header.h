@@ -14,7 +14,7 @@ class Header: public QObject, public QGraphicsItemGroup
 {
     Q_OBJECT
 public:
-    Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time);
+    Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time, int healthyItemsFed = 0);
 
     CleanlinessMeter* cleanlinessMeter;
     Pause* pause;
@@ -23,6 +23,7 @@ public:
     QGraphicsTextItem* timeLabel;
     QGraphicsTextItem* levelLabel;
     QGraphicsTextItem* scoreLabel;
+    QGraphicsTextItem* scoreCalculationLabel;
     QGraphicsLineItem* needle;
 
     SpongeBob* player;
@@ -30,9 +31,12 @@ public:
     QString username;
     QString game;
     QTimer* timer;
+
     int time;
     int difficulty;
     int currentBacteriaCountInScene;
+    int counter;
+
     bool paused;
 
     void SetCleanliness(int val);
@@ -50,8 +54,9 @@ public:
     void AddLevel(int x, int y);
     void AddScore(int x, int y);
     void AddNeedle(int x, int y);
-    void AddBaby(int x, int y);
+    void AddBaby(int x, int y, int healthyItemsFed);
     void AddBombs(int x, int y);
+    void AddScoreCalculation(int x, int y);
 
     void Render();
 

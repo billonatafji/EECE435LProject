@@ -16,7 +16,7 @@
 #include "bomb.h"
 #include "game2scene.h"
 
-SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent, int bombs, int requiredBombScore) : QObject(parent)
+SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent, int bombs, int requiredBombScore, int translation, QString weapon, int weaponStrength) : QObject(parent)
 {
 
     this->cleanliness = cleanliness;
@@ -26,9 +26,19 @@ SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint
     this->score = score;
     this->currentPos = pos;
     this->game = game;
-    this->translation = 0;
+    this->translation = translation;
     this->bombs = bombs;
     this->requiredBombScore = requiredBombScore;
+    if(weapon != ""){
+        if(weapon == "bomb"){
+            this->weapon = new Bomb(weaponStrength);
+        }else if(weapon == "laser"){
+            this->weapon = new Laser(weaponStrength);
+        }else if(weapon == "hook"){
+            this->weapon = new Hook(weaponStrength);
+        }
+    }
+
 
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));

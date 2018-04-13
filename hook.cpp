@@ -65,7 +65,4 @@ void Hook::update(){
             this->grabbedItem->setPos(this->head->pos());
             ((Grabbable*)this->grabbedItem)->wasGrabbed();
     }
-
-
-
 }
