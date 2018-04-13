@@ -2,11 +2,11 @@
 #include "grabbable.h"
 #include <QGraphicsScene>
 
-BabySpongeBob::BabySpongeBob(QObject *parent) : QObject(parent)
+BabySpongeBob::BabySpongeBob(int healthyItemsFed, QObject *parent) : QObject(parent)
 {
     this->setPixmap(QPixmap(":/Project435/images/baby.png").scaledToHeight(80));
     this->timer = new QTimer();
-    this->healthItemsFed = 0;
+    this->healthyItemsFed = healthyItemsFed;
 
     connect(this->timer,SIGNAL(timeout()),this,SLOT(update()));
 

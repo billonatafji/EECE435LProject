@@ -14,7 +14,7 @@
 #include "laser.h"
 #include "hook.h"
 #include "bomb.h"
-#include <QThread>
+#include "game2scene.h"
 
 SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent, int bombs, int requiredBombScore) : QObject(parent)
 {
@@ -119,10 +119,9 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
                     this->weapon->setTransformOriginPoint(this->transformOriginPoint());
                     this->weapon->setRotation(this->rotation());
                     this->weapon->setPos(this->pos());
-
                     this->weapon->thrown = !this->weapon->thrown;
                     this->weapon->throwTimer->start(10/(this->weapon->strength+1));
-                    this->bombs -= 1;
+                    ((Game2Scene*)this->scene())->header->RemoveBomb();
                     int strength = this->weapon->strength;
                     this->weapon = new Hook(strength);
                     this->weapon->setParentItem(this);

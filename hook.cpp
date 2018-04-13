@@ -9,17 +9,18 @@
 #include <QPointer>
 #include "grabbable.h"
 
-
 Hook::Hook(int strength)
 {
     this->strength = strength;
+    this->name = "hook";
     this->throwTimer = new QTimer();
     this->thrown = false;
     this->grabbingItem = false;
     this->grabbedItem = NULL;
-    this->rope = new QGraphicsLineItem(this->x()+15,this->y()+70,this->x()+15,this->y()+70);
+
     QPen pen(Qt::black);
     pen.setWidth(3);
+    this->rope = new QGraphicsLineItem(this->x()+15,this->y()+70,this->x()+15,this->y()+70);
     this->rope->setPen(pen);
 
     this->head = new QGraphicsPixmapItem(QPixmap(":/Project435/images/hook.png").scaledToHeight(40));

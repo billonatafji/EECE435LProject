@@ -19,6 +19,7 @@ public:
     CleanlinessMeter* cleanlinessMeter;
     Pause* pause;
     QGraphicsPixmapItem* hearts[3];
+    QGraphicsPixmapItem* bombs[3];
     QGraphicsTextItem* timeLabel;
     QGraphicsTextItem* levelLabel;
     QGraphicsTextItem* scoreLabel;
@@ -34,12 +35,12 @@ public:
     int currentBacteriaCountInScene;
     bool paused;
 
-
     void SetCleanliness(int val);
     void SetImmunity(int val);
     void SetScore(int val);
     void SetTime(int val);
     void RemoveLife();
+    void RemoveBomb();
 
     void AddCleanlMeter(int x, int y);
     void AddChart(int x, int y, int width, int height, int startAngle, int spanAngle, QColor color);
@@ -50,6 +51,7 @@ public:
     void AddScore(int x, int y);
     void AddNeedle(int x, int y);
     void AddBaby(int x, int y);
+    void AddBombs(int x, int y);
 
     void Render();
 

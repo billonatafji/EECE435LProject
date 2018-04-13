@@ -1,6 +1,7 @@
 #include "gamemenu.h"
 #include "ui_gamemenu.h"
 #include "game1scene.h"
+#include "game2scene.h"
 #include "gameview.h"
 #include "game.h"
 #include "error.h"
@@ -30,7 +31,6 @@ void Gamemenu::on_descriptionButton_clicked()
 
 void Gamemenu::on_resumeGameButton_clicked()
 {
-    //Scores::AddScore(this->user->Username,QString::number(rand() % 10), this->Game);
     if(this->Game == Game1::name){
 
         Header* header = User::ResumeGameForUser(this->Game,this->user->Username);
@@ -46,7 +46,21 @@ void Gamemenu::on_resumeGameButton_clicked()
             err.setModal(true);
             err.exec();
         }
+    }else if(this->Game == Game2::name){
 
+        Header* header = User::ResumeGameForUser(this->Game,this->user->Username);
+        if(!header->paused){
+            GameView* gameView = new GameView();
+            Game2Scene* scene1 = new Game2Scene(gameView, Game::Resume,this->user->Username, 0, header, false);
+            gameView->setScene(scene1);
+            gameView->setModal(true);
+            gameView->exec();
+            this->close();
+        }else{
+            Error err(QString("No Resumable Game Available"));
+            err.setModal(true);
+            err.exec();
+        }
     }
 
 }

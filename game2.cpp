@@ -10,6 +10,14 @@ Game2::Game2(QWidget *parent, User* user) :
     ui->setupUi(this);
     this->user = user;
     this->gameView = new GameView();
+
+//    int userLevel = User::GetUserLevel(Game2::name,this->user->Username);
+//    if(userLevel<2){
+//        ui->mediumRadioButton->setEnabled(false);
+//    }
+//    if(userLevel<3){
+//        ui->hardRadioButton->setEnabled(false);
+//    }
 }
 
 Game2::~Game2()

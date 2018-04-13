@@ -13,15 +13,16 @@ public:
     explicit Weapon(QObject *parent = nullptr);
     QGraphicsPixmapItem* head;
     QGraphicsLineItem* rope;
+    QGraphicsItem* grabbedItem;
     QTimer* throwTimer;
     QTimer* prepareTimer;
+    QString name;
     bool thrown;
     bool grabbingItem;
     bool ready;
-    QGraphicsItem* grabbedItem;
     int step;
     int strength;
-    int requiredScore;
+
 
 signals:
 

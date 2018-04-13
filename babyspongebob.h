@@ -8,11 +8,11 @@ class BabySpongeBob : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit BabySpongeBob(QObject *parent = nullptr);
+    explicit BabySpongeBob(int healthyItemsFed = 0, QObject *parent = nullptr);
 
     QTimer* timer;
 
-    int healthItemsFed;
+    int healthyItemsFed;
 
 signals:
 

@@ -23,5 +23,7 @@
         <file>images/huItem02.png</file>
         <file>images/huItem01.png</file>
         <file>images/background2.jpg</file>
+        <file>resources/beep-03.mp3</file>
+        <file>resources/background.mp3</file>
     </qresource>
 </RCC>

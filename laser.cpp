@@ -11,6 +11,7 @@
 Laser::Laser(int strength)
 {
     this->strength = strength;
+    this->name = "laser";
     this->throwTimer = new QTimer();
     this->thrown = false;
     this->grabbingItem = false;

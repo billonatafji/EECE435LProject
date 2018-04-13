@@ -1,4 +1,6 @@
 #include "user.h"
+#include "game1.h"
+#include "game2.h"
 
 User::User(){
 
@@ -75,7 +77,12 @@ QJsonObject User::UserToJson(User user){
     stateObject["cleanliness"] = 0;
     stateObject["time"] = 0;
     stateObject["completed"] = true;
-
+    stateObject["translation"] = 0;
+    stateObject["weapon"] = "";
+    stateObject["bombs"] = 0;
+    stateObject["requiredBombScore"] = 0;
+    stateObject["weaponStrength"] = 0;
+    stateObject["healthyItemsFed"] = 0;
 
     QJsonObject gameObject;
     gameObject["Scores"] = "";
@@ -132,6 +139,16 @@ void User::PauseGameForUser(Header* header, bool completed){
         stateObject["cleanliness"] = header->player->cleanliness;
         stateObject["time"] = (int)header->time;
         stateObject["completed"] = completed;
+
+        if(header->game == Game2::name){
+            stateObject["translation"] = header->player->translation;
+            stateObject["bombs"] = header->player->bombs;
+            stateObject["requiredBombScore"] = header->player->requiredBombScore;
+            stateObject["weapon"] = header->player->weapon->name;
+            stateObject["weaponStrength"] = header->player->weapon->strength;
+            stateObject["healthyItemsFed"] = header->baby->healthyItemsFed;
+        }
+
 
         userGameObject["State"] = stateObject;
         userObject[header->game] = userGameObject;

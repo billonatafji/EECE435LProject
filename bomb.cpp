@@ -10,6 +10,7 @@
 Bomb::Bomb(int strength)
 {
     this->strength = strength;
+    this->name = "bomb";
     this->ready = false;
     this->step = 0;
     this->prepareTimer = new QTimer();

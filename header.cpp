@@ -16,19 +16,33 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
     this->time = time;
     this->currentBacteriaCountInScene=0;
 
-    AddCleanlMeter(0,10);
-    AddPause(450,0);
-    AddTime(500,10);
-    AddHearts(725,0);
-    AddLevel(800,0);
-    AddScore(800,20);
-    AddChart(875,0,100,100,0*16,180*16/3,Qt::green);
-    AddChart(875,0,100,100,60*16,180*16/3,Qt::yellow);
-    AddChart(875,0,100,100,120*16,180*16/3,Qt::red);
-    AddNeedle(925,50);
-    if(this->game == Game2::name){
+    if(this->game == Game1::name){
+
+        AddCleanlMeter(0,10);
+        AddHearts(750,10);
+        AddChart(875,0,100,100,0*16,180*16/3,Qt::green);
+        AddChart(875,0,100,100,60*16,180*16/3,Qt::yellow);
+        AddChart(875,0,100,100,120*16,180*16/3,Qt::red);
+        AddNeedle(925,50);
+
+    }else{
+
+        AddChart(40,0,100,100,0*16,180*16/3,Qt::green);
+        AddChart(40,0,100,100,60*16,180*16/3,Qt::yellow);
+        AddChart(40,0,100,100,120*16,180*16/3,Qt::red);
+        AddNeedle(90,50);
+        AddBombs(250,10);
+
+        AddHearts(680,10);
+        AddCleanlMeter(750,10);
         AddBaby(700,70);
+
     }
+
+    AddLevel(380,10);
+    AddPause(450,0);
+    AddTime(452,40);
+    AddScore(510,10);
 
     this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
@@ -63,15 +77,15 @@ void Header::SetCleanliness(int val)
 
             }
         }else if(this->game == Game2::name){
-            if(this->baby->healthItemsFed + val > 100){
-                this->baby->healthItemsFed = 100;
+            if(this->baby->healthyItemsFed + val > 100){
+                this->baby->healthyItemsFed = 100;
             }else{
-                this->baby->healthItemsFed += val;
+                this->baby->healthyItemsFed += val;
 
             }
             Render();
 
-            if(this->baby->healthItemsFed == 100){
+            if(this->baby->healthyItemsFed == 100){
                 this->paused = true;
                 ((Game2Scene*)this->scene())->WonGame();
             }
@@ -124,10 +138,10 @@ void Header::AddCleanlMeter(int x, int y)
 {
     QGraphicsTextItem* cleanlinessLabel = new QGraphicsTextItem();
     cleanlinessLabel->setPlainText(QString(this->game == Game1::name ? "Cleanliness" : "Baby's Health"));
-    cleanlinessLabel->setPos(x,y);
+    cleanlinessLabel->setPos(x+50,y+30);
     this->addToGroup(cleanlinessLabel);
     this->cleanlinessMeter = new CleanlinessMeter();
-    cleanlinessMeter->setPos(x+100,y);
+    cleanlinessMeter->setPos(x,y);
     this->addToGroup(cleanlinessMeter);
 }
 
@@ -146,11 +160,20 @@ void Header::AddChart(int x, int y, int width, int height, int startAngle, int s
 
 void Header::AddHearts(int x, int y){
     for(int i= 0; i<this->player->lives;i++){
-        this->hearts[i] = new QGraphicsPixmapItem(QPixmap(":/Project435/images/heart.png").scaledToHeight(50));
-        this->hearts[i]->setPos(x-i*50,y);
+        this->hearts[i] = new QGraphicsPixmapItem(QPixmap(":/Project435/images/heart.png").scaledToHeight(40));
+        this->hearts[i]->setPos(x-i*40,y);
         this->addToGroup(this->hearts[i]);
     }
 }
+
+void Header::AddBombs(int x, int y){
+    for(int i= 0; i<this->player->bombs;i++){
+        this->bombs[i] = new QGraphicsPixmapItem(QPixmap(":/Project435/images/bomb.png").scaledToHeight(40));
+        this->bombs[i]->setPos(x-i*40,y);
+        this->addToGroup(this->bombs[i]);
+    }
+}
+
 
 void Header::AddTime(int x, int y){
     this->timeLabel = new QGraphicsTextItem();
@@ -190,7 +213,7 @@ void Header::AddNeedle(int x, int y){
 
 void Header::AddPause(int x, int y){
     this->pause = new Pause();
-    this->pause->setPixmap(QPixmap(":/Project435/images/pause.png").scaledToHeight(50));
+    this->pause->setPixmap(QPixmap(":/Project435/images/pause.png").scaledToHeight(40));
     this->pause->setPos(x,y);
     this->addToGroup(this->pause);
 }
@@ -204,7 +227,7 @@ void Header::AddBaby(int x, int y){
 
 void Header::Render(){
 
-    this->cleanlinessMeter->ProgressBar->setValue(this->game == Game1::name ? this->player->cleanliness : this->baby->healthItemsFed);
+    this->cleanlinessMeter->ProgressBar->setValue(this->game == Game1::name ? this->player->cleanliness : this->baby->healthyItemsFed);
     this->scoreLabel->setPlainText(QString("Score: ").append(QString::number(this->player->score)));
     this->timeLabel->setPlainText(QString::number(time/60) + QString(":") + QString::number(time%60));
 
@@ -215,7 +238,6 @@ void Header::Render(){
     }else{
         immunity = this->player->weapon->strength;
     }
-
 
     int x2 = this->needle->line().x1() - 30*cos(immunity*M_PI/(this->game == Game1::name ? 100.0 : 3)) ;
     int y2 = this->needle->line().y1() - 30*sin(immunity*M_PI/(this->game == Game1::name ? 100.0 : 3)) ;
@@ -239,6 +261,10 @@ void Header::RemoveLife(){
 
         }
     }
+}
+void Header::RemoveBomb(){
+    this->scene()->removeItem(this->bombs[--this->player->bombs]);
+    delete this->bombs[this->player->bombs];
 }
 
 void Header::CountDown(){
