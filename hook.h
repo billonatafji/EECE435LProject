@@ -7,7 +7,7 @@
 class Hook : public Weapon
 {
 public:
-    Hook();
+    Hook(int strength);
 
 signals:
 

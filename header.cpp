@@ -59,12 +59,16 @@ void Header::SetCleanliness(int val)
             Render();
             if(this->player->cleanliness == 100){
                 this->paused = true;
-
                 ((game1scene*)this->scene())->WonGame();
 
             }
         }else if(this->game == Game2::name){
-            this->baby->healthItemsFed += val;
+            if(this->baby->healthItemsFed + val > 100){
+                this->baby->healthItemsFed = 100;
+            }else{
+                this->baby->healthItemsFed += val;
+
+            }
             Render();
 
             if(this->baby->healthItemsFed == 100){
@@ -225,6 +229,7 @@ void Header::RemoveLife(){
         if(this->player->lives>0){
             this->scene()->removeItem(this->hearts[--this->player->lives]);
             delete this->hearts[this->player->lives];
+            this->SetScore(-pow(this->difficulty,2)*5);
         }else{
             if(dynamic_cast<game1scene *>(this->scene())){
                 dynamic_cast<game1scene *>(this->scene())->GameOver();

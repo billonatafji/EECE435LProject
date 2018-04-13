@@ -8,8 +8,9 @@
 #include "fungus.h"
 #include <QPointer>
 #include "grabbable.h"
-Laser::Laser()
+Laser::Laser(int strength)
 {
+    this->strength = strength;
     this->throwTimer = new QTimer();
     this->thrown = false;
     this->grabbingItem = false;
@@ -36,7 +37,6 @@ Laser::Laser()
 }
 
 void Laser::update(){
-    this->throwTimer->setInterval(1);
     this->rope->setLine(this->rope->line().x1(),this->rope->line().y1(),this->rope->line().x2(),this->rope->line().y2() + (this->thrown ? +3 : -3));
     if(this->rope->line().p1() == this->rope->line().p2()){
         this->throwTimer->stop();

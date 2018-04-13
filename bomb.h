@@ -5,7 +5,7 @@
 class Bomb: public Weapon
 {
 public:
-    Bomb();
+    Bomb(int strength);
 
 signals:
 

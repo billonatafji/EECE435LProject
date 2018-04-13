@@ -7,8 +7,9 @@
 #include "grabbable.h"
 
 
-Bomb::Bomb()
+Bomb::Bomb(int strength)
 {
+    this->strength = strength;
     this->ready = false;
     this->step = 0;
     this->prepareTimer = new QTimer();

@@ -43,22 +43,22 @@ void Grabbable::wasShot(Weapon* by){
     if(dynamic_cast<huItem*>(this)){
 
         if(dynamic_cast<Bomb*>(by)){
-            ((huItem*)this)->strength = 0;
+            this->strength = 0;
         }
         else{
-            ((huItem*)this)->strength -= this->strength;
+            this->strength -= by->strength;
         }
 
         if (((huItem*)this)->type==0 )
         {
-            if(((huItem*)this)->strength == 0){
-                this->header->SetScore(+3);
+            if(this->strength <= 0){
+                this->header->SetScore(+3*this->header->difficulty);
                 delete this;
             }
         }
         else
         {
-            this->header->SetScore(-3);
+            this->header->SetScore(-3* this->header->difficulty);
             delete this;
         }
     }
@@ -66,20 +66,20 @@ void Grabbable::wasShot(Weapon* by){
 
 
 void Grabbable::reachedBaby(){
+
     if(dynamic_cast<huItem*>(this)){
-        if(dynamic_cast<huItem*>(this)){
 
-            if (((huItem*)this)->type==0)
-            {
-                this->header->RemoveLife();
-            }
-            else
-            {
-                this->header->SetCleanliness(10);
-            }
-
+        if (((huItem*)this)->type==0)
+        {
+            this->header->RemoveLife();
         }
+        else
+        {
+            this->header->SetCleanliness(15/this->header->difficulty);
+        }
+
     }
+
 
     delete this;
 }

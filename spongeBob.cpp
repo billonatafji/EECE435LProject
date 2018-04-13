@@ -16,7 +16,7 @@
 #include "bomb.h"
 #include <QThread>
 
-SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent, int bombs) : QObject(parent)
+SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent, int bombs, int requiredBombScore) : QObject(parent)
 {
 
     this->cleanliness = cleanliness;
@@ -28,6 +28,7 @@ SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint
     this->game = game;
     this->translation = 0;
     this->bombs = bombs;
+    this->requiredBombScore = requiredBombScore;
 
     followTimer= new QTimer();
     connect(followTimer,SIGNAL(timeout()),this,SLOT(toggleFollow()));
@@ -120,32 +121,36 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
                     this->weapon->setPos(this->pos());
 
                     this->weapon->thrown = !this->weapon->thrown;
-                    this->weapon->throwTimer->start(10);
+                    this->weapon->throwTimer->start(10/(this->weapon->strength+1));
                     this->bombs -= 1;
-                    this->weapon = new Hook();
+                    int strength = this->weapon->strength;
+                    this->weapon = new Hook(strength);
                     this->weapon->setParentItem(this);
                 }
                 else{
                     this->weapon->thrown = !this->weapon->thrown;
-                    this->weapon->throwTimer->start(10);
+                    this->weapon->throwTimer->start(10/(this->weapon->strength+1));
                 }
             }
         }
         if(pressedKeys.contains(Qt::Key_Z)){
+
+            int strength = this->weapon->strength;
+
             if(dynamic_cast<Hook*>(this->weapon)){
                 delete this->weapon;
-                this->weapon = new Laser();
+                this->weapon = new Laser(strength);
             }else if(dynamic_cast<Laser*>(this->weapon)){
                 delete this->weapon;
-                if(this->score > 0 && this->bombs > 0){
-                    this->weapon = new Bomb();
+                if(this->score >= this->requiredBombScore && this->bombs > 0){
+                    this->weapon = new Bomb(strength);
                     this->weapon->setParentItem(this);
                 }else{
-                    this->weapon = new Hook();
+                    this->weapon = new Hook(strength);
                 }
             }else{
                 delete this->weapon;
-                this->weapon = new Hook();
+                this->weapon = new Hook(strength);
             }
             this->weapon->setParentItem(this);
         }

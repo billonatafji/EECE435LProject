@@ -11,16 +11,17 @@
 #include "game1.h"
 #include "game2.h"
 
-huItem::huItem(bool type,Header *header, QString game, QObject *parent, int strength) : QObject(parent)
+huItem::huItem(bool type,Header *header, QString game, QObject *parent, int strength, int interval) : QObject(parent)
 {
     this->grabbed = false;
     this->header = header;
     this->type = type;
     this->game = game;
     this->strength = strength;
+    this->interval = interval;
     QTimer *timer= new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(update()));
-    timer->start(50);
+    timer->start(this->interval);
 
 }
 

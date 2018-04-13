@@ -10,8 +10,9 @@
 #include "grabbable.h"
 
 
-Hook::Hook()
+Hook::Hook(int strength)
 {
+    this->strength = strength;
     this->throwTimer = new QTimer();
     this->thrown = false;
     this->grabbingItem = false;

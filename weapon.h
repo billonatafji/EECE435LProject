@@ -21,6 +21,7 @@ public:
     QGraphicsItem* grabbedItem;
     int step;
     int strength;
+    int requiredScore;
 
 signals:
 

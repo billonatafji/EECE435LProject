@@ -12,6 +12,7 @@ public:
 
     Header* header;///< pointer to the header
     int strength;
+    int interval;
     bool grabbed;
 
     void wasGrabbed();

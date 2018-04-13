@@ -18,7 +18,7 @@ class SpongeBob : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent = nullptr, int bombs = 0);///< constructor
+    explicit SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent = nullptr, int bombs = 0, int requiredBombScore = 0);///< constructor
     bool followme;///< followme attribute that specifies if the bacteria should follow spongebob or not
     QTimer *followTimer; ///< timer attribute that specifies the timer
     int cleanliness;     ///< cleanliness of the tank
@@ -30,6 +30,7 @@ public:
     QString game;
     int translation;
     int bombs;
+    int requiredBombScore;
 
 
     ~SpongeBob();

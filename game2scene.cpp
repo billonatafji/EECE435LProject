@@ -41,7 +41,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
         QGraphicsTextItem* gameOverLabel = new QGraphicsTextItem();
 
-        gameOverLabel->setHtml("<h1>GAME OVER</h1>");
+        gameOverLabel->setHtml(this->header->time == 0 ? "<h1>Time's Up</h1>" : "<h1>Game Over</h1>");
         gameOverLabel->setPos(400,200);
 
         this->addItem(gameOverLabel);
@@ -92,8 +92,8 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,1,3,0,QPoint(460,280), Game2::name, nullptr, ceil(3/difficulty));
-        this->header = new Header(player, difficulty, username, Game2::name, false, 120);
+        SpongeBob* player = new SpongeBob(0,1,3,0,QPoint(460,280), Game2::name, nullptr, ceil(3/difficulty),15*difficulty);
+        this->header = new Header(player, difficulty, username, Game2::name, false, 120/difficulty);
 
 
     }else if(gameMode == Game::Resume){
@@ -107,7 +107,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
     this->header->player->installEventFilter(this);
     this->addItem(this->header->player);
 
-    Laser* weapon = new Laser();
+    Laser* weapon = new Laser(0);
     weapon->setParentItem(this->header->player);
 
     this->addItem(weapon);
@@ -119,34 +119,21 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
     this->addItemToQueueTimer = new QTimer();
     connect(this->addItemToQueueTimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
-    this->addItemToQueueTimer->start(3000);
+    this->addItemToQueueTimer->start(3000/this->header->difficulty);
 
 }
 
 
-/**
- * @brief Game2Scene::addhuItems
- *
- * creates new huItems with a random direction and starting position
- */
 void Game2Scene::addhuItems()
 {
-    /**
-     * a random number is first choosen between 0 and 20
-     * a huItem instance is created
-     * if the random number is less than 2, the direction is set from left to right
-     * else it is set from right to left
-     *
-     * the position is calculated by tho following equation : 50 + randomnumber *100
-     * so the results can be: 50, 150, 250, 350
-     */
-    int randXPos =(rand() % 20);
+
     bool randType =(rand() % 100)>(this->header->difficulty)*25;
+    randType = rand()%4 >= this->header->difficulty;
     int randPic =(rand() % 4)+1;
     huItem *huItem1;
     std::string path = ":/Project435/images/huItem"+std::to_string(randType)+ std::to_string(randPic)+".png";//first number (0 or1) is for type of item (1 is healthy and 0 is unhealthy) the second is for the picture to display
 
-    huItem1= new huItem(randType,this->header, Game2::name, nullptr, this->header->difficulty);
+    huItem1= new huItem(randType,this->header, Game2::name, nullptr, this->header->difficulty, 50/this->header->difficulty);
     huItem1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45));
     huItem1->setPos(225,50);
 
@@ -157,7 +144,7 @@ void Game2Scene::addhuItems()
 void Game2Scene::GameOver(){
     this->header->paused = true;
     User::PauseGameForUser(this->header,true);
-    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name);
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name,nullptr,this->header->player->bombs,this->header->player->requiredBombScore);
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     Game2Scene* newScene = new Game2Scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
@@ -178,7 +165,7 @@ void Game2Scene::WonGame(){
         Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game2::name);
         User::PauseGameForUser(this->header,true);
     }
-    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name);
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name,nullptr,this->header->player->bombs,this->header->player->requiredBombScore);
     Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
     Game2Scene* newScene = new Game2Scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
     this->gameView->setScene(newScene);
@@ -191,14 +178,14 @@ void Game2Scene::PauseGame(){
         if(this->header->username != ""){
             User::PauseGameForUser(this->header, false);
         }
-        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name);
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name,nullptr,this->header->player->bombs,this->header->player->requiredBombScore);
         Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
         Game2Scene* newScene = new Game2Scene(this->gameView,Game::Pause,newheader->username,newheader->difficulty,newheader, true);
         this->gameView->setScene(newScene);
         this->deleteLater();
     }else{
 
-        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name);
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name,nullptr,this->header->player->bombs,this->header->player->requiredBombScore);
         Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
         Game2Scene* newScene = new Game2Scene(this->gameView,Game::Resume,newheader->username,newheader->difficulty,newheader, false);
         this->gameView->setScene(newScene);

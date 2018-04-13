@@ -7,7 +7,7 @@
 class Laser: public Weapon
 {
 public:
-    Laser();
+    Laser(int strength);
 
 signals:
 
