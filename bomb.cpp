@@ -22,7 +22,7 @@ Bomb::Bomb(int strength)
     connect(this->throwTimer,SIGNAL(timeout()),this,SLOT(update()));
     this->addToGroup(this->head);
 
-    this->prepareTimer->start(500*(this->strength+1));
+    this->prepareTimer->start(500*(4-this->strength));
 }
 void Bomb::update(){
 

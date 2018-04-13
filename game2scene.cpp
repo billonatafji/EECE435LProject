@@ -92,7 +92,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,1,3,0,QPoint(460,280), Game2::name, nullptr, ceil(3/difficulty),15*difficulty);
+        SpongeBob* player = new SpongeBob(0,1,3,0,QPoint(460,280), Game2::name, nullptr, 4-difficulty,15*difficulty);
         this->header = new Header(player, difficulty, username, Game2::name, false, 120/difficulty);
         Laser* weapon = new Laser(0);
         this->header->player->weapon = weapon;
