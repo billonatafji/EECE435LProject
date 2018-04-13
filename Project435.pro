@@ -110,3 +110,5 @@ SUBDIRS += \
 RESOURCES += \
     resources.qrc
 
+OBJECTS_DIR=generated_files #Intermediate object files directory
+MOC_DIR=generated_files #Intermediate moc files directory
