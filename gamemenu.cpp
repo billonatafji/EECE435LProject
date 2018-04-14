@@ -1,3 +1,11 @@
+/**
+* \file gamemenu.cpp
+* \brief Gamemenu class definition
+*
+* a Gamemenu is where the user can enter the games, or check his highscore and game descriptiond
+*\author Bilal Natafgi
+*\date 20-2-2018
+*/
 #include "gamemenu.h"
 #include "ui_gamemenu.h"
 #include "game1scene.h"
@@ -16,12 +24,12 @@ Gamemenu::Gamemenu(QWidget *parent, QString game, User* user) :
     ui->highestScoreLabel->setText(QString("<h4>Highest Score <br /><br /> %1</h4>").arg(Scores::GetHighestScore(this->Game)));
     ui->gameLabel->setText(QString("<h1>%1</h1>").arg(this->Game));
 }
-
+/// destructor
 Gamemenu::~Gamemenu()
 {
     delete ui;
 }
-
+/// display description of the game
 void Gamemenu::on_descriptionButton_clicked()
 {
     Description description(NULL,this->Game);
@@ -29,6 +37,7 @@ void Gamemenu::on_descriptionButton_clicked()
     description.exec();
 }
 
+/// trying to resume a previously saved game
 void Gamemenu::on_resumeGameButton_clicked()
 {
     if(this->Game == Game1::name){
@@ -36,7 +45,7 @@ void Gamemenu::on_resumeGameButton_clicked()
         Header* header = User::ResumeGameForUser(this->Game,this->user->Username);
         if(!header->paused){
             GameView* gameView = new GameView();
-            game1scene* scene1 = new game1scene(gameView, Game::Resume,this->user->Username, 0, header, false);
+            game1scene* scene1 = new game1scene(gameView, Game::Resume,this->user->Username, 0, header, false);///< creating a new game scene with the metrics of the paused game
             gameView->setScene(scene1);
             gameView->setModal(true);
             gameView->exec();
@@ -51,7 +60,7 @@ void Gamemenu::on_resumeGameButton_clicked()
         Header* header = User::ResumeGameForUser(this->Game,this->user->Username);
         if(!header->paused){
             GameView* gameView = new GameView();
-            Game2Scene* scene1 = new Game2Scene(gameView, Game::Resume,this->user->Username, 0, header, false);
+            Game2Scene* scene1 = new Game2Scene(gameView, Game::Resume,this->user->Username, 0, header, false);///< creating a new game scene with the metrics of the paused game
             gameView->setScene(scene1);
             gameView->setModal(true);
             gameView->exec();
@@ -64,7 +73,7 @@ void Gamemenu::on_resumeGameButton_clicked()
     }
 
 }
-
+/// new game
 void Gamemenu::on_newGameButton_clicked()
 {
     if(this->Game == Game1::name){
@@ -78,7 +87,7 @@ void Gamemenu::on_newGameButton_clicked()
     }
 
 }
-
+/// return to previous page
 void Gamemenu::on_backButton_clicked()
 {
     this->close();

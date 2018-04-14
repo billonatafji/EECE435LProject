@@ -15,10 +15,10 @@
 #include "hook.h"
 #include "bomb.h"
 #include "game2scene.h"
-
+/// constructor
 SpongeBob::SpongeBob(int cleanliness, int immunity, int lives, int score, QPoint pos, QString game,QObject *parent, int bombs, int requiredBombScore, int translation, QString weapon, int weaponStrength) : QObject(parent)
 {
-
+    /// setting up attributes of spongebob
     this->cleanliness = cleanliness;
     this->immunity = immunity;
     this->lives = lives;
@@ -86,6 +86,7 @@ void SpongeBob::toggleFollow()
  */
 void SpongeBob::keyPressEvent(QKeyEvent *event)
 {
+    /// game 1 movement
     if(this->game == Game1::name){
         pressedKeys += ((QKeyEvent*)event)->key();
 
@@ -106,7 +107,7 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
             this->setPos(this->pos().x()+10,this->pos().y());
         }
         this->currentPos = QPoint(this->pos().x(),this->pos().y());
-
+    //// game 2 movement and interactions
     }else if(this->game == Game2::name){
 
         pressedKeys += ((QKeyEvent*)event)->key();
@@ -121,6 +122,7 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
             this->setTransformOriginPoint(50,50);
             this->setRotation(this->translation);
         }
+        /// the x key fires the weapon
         if(pressedKeys.contains(Qt::Key_X)){
             if(this->weapon->ready){
                 if(dynamic_cast<Bomb*>(this->weapon)){
@@ -142,6 +144,7 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
                 }
             }
         }
+        /// the  z key changes the weapon
         if(pressedKeys.contains(Qt::Key_Z)){
 
             int strength = this->weapon->strength;
@@ -151,6 +154,7 @@ void SpongeBob::keyPressEvent(QKeyEvent *event)
                 this->weapon = new Laser(strength);
             }else if(dynamic_cast<Laser*>(this->weapon)){
                 delete this->weapon;
+                /// if the player has the required score and has bombs
                 if(this->score >= this->requiredBombScore && this->bombs > 0){
                     this->weapon = new Bomb(strength);
                     this->weapon->setParentItem(this);

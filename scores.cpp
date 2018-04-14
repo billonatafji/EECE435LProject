@@ -1,10 +1,25 @@
+/**
+* \file scores.cpp
+* \brief scores class definition
+*
+* the scores class
+*\author Bilal natafgi
+*\date 26-2-2018
+*/
 #include "scores.h"
 
 Scores::Scores()
 {
 
 }
-
+/**
+ * @brief Scores::GetUserScores
+ * @param username
+ * @param game
+ * @return
+ *
+ * this function gets the scores of the user from a Json document
+ */
 QStringList Scores::GetUserScores(QString username, QString game){
 
     QFile file("Users.txt");
@@ -24,6 +39,15 @@ QStringList Scores::GetUserScores(QString username, QString game){
     }
     return QStringList{};
 }
+/**
+ * @brief Scores::AddScore
+ * @param username
+ * @param score
+ * @param game
+ * @return
+ *
+ * this function adds a score to the list of scores for a selected user in a selected game
+ */
 bool Scores::AddScore(QString username, QString score, QString game){
     QFile file("Users.txt");
 
@@ -67,6 +91,14 @@ bool Scores::AddScore(QString username, QString score, QString game){
     }
     return didWrite;
 }
+/**
+ * @brief Scores::GetHighestScore
+ * @param game
+ * @return
+ *
+ * this function gets the highest score in a given game from a Json Document
+ */
+
 QString Scores::GetHighestScore(QString game){
     QFile file("Users.txt");
 

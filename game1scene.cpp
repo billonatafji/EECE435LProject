@@ -49,6 +49,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
         return;
 
     }
+    /// player has won the game
     else if(gameMode == Game::Win){
 
         this->completed = true;
@@ -73,7 +74,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
         return;
     }
-
+    /// the game is being paused
     else if(gameMode == Game::Pause){
 
         this->header = header;
@@ -88,19 +89,19 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
         return;
 
     }
-
+    /// this is a new game
     else if(gameMode == Game::New){
 
         SpongeBob* player = new SpongeBob(0,50,3,0,QPoint(300,0), Game1::name);
         this->header = new Header(player, difficulty, username, Game1::name, false, 120);
 
-
+    /// this is a game that was paused and is now being resumed
     }else if(gameMode == Game::Resume){
 
         this->header = header;
 
     }
-
+    /// setting all atributes as they were previously
     this->header->player->setFlag(QGraphicsItem::ItemIsFocusable);
     this->header->player->setFocus();
     this->header->player->setPos(this->header->player->currentPos);
@@ -188,7 +189,7 @@ void game1scene::addhuItems()
 void game1scene::addbacteria()
 {
 
-    int addableAmmount=(100- this->header->player->cleanliness) - this->header->currentBacteriaCountInScene;
+    int addableAmmount=(100- this->header->player->cleanliness) - this->header->currentBacteriaCountInScene; ///< this variable is used to store the power of the bacteria that can still be added to the scene.d
     if (addableAmmount>0)
     {
         int direction=(rand() % 2);

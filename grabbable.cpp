@@ -1,3 +1,11 @@
+/**
+* \file grabbable.cpp
+* \brief Grabbable class definition
+*
+* the grabbable class is excited when an item collides with a weapon or a hook
+*\author Bilal Natafgi
+*\date 20-2-2018
+*/
 #include "grabbable.h"
 #include "huItem.h"
 #include "bomb.h"
@@ -25,6 +33,7 @@ void Grabbable::wasGrabbed(){
             {
                 item->weapon->grabbedItem = nullptr;
                 this->scene()->removeItem(this);
+                /// adding or subtracting time and immunity based on the type of the grabbed item
                 if (((huItem*)this)->type==1)
                 {
                     this->header->SetImmunity(+1);
@@ -42,7 +51,7 @@ void Grabbable::wasGrabbed(){
     }
     this-> setPos(this->x(), this->y()+10);
 }
-
+/// excited when an item is shot ( laser or bomb)
 void Grabbable::wasShot(Weapon* by){
 
     if(dynamic_cast<huItem*>(this)){

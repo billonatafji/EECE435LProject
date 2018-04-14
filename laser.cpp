@@ -1,3 +1,12 @@
+/**
+* \file Laser.cpp
+* \brief Laser class definition
+*
+* a Laser is an object in the game that is fired on the huitems
+*\author Bilal natafgi
+*\date 12-4-2018
+*/
+
 #include "laser.h"
 #include <QPen>
 #include "spongeBob.h"
@@ -8,6 +17,7 @@
 #include "fungus.h"
 #include <QPointer>
 #include "grabbable.h"
+///constructor
 Laser::Laser(int strength)
 {
     this->strength = strength;
@@ -36,7 +46,11 @@ Laser::Laser(int strength)
     this->ready = true;
 
 }
-
+/**
+ * @brief Laser::update
+ * this function updates the length of the laser while shooting for a better user experience.
+ * It also checks for collisions and acts accordingly by calling other functions.
+ */
 void Laser::update(){
     this->rope->setLine(this->rope->line().x1(),this->rope->line().y1(),this->rope->line().x2(),this->rope->line().y2() + (this->thrown ? +4 : -4));
     if(this->rope->line().p1() == this->rope->line().p2()){
@@ -48,13 +62,14 @@ void Laser::update(){
     QList<QGraphicsItem *> collidelist = this->scene()->collidingItems(this->rope);
     foreach(QGraphicsItem * i , collidelist)
     {
+        /// check if there is a collison with a grabbable item (huitem)
         if (Grabbable* item = dynamic_cast<Grabbable *>(i) )
         {
 
-            this->throwTimer->stop();
+            this->throwTimer->stop();///< stop elongating the laser
             this->rope->setLine(QLineF( this->rope->line().p1(),this->rope->line().p1()));
             this->thrown = false;
-            item->wasShot(this);
+            item->wasShot(this);///< calling the wasshot function for updating metrics and removing the item from the scene
         }
     }
 }

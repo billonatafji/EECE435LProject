@@ -15,15 +15,14 @@
         <file>images/background.jpg</file>
         <file>images/baby.png</file>
         <file>images/huItem14.png</file>
-        <file>images/huItem13.png</file>
         <file>images/huItem12.png</file>
         <file>images/huItem11.png</file>
         <file>images/huItem04.png</file>
         <file>images/huItem03.png</file>
         <file>images/huItem02.png</file>
-        <file>images/huItem01.png</file>
         <file>images/background2.jpg</file>
         <file>resources/beep-03.mp3</file>
         <file>resources/background.mp3</file>
+        <file>images/huItem01.png</file>
     </qresource>
 </RCC>

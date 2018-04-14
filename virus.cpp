@@ -43,12 +43,14 @@ virus::virus( int direction, int directionY, int Xvelocity, int Yvelocity, int f
 void virus::update()
 {
     if(this->game == Game1::name){
+        /// wave movement
         this->setPos(this->x()+ direction * Xvelocity, this->y()+ directionY *Yvelocity);
 
         if (y() < centerline-foobar)
             directionY=1;
         else if (y() >centerline+foobar)
             directionY=-1;
+        //// if the virus gets out of the screen
         if (this->pos().x()<0 ||this->pos().x()>1000 )
         {
             this->scene()->removeItem(this);
@@ -64,9 +66,9 @@ void virus::update()
                     SpongeBob * item= dynamic_cast<SpongeBob *>(i);
                     if (item)
                     {
-                        item->followme=true;
-                        item->followTimer->start(5000);
-                        this->scene()->removeItem(this);
+                        item->followme=true; ///< toggling the follow me button
+                        item->followTimer->start(5000); ///< starting the follow timer
+                        this->scene()->removeItem(this);///< removing the virus from the scene
                         delete this;
                     }
                 }

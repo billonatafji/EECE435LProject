@@ -1,3 +1,13 @@
+/**
+* \file header.cpp
+* \brief Header class definition
+*
+* the Header contains most of the metrics in the game.
+* it  contains the difficulty of the game, the username of the player, the timer, the cleanliness of the tank in game one, and henumber of healthy items fed to the baby in game 2.
+*the header contains all items that are located at the top of the game scene.
+*\author Bilal Natafgi
+*\date 20-2-2018
+*/
 #include "header.h"
 #include "user.h"
 #include "game1scene.h"
@@ -8,17 +18,18 @@
 
 Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time, int healthyItemsFed)
 {
+    /// setting metrics
     this->player = player;
     this->difficulty = difficulty;
     this->username = username;
     this->game = game;
     this->paused = paused;
     this->time = time;
-     this->counter = 0;
+    this->counter = 0;
     this->currentBacteriaCountInScene=0;
 
+    /// setting graphics
     if(this->game == Game1::name){
-
         AddCleanlMeter(20,10);
         AddHearts(750,10);
         AddChart(875,0,100,100,0*16,180*16/3,Qt::green);
@@ -167,7 +178,13 @@ void Header::AddHearts(int x, int y){
         this->addToGroup(this->hearts[i]);
     }
 }
-
+/**
+ * @brief Header::AddBombs
+ * @param x
+ * @param y
+ *
+ * this function adds bombs to the header of the game scene
+ */
 void Header::AddBombs(int x, int y){
     for(int i= 0; i<this->player->bombs;i++){
         this->bombs[i] = new QGraphicsPixmapItem(QPixmap(":/Project435/images/bomb.png").scaledToHeight(40));
@@ -203,7 +220,14 @@ void Header::AddScore(int x, int y){
     this->scoreLabel->setPos(x, y);
     this->addToGroup(this->scoreLabel);
 }
-
+/**
+ * @brief Header::AddNeedle
+ * @param x
+ * @param y
+ *
+ * this function adds the needle to the chart in the header of the game.
+ * the needle acts as an indicator to the strength of the player
+ */
 void Header::AddNeedle(int x, int y){
     this->needle = new  QGraphicsLineItem(x,y,x,y);
     QPen pen(Qt::black);
@@ -231,12 +255,20 @@ void Header::AddBaby(int x, int y, int healthyItemsFed ){
     this->baby->setParentItem(this);
     this->addToGroup(this->baby);
 }
-
+/**
+ * @brief Header::Render
+ *this is  the main function for the visual representation of the updates of the metrics.
+ *
+ * it is called when an update to a metric occures, and it updates accordingly the visual representation of the metrics in the header
+ */
 void Header::Render(){
 
     this->cleanlinessMeter->ProgressBar->setValue(this->game == Game1::name ? this->player->cleanliness : this->baby->healthyItemsFed);
     this->scoreLabel->setPlainText(QString("Score: ").append(QString::number(this->player->score)));
-    this->timeLabel->setPlainText(QString::number(time/60) + QString(":") + QString::number(time%60));
+    if (time%60 <10)
+        this->timeLabel->setPlainText(QString::number(time/60) + QString(":") + "0"+QString::number(time%60));
+    else
+        this->timeLabel->setPlainText(QString::number(time/60) + QString(":")+QString::number(time%60));
 
     int immunity= 0;
     if(this->game == Game1::name){
@@ -305,7 +337,7 @@ void Header::SetScore(int val){
         this->player->score += val;
     }
     counter = 0;
-    this->scoreCalculationLabel->setHtml(QString("<h2>").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));
+    this->scoreCalculationLabel->setHtml(QString("<h2>").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));///< this visually illustrates adding the score.
 
     Render();
 }

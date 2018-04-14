@@ -1,3 +1,12 @@
+/**
+* \file User.cpp
+* \brief User class definition
+*
+* this class contains all user information
+*\author Bilal Natafgi
+*\date 20-2-2018
+*/
+
 #include "user.h"
 #include "game1.h"
 #include "game2.h"
@@ -10,6 +19,7 @@ User::User(){
 }
 User::User(QString username, QString password, QString firstName, QString lastName, QString dateOfBirth, QString gender, QImage profilePicture)
 {
+    /// setting attributes
     this->Username = username;
     this->Password = password;
     this->FirstName = firstName;
@@ -20,6 +30,13 @@ User::User(QString username, QString password, QString firstName, QString lastNa
 
 }
 
+/**
+ * @brief User::AddUser
+ * @param user
+ * @return
+ *
+ * this function adds a new user and saves the records to the json file
+ */
 bool User::AddUser(User user){
 
     QFile file("Users.txt");
@@ -52,6 +69,15 @@ bool User::AddUser(User user){
     }
     return didWrite;
 }
+
+/**
+ * @brief User::GetUser
+ * @param username
+ * @param password
+ * @return
+ *
+ * this function searches for a user based on a username and a password
+ */
 User* User::GetUser(QString username, QString password){
 
     QFile file("Users.txt");
@@ -67,6 +93,13 @@ User* User::GetUser(QString username, QString password){
     }
     return new User();
 }
+/**
+ * @brief User::UserToJson
+ * @param user
+ * @return
+ *
+ * this function takes an instance of a user and converts its attributes to a json object
+ */
 QJsonObject User::UserToJson(User user){
 
     QJsonObject stateObject;
@@ -110,6 +143,14 @@ QJsonObject User::UserToJson(User user){
     return userObject;
 }
 
+/**
+ * @brief User::JsonToUser
+ * @param object
+ * @param username
+ * @return
+ *
+ * this function takes a json object and parses it to an user object
+ */
 User* User::JsonToUser(QJsonObject object, QString username){
 
     QPixmap pixMap;

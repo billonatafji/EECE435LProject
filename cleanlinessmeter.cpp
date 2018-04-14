@@ -2,7 +2,7 @@
 * \file CleanlinessMeter.cpp
 * \brief CleanlinessMeter class definition
 *
-*  TODO
+*  this class creates a meter for the cleanliness of the tank.
 *\author Bilal Natafgi
 *\date 21-3-2018
 */

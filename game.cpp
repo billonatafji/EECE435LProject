@@ -2,7 +2,7 @@
 * \file Game.cpp
 * \brief Game class definition
 *
-*  the class game is used to select the difficulty of the game
+*  the class game is used to select the difficulty of the game based on the user preferences
 *\author Bilal Natafgi
 *\date 21-2-2018
 */

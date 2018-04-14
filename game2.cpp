@@ -27,7 +27,7 @@ Game2::Game2(QWidget *parent, User* user) :
 //        ui->hardRadioButton->setEnabled(false);
 //    }
 }
-
+/// destructor
 Game2::~Game2()
 {
     delete ui;
