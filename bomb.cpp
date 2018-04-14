@@ -49,6 +49,7 @@ void Bomb::update(){
                     this->grabbingItem = true;
                     item->wasShot(this);
                     this->thrown = false;
+                    this->step -=100*this->strength;
                 }
 
             }
