@@ -92,7 +92,7 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
 
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,1,3,0,QPoint(460,280), Game2::name, nullptr, ceil(3/difficulty),15*difficulty);
+        SpongeBob* player = new SpongeBob(0,1,3,0,QPoint(460,280), Game2::name, nullptr, 4-difficulty,15*difficulty);
         this->header = new Header(player, difficulty, username, Game2::name, false, 120/difficulty);
         Laser* weapon = new Laser(0);
         this->header->player->weapon = weapon;
@@ -144,11 +144,39 @@ void Game2Scene::addhuItems()
 }
 
 void Game2Scene::GameOver(){
+
     this->header->paused = true;
-    User::PauseGameForUser(this->header,true);
-    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name,nullptr,this->header->player->bombs,this->header->player->requiredBombScore);
-    Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
-    Game2Scene* newScene = new Game2Scene(this->gameView,Game::Over,newheader->username,newheader->difficulty,newheader);
+
+    if(this->header->username != ""){
+        User::PauseGameForUser(this->header,true);
+    }
+
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,
+                                         this->header->player->immunity,
+                                         this->header->player->lives,
+                                         this->header->player->score,
+                                         this->header->player->currentPos,
+                                         Game2::name,
+                                         nullptr,
+                                         this->header->player->bombs,
+                                         this->header->player->requiredBombScore,
+                                         this->header->player->translation,
+                                         this->header->player->weapon->name,
+                                         this->header->player->weapon->strength);
+
+    Header* newheader = new Header(newPlayer,
+                                   this->header->difficulty,
+                                   this->header->username,
+                                   this->header->game,
+                                   this->header->paused,
+                                   this->header->time,
+                                   this->header->baby->healthyItemsFed);
+    Game2Scene* newScene = new Game2Scene(this->gameView,
+                                          Game::Over,
+                                          newheader->username,
+                                          newheader->difficulty,
+                                          newheader);
+
     this->gameView->setScene(newScene);
     this->deleteLater();
 }
@@ -167,9 +195,33 @@ void Game2Scene::WonGame(){
         Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game2::name);
         User::PauseGameForUser(this->header,true);
     }
-    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name,nullptr,this->header->player->bombs,this->header->player->requiredBombScore);
-    Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
-    Game2Scene* newScene = new Game2Scene(this->gameView,Game::Win,newheader->username,newheader->difficulty,newheader);
+    SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,
+                                         this->header->player->immunity,
+                                         this->header->player->lives,
+                                         this->header->player->score,
+                                         this->header->player->currentPos,
+                                         Game2::name,
+                                         nullptr,
+                                         this->header->player->bombs,
+                                         this->header->player->requiredBombScore,
+                                         this->header->player->translation,
+                                         this->header->player->weapon->name,
+                                         this->header->player->weapon->strength);
+
+    Header* newheader = new Header(newPlayer,
+                                   this->header->difficulty,
+                                   this->header->username,
+                                   this->header->game,
+                                   this->header->paused,
+                                   this->header->time,
+                                   this->header->baby->healthyItemsFed);
+
+    Game2Scene* newScene = new Game2Scene(this->gameView,
+                                          Game::Win,
+                                          newheader->username,
+                                          newheader->difficulty,
+                                          newheader);
+
     this->gameView->setScene(newScene);
     this->deleteLater();
 }
@@ -180,14 +232,66 @@ void Game2Scene::PauseGame(){
         if(this->header->username != ""){
             User::PauseGameForUser(this->header, false);
         }
-        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,this->header->player->immunity,this->header->player->lives,this->header->player->score,this->header->player->currentPos, Game2::name,nullptr,this->header->player->bombs,this->header->player->requiredBombScore);
-        Header* newheader = new Header(newPlayer,this->header->difficulty,this->header->username,this->header->game,this->header->paused,this->header->time);
-        Game2Scene* newScene = new Game2Scene(this->gameView,Game::Pause,newheader->username,newheader->difficulty,newheader, true);
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,
+                                             this->header->player->immunity,
+                                             this->header->player->lives,
+                                             this->header->player->score,
+                                             this->header->player->currentPos,
+                                             Game2::name,
+                                             nullptr,
+                                             this->header->player->bombs,
+                                             this->header->player->requiredBombScore,
+                                             this->header->player->translation,
+                                             this->header->player->weapon->name,
+                                             this->header->player->weapon->strength);
+        Header* newheader = new Header(newPlayer,
+                                       this->header->difficulty,
+                                       this->header->username,
+                                       this->header->game,
+                                       this->header->paused
+                                       ,this->header->time,
+                                       this->header->baby->healthyItemsFed);
+
+        Game2Scene* newScene = new Game2Scene(this->gameView,
+                                              Game::Pause,
+                                              newheader->username,
+                                              newheader->difficulty,
+                                              newheader,
+                                              true);
         this->gameView->setScene(newScene);
         this->deleteLater();
     }else{
-        Header* newheader = User::ResumeGameForUser(this->header->game,this->header->username);
-        Game2Scene* newScene = new Game2Scene(this->gameView,Game::Resume,newheader->username,newheader->difficulty,newheader, false);
+
+        SpongeBob* newPlayer = new SpongeBob(this->header->player->cleanliness,
+                                             this->header->player->immunity,
+                                             this->header->player->lives,
+                                             this->header->player->score,
+                                             this->header->player->currentPos,
+                                             Game2::name,
+                                             nullptr,
+                                             this->header->player->bombs,
+                                             this->header->player->requiredBombScore,
+                                             this->header->player->translation,
+                                             this->header->player->weapon->name,
+                                             this->header->player->weapon->strength);
+
+        Header* newheader = new Header(newPlayer,
+                                       this->header->difficulty,
+                                       this->header->username,
+                                       this->header->game,
+                                       this->header->paused,
+                                       this->header->time,
+                                       this->header->baby->healthyItemsFed);
+
+
+        Game2Scene* newScene = new Game2Scene(
+                    this->gameView,
+                    Game::Resume,
+                    newheader->username,
+                    newheader->difficulty,
+                    newheader,
+                    false);
+
         this->gameView->setScene(newScene);
         newScene->header->paused = false;
         this->deleteLater();

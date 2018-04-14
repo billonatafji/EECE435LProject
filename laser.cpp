@@ -38,7 +38,7 @@ Laser::Laser(int strength)
 }
 
 void Laser::update(){
-    this->rope->setLine(this->rope->line().x1(),this->rope->line().y1(),this->rope->line().x2(),this->rope->line().y2() + (this->thrown ? +3 : -3));
+    this->rope->setLine(this->rope->line().x1(),this->rope->line().y1(),this->rope->line().x2(),this->rope->line().y2() + (this->thrown ? +4 : -4));
     if(this->rope->line().p1() == this->rope->line().p2()){
         this->throwTimer->stop();
     }
