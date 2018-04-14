@@ -12,12 +12,12 @@ public:
 
     QTimer* timer;
 
-    int healthyItemsFed;
+    int healthyItemsFed;///< this variable stores the number of healthy items fed to the baby
 
 signals:
 
 public slots:
-    void update();
+    void update();///< updates c
 };
 
 #endif // BABYSPONGEBOB_H

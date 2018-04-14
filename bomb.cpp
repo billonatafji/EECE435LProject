@@ -1,14 +1,27 @@
+/**
+* \file bomb.cpp
+* \brief Bomb class definition
+*
+* a Bomb is an object in the game that can be shot if a specific score  is reached. it cleares the area it hits
+*\author Bilal Natafgi
+*\date 12-4-2018
+*/
 #include "bomb.h"
 #include <QPen>
 #include "spongeBob.h"
-#include <game2scene.h>
+#include <QGraphicsScene>
 #include "huItem.h"
 #include <QPointer>
 #include "grabbable.h"
 
-
+/**
+ * @brief Bomb::Bomb constructor
+ * @param strength the strength of the bomb ( how fast it goes)
+ *
+ */
 Bomb::Bomb(int strength)
 {
+    /// setting attributes
     this->strength = strength;
     this->name = "bomb";
     this->ready = false;
@@ -22,17 +35,22 @@ Bomb::Bomb(int strength)
     connect(this->throwTimer,SIGNAL(timeout()),this,SLOT(update()));
     this->addToGroup(this->head);
 
-    this->prepareTimer->start(500*(this->strength+1));
+    this->prepareTimer->start(100);
 }
+/**
+ * @brief Bomb::update
+ *         updates the position of the bomb and checks for collision
+ */
 void Bomb::update(){
 
+    /// if not ready to throw the bomb, setting it.
     if(!this->ready){
         this->prepareTimer->stop();
         this->head->setPixmap(QPixmap(":/Project435/images/bomb.png").scaledToHeight(60));
         this->ready = true;
     }else{
 
-        this->step++;
+        this->step++; ///< adding number of steps passed.
         if(this->thrown){
             this->head->setPos(this->head->pos().x(), this->head->pos().y()+1);
         }
@@ -41,6 +59,7 @@ void Bomb::update(){
         {
             if (Grabbable* item = dynamic_cast<Grabbable *>(i))
             {
+                /// there is a collision with an item that is grabbable,there are items to delete.
                 if(!(dynamic_cast<Weapon*>(item->header->player->weapon) && ((Weapon*)item->header->player->weapon)->grabbedItem == item)){
                     this->head->setPixmap(QPixmap(":/Project435/images/explosion.png").scaledToHeight(170));
                     if(!this->grabbingItem){
@@ -53,6 +72,7 @@ void Bomb::update(){
 
             }
         }
+        /// number of teps exceeds limit. bomb is deleted
         if(this->step > 350){
             delete this;
         }

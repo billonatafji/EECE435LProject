@@ -269,6 +269,11 @@ positionselection:
     this->addItem(fungus1);
 
 }
+/**
+ * @brief game1scene::GameOver
+ *
+ * if user loses, the game is over.
+ */
 void game1scene::GameOver(){
     this->header->paused = true;
     User::PauseGameForUser(this->header,true);
@@ -279,11 +284,22 @@ void game1scene::GameOver(){
     this->deleteLater();
 }
 
+/**
+ * @brief game1scene::CloseView
+ *
+ * this function is exited closing the window.
+ */
 void game1scene::CloseView(){
     this->gameView->close();
     this->deleteLater();
 }
 
+/**
+ * @brief game1scene::WonGame
+ *
+ * this function is exited when a player wins the game.
+ * their score is saved, and the scene is closed.
+ */
 void game1scene::WonGame(){
     this->header->paused = true;
     if(this->header->username != ""){
@@ -300,6 +316,12 @@ void game1scene::WonGame(){
     this->deleteLater();
 }
 
+/**
+ * @brief game1scene::PauseGame
+ *
+ * this function is called when pausing the game is needed.
+ * the header and player stats are saved in the files.
+ */
 void game1scene::PauseGame(){
     if(!this->paused){
         this->header->paused = true;

@@ -1,3 +1,11 @@
+/**
+* \file error.cpp
+* \brief Error class definition
+*
+*
+*\author Bilal Natafgi
+*\date 21-3-2018
+*/
 #include "error.h"
 #include "ui_error.h"
 

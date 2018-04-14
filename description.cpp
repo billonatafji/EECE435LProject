@@ -1,3 +1,11 @@
+/**
+* \file description.cpp
+* \brief Description class definition
+*
+*
+*\author Bilal Natafgi
+*\date 21-3-2018
+*/
 #include "description.h"
 #include "ui_description.h"
 

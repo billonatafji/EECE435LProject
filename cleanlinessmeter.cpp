@@ -10,6 +10,7 @@
 #include "cleanlinessmeter.h"
 #include <Qt>
 #include <QVBoxLayout>
+
 CleanlinessMeter::CleanlinessMeter()
 {
 

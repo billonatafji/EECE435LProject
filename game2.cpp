@@ -1,3 +1,11 @@
+/**
+* \file game2.cpp
+* \brief Game2 class definition
+*
+* a Game2 is where the user selects the strength of the game to play
+*\author Bilal Natafgi
+*\date 22-2-2018
+*/
 #include "game2.h"
 #include "ui_game2.h"
 #include "gameview.h"
@@ -25,12 +33,12 @@ Game2::~Game2()
     delete ui;
     delete this->gameView;
 }
-
+///close view if back button is clicked.
 void Game2::on_backButton_clicked()
 {
     this->close();
 }
-
+/// setting dificulty based on what is selected by the user.
 void Game2::on_playButton_clicked()
 {
     if(ui->easyRadioButton->isChecked() ||  ui->mediumRadioButton->isChecked() || ui->hardRadioButton->isChecked()){

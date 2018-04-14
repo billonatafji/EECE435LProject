@@ -271,4 +271,3 @@ void User::UpgradeUserToLevel(QString game, QString username, int level){
     }
 
 }
-
