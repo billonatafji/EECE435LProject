@@ -1,0 +1,130 @@
+\hypertarget{classvirus}{\section{virus Class Reference}
+\label{classvirus}\index{virus@{virus}}
+}
+
+
+virus class  
+
+
+
+
+{\ttfamily \#include $<$virus.\-h$>$}
+
+Inheritance diagram for virus\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classvirus}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classvirus_a8b036fc788433ad3a705e9de6de41ee2}{update} ()
+\begin{DoxyCompactList}\small\item\em update the location on the screen and detects collision \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classvirus_a6b57c52b134bccc26837cbf344d7adf3}{virus} (int \hyperlink{classvirus_aa11b0a8ce6eb48a0342632c3a6117a4f}{direction}, int \hyperlink{classvirus_a8500ee5b376d25ad355e6d44cf1a7c33}{direction\-Y}, int \hyperlink{classvirus_a819b31358027382d81b7490ca08e4858}{Xvelocity}, int \hyperlink{classvirus_ada2944c1d4e132d5400966a50069877d}{Yvelocity}, int \hyperlink{classvirus_a06e077e131c4aff9fa3bd319ec16729e}{deviation\-Limit}, int \hyperlink{classvirus_a57754b0eecd000e4ba555a6953489455}{centerline}, \hyperlink{classHeader}{Header} $\ast$\hyperlink{classGrabbable_a97db8193dec83a8086352f80a30b2038}{header}, Q\-String game=\char`\"{}\char`\"{}, Q\-Object $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classvirus_a6b57c52b134bccc26837cbf344d7adf3}{virus\-::virus} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classvirus_ab7a1a248f91d2826090771212b62681f}{Q\-Timer $\ast$ \hyperlink{classvirus_ab7a1a248f91d2826090771212b62681f}{timer}}\label{classvirus_ab7a1a248f91d2826090771212b62681f}
+
+\begin{DoxyCompactList}\small\item\em timer attribute that specifies the timer \end{DoxyCompactList}\item 
+\hypertarget{classvirus_aa11b0a8ce6eb48a0342632c3a6117a4f}{int \hyperlink{classvirus_aa11b0a8ce6eb48a0342632c3a6117a4f}{direction}}\label{classvirus_aa11b0a8ce6eb48a0342632c3a6117a4f}
+
+\begin{DoxyCompactList}\small\item\em attribute that specifies the X direction of movement of the virus \end{DoxyCompactList}\item 
+\hypertarget{classvirus_a8500ee5b376d25ad355e6d44cf1a7c33}{int \hyperlink{classvirus_a8500ee5b376d25ad355e6d44cf1a7c33}{direction\-Y}}\label{classvirus_a8500ee5b376d25ad355e6d44cf1a7c33}
+
+\begin{DoxyCompactList}\small\item\em attribute that specifies the Y direction of movement of the virus \end{DoxyCompactList}\item 
+\hypertarget{classvirus_a819b31358027382d81b7490ca08e4858}{int \hyperlink{classvirus_a819b31358027382d81b7490ca08e4858}{Xvelocity}}\label{classvirus_a819b31358027382d81b7490ca08e4858}
+
+\begin{DoxyCompactList}\small\item\em attribute that specifies the X velocity of the virus \end{DoxyCompactList}\item 
+\hypertarget{classvirus_ada2944c1d4e132d5400966a50069877d}{int \hyperlink{classvirus_ada2944c1d4e132d5400966a50069877d}{Yvelocity}}\label{classvirus_ada2944c1d4e132d5400966a50069877d}
+
+\begin{DoxyCompactList}\small\item\em attribute that specifies the X velocity of the virus \end{DoxyCompactList}\item 
+\hypertarget{classvirus_a06e077e131c4aff9fa3bd319ec16729e}{int \hyperlink{classvirus_a06e077e131c4aff9fa3bd319ec16729e}{deviation\-Limit}}\label{classvirus_a06e077e131c4aff9fa3bd319ec16729e}
+
+\begin{DoxyCompactList}\small\item\em specifies maximum deviation from center line \end{DoxyCompactList}\item 
+\hypertarget{classvirus_a57754b0eecd000e4ba555a6953489455}{int \hyperlink{classvirus_a57754b0eecd000e4ba555a6953489455}{centerline}}\label{classvirus_a57754b0eecd000e4ba555a6953489455}
+
+\begin{DoxyCompactList}\small\item\em specifies the center of propagation of the virus \end{DoxyCompactList}\item 
+\hypertarget{classvirus_adaa19ad2d6e1bdea997766047a25af3a}{int {\bfseries foobar}}\label{classvirus_adaa19ad2d6e1bdea997766047a25af3a}
+
+\item 
+\hypertarget{classvirus_adefe50205ddef9dbf6d742c6dc6ad846}{Q\-String {\bfseries game}}\label{classvirus_adefe50205ddef9dbf6d742c6dc6ad846}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+virus class 
+
+.h A virus is an element on screen that moves periodically in a predefined direction. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classvirus_a6b57c52b134bccc26837cbf344d7adf3}{\index{virus@{virus}!virus@{virus}}
+\index{virus@{virus}!virus@{virus}}
+\subsubsection[{virus}]{\setlength{\rightskip}{0pt plus 5cm}virus\-::virus (
+\begin{DoxyParamCaption}
+\item[{int}]{direction, }
+\item[{int}]{direction\-Y, }
+\item[{int}]{Xvelocity, }
+\item[{int}]{Yvelocity, }
+\item[{int}]{foobar, }
+\item[{int}]{centerline, }
+\item[{{\bf Header} $\ast$}]{header, }
+\item[{Q\-String}]{game = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classvirus_a6b57c52b134bccc26837cbf344d7adf3}
+
+
+\hyperlink{classvirus_a6b57c52b134bccc26837cbf344d7adf3}{virus\-::virus} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & \\
+\hline
+{\em direction\-Y} & \\
+\hline
+{\em Xvelocity} & \\
+\hline
+{\em Yvelocity} & \\
+\hline
+{\em foobar} & \\
+\hline
+{\em centerline} & \\
+\hline
+{\em player} & \\
+\hline
+{\em parent} & constructor \\
+\hline
+\end{DoxyParams}
+for periodic update of the position 
+
+\subsection{Member Function Documentation}
+\hypertarget{classvirus_a8b036fc788433ad3a705e9de6de41ee2}{\index{virus@{virus}!update@{update}}
+\index{update@{update}!virus@{virus}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void virus\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{classvirus_a8b036fc788433ad3a705e9de6de41ee2}
+
+
+update the location on the screen and detects collision 
+
+wave movement
+
+$<$ toggling the follow me button
+
+$<$ starting the follow timer
+
+$<$ removing the virus from the scene 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+virus.\-h\item 
+\hyperlink{virus_8cpp}{virus.\-cpp}\end{DoxyCompactItemize}

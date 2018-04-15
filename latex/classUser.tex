@@ -1,0 +1,203 @@
+\hypertarget{classUser}{\section{User Class Reference}
+\label{classUser}\index{User@{User}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUser_a49af102252f983aa3d85bd59193c9bf1}{User} (Q\-String username, Q\-String password, Q\-String first\-Name, Q\-String last\-Name, Q\-String date\-Of\-Birth, Q\-String gender, Q\-Image profile\-Picture)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classUser_aa80c06d9b3076301a3b36831ad8324dc}{Add\-User} (\hyperlink{classUser}{User} user)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classUser_aa80c06d9b3076301a3b36831ad8324dc}{User\-::\-Add\-User}. \end{DoxyCompactList}\item 
+static \hyperlink{classUser}{User} $\ast$ \hyperlink{classUser_a79a561251d56226e81062affe8312a09}{Get\-User} (Q\-String username, Q\-String password)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classUser_a79a561251d56226e81062affe8312a09}{User\-::\-Get\-User}. \end{DoxyCompactList}\item 
+static Q\-Json\-Object \hyperlink{classUser_aa4ecad468e06bde01b44b4b2fd1186a6}{User\-To\-Json} (\hyperlink{classUser}{User} user)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classUser_aa4ecad468e06bde01b44b4b2fd1186a6}{User\-::\-User\-To\-Json}. \end{DoxyCompactList}\item 
+static \hyperlink{classUser}{User} $\ast$ \hyperlink{classUser_a672d3246cd8890263bc359af137e0f41}{Json\-To\-User} (Q\-Json\-Object object, Q\-String username)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classUser_a672d3246cd8890263bc359af137e0f41}{User\-::\-Json\-To\-User}. \end{DoxyCompactList}\item 
+static void \hyperlink{classUser_af72d21ca380b5ec3697978a1cbd8bec1}{Pause\-Game\-For\-User} (\hyperlink{classHeader}{Header} $\ast$header, bool completed)
+\item 
+static \hyperlink{classHeader}{Header} $\ast$ \hyperlink{classUser_afc56ee5edbdbdb8c95d6d869e95c23f5}{Resume\-Game\-For\-User} (Q\-String game, Q\-String username)
+\item 
+\hypertarget{classUser_a2166948eb636ad50a7e613e422e08ad8}{static int \hyperlink{classUser_a2166948eb636ad50a7e613e422e08ad8}{Get\-User\-Level} (Q\-String game, Q\-String username)}\label{classUser_a2166948eb636ad50a7e613e422e08ad8}
+
+\begin{DoxyCompactList}\small\item\em this function is used to get the current level of the user in a specific game \end{DoxyCompactList}\item 
+static void \hyperlink{classUser_a90499a55331bf2e55ff274e0ffa143fe}{Upgrade\-User\-To\-Level} (Q\-String game, Q\-String username, int level)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classUser_a90499a55331bf2e55ff274e0ffa143fe}{User\-::\-Upgrade\-User\-To\-Level}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classUser_a926d834a6d4c7c46e1dc1783bb7a1447}{Q\-String {\bfseries Username}}\label{classUser_a926d834a6d4c7c46e1dc1783bb7a1447}
+
+\item 
+\hypertarget{classUser_a25dc93a925a47f6bd3231002618d057d}{Q\-String {\bfseries Password}}\label{classUser_a25dc93a925a47f6bd3231002618d057d}
+
+\item 
+\hypertarget{classUser_a1af9ae238c93f4f0cde6c5fde7d2976f}{Q\-String {\bfseries First\-Name}}\label{classUser_a1af9ae238c93f4f0cde6c5fde7d2976f}
+
+\item 
+\hypertarget{classUser_ad57254a70a3ec42742ffc323bcce27d6}{Q\-String {\bfseries Last\-Name}}\label{classUser_ad57254a70a3ec42742ffc323bcce27d6}
+
+\item 
+\hypertarget{classUser_a9cb4f9257b748f960a8c6a6b3426ff97}{Q\-String {\bfseries Date\-Of\-Birth}}\label{classUser_a9cb4f9257b748f960a8c6a6b3426ff97}
+
+\item 
+\hypertarget{classUser_ad946499bcf2074d130071b8f18b528de}{Q\-String {\bfseries Gender}}\label{classUser_ad946499bcf2074d130071b8f18b528de}
+
+\item 
+\hypertarget{classUser_a65e02853585b9fb2819fe11f67aefa1e}{Q\-Image {\bfseries Profile\-Picture}}\label{classUser_a65e02853585b9fb2819fe11f67aefa1e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classUser_a49af102252f983aa3d85bd59193c9bf1}{\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\subsubsection[{User}]{\setlength{\rightskip}{0pt plus 5cm}User\-::\-User (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{username, }
+\item[{Q\-String}]{password, }
+\item[{Q\-String}]{first\-Name, }
+\item[{Q\-String}]{last\-Name, }
+\item[{Q\-String}]{date\-Of\-Birth, }
+\item[{Q\-String}]{gender, }
+\item[{Q\-Image}]{profile\-Picture}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classUser_a49af102252f983aa3d85bd59193c9bf1}
+setting attributes 
+
+\subsection{Member Function Documentation}
+\hypertarget{classUser_aa80c06d9b3076301a3b36831ad8324dc}{\index{User@{User}!Add\-User@{Add\-User}}
+\index{Add\-User@{Add\-User}!User@{User}}
+\subsubsection[{Add\-User}]{\setlength{\rightskip}{0pt plus 5cm}bool User\-::\-Add\-User (
+\begin{DoxyParamCaption}
+\item[{{\bf User}}]{user}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classUser_aa80c06d9b3076301a3b36831ad8324dc}
+
+
+\hyperlink{classUser_aa80c06d9b3076301a3b36831ad8324dc}{User\-::\-Add\-User}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+this function adds a new user and saves the records to the json file \hypertarget{classUser_a79a561251d56226e81062affe8312a09}{\index{User@{User}!Get\-User@{Get\-User}}
+\index{Get\-User@{Get\-User}!User@{User}}
+\subsubsection[{Get\-User}]{\setlength{\rightskip}{0pt plus 5cm}{\bf User} $\ast$ User\-::\-Get\-User (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{username, }
+\item[{Q\-String}]{password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classUser_a79a561251d56226e81062affe8312a09}
+
+
+\hyperlink{classUser_a79a561251d56226e81062affe8312a09}{User\-::\-Get\-User}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+this function searches for a user based on a username and a password \hypertarget{classUser_a672d3246cd8890263bc359af137e0f41}{\index{User@{User}!Json\-To\-User@{Json\-To\-User}}
+\index{Json\-To\-User@{Json\-To\-User}!User@{User}}
+\subsubsection[{Json\-To\-User}]{\setlength{\rightskip}{0pt plus 5cm}{\bf User} $\ast$ User\-::\-Json\-To\-User (
+\begin{DoxyParamCaption}
+\item[{Q\-Json\-Object}]{object, }
+\item[{Q\-String}]{username}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classUser_a672d3246cd8890263bc359af137e0f41}
+
+
+\hyperlink{classUser_a672d3246cd8890263bc359af137e0f41}{User\-::\-Json\-To\-User}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & \\
+\hline
+{\em username} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+this function takes a json object and parses it to an user object \hypertarget{classUser_af72d21ca380b5ec3697978a1cbd8bec1}{\index{User@{User}!Pause\-Game\-For\-User@{Pause\-Game\-For\-User}}
+\index{Pause\-Game\-For\-User@{Pause\-Game\-For\-User}!User@{User}}
+\subsubsection[{Pause\-Game\-For\-User}]{\setlength{\rightskip}{0pt plus 5cm}void User\-::\-Pause\-Game\-For\-User (
+\begin{DoxyParamCaption}
+\item[{{\bf Header} $\ast$}]{header, }
+\item[{bool}]{completed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classUser_af72d21ca380b5ec3697978a1cbd8bec1}
+this function is used to pause the game for later access. it saves the data in a json document. the values of attributes in the header are saved. \hypertarget{classUser_afc56ee5edbdbdb8c95d6d869e95c23f5}{\index{User@{User}!Resume\-Game\-For\-User@{Resume\-Game\-For\-User}}
+\index{Resume\-Game\-For\-User@{Resume\-Game\-For\-User}!User@{User}}
+\subsubsection[{Resume\-Game\-For\-User}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Header} $\ast$ User\-::\-Resume\-Game\-For\-User (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{game, }
+\item[{Q\-String}]{username}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classUser_afc56ee5edbdbdb8c95d6d869e95c23f5}
+this function is given a game and a username, and is used to check if there are available paused games for the user. if there is a paused game, an instance of header and spongebob are created and filled with the previously saved state. initializing according to previous metrics
+
+initializing according to previous metrics
+
+initializing according to previous metrics
+
+initializing according to previous metrics \hypertarget{classUser_a90499a55331bf2e55ff274e0ffa143fe}{\index{User@{User}!Upgrade\-User\-To\-Level@{Upgrade\-User\-To\-Level}}
+\index{Upgrade\-User\-To\-Level@{Upgrade\-User\-To\-Level}!User@{User}}
+\subsubsection[{Upgrade\-User\-To\-Level}]{\setlength{\rightskip}{0pt plus 5cm}void User\-::\-Upgrade\-User\-To\-Level (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{game, }
+\item[{Q\-String}]{username, }
+\item[{int}]{level}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classUser_a90499a55331bf2e55ff274e0ffa143fe}
+
+
+\hyperlink{classUser_a90499a55331bf2e55ff274e0ffa143fe}{User\-::\-Upgrade\-User\-To\-Level}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+{\em username} & \\
+\hline
+{\em level} & this function is called whith a game, a username, and a level. it gets the json object of the user using its username, and then assigns him a higher level on the given game. this allows the user to play the game on a higher level. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classUser_aa4ecad468e06bde01b44b4b2fd1186a6}{\index{User@{User}!User\-To\-Json@{User\-To\-Json}}
+\index{User\-To\-Json@{User\-To\-Json}!User@{User}}
+\subsubsection[{User\-To\-Json}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Json\-Object User\-::\-User\-To\-Json (
+\begin{DoxyParamCaption}
+\item[{{\bf User}}]{user}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classUser_aa4ecad468e06bde01b44b4b2fd1186a6}
+
+
+\hyperlink{classUser_aa4ecad468e06bde01b44b4b2fd1186a6}{User\-::\-User\-To\-Json}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+this function takes an instance of a user and converts its attributes to a json object 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+user.\-h\item 
+user.\-cpp\end{DoxyCompactItemize}

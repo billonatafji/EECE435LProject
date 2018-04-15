@@ -1,0 +1,87 @@
+\hypertarget{classGrabbable}{\section{Grabbable Class Reference}
+\label{classGrabbable}\index{Grabbable@{Grabbable}}
+}
+Inheritance diagram for Grabbable\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.937063cm]{classGrabbable}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGrabbable_a54abafe482bfeff9bc4950eb1af86729}{was\-Grabbed} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGrabbable_a54abafe482bfeff9bc4950eb1af86729}{Grabbable\-::was\-Grabbed} this function is excited when an item is hooked. \end{DoxyCompactList}\item 
+void \hyperlink{classGrabbable_a1dbbee1086ee34f1c32493a7c80e0f04}{was\-Shot} (\hyperlink{classWeapon}{Weapon} $\ast$by)
+\begin{DoxyCompactList}\small\item\em excited when an item is shot ( laser or bomb) \end{DoxyCompactList}\item 
+void \hyperlink{classGrabbable_ab6352505d07da9d327be2f74faaae141}{reached\-Baby} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGrabbable_ab6352505d07da9d327be2f74faaae141}{Grabbable\-::reached\-Baby} this is a function that is excited when the baby collides with an item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGrabbable_a97db8193dec83a8086352f80a30b2038}{\hyperlink{classHeader}{Header} $\ast$ \hyperlink{classGrabbable_a97db8193dec83a8086352f80a30b2038}{header}}\label{classGrabbable_a97db8193dec83a8086352f80a30b2038}
+
+\begin{DoxyCompactList}\small\item\em pointer to the header \end{DoxyCompactList}\item 
+\hypertarget{classGrabbable_a161e54edc1ba06f3f9d3724c52ffa479}{int {\bfseries strength}}\label{classGrabbable_a161e54edc1ba06f3f9d3724c52ffa479}
+
+\item 
+\hypertarget{classGrabbable_ad6afb7dae68be483e218d380b763e03e}{int {\bfseries interval}}\label{classGrabbable_ad6afb7dae68be483e218d380b763e03e}
+
+\item 
+\hypertarget{classGrabbable_a055aa96768fbbcf9ef6e5154594f0e39}{bool {\bfseries grabbed}}\label{classGrabbable_a055aa96768fbbcf9ef6e5154594f0e39}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGrabbable_ab6352505d07da9d327be2f74faaae141}{\index{Grabbable@{Grabbable}!reached\-Baby@{reached\-Baby}}
+\index{reached\-Baby@{reached\-Baby}!Grabbable@{Grabbable}}
+\subsubsection[{reached\-Baby}]{\setlength{\rightskip}{0pt plus 5cm}void Grabbable\-::reached\-Baby (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGrabbable_ab6352505d07da9d327be2f74faaae141}
+
+
+\hyperlink{classGrabbable_ab6352505d07da9d327be2f74faaae141}{Grabbable\-::reached\-Baby} this is a function that is excited when the baby collides with an item. 
+
+checking if the item collided with is an huitem.
+
+if the huitem is an unhealthy item, the player loses a life.
+
+if the huitem is a healthy item, the cleanliness increases.
+
+removing the item that collided with the baby. \hypertarget{classGrabbable_a54abafe482bfeff9bc4950eb1af86729}{\index{Grabbable@{Grabbable}!was\-Grabbed@{was\-Grabbed}}
+\index{was\-Grabbed@{was\-Grabbed}!Grabbable@{Grabbable}}
+\subsubsection[{was\-Grabbed}]{\setlength{\rightskip}{0pt plus 5cm}void Grabbable\-::was\-Grabbed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGrabbable_a54abafe482bfeff9bc4950eb1af86729}
+
+
+\hyperlink{classGrabbable_a54abafe482bfeff9bc4950eb1af86729}{Grabbable\-::was\-Grabbed} this function is excited when an item is hooked. 
+
+adding or subtracting time and immunity based on the type of the grabbed item \hypertarget{classGrabbable_a1dbbee1086ee34f1c32493a7c80e0f04}{\index{Grabbable@{Grabbable}!was\-Shot@{was\-Shot}}
+\index{was\-Shot@{was\-Shot}!Grabbable@{Grabbable}}
+\subsubsection[{was\-Shot}]{\setlength{\rightskip}{0pt plus 5cm}void Grabbable\-::was\-Shot (
+\begin{DoxyParamCaption}
+\item[{{\bf Weapon} $\ast$}]{by}
+\end{DoxyParamCaption}
+)}}\label{classGrabbable_a1dbbee1086ee34f1c32493a7c80e0f04}
+
+
+excited when an item is shot ( laser or bomb) 
+
+if the item collides with a bomb, it loses all of its strength
+
+if the item was shot with a laser, its strength decreases by the strength of the laser
+
+if this is a healthy item, increase score.
+
+if this is an unhealthy item, decrease score. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+grabbable.\-h\item 
+\hyperlink{grabbable_8cpp}{grabbable.\-cpp}\end{DoxyCompactItemize}

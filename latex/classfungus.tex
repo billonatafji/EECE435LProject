@@ -1,0 +1,106 @@
+\hypertarget{classfungus}{\section{fungus Class Reference}
+\label{classfungus}\index{fungus@{fungus}}
+}
+
+
+fungus class  
+
+
+
+
+{\ttfamily \#include $<$fungus.\-h$>$}
+
+Inheritance diagram for fungus\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classfungus}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classfungus_a2eb2952502ef6a467163a764f0cb773d}{update} ()
+\begin{DoxyCompactList}\small\item\em update the location on the screen and detects collisions \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfungus_a5387ba07067ee3306649b4aa900b2c5d}{fungus} (\hyperlink{classHeader}{Header} $\ast$\hyperlink{classGrabbable_a97db8193dec83a8086352f80a30b2038}{header}, Q\-String name=\char`\"{}\char`\"{}, Q\-Object $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classfungus_a5387ba07067ee3306649b4aa900b2c5d}{fungus\-::fungus} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfungus_ab537a12540fff0570026e58b48eec29d}{Q\-Timer $\ast$ \hyperlink{classfungus_ab537a12540fff0570026e58b48eec29d}{timer}}\label{classfungus_ab537a12540fff0570026e58b48eec29d}
+
+\begin{DoxyCompactList}\small\item\em timer attribute that specifies the timer \end{DoxyCompactList}\item 
+\hypertarget{classfungus_a41c3791a53d9f8f137c5c519d0cd0742}{int \hyperlink{classfungus_a41c3791a53d9f8f137c5c519d0cd0742}{Xvelocity}}\label{classfungus_a41c3791a53d9f8f137c5c519d0cd0742}
+
+\begin{DoxyCompactList}\small\item\em y velocity of fungus \end{DoxyCompactList}\item 
+\hypertarget{classfungus_acf88a26542582ba595fce0d65d2c8f16}{int \hyperlink{classfungus_acf88a26542582ba595fce0d65d2c8f16}{Yvelocity}}\label{classfungus_acf88a26542582ba595fce0d65d2c8f16}
+
+\begin{DoxyCompactList}\small\item\em x velocity of fungus \end{DoxyCompactList}\item 
+\hypertarget{classfungus_a3a90ae49c71638d579aadd54c9a8424e}{int \hyperlink{classfungus_a3a90ae49c71638d579aadd54c9a8424e}{timetolive}}\label{classfungus_a3a90ae49c71638d579aadd54c9a8424e}
+
+\begin{DoxyCompactList}\small\item\em specifies time left to die \end{DoxyCompactList}\item 
+\hypertarget{classfungus_af5778c05c2d02dad47586b22b35cd4fd}{Q\-String {\bfseries game}}\label{classfungus_af5778c05c2d02dad47586b22b35cd4fd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+fungus class 
+
+.h A fungus is an element on screen that moves periodically following spongebob. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfungus_a5387ba07067ee3306649b4aa900b2c5d}{\index{fungus@{fungus}!fungus@{fungus}}
+\index{fungus@{fungus}!fungus@{fungus}}
+\subsubsection[{fungus}]{\setlength{\rightskip}{0pt plus 5cm}fungus\-::fungus (
+\begin{DoxyParamCaption}
+\item[{{\bf Header} $\ast$}]{header, }
+\item[{Q\-String}]{game = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classfungus_a5387ba07067ee3306649b4aa900b2c5d}
+
+
+\hyperlink{classfungus_a5387ba07067ee3306649b4aa900b2c5d}{fungus\-::fungus} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & \\
+\hline
+{\em parent} & constructor of a fungus, creates an instance and provides is with a velocity, time to live, and a pointer to the header \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfungus_a2eb2952502ef6a467163a764f0cb773d}{\index{fungus@{fungus}!update@{update}}
+\index{update@{update}!fungus@{fungus}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void fungus\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{classfungus_a2eb2952502ef6a467163a764f0cb773d}
+
+
+update the location on the screen and detects collisions 
+
+\hyperlink{classfungus_a2eb2952502ef6a467163a764f0cb773d}{fungus\-::update}
+
+updates the position, detects collision, and in case of collision with the player, it penalises him it also deletes the fungus if its time is over collidelist this creates a list of all colliding items. it then dynamically casts each detected item to an instance of spongebob if any item returns true which means that it exists, this means that a collision with spongebob has occured this leads to some procedures
+
+immunity is halved
+
+cleanliness is halved
+
+instructs batceria to follow him
+
+timer for following starts
+
+this is an algorithm to detect the position of spongebob and follow him 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+fungus.\-h\item 
+\hyperlink{fungus_8cpp}{fungus.\-cpp}\end{DoxyCompactItemize}

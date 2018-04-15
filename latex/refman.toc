@@ -1,0 +1,191 @@
+\contentsline {chapter}{\numberline {1}Hierarchical Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Class Hierarchy}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}Class Documentation}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}Baby\discretionary {-}{}{}Sponge\discretionary {-}{}{}Bob Class Reference}{7}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Constructor \& Destructor Documentation}{7}{subsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.1.1}Baby\discretionary {-}{}{}Sponge\discretionary {-}{}{}Bob}{7}{subsubsection.4.1.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Member Function Documentation}{8}{subsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.2.1}update}{8}{subsubsection.4.1.2.1}
+\contentsline {section}{\numberline {4.2}bacteria Class Reference}{8}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{9}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Constructor \& Destructor Documentation}{9}{subsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.1}bacteria}{9}{subsubsection.4.2.2.1}
+\contentsline {subsection}{\numberline {4.2.3}Member Function Documentation}{9}{subsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.3.1}update}{9}{subsubsection.4.2.3.1}
+\contentsline {section}{\numberline {4.3}Bomb Class Reference}{10}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Constructor \& Destructor Documentation}{10}{subsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.1.1}Bomb}{10}{subsubsection.4.3.1.1}
+\contentsline {subsection}{\numberline {4.3.2}Member Function Documentation}{10}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}update}{10}{subsubsection.4.3.2.1}
+\contentsline {section}{\numberline {4.4}cheat Class Reference}{11}{section.4.4}
+\contentsline {section}{\numberline {4.5}Cleanliness\discretionary {-}{}{}Meter Class Reference}{11}{section.4.5}
+\contentsline {section}{\numberline {4.6}Description Class Reference}{11}{section.4.6}
+\contentsline {section}{\numberline {4.7}Error Class Reference}{12}{section.4.7}
+\contentsline {section}{\numberline {4.8}fungus Class Reference}{12}{section.4.8}
+\contentsline {subsection}{\numberline {4.8.1}Detailed Description}{13}{subsection.4.8.1}
+\contentsline {subsection}{\numberline {4.8.2}Constructor \& Destructor Documentation}{13}{subsection.4.8.2}
+\contentsline {subsubsection}{\numberline {4.8.2.1}fungus}{13}{subsubsection.4.8.2.1}
+\contentsline {subsection}{\numberline {4.8.3}Member Function Documentation}{13}{subsection.4.8.3}
+\contentsline {subsubsection}{\numberline {4.8.3.1}update}{13}{subsubsection.4.8.3.1}
+\contentsline {section}{\numberline {4.9}Game Class Reference}{14}{section.4.9}
+\contentsline {section}{\numberline {4.10}Game1 Class Reference}{14}{section.4.10}
+\contentsline {subsection}{\numberline {4.10.1}Constructor \& Destructor Documentation}{15}{subsection.4.10.1}
+\contentsline {subsubsection}{\numberline {4.10.1.1}Game1}{15}{subsubsection.4.10.1.1}
+\contentsline {section}{\numberline {4.11}game1scene Class Reference}{15}{section.4.11}
+\contentsline {subsection}{\numberline {4.11.1}Detailed Description}{16}{subsection.4.11.1}
+\contentsline {subsection}{\numberline {4.11.2}Constructor \& Destructor Documentation}{16}{subsection.4.11.2}
+\contentsline {subsubsection}{\numberline {4.11.2.1}game1scene}{16}{subsubsection.4.11.2.1}
+\contentsline {subsection}{\numberline {4.11.3}Member Function Documentation}{17}{subsection.4.11.3}
+\contentsline {subsubsection}{\numberline {4.11.3.1}addbacteria}{17}{subsubsection.4.11.3.1}
+\contentsline {subsubsection}{\numberline {4.11.3.2}addfungus}{17}{subsubsection.4.11.3.2}
+\contentsline {subsubsection}{\numberline {4.11.3.3}addhu\discretionary {-}{}{}Items}{17}{subsubsection.4.11.3.3}
+\contentsline {subsubsection}{\numberline {4.11.3.4}addvirus}{17}{subsubsection.4.11.3.4}
+\contentsline {subsubsection}{\numberline {4.11.3.5}Close\discretionary {-}{}{}View}{17}{subsubsection.4.11.3.5}
+\contentsline {subsubsection}{\numberline {4.11.3.6}Game\discretionary {-}{}{}Over}{17}{subsubsection.4.11.3.6}
+\contentsline {subsubsection}{\numberline {4.11.3.7}key\discretionary {-}{}{}Release\discretionary {-}{}{}Event}{18}{subsubsection.4.11.3.7}
+\contentsline {subsubsection}{\numberline {4.11.3.8}Pause\discretionary {-}{}{}Game}{18}{subsubsection.4.11.3.8}
+\contentsline {subsubsection}{\numberline {4.11.3.9}Won\discretionary {-}{}{}Game}{18}{subsubsection.4.11.3.9}
+\contentsline {section}{\numberline {4.12}Game2 Class Reference}{18}{section.4.12}
+\contentsline {section}{\numberline {4.13}Game2\discretionary {-}{}{}Scene Class Reference}{19}{section.4.13}
+\contentsline {subsection}{\numberline {4.13.1}Detailed Description}{20}{subsection.4.13.1}
+\contentsline {subsection}{\numberline {4.13.2}Constructor \& Destructor Documentation}{20}{subsection.4.13.2}
+\contentsline {subsubsection}{\numberline {4.13.2.1}Game2\discretionary {-}{}{}Scene}{20}{subsubsection.4.13.2.1}
+\contentsline {subsection}{\numberline {4.13.3}Member Function Documentation}{20}{subsection.4.13.3}
+\contentsline {subsubsection}{\numberline {4.13.3.1}addhu\discretionary {-}{}{}Items}{20}{subsubsection.4.13.3.1}
+\contentsline {subsubsection}{\numberline {4.13.3.2}key\discretionary {-}{}{}Release\discretionary {-}{}{}Event}{20}{subsubsection.4.13.3.2}
+\contentsline {subsubsection}{\numberline {4.13.3.3}mouse\discretionary {-}{}{}Release\discretionary {-}{}{}Event}{20}{subsubsection.4.13.3.3}
+\contentsline {subsubsection}{\numberline {4.13.3.4}Pause\discretionary {-}{}{}Game}{21}{subsubsection.4.13.3.4}
+\contentsline {subsubsection}{\numberline {4.13.3.5}Won\discretionary {-}{}{}Game}{21}{subsubsection.4.13.3.5}
+\contentsline {section}{\numberline {4.14}Gamemenu Class Reference}{21}{section.4.14}
+\contentsline {section}{\numberline {4.15}Game\discretionary {-}{}{}View Class Reference}{22}{section.4.15}
+\contentsline {section}{\numberline {4.16}Grabbable Class Reference}{22}{section.4.16}
+\contentsline {subsection}{\numberline {4.16.1}Member Function Documentation}{23}{subsection.4.16.1}
+\contentsline {subsubsection}{\numberline {4.16.1.1}reached\discretionary {-}{}{}Baby}{23}{subsubsection.4.16.1.1}
+\contentsline {subsubsection}{\numberline {4.16.1.2}was\discretionary {-}{}{}Grabbed}{23}{subsubsection.4.16.1.2}
+\contentsline {subsubsection}{\numberline {4.16.1.3}was\discretionary {-}{}{}Shot}{23}{subsubsection.4.16.1.3}
+\contentsline {section}{\numberline {4.17}Header Class Reference}{23}{section.4.17}
+\contentsline {subsection}{\numberline {4.17.1}Constructor \& Destructor Documentation}{25}{subsection.4.17.1}
+\contentsline {subsubsection}{\numberline {4.17.1.1}Header}{25}{subsubsection.4.17.1.1}
+\contentsline {subsection}{\numberline {4.17.2}Member Function Documentation}{25}{subsection.4.17.2}
+\contentsline {subsubsection}{\numberline {4.17.2.1}Add\discretionary {-}{}{}Bombs}{25}{subsubsection.4.17.2.1}
+\contentsline {subsubsection}{\numberline {4.17.2.2}Add\discretionary {-}{}{}Cleanl\discretionary {-}{}{}Meter}{25}{subsubsection.4.17.2.2}
+\contentsline {subsubsection}{\numberline {4.17.2.3}Add\discretionary {-}{}{}Needle}{25}{subsubsection.4.17.2.3}
+\contentsline {subsubsection}{\numberline {4.17.2.4}Render}{25}{subsubsection.4.17.2.4}
+\contentsline {subsubsection}{\numberline {4.17.2.5}Set\discretionary {-}{}{}Cleanliness}{25}{subsubsection.4.17.2.5}
+\contentsline {subsubsection}{\numberline {4.17.2.6}Set\discretionary {-}{}{}Immunity}{26}{subsubsection.4.17.2.6}
+\contentsline {subsubsection}{\numberline {4.17.2.7}Set\discretionary {-}{}{}Score}{26}{subsubsection.4.17.2.7}
+\contentsline {section}{\numberline {4.18}History Class Reference}{26}{section.4.18}
+\contentsline {subsection}{\numberline {4.18.1}Constructor \& Destructor Documentation}{26}{subsection.4.18.1}
+\contentsline {subsubsection}{\numberline {4.18.1.1}History}{26}{subsubsection.4.18.1.1}
+\contentsline {section}{\numberline {4.19}Home Class Reference}{27}{section.4.19}
+\contentsline {subsection}{\numberline {4.19.1}Constructor \& Destructor Documentation}{27}{subsection.4.19.1}
+\contentsline {subsubsection}{\numberline {4.19.1.1}Home}{27}{subsubsection.4.19.1.1}
+\contentsline {section}{\numberline {4.20}Hook Class Reference}{27}{section.4.20}
+\contentsline {subsection}{\numberline {4.20.1}Constructor \& Destructor Documentation}{28}{subsection.4.20.1}
+\contentsline {subsubsection}{\numberline {4.20.1.1}Hook}{28}{subsubsection.4.20.1.1}
+\contentsline {subsection}{\numberline {4.20.2}Member Function Documentation}{28}{subsection.4.20.2}
+\contentsline {subsubsection}{\numberline {4.20.2.1}update}{28}{subsubsection.4.20.2.1}
+\contentsline {section}{\numberline {4.21}hu\discretionary {-}{}{}Item Class Reference}{28}{section.4.21}
+\contentsline {subsection}{\numberline {4.21.1}Detailed Description}{29}{subsection.4.21.1}
+\contentsline {subsection}{\numberline {4.21.2}Member Function Documentation}{29}{subsection.4.21.2}
+\contentsline {subsubsection}{\numberline {4.21.2.1}update}{29}{subsubsection.4.21.2.1}
+\contentsline {section}{\numberline {4.22}Laser Class Reference}{30}{section.4.22}
+\contentsline {subsection}{\numberline {4.22.1}Member Function Documentation}{30}{subsection.4.22.1}
+\contentsline {subsubsection}{\numberline {4.22.1.1}update}{30}{subsubsection.4.22.1.1}
+\contentsline {section}{\numberline {4.23}Pause Class Reference}{31}{section.4.23}
+\contentsline {section}{\numberline {4.24}Scores Class Reference}{31}{section.4.24}
+\contentsline {subsection}{\numberline {4.24.1}Detailed Description}{31}{subsection.4.24.1}
+\contentsline {subsection}{\numberline {4.24.2}Member Function Documentation}{31}{subsection.4.24.2}
+\contentsline {subsubsection}{\numberline {4.24.2.1}Add\discretionary {-}{}{}Score}{31}{subsubsection.4.24.2.1}
+\contentsline {subsubsection}{\numberline {4.24.2.2}Get\discretionary {-}{}{}Highest\discretionary {-}{}{}Score}{32}{subsubsection.4.24.2.2}
+\contentsline {subsubsection}{\numberline {4.24.2.3}Get\discretionary {-}{}{}User\discretionary {-}{}{}Scores}{32}{subsubsection.4.24.2.3}
+\contentsline {section}{\numberline {4.25}Sign\discretionary {-}{}{}In Class Reference}{32}{section.4.25}
+\contentsline {subsection}{\numberline {4.25.1}Constructor \& Destructor Documentation}{33}{subsection.4.25.1}
+\contentsline {subsubsection}{\numberline {4.25.1.1}Sign\discretionary {-}{}{}In}{33}{subsubsection.4.25.1.1}
+\contentsline {section}{\numberline {4.26}Sign\discretionary {-}{}{}Up Class Reference}{33}{section.4.26}
+\contentsline {subsection}{\numberline {4.26.1}Constructor \& Destructor Documentation}{33}{subsection.4.26.1}
+\contentsline {subsubsection}{\numberline {4.26.1.1}Sign\discretionary {-}{}{}Up}{33}{subsubsection.4.26.1.1}
+\contentsline {section}{\numberline {4.27}Sponge\discretionary {-}{}{}Bob Class Reference}{34}{section.4.27}
+\contentsline {subsection}{\numberline {4.27.1}Detailed Description}{35}{subsection.4.27.1}
+\contentsline {subsection}{\numberline {4.27.2}Constructor \& Destructor Documentation}{35}{subsection.4.27.2}
+\contentsline {subsubsection}{\numberline {4.27.2.1}Sponge\discretionary {-}{}{}Bob}{35}{subsubsection.4.27.2.1}
+\contentsline {subsection}{\numberline {4.27.3}Member Function Documentation}{35}{subsection.4.27.3}
+\contentsline {subsubsection}{\numberline {4.27.3.1}key\discretionary {-}{}{}Press\discretionary {-}{}{}Event}{35}{subsubsection.4.27.3.1}
+\contentsline {subsubsection}{\numberline {4.27.3.2}key\discretionary {-}{}{}Release\discretionary {-}{}{}Event}{35}{subsubsection.4.27.3.2}
+\contentsline {subsubsection}{\numberline {4.27.3.3}toggle\discretionary {-}{}{}Follow}{36}{subsubsection.4.27.3.3}
+\contentsline {section}{\numberline {4.28}User Class Reference}{36}{section.4.28}
+\contentsline {subsection}{\numberline {4.28.1}Constructor \& Destructor Documentation}{37}{subsection.4.28.1}
+\contentsline {subsubsection}{\numberline {4.28.1.1}User}{37}{subsubsection.4.28.1.1}
+\contentsline {subsection}{\numberline {4.28.2}Member Function Documentation}{37}{subsection.4.28.2}
+\contentsline {subsubsection}{\numberline {4.28.2.1}Add\discretionary {-}{}{}User}{37}{subsubsection.4.28.2.1}
+\contentsline {subsubsection}{\numberline {4.28.2.2}Get\discretionary {-}{}{}User}{37}{subsubsection.4.28.2.2}
+\contentsline {subsubsection}{\numberline {4.28.2.3}Json\discretionary {-}{}{}To\discretionary {-}{}{}User}{37}{subsubsection.4.28.2.3}
+\contentsline {subsubsection}{\numberline {4.28.2.4}Pause\discretionary {-}{}{}Game\discretionary {-}{}{}For\discretionary {-}{}{}User}{37}{subsubsection.4.28.2.4}
+\contentsline {subsubsection}{\numberline {4.28.2.5}Resume\discretionary {-}{}{}Game\discretionary {-}{}{}For\discretionary {-}{}{}User}{38}{subsubsection.4.28.2.5}
+\contentsline {subsubsection}{\numberline {4.28.2.6}Upgrade\discretionary {-}{}{}User\discretionary {-}{}{}To\discretionary {-}{}{}Level}{38}{subsubsection.4.28.2.6}
+\contentsline {subsubsection}{\numberline {4.28.2.7}User\discretionary {-}{}{}To\discretionary {-}{}{}Json}{38}{subsubsection.4.28.2.7}
+\contentsline {section}{\numberline {4.29}virus Class Reference}{38}{section.4.29}
+\contentsline {subsection}{\numberline {4.29.1}Detailed Description}{39}{subsection.4.29.1}
+\contentsline {subsection}{\numberline {4.29.2}Constructor \& Destructor Documentation}{39}{subsection.4.29.2}
+\contentsline {subsubsection}{\numberline {4.29.2.1}virus}{39}{subsubsection.4.29.2.1}
+\contentsline {subsection}{\numberline {4.29.3}Member Function Documentation}{40}{subsection.4.29.3}
+\contentsline {subsubsection}{\numberline {4.29.3.1}update}{40}{subsubsection.4.29.3.1}
+\contentsline {section}{\numberline {4.30}Weapon Class Reference}{40}{section.4.30}
+\contentsline {section}{\numberline {4.31}Welcome Class Reference}{41}{section.4.31}
+\contentsline {chapter}{\numberline {5}File Documentation}{43}{chapter.5}
+\contentsline {section}{\numberline {5.1}babyspongebob.\discretionary {-}{}{}cpp File Reference}{43}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{43}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}bacteria.\discretionary {-}{}{}cpp File Reference}{43}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Detailed Description}{43}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}bomb.\discretionary {-}{}{}cpp File Reference}{44}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Detailed Description}{44}{subsection.5.3.1}
+\contentsline {section}{\numberline {5.4}cheat.\discretionary {-}{}{}cpp File Reference}{44}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Detailed Description}{44}{subsection.5.4.1}
+\contentsline {section}{\numberline {5.5}description.\discretionary {-}{}{}cpp File Reference}{45}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Detailed Description}{45}{subsection.5.5.1}
+\contentsline {section}{\numberline {5.6}error.\discretionary {-}{}{}cpp File Reference}{45}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Detailed Description}{45}{subsection.5.6.1}
+\contentsline {section}{\numberline {5.7}fungus.\discretionary {-}{}{}cpp File Reference}{45}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{45}{subsection.5.7.1}
+\contentsline {section}{\numberline {5.8}game1.\discretionary {-}{}{}cpp File Reference}{46}{section.5.8}
+\contentsline {subsection}{\numberline {5.8.1}Detailed Description}{46}{subsection.5.8.1}
+\contentsline {section}{\numberline {5.9}game1scene.\discretionary {-}{}{}cpp File Reference}{46}{section.5.9}
+\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{46}{subsection.5.9.1}
+\contentsline {section}{\numberline {5.10}game2.\discretionary {-}{}{}cpp File Reference}{47}{section.5.10}
+\contentsline {subsection}{\numberline {5.10.1}Detailed Description}{47}{subsection.5.10.1}
+\contentsline {section}{\numberline {5.11}gamemenu.\discretionary {-}{}{}cpp File Reference}{47}{section.5.11}
+\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{47}{subsection.5.11.1}
+\contentsline {section}{\numberline {5.12}gameview.\discretionary {-}{}{}cpp File Reference}{48}{section.5.12}
+\contentsline {subsection}{\numberline {5.12.1}Detailed Description}{48}{subsection.5.12.1}
+\contentsline {section}{\numberline {5.13}grabbable.\discretionary {-}{}{}cpp File Reference}{48}{section.5.13}
+\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{48}{subsection.5.13.1}
+\contentsline {section}{\numberline {5.14}header.\discretionary {-}{}{}cpp File Reference}{48}{section.5.14}
+\contentsline {subsection}{\numberline {5.14.1}Detailed Description}{49}{subsection.5.14.1}
+\contentsline {section}{\numberline {5.15}history.\discretionary {-}{}{}cpp File Reference}{49}{section.5.15}
+\contentsline {subsection}{\numberline {5.15.1}Detailed Description}{49}{subsection.5.15.1}
+\contentsline {section}{\numberline {5.16}home.\discretionary {-}{}{}cpp File Reference}{49}{section.5.16}
+\contentsline {subsection}{\numberline {5.16.1}Detailed Description}{49}{subsection.5.16.1}
+\contentsline {section}{\numberline {5.17}hook.\discretionary {-}{}{}cpp File Reference}{50}{section.5.17}
+\contentsline {subsection}{\numberline {5.17.1}Detailed Description}{50}{subsection.5.17.1}
+\contentsline {section}{\numberline {5.18}hu\discretionary {-}{}{}Item.\discretionary {-}{}{}cpp File Reference}{50}{section.5.18}
+\contentsline {subsection}{\numberline {5.18.1}Detailed Description}{50}{subsection.5.18.1}
+\contentsline {section}{\numberline {5.19}scores.\discretionary {-}{}{}cpp File Reference}{50}{section.5.19}
+\contentsline {subsection}{\numberline {5.19.1}Detailed Description}{51}{subsection.5.19.1}
+\contentsline {section}{\numberline {5.20}signin.\discretionary {-}{}{}cpp File Reference}{51}{section.5.20}
+\contentsline {subsection}{\numberline {5.20.1}Detailed Description}{51}{subsection.5.20.1}
+\contentsline {section}{\numberline {5.21}signup.\discretionary {-}{}{}cpp File Reference}{51}{section.5.21}
+\contentsline {subsection}{\numberline {5.21.1}Detailed Description}{51}{subsection.5.21.1}
+\contentsline {section}{\numberline {5.22}sponge\discretionary {-}{}{}Bob.\discretionary {-}{}{}cpp File Reference}{52}{section.5.22}
+\contentsline {subsection}{\numberline {5.22.1}Detailed Description}{52}{subsection.5.22.1}
+\contentsline {subsection}{\numberline {5.22.2}Variable Documentation}{52}{subsection.5.22.2}
+\contentsline {subsubsection}{\numberline {5.22.2.1}pressed\discretionary {-}{}{}Keys}{52}{subsubsection.5.22.2.1}
+\contentsline {section}{\numberline {5.23}virus.\discretionary {-}{}{}cpp File Reference}{52}{section.5.23}
+\contentsline {subsection}{\numberline {5.23.1}Detailed Description}{53}{subsection.5.23.1}
+\contentsline {section}{\numberline {5.24}weapon.\discretionary {-}{}{}cpp File Reference}{53}{section.5.24}
+\contentsline {subsection}{\numberline {5.24.1}Detailed Description}{53}{subsection.5.24.1}
+\contentsline {section}{\numberline {5.25}welcome.\discretionary {-}{}{}cpp File Reference}{53}{section.5.25}
+\contentsline {subsection}{\numberline {5.25.1}Detailed Description}{53}{subsection.5.25.1}

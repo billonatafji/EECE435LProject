@@ -1,0 +1,125 @@
+\hypertarget{classbacteria}{\section{bacteria Class Reference}
+\label{classbacteria}\index{bacteria@{bacteria}}
+}
+
+
+bacteria class  
+
+
+
+
+{\ttfamily \#include $<$bacteria.\-h$>$}
+
+Inheritance diagram for bacteria\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classbacteria}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classbacteria_abbc6e655d055d64b1f506248b598f03a}{update} ()
+\begin{DoxyCompactList}\small\item\em update the location on the screen and detects collisions \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbacteria_a9c1bb600d594429c64446a9dff56f398}{bacteria} (int strength, int \hyperlink{classbacteria_ae0262e42fe93ae2fcd6cb77f53be8d05}{direction}, int \hyperlink{classbacteria_ab4cdc40bc26aa012391f7543f7e0d54b}{direction\-Y}, double \hyperlink{classbacteria_a4b0a914494a4d5c26b12181f7546d3e1}{Xvelocity}, double \hyperlink{classbacteria_ab0faabfc046869969c36b88ecd105702}{Yvelocity}, int \hyperlink{classbacteria_aa97d75555e88a076c05dcc217b107b54}{deviation\-Limit}, int \hyperlink{classbacteria_a512cfc4c7afef0e3bf8f76bd53072de9}{centerline}, \hyperlink{classHeader}{Header} $\ast$\hyperlink{classGrabbable_a97db8193dec83a8086352f80a30b2038}{header}=N\-U\-L\-L, Q\-String game=\char`\"{}\char`\"{}, Q\-Object $\ast$parent=nullptr)
+\item 
+\hypertarget{classbacteria_afd6e4d4c7575387a8ffdcc7a40287507}{\hyperlink{classbacteria_afd6e4d4c7575387a8ffdcc7a40287507}{$\sim$bacteria} ()}\label{classbacteria_afd6e4d4c7575387a8ffdcc7a40287507}
+
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classbacteria_a217dff93e774f9a55370636c5e0d1bef}{Q\-Timer $\ast$ \hyperlink{classbacteria_a217dff93e774f9a55370636c5e0d1bef}{timer}}\label{classbacteria_a217dff93e774f9a55370636c5e0d1bef}
+
+\begin{DoxyCompactList}\small\item\em timer attribute that specifies the timer \end{DoxyCompactList}\item 
+\hypertarget{classbacteria_ae0262e42fe93ae2fcd6cb77f53be8d05}{int \hyperlink{classbacteria_ae0262e42fe93ae2fcd6cb77f53be8d05}{direction}}\label{classbacteria_ae0262e42fe93ae2fcd6cb77f53be8d05}
+
+\begin{DoxyCompactList}\small\item\em direction attribute that specifies the direction of movement of the bacteria \end{DoxyCompactList}\item 
+\hypertarget{classbacteria_ab4cdc40bc26aa012391f7543f7e0d54b}{int \hyperlink{classbacteria_ab4cdc40bc26aa012391f7543f7e0d54b}{direction\-Y}}\label{classbacteria_ab4cdc40bc26aa012391f7543f7e0d54b}
+
+\begin{DoxyCompactList}\small\item\em attribute that specifies the Y direction of movement of the virus \end{DoxyCompactList}\item 
+\hypertarget{classbacteria_a4b0a914494a4d5c26b12181f7546d3e1}{int \hyperlink{classbacteria_a4b0a914494a4d5c26b12181f7546d3e1}{Xvelocity}}\label{classbacteria_a4b0a914494a4d5c26b12181f7546d3e1}
+
+\begin{DoxyCompactList}\small\item\em attribute that specifies the X velocity of the virus \end{DoxyCompactList}\item 
+\hypertarget{classbacteria_ab0faabfc046869969c36b88ecd105702}{int \hyperlink{classbacteria_ab0faabfc046869969c36b88ecd105702}{Yvelocity}}\label{classbacteria_ab0faabfc046869969c36b88ecd105702}
+
+\begin{DoxyCompactList}\small\item\em attribute that specifies the X velocity of the virus \end{DoxyCompactList}\item 
+\hypertarget{classbacteria_aa97d75555e88a076c05dcc217b107b54}{int \hyperlink{classbacteria_aa97d75555e88a076c05dcc217b107b54}{deviation\-Limit}}\label{classbacteria_aa97d75555e88a076c05dcc217b107b54}
+
+\begin{DoxyCompactList}\small\item\em specifies maximum deviation from center line \end{DoxyCompactList}\item 
+\hypertarget{classbacteria_a512cfc4c7afef0e3bf8f76bd53072de9}{int \hyperlink{classbacteria_a512cfc4c7afef0e3bf8f76bd53072de9}{centerline}}\label{classbacteria_a512cfc4c7afef0e3bf8f76bd53072de9}
+
+\begin{DoxyCompactList}\small\item\em specifies the center of propagation of the virus \end{DoxyCompactList}\item 
+\hypertarget{classbacteria_ab7647c95c379933e91925ef1222cf05b}{int {\bfseries upperlimit}}\label{classbacteria_ab7647c95c379933e91925ef1222cf05b}
+
+\item 
+\hypertarget{classbacteria_a16f904a662cd13a7dfaf230f8e4a1436}{Q\-String {\bfseries game}}\label{classbacteria_a16f904a662cd13a7dfaf230f8e4a1436}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+bacteria class 
+
+.h A bacteria is an element on screen that moves periodically in a predefined direction. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbacteria_a9c1bb600d594429c64446a9dff56f398}{\index{bacteria@{bacteria}!bacteria@{bacteria}}
+\index{bacteria@{bacteria}!bacteria@{bacteria}}
+\subsubsection[{bacteria}]{\setlength{\rightskip}{0pt plus 5cm}bacteria\-::bacteria (
+\begin{DoxyParamCaption}
+\item[{int}]{strength, }
+\item[{int}]{direction, }
+\item[{int}]{direction\-Y, }
+\item[{double}]{Xvelocity, }
+\item[{double}]{Yvelocity, }
+\item[{int}]{deviation\-Limit, }
+\item[{int}]{centerline, }
+\item[{{\bf Header} $\ast$}]{header = {\ttfamily NULL}, }
+\item[{Q\-String}]{game = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classbacteria_a9c1bb600d594429c64446a9dff56f398}
+setting attributes
+
+starting timer and connecting it 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbacteria_abbc6e655d055d64b1f506248b598f03a}{\index{bacteria@{bacteria}!update@{update}}
+\index{update@{update}!bacteria@{bacteria}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void bacteria\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{classbacteria_abbc6e655d055d64b1f506248b598f03a}
+
+
+update the location on the screen and detects collisions 
+
+\hyperlink{classbacteria_abbc6e655d055d64b1f506248b598f03a}{bacteria\-::update} updated the position of the bacteria. It also checks if theres is a collision with any object and checks its type. additionally, it updates the metrics if there is a collision with the player (spongebob) checks if the item is at the boundary of the screen to remove it
+
+checks if there is a collision
+
+checks if the collision is with the player
+
+$<$checking if the player isnt strong enough to kill the bacteria, if true, he should lose a life.
+
+update lives, deletes item,updates cleanliness, and reset stats
+
+$<$ player is strong enough to kill the bacteria
+
+deletes item,updates cleanliness, and updates stats
+
+updating item position if the player has the followme tag toggled on, this means that the bacteria should follow him. an algorithm is used to calculate the speed and direction at which the item should move to follow the palyer.
+
+else, the bacteria moves in a wave motion along a fixed center line form the left to the right or the opposite based on its direction.
+
+algorithm to follow the plater 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+bacteria.\-h\item 
+\hyperlink{bacteria_8cpp}{bacteria.\-cpp}\end{DoxyCompactItemize}

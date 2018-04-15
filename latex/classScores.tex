@@ -1,0 +1,101 @@
+\hypertarget{classScores}{\section{Scores Class Reference}
+\label{classScores}\index{Scores@{Scores}}
+}
+
+
+The \hyperlink{classScores}{Scores} class.  
+
+
+
+
+{\ttfamily \#include $<$scores.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Q\-String \hyperlink{classScores_aa958c1c60267d4f682eb9e2580f94427}{Get\-Highest\-Score} (Q\-String game)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScores_aa958c1c60267d4f682eb9e2580f94427}{Scores\-::\-Get\-Highest\-Score}. \end{DoxyCompactList}\item 
+static Q\-String\-List \hyperlink{classScores_a73494bf10c0c62fada10f000086151f2}{Get\-User\-Scores} (Q\-String username, Q\-String game)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScores_a73494bf10c0c62fada10f000086151f2}{Scores\-::\-Get\-User\-Scores}. \end{DoxyCompactList}\item 
+static bool \hyperlink{classScores_a9b43bd9811f2582dbadb6021eaf6b193}{Add\-Score} (Q\-String username, Q\-String score, Q\-String game)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classScores_a9b43bd9811f2582dbadb6021eaf6b193}{Scores\-::\-Add\-Score}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classScores}{Scores} class. 
+
+this class containes everything related to scores and manipulating them 
+
+\subsection{Member Function Documentation}
+\hypertarget{classScores_a9b43bd9811f2582dbadb6021eaf6b193}{\index{Scores@{Scores}!Add\-Score@{Add\-Score}}
+\index{Add\-Score@{Add\-Score}!Scores@{Scores}}
+\subsubsection[{Add\-Score}]{\setlength{\rightskip}{0pt plus 5cm}bool Scores\-::\-Add\-Score (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{username, }
+\item[{Q\-String}]{score, }
+\item[{Q\-String}]{game}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classScores_a9b43bd9811f2582dbadb6021eaf6b193}
+
+
+\hyperlink{classScores_a9b43bd9811f2582dbadb6021eaf6b193}{Scores\-::\-Add\-Score}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em score} & \\
+\hline
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+this function adds a score to the list of scores for a selected user in a selected game \hypertarget{classScores_aa958c1c60267d4f682eb9e2580f94427}{\index{Scores@{Scores}!Get\-Highest\-Score@{Get\-Highest\-Score}}
+\index{Get\-Highest\-Score@{Get\-Highest\-Score}!Scores@{Scores}}
+\subsubsection[{Get\-Highest\-Score}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Scores\-::\-Get\-Highest\-Score (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{game}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classScores_aa958c1c60267d4f682eb9e2580f94427}
+
+
+\hyperlink{classScores_aa958c1c60267d4f682eb9e2580f94427}{Scores\-::\-Get\-Highest\-Score}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+this function gets the highest score in a given game from a Json Document \hypertarget{classScores_a73494bf10c0c62fada10f000086151f2}{\index{Scores@{Scores}!Get\-User\-Scores@{Get\-User\-Scores}}
+\index{Get\-User\-Scores@{Get\-User\-Scores}!Scores@{Scores}}
+\subsubsection[{Get\-User\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String\-List Scores\-::\-Get\-User\-Scores (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{username, }
+\item[{Q\-String}]{game}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classScores_a73494bf10c0c62fada10f000086151f2}
+
+
+\hyperlink{classScores_a73494bf10c0c62fada10f000086151f2}{Scores\-::\-Get\-User\-Scores}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em game} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+this function gets the scores of the user from a Json document 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+scores.\-h\item 
+\hyperlink{scores_8cpp}{scores.\-cpp}\end{DoxyCompactItemize}

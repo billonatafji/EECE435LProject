@@ -1,0 +1,167 @@
+\hypertarget{classSpongeBob}{\section{Sponge\-Bob Class Reference}
+\label{classSpongeBob}\index{Sponge\-Bob@{Sponge\-Bob}}
+}
+
+
+sponge\-Bob class  
+
+
+
+
+{\ttfamily \#include $<$sponge\-Bob.\-h$>$}
+
+Inheritance diagram for Sponge\-Bob\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSpongeBob}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSpongeBob_aabcc0812bd3801612c5328004748cc12}{toggle\-Follow} ()
+\begin{DoxyCompactList}\small\item\em change from follow me to dont follow me \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSpongeBob_acd6c5412c662a93f4f91d8888cfef804}{Sponge\-Bob} (int \hyperlink{classSpongeBob_a09c3ee16b44a4a89a014f6055868a9e5}{cleanliness}, int \hyperlink{classSpongeBob_a72a16aa8925690a274e869c0eb0a9fd5}{immunity}, int \hyperlink{classSpongeBob_a801b813e51511cb779f077e6b510eb56}{lives}, int \hyperlink{classSpongeBob_a24b14e1237cb158488cb1bcf84b42d13}{score}, Q\-Point pos, Q\-String \hyperlink{classSpongeBob_a271879173f8458be51a074e89e694403}{game}, Q\-Object $\ast$parent=nullptr, int bombs=0, int required\-Bomb\-Score=0, int translation=0, Q\-String \hyperlink{classSpongeBob_a264d204946dc5aea60f5f2126fc546d3}{weapon}=\char`\"{}\char`\"{}, int weapon\-Strength=0)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \hyperlink{classSpongeBob_a489d205da14cfc2760cba9624eb03772}{key\-Press\-Event} (Q\-Key\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Detects key strokes pressed. \end{DoxyCompactList}\item 
+void \hyperlink{classSpongeBob_a8e01b8481b4b5af4072ab6973cbf761f}{key\-Release\-Event} (Q\-Key\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Detects key release events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSpongeBob_a124a05c347340041b19c187b0e11d28e}{bool \hyperlink{classSpongeBob_a124a05c347340041b19c187b0e11d28e}{followme}}\label{classSpongeBob_a124a05c347340041b19c187b0e11d28e}
+
+\begin{DoxyCompactList}\small\item\em followme attribute that specifies if the bacteria should follow spongebob or not \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_aaa7f8e848ec158ce5d03e3a782026d6d}{Q\-Timer $\ast$ \hyperlink{classSpongeBob_aaa7f8e848ec158ce5d03e3a782026d6d}{follow\-Timer}}\label{classSpongeBob_aaa7f8e848ec158ce5d03e3a782026d6d}
+
+\begin{DoxyCompactList}\small\item\em timer attribute that specifies the timer \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_a09c3ee16b44a4a89a014f6055868a9e5}{int \hyperlink{classSpongeBob_a09c3ee16b44a4a89a014f6055868a9e5}{cleanliness}}\label{classSpongeBob_a09c3ee16b44a4a89a014f6055868a9e5}
+
+\begin{DoxyCompactList}\small\item\em cleanliness of the tank \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_a72a16aa8925690a274e869c0eb0a9fd5}{int \hyperlink{classSpongeBob_a72a16aa8925690a274e869c0eb0a9fd5}{immunity}}\label{classSpongeBob_a72a16aa8925690a274e869c0eb0a9fd5}
+
+\begin{DoxyCompactList}\small\item\em immunity level of spongebob \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_a801b813e51511cb779f077e6b510eb56}{int \hyperlink{classSpongeBob_a801b813e51511cb779f077e6b510eb56}{lives}}\label{classSpongeBob_a801b813e51511cb779f077e6b510eb56}
+
+\begin{DoxyCompactList}\small\item\em number of lives \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_a24b14e1237cb158488cb1bcf84b42d13}{int \hyperlink{classSpongeBob_a24b14e1237cb158488cb1bcf84b42d13}{score}}\label{classSpongeBob_a24b14e1237cb158488cb1bcf84b42d13}
+
+\begin{DoxyCompactList}\small\item\em total score \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_aaa6688a6fcf12b0eae3fd3a7f1e137bc}{Q\-Point \hyperlink{classSpongeBob_aaa6688a6fcf12b0eae3fd3a7f1e137bc}{current\-Pos}}\label{classSpongeBob_aaa6688a6fcf12b0eae3fd3a7f1e137bc}
+
+\begin{DoxyCompactList}\small\item\em current position \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_a264d204946dc5aea60f5f2126fc546d3}{\hyperlink{classWeapon}{Weapon} $\ast$ \hyperlink{classSpongeBob_a264d204946dc5aea60f5f2126fc546d3}{weapon}}\label{classSpongeBob_a264d204946dc5aea60f5f2126fc546d3}
+
+\begin{DoxyCompactList}\small\item\em pointer to the weapon used \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_a271879173f8458be51a074e89e694403}{Q\-String \hyperlink{classSpongeBob_a271879173f8458be51a074e89e694403}{game}}\label{classSpongeBob_a271879173f8458be51a074e89e694403}
+
+\begin{DoxyCompactList}\small\item\em specify the game to which the instance belongs ( game1 or game2) \end{DoxyCompactList}\item 
+\hypertarget{classSpongeBob_a771d252ba5afccc3c428a39e200453fe}{int {\bfseries translation}}\label{classSpongeBob_a771d252ba5afccc3c428a39e200453fe}
+
+\item 
+\hypertarget{classSpongeBob_ad9376b9f927ada8f5e9c9871bd86c7ff}{int {\bfseries bombs}}\label{classSpongeBob_ad9376b9f927ada8f5e9c9871bd86c7ff}
+
+\item 
+\hypertarget{classSpongeBob_a7dc982197904d3a4f04f8e5d88da80ef}{int {\bfseries required\-Bomb\-Score}}\label{classSpongeBob_a7dc982197904d3a4f04f8e5d88da80ef}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+sponge\-Bob class 
+
+.h This creates an instance of the spongebob. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSpongeBob_acd6c5412c662a93f4f91d8888cfef804}{\index{Sponge\-Bob@{Sponge\-Bob}!Sponge\-Bob@{Sponge\-Bob}}
+\index{Sponge\-Bob@{Sponge\-Bob}!SpongeBob@{Sponge\-Bob}}
+\subsubsection[{Sponge\-Bob}]{\setlength{\rightskip}{0pt plus 5cm}Sponge\-Bob\-::\-Sponge\-Bob (
+\begin{DoxyParamCaption}
+\item[{int}]{cleanliness, }
+\item[{int}]{immunity, }
+\item[{int}]{lives, }
+\item[{int}]{score, }
+\item[{Q\-Point}]{pos, }
+\item[{Q\-String}]{game, }
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily nullptr}, }
+\item[{int}]{bombs = {\ttfamily 0}, }
+\item[{int}]{required\-Bomb\-Score = {\ttfamily 0}, }
+\item[{int}]{translation = {\ttfamily 0}, }
+\item[{Q\-String}]{weapon = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{int}]{weapon\-Strength = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classSpongeBob_acd6c5412c662a93f4f91d8888cfef804}
+
+
+constructor 
+
+setting up attributes of spongebob 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSpongeBob_a489d205da14cfc2760cba9624eb03772}{\index{Sponge\-Bob@{Sponge\-Bob}!key\-Press\-Event@{key\-Press\-Event}}
+\index{key\-Press\-Event@{key\-Press\-Event}!SpongeBob@{Sponge\-Bob}}
+\subsubsection[{key\-Press\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Sponge\-Bob\-::key\-Press\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Key\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classSpongeBob_a489d205da14cfc2760cba9624eb03772}
+
+
+Detects key strokes pressed. 
+
+sponge\-Bob\-::key\-Press\-Event
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$event} & first argument, keystroke event\\
+\hline
+{\em event} & the keypress event detects all key strokes on the keyboard. we are only interested in the up,down,left, and right strokes when one of those keys is pressed, spongebob moves accoringly when possible. it also moves diagonally if multiple of these keys are pressed at the same time. Sponge bob moves diagonally faster than horizontally and vertically if the location of spongebob is on the edges of the screen, the position isnt updated if this will result in leaving the screen \\
+\hline
+\end{DoxyParams}
+game 1 movement
+
+the x key fires the weapon
+
+the z key changes the weapon
+
+if the player has the required score and has bombs \hypertarget{classSpongeBob_a8e01b8481b4b5af4072ab6973cbf761f}{\index{Sponge\-Bob@{Sponge\-Bob}!key\-Release\-Event@{key\-Release\-Event}}
+\index{key\-Release\-Event@{key\-Release\-Event}!SpongeBob@{Sponge\-Bob}}
+\subsubsection[{key\-Release\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Sponge\-Bob\-::key\-Release\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Key\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classSpongeBob_a8e01b8481b4b5af4072ab6973cbf761f}
+
+
+Detects key release events. 
+
+sponge\-Bob\-::key\-Release\-Event
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$event} & first argument, key release event\\
+\hline
+{\em event} & this collects key release events and removes them from the set of pressed keys \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSpongeBob_aabcc0812bd3801612c5328004748cc12}{\index{Sponge\-Bob@{Sponge\-Bob}!toggle\-Follow@{toggle\-Follow}}
+\index{toggle\-Follow@{toggle\-Follow}!SpongeBob@{Sponge\-Bob}}
+\subsubsection[{toggle\-Follow}]{\setlength{\rightskip}{0pt plus 5cm}void Sponge\-Bob\-::toggle\-Follow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{classSpongeBob_aabcc0812bd3801612c5328004748cc12}
+
+
+change from follow me to dont follow me 
+
+sponge\-Bob\-::toggle\-Follow toggles the follow me to false when the timer ends 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+sponge\-Bob.\-h\item 
+\hyperlink{spongeBob_8cpp}{sponge\-Bob.\-cpp}\end{DoxyCompactItemize}

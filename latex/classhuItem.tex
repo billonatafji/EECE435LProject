@@ -1,0 +1,85 @@
+\hypertarget{classhuItem}{\section{hu\-Item Class Reference}
+\label{classhuItem}\index{hu\-Item@{hu\-Item}}
+}
+
+
+\hyperlink{classhuItem}{hu\-Item} class  
+
+
+
+
+{\ttfamily \#include $<$hu\-Item.\-h$>$}
+
+Inheritance diagram for hu\-Item\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classhuItem}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classhuItem_a3737ba343f040fed15febc7ef3e5ad52}{update} ()
+\begin{DoxyCompactList}\small\item\em update the hu\-Itemss location on the screen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classhuItem_ab48bd1dc8b738ff323a8d72d4cbb4824}{{\bfseries hu\-Item} (bool type, \hyperlink{classHeader}{Header} $\ast$\hyperlink{classGrabbable_a97db8193dec83a8086352f80a30b2038}{header}, Q\-String game=\char`\"{}\char`\"{}, Q\-Object $\ast$parent=nullptr, int strength=0, int interval=100)}\label{classhuItem_ab48bd1dc8b738ff323a8d72d4cbb4824}
+
+\item 
+\hypertarget{classhuItem_a983ca578205dec2de2da458a9b055e5a}{\hyperlink{classhuItem_a983ca578205dec2de2da458a9b055e5a}{$\sim$hu\-Item} ()}\label{classhuItem_a983ca578205dec2de2da458a9b055e5a}
+
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classhuItem_a69682e5b04939e293bd092613a6587dd}{Q\-Timer $\ast$ \hyperlink{classhuItem_a69682e5b04939e293bd092613a6587dd}{timer}}\label{classhuItem_a69682e5b04939e293bd092613a6587dd}
+
+\begin{DoxyCompactList}\small\item\em timer attribute that specifies the timer \end{DoxyCompactList}\item 
+\hypertarget{classhuItem_ae7fa9bc23a29a5efe04a6611ef787f65}{bool {\bfseries type}}\label{classhuItem_ae7fa9bc23a29a5efe04a6611ef787f65}
+
+\item 
+\hypertarget{classhuItem_a77a600419ccf8e6810b24ee4690e5331}{Q\-String {\bfseries game}}\label{classhuItem_a77a600419ccf8e6810b24ee4690e5331}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classhuItem}{hu\-Item} class 
+
+.h A hu\-Items is an element on screen that moves periodically in a predefined direction. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classhuItem_a3737ba343f040fed15febc7ef3e5ad52}{\index{hu\-Item@{hu\-Item}!update@{update}}
+\index{update@{update}!huItem@{hu\-Item}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void hu\-Item\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{classhuItem_a3737ba343f040fed15febc7ef3e5ad52}
+
+
+update the hu\-Itemss location on the screen 
+
+\hyperlink{classhuItem_a3737ba343f040fed15febc7ef3e5ad52}{hu\-Item\-::update}
+
+constantly updates the movement of the item in a downwards motion for game 1, and in an ellipse motion for game 2. for game 1\-: If the item collides with spongebob, his health is updated and the item is removed from the scene. If it collides with other items, it is not affected. additionally, when the item reaches the boundary of the scene, it is deleted.
+
+for game 2\-: the item can be hooked or fired. if the item reaches the baby, based on its type, it might affect the babies health positivly or negatively. game 1
+
+game 2
+
+item is not grabbed yet
+
+moves along a straigth downwards path first
+
+then through an ellipse
+
+then through a straight upwards path
+
+removed from the scene if it has exceeded the defined path 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+hu\-Item.\-h\item 
+\hyperlink{huItem_8cpp}{hu\-Item.\-cpp}\end{DoxyCompactItemize}

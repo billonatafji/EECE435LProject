@@ -1,0 +1,83 @@
+\hypertarget{classHook}{\section{Hook Class Reference}
+\label{classHook}\index{Hook@{Hook}}
+}
+Inheritance diagram for Hook\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classHook}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classHook_ac212ce64debced1f26243167bfcb750f}{update} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classHook_ac212ce64debced1f26243167bfcb750f}{Hook\-::update} the update function updates the length of the rope of the hook for a better graphical experience. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classHook_a144070c7b7fe467a7116de2734743257}{Hook} (int strength)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classHook_a144070c7b7fe467a7116de2734743257}{Hook\-::\-Hook}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classHook_a144070c7b7fe467a7116de2734743257}{\index{Hook@{Hook}!Hook@{Hook}}
+\index{Hook@{Hook}!Hook@{Hook}}
+\subsubsection[{Hook}]{\setlength{\rightskip}{0pt plus 5cm}Hook\-::\-Hook (
+\begin{DoxyParamCaption}
+\item[{int}]{strength}
+\end{DoxyParamCaption}
+)}}\label{classHook_a144070c7b7fe467a7116de2734743257}
+
+
+\hyperlink{classHook_a144070c7b7fe467a7116de2734743257}{Hook\-::\-Hook}. 
+
+constructor 
+\begin{DoxyParams}{Parameters}
+{\em strength} & used to specify the speed of movement of the hook. as the player gets stronger, the hook is faster \\
+\hline
+\end{DoxyParams}
+initializing
+
+drawing the rope
+
+drawing the head of the hook
+
+$<$ connecting the timer to an update function that updates the length of the hook 
+
+\subsection{Member Function Documentation}
+\hypertarget{classHook_ac212ce64debced1f26243167bfcb750f}{\index{Hook@{Hook}!update@{update}}
+\index{update@{update}!Hook@{Hook}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Hook\-::update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{classHook_ac212ce64debced1f26243167bfcb750f}
+
+
+\hyperlink{classHook_ac212ce64debced1f26243167bfcb750f}{Hook\-::update} the update function updates the length of the rope of the hook for a better graphical experience. 
+
+$<$ adding length to the rope
+
+$<$ updating the position of the head
+
+if the rope has reached its minimum length
+
+if the rope has reached its maximum length
+
+if it hasnt caught any item yet
+
+checking for collisions
+
+checking if the collision is with a grabbable item
+
+updating attributes
+
+in case it caught an item
+
+$<$ positioning the item on the head of the hook 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+hook.\-h\item 
+\hyperlink{hook_8cpp}{hook.\-cpp}\end{DoxyCompactItemize}
