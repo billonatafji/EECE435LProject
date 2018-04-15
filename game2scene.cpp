@@ -110,11 +110,8 @@ Game2Scene::Game2Scene(GameView* gameView,int gameMode, QString username ,int di
     this->header->player->setFocus();
     this->header->player->setPos(this->header->player->currentPos);
     this->header->player->installEventFilter(this);
-    this->addItem(this->header->player);
-
-
     this->header->player->weapon->setParentItem(this->header->player);
-    this->addItem(this->header->player->weapon);
+    this->addItem(this->header->player);
 
     this->header->setPos(5,5);
     this->header->pause->installEventFilter(this);

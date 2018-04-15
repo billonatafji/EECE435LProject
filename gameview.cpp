@@ -9,6 +9,8 @@
 
 #include "gameview.h"
 #include "ui_gameview.h"
+#include <QMediaPlaylist>
+#include <QMediaPlayer>
 
 GameView::GameView(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +18,14 @@ GameView::GameView(QWidget *parent) :
 {
     ui->setupUi(this);
     this->gameScene = new QGraphicsScene();
+
+    QMediaPlaylist *playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/Project435/resources/background.ogg"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    QMediaPlayer *music = new QMediaPlayer();
+    music->setPlaylist(playlist);
+    music->play();
 
 }
 

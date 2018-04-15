@@ -44,18 +44,17 @@ Header::Header(SpongeBob* player, int difficulty, QString username, QString game
         AddChart(40,0,100,100,120*16,180*16/3,Qt::red);
         AddNeedle(90,50);
         AddBombs(175,10);
-
-        AddHearts(680,10);
-        AddCleanlMeter(750,10);
+        AddHearts(700,10);
+        AddCleanlMeter(770,10);
         AddBaby(700,70,healthyItemsFed);
 
     }
 
-    AddLevel(380,10);
-    AddPause(450,0);
-    AddTime(452,40);
-    AddScoreCalculation(452,60);
-    AddScore(500,10);
+    AddLevel(400,10);
+    AddPause(470,0);
+    AddTime(472,40);
+    AddScoreCalculation(440,60);
+    AddScore(520,10);
 
     this->timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(CountDown()));
@@ -328,6 +327,8 @@ void Header::CountDown(){
 
 void Header::SetTime(int val){
     this->time += val;
+    this->scoreCalculationLabel->setHtml(QString("<h2>Time ").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));///< this visually illustrates updating the time.
+
     Render();
 }
 void Header::SetScore(int val){
@@ -337,7 +338,7 @@ void Header::SetScore(int val){
         this->player->score += val;
     }
     counter = 0;
-    this->scoreCalculationLabel->setHtml(QString("<h2>").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));///< this visually illustrates adding the score.
+    this->scoreCalculationLabel->setHtml(QString("<h2>Score ").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));///< this visually illustrates updating the score.
 
     Render();
 }
