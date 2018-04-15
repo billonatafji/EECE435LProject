@@ -93,7 +93,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
     else if(gameMode == Game::New){
 
         SpongeBob* player = new SpongeBob(0,50,3,0,QPoint(300,0), Game1::name);
-        this->header = new Header(player, difficulty, username, Game1::name, false, 120);
+        this->header = new Header(player, difficulty, username, Game1::name, false, 360);
 
     /// this is a game that was paused and is now being resumed
     }else if(gameMode == Game::Resume){
@@ -117,7 +117,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
     connect(addhuItemstimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
     addhuItemstimer->start(800);
     connect(addbacteriatimer,SIGNAL(timeout()),this,SLOT(addbacteria()));
-    addbacteriatimer->start(1000);
+    addbacteriatimer->start(2000);
 
     if (difficulty==2)
     {
@@ -304,7 +304,7 @@ void game1scene::CloseView(){
 void game1scene::WonGame(){
     this->header->paused = true;
     if(this->header->username != ""){
-        if(User::GetUserLevel(Game1::name,this->header->username) == this->header->difficulty && this->header->difficulty != 3){
+        if(User::GetUserLevel(Game1::name,this->header->username) == this->header->difficulty && this->header->difficulty != 3&& this->header->player->score >=300){
             User::UpgradeUserToLevel(Game1::name,this->header->username,this->header->difficulty+1);
         }
         Scores::AddScore(this->header->username,QString::number(this->header->player->score),Game1::name);

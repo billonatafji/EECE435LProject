@@ -1,6 +1,22 @@
+/**
+* \file signup.cpp
+* \brief signup class definition
+*
+* the signup class
+*\author Bilal natafgi
+*\date 20-2-2018
+*/
 #include "signup.h"
 #include "ui_signup.h"
 
+/**
+ * @brief SignUp::SignUp
+ * @param parent
+ *
+ *constructor for the signup class.
+ * it hides the validation error messages
+ *
+ */
 SignUp::SignUp(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SignUp)
@@ -14,17 +30,24 @@ SignUp::SignUp(QWidget *parent) :
     ui->confirmPasswordValidationLabel->hide();
     ui->profilePictureValidationLabel->hide();
 }
-
+///destructor
 SignUp::~SignUp()
 {
     delete ui;
 }
-
+/// excited when the cancel button is clicked
 void SignUp::on_cancelButton_clicked()
 {
     this->close();
 }
-
+/**
+ * @brief SignUp::on_signUpButton_clicked
+ *
+ * this function is excited when the signup button is pressed.
+ * it checks for errors in the form (ex: no username, not maching passwords...).
+ * if everything is correct, it calls the adduser function in the user class, which also checks if the username is taken or not. if not, then the user is added.
+ *
+ */
 void SignUp::on_signUpButton_clicked()
 {
     bool canSubmit = true;
@@ -71,7 +94,7 @@ void SignUp::on_signUpButton_clicked()
     }else{
         ui->profilePictureValidationLabel->hide();
     }
-
+    /// if no errors in the form
     if(canSubmit){
 
         User user(ui->userNameEdit->text(),
@@ -95,7 +118,9 @@ void SignUp::on_signUpButton_clicked()
     }
 
 }
-
+/// this function is excited when a user presses the browse button.
+/// it opens a file dialog for the user to choose a picture
+/// the picture should have the exctention .png, .jpg, or .bmp
 void SignUp::on_browseButton_clicked()
 {
     this->profilePictureEdit = QFileDialog::getOpenFileName(this,tr("Open Image"), "/home", tr("Image Files (*.png *.jpg *.bmp)"));

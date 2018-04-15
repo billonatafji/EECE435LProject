@@ -1,3 +1,12 @@
+/**
+* \file welcome.cpp
+* \brief welcome class definition
+*
+* welcome class with its functions
+*\author Bilal Natafgi
+*\date 18-3-2018
+*/
+
 #include "welcome.h"
 #include "ui_welcome.h"
 #include "signup.h"

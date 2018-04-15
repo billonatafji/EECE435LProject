@@ -160,7 +160,8 @@ User* User::JsonToUser(QJsonObject object, QString username){
 
     return user;
 }
-
+/// this function is used to pause the game for later access. it saves the data in a json document.
+/// the values of attributes in the header are saved.
 void User::PauseGameForUser(Header* header, bool completed){
 
     QFile file("Users.txt");
@@ -209,7 +210,8 @@ void User::PauseGameForUser(Header* header, bool completed){
 
     }
 }
-
+/// this function is given a game and a username, and is used to check if there are available paused games for the user.
+/// if there is a paused game, an instance of header and spongebob are created and filled with the previously saved state.
 Header* User::ResumeGameForUser(QString game, QString username){
 
     QFile file("Users.txt");
@@ -225,12 +227,16 @@ Header* User::ResumeGameForUser(QString game, QString username){
         QJsonObject stateObject = userGameObject.find("State").value().toObject();
 
         if(game == Game1::name){
+
+            /// initializing according to previous metrics
             SpongeBob* player = new SpongeBob(stateObject.find("cleanliness").value().toInt(),
                                               stateObject.find("immunity").value().toInt(),
                                               stateObject.find("lives").value().toInt(),
                                               stateObject.find("score").value().toInt(),
                                               QPoint(stateObject.find("x").value().toInt(),stateObject.find("y").value().toInt()),
                                               game);
+
+            /// initializing according to previous metrics
             header = new Header(player,
                                 stateObject.find("difficulty").value().toInt(),
                                 username,
@@ -239,7 +245,7 @@ Header* User::ResumeGameForUser(QString game, QString username){
                                 stateObject.find("time").value().toInt());
 
         }else if(game == Game2::name){
-
+            /// initializing according to previous metrics
             SpongeBob* player = new SpongeBob(stateObject.find("cleanliness").value().toInt(),
                                               stateObject.find("immunity").value().toInt(),
                                               stateObject.find("lives").value().toInt(),
@@ -253,6 +259,7 @@ Header* User::ResumeGameForUser(QString game, QString username){
                                               stateObject.find("weapon").value().toString(),
                                               stateObject.find("weaponStrength").value().toInt());
 
+            /// initializing according to previous metrics
             header = new Header(player,
                                 stateObject.find("difficulty").value().toInt(),
                                 username,
@@ -266,7 +273,7 @@ Header* User::ResumeGameForUser(QString game, QString username){
     }
     return header;
 }
-
+/// this function is used to get the current level of the user in a specific game
 int User::GetUserLevel(QString game, QString username){
 
     int level = 0;
@@ -285,6 +292,16 @@ int User::GetUserLevel(QString game, QString username){
     return level;
 }
 
+/**
+ * @brief User::UpgradeUserToLevel
+ * @param game
+ * @param username
+ * @param level
+ *
+ * this function is called whith a game, a username, and a level.
+ * it gets the json object of the user using its username, and then assigns him a higher level on the given game.
+ * this allows the user to play the game on a higher level.
+ */
 void User::UpgradeUserToLevel(QString game, QString username, int level){
 
     QFile file("Users.txt");
