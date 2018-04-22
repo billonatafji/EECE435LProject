@@ -62,10 +62,11 @@ void bacteria::update()
                 {
 
                     ///update lives, deletes item,updates cleanliness, and reset stats
-                    this->scene()->removeItem(this);
+                    this->header->SetScore(this->header->difficulty*strength*2*(this->header->player->immunity/33));
                     this->header->currentBacteriaCountInScene-=strength;
-                    this->header->SetCleanliness(+this->strength);
+                    this->header->SetCleanliness(+this->strength*5);
                     this->header->RemoveLife();
+                    this->scene()->removeItem(this);
                     delete this;
 
                 }
@@ -73,9 +74,9 @@ void bacteria::update()
                 else///< player is strong enough to kill  the  bacteria
                 {
                      ///deletes item,updates cleanliness, and updates stats
-                    this->header->player->score+=strength*2*(this->header->player->immunity/33);
+                    this->header->SetScore(this->header->difficulty*strength*2*(this->header->player->immunity/33));
                     this->header->currentBacteriaCountInScene-=strength;
-                    this->header->SetCleanliness(+this->strength);
+                    this->header->SetCleanliness(+this->strength*5);
                     this->scene()->removeItem(this);
                     delete this;
                 }

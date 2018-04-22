@@ -60,8 +60,8 @@ void fungus::update()
                 SpongeBob * item= dynamic_cast<SpongeBob *>(i);
                 if (item)
                 {
-                    item->immunity/=2;/// immunity is halved
-                    item->cleanliness/=2;/// cleanliness is halved
+                    this->header->SetImmunity(-item->immunity/2);/// immunity is halved
+                    this->header->SetCleanliness(-item->cleanliness/2);/// cleanliness is halved
                     item->followme=1;/// instructs batceria to follow him
                     item->followTimer->start(5000);/// timer for following starts
 

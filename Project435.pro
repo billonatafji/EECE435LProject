@@ -111,6 +111,10 @@ SUBDIRS += \
 RESOURCES += \
     resources.qrc
 
+QMAKE_MAKEFILE = Q_Makefile
+QMAKE_CXXFLAGS_DEBUG *= -pg
+QMAKE_LFLAGS_DEBUG *= -pg
+
 OBJECTS_DIR=generated_files #Intermediate object files directory
 MOC_DIR=generated_files #Intermediate moc files directory
 

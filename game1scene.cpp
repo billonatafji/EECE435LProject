@@ -39,7 +39,7 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
 
         QGraphicsTextItem* gameOverLabel = new QGraphicsTextItem();
 
-        gameOverLabel->setHtml("<h1>GAME OVER</h1>");
+        gameOverLabel->setHtml(this->header->time == 0 ? "<h1>Time's Up</h1>" : "<h1>Game Over</h1>");
         gameOverLabel->setPos(400,200);
 
         this->addItem(gameOverLabel);
@@ -92,8 +92,8 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
     /// this is a new game
     else if(gameMode == Game::New){
 
-        SpongeBob* player = new SpongeBob(0,50,3,0,QPoint(300,0), Game1::name);
-        this->header = new Header(player, difficulty, username, Game1::name, false, 360);
+        SpongeBob* player = new SpongeBob(0,100,3,0,QPoint(470,280), Game1::name);
+        this->header = new Header(player, difficulty, username, Game1::name, false, 120/difficulty);
 
     /// this is a game that was paused and is now being resumed
     }else if(gameMode == Game::Resume){
@@ -115,9 +115,11 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
     this->addhuItemstimer= new QTimer();
     this->addbacteriatimer= new QTimer();
     connect(addhuItemstimer,SIGNAL(timeout()),this,SLOT(addhuItems()));
-    addhuItemstimer->start(800);
+    addhuItemstimer->start(1000);
     connect(addbacteriatimer,SIGNAL(timeout()),this,SLOT(addbacteria()));
-    addbacteriatimer->start(2000);
+    addbacteriatimer->start(2500);
+
+    this->header->SetImmunity(-difficulty*20);
 
     if (difficulty==2)
     {
@@ -127,14 +129,13 @@ game1scene::game1scene(GameView* gameView,int gameMode, QString username ,int di
     }
     if (difficulty==3)
     {
+        this->addvirustimer= new QTimer();
+        connect(addvirustimer,SIGNAL(timeout()),this,SLOT(addvirus()));
+        addvirustimer->start(15000);
         this->addfungustimer= new QTimer();
         connect(addfungustimer,SIGNAL(timeout()),this,SLOT(addfungus()));
-        addfungustimer->start(20000);
+        addfungustimer->start(25000);
     }
-
-
-    //connect(this->spongeBobInstance, SIGNAL(v));
-
 
 }
 /**
@@ -204,7 +205,7 @@ void game1scene::addbacteria()
 
         bacteria *bacteria1;
         bacteria1= new bacteria(strength,1-2*direction,1,xvelocity,yvelocity,20,starty, this->header, Game1::name);
-        bacteria1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45 + strength*45/2));
+        bacteria1->setPixmap((QPixmap(path.c_str())).scaledToHeight(45 + (strength-1)*25));
         bacteria1->setPos(startx,starty);
 
         this->header->currentBacteriaCountInScene +=strength;
@@ -367,7 +368,12 @@ void game1scene::keyReleaseEvent(QKeyEvent *event)
         this->header->player->keyReleaseEvent(event);
     }
 }
-
+/**
+ * @brief game1scene::mouseReleaseEvent
+ * @param event
+ *
+ * this detects the mouse release event in order to pause the game
+ */
 void game1scene::mouseReleaseEvent(QGraphicsSceneMouseEvent* event){
     if(!this->completed){
         PauseGame();

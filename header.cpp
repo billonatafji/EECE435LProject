@@ -125,6 +125,7 @@ void Header::SetImmunity(int val)
             else if(this->player->immunity + val > 100){
                 this->player->immunity = 100;
             }
+            this->player->setPixmap(QPixmap(":/Project435/images/spongebob.png").scaledToHeight(50 + this->player->immunity/2));
         }else if(this->game == Game2::name){
             if(this->player->weapon->strength + val < 0){
                 this->player->weapon->strength = 0;
@@ -327,8 +328,9 @@ void Header::CountDown(){
 
 void Header::SetTime(int val){
     this->time += val;
-    this->scoreCalculationLabel->setHtml(QString("<h2>Time ").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));///< this visually illustrates updating the time.
+    this->counter = 0;
 
+    this->scoreCalculationLabel->setHtml(QString("<h2>Time ").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));///< this visually illustrates updating the time.
     Render();
 }
 void Header::SetScore(int val){
@@ -337,7 +339,7 @@ void Header::SetScore(int val){
     }else{
         this->player->score += val;
     }
-    counter = 0;
+    this->counter = 0;
     this->scoreCalculationLabel->setHtml(QString("<h2>Score ").append(val >= 0 ? "+" : "").append(QString::number(val)).append("</h2>"));///< this visually illustrates updating the score.
 
     Render();

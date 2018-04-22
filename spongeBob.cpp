@@ -182,4 +182,5 @@ void SpongeBob::keyReleaseEvent(QKeyEvent *event)
 }
 
 SpongeBob::~SpongeBob(){
+    pressedKeys.clear();
 }

@@ -60,13 +60,13 @@ void huItem::update()
                         if (this->type==1)
                         {
                             this->header->SetImmunity(+6/this->header->difficulty);
-                            this->header->player->score+=3;
+                            this->header->SetTime(+10);
                         }
 
                         else
                         {
                             this->header->SetImmunity(-6/this->header->difficulty);
-                            this->header->player->score-=3;
+                            this->header->SetTime(-10);
                         }
 
                         delete this;
@@ -76,12 +76,11 @@ void huItem::update()
 
             }
         }
-        this-> setPos(this->x(), this->y()+10);
+        this-> setPos(this->x(), this->y()+1);
 
     }
     /// game 2
     else if(this->game == Game2::name){
-        //this->timer->setInterval(10);
         /// item is not grabbed yet
         if(!this->grabbed){
         ///moves along a straigth downwards path first
