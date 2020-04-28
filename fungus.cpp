@@ -10,6 +10,8 @@
 #include "stdlib.h"
 #include "game1.h"
 #include "game2.h"
+#include <QtMath>
+
 /**
  * @brief fungus::fungus
  * @param header

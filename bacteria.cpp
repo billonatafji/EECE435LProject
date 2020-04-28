@@ -11,6 +11,8 @@
 #include "game1.h"
 #include "game2.h"
 #include "hook.h"
+#include <QtMath>
+
 bacteria::bacteria(int strength, int direction, int directionY, double Xvelocity, double Yvelocity, int upperlimit, int centerline, Header* header,QString game,QObject *parent) : QObject(parent)
 {
     /// setting attributes

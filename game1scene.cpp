@@ -15,6 +15,8 @@
 #include <QColorDialog>
 #include "game1.h"
 #include "scores.h"
+#include <QtMath>
+
 /**
  * @brief game1scene::game1scene
  * constructs the game1scene and all of its attributes, starts the timers, and connects the signal with its slot

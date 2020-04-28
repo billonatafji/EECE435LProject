@@ -1,0 +1,1027 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00      347     0.00     0.00  QScopedPointer<QObjectData, QScopedPointerDeleter<QObjectData> >::operator->() const
+  0.00      0.00     0.00      110     0.00     0.00  int QAtomicOps<int>::load<int>(std::atomic<int> const&)
+  0.00      0.00     0.00      110     0.00     0.00  QBasicAtomicInteger<int>::load() const
+  0.00      0.00     0.00      110     0.00     0.00  std::__atomic_base<int>::load(std::memory_order) const
+  0.00      0.00     0.00      110     0.00     0.00  std::operator&(std::memory_order, std::__memory_order_modifier)
+  0.00      0.00     0.00       74     0.00     0.00  QtPrivate::RefCount::deref()
+  0.00      0.00     0.00       68     0.00     0.00  QString::~QString()
+  0.00      0.00     0.00       37     0.00     0.00  qt_noop()
+  0.00      0.00     0.00       34     0.00     0.00  bool QAtomicOps<int>::deref<int>(std::atomic<int>&)
+  0.00      0.00     0.00       34     0.00     0.00  QBasicAtomicInteger<int>::deref()
+  0.00      0.00     0.00       34     0.00     0.00  QString::QString(QStringDataPtr)
+  0.00      0.00     0.00       34     0.00     0.00  QtPrivate::RefCount::isStatic() const
+  0.00      0.00     0.00       34     0.00     0.00  std::__atomic_base<int>::operator--()
+  0.00      0.00     0.00       20     0.00     0.00  QFlags<Qt::AlignmentFlag>::QFlags(int QFlags<Qt::AlignmentFlag>::Private::*)
+  0.00      0.00     0.00       10     0.00     0.00  QString::QString(char const*)
+  0.00      0.00     0.00        8     0.00     0.00  QTypedArrayData<unsigned short>::deallocate(QArrayData*)
+  0.00      0.00     0.00        7     0.00     0.00  QArrayData::sharedNull()
+  0.00      0.00     0.00        7     0.00     0.00  QTypedArrayData<unsigned short>::sharedNull()
+  0.00      0.00     0.00        7     0.00     0.00  QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*)
+  0.00      0.00     0.00        7     0.00     0.00  QString::QString()
+  0.00      0.00     0.00        7     0.00     0.00  QStaticStringData<12>::data_ptr() const
+  0.00      0.00     0.00        6     0.00     0.00  QStaticStringData<10>::data_ptr() const
+  0.00      0.00     0.00        4     0.00     0.00  QStaticStringData<15>::data_ptr() const
+  0.00      0.00     0.00        3     0.00     0.00  QByteArray::~QByteArray()
+  0.00      0.00     0.00        3     0.00     0.00  QJsonValueRef::QJsonValueRef(QJsonObject*, int)
+  0.00      0.00     0.00        3     0.00     0.00  QTypedArrayData<char>::deallocate(QArrayData*)
+  0.00      0.00     0.00        3     0.00     0.00  QSize::QSize(int, int)
+  0.00      0.00     0.00        3     0.00     0.00  QFlags<Qt::AlignmentFlag>::QFlags(Qt::AlignmentFlag)
+  0.00      0.00     0.00        3     0.00     0.00  QFlags<QIODevice::OpenModeFlag>::QFlags(QIODevice::OpenModeFlag)
+  0.00      0.00     0.00        3     0.00     0.00  QWidget::resize(int, int)
+  0.00      0.00     0.00        3     0.00     0.00  QJsonObject::iterator::value() const
+  0.00      0.00     0.00        3     0.00     0.00  QStaticStringData<16>::data_ptr() const
+  0.00      0.00     0.00        3     0.00     0.00  QStaticStringData<7>::data_ptr() const
+  0.00      0.00     0.00        3     0.00     0.00  QStaticStringData<8>::data_ptr() const
+  0.00      0.00     0.00        3     0.00     0.00  QString::isEmpty() const
+  0.00      0.00     0.00        2     0.00     0.00  QJsonValue::QJsonValue(char const*)
+  0.00      0.00     0.00        2     0.00     0.00  QRect::QRect(int, int, int, int)
+  0.00      0.00     0.00        2     0.00     0.00  QString::fromUtf8(char const*, int)
+  0.00      0.00     0.00        2     0.00     0.00  QString::QString(QString const&)
+  0.00      0.00     0.00        2     0.00     0.00  QtPrivate::RefCount::ref()
+  0.00      0.00     0.00        2     0.00     0.00  QStaticStringData<11>::data_ptr() const
+  0.00      0.00     0.00        2     0.00     0.00  QStaticStringData<5>::data_ptr() const
+  0.00      0.00     0.00        2     0.00     0.00  QRect::width() const
+  0.00      0.00     0.00        2     0.00     0.00  QRect::height() const
+  0.00      0.00     0.00        1     0.00     0.00  qInitResources_resources()
+  0.00      0.00     0.00        1     0.00     0.00  qCleanupResources_resources()
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.00     0.00        1     0.00     0.00  QArrayData::data()
+  0.00      0.00     0.00        1     0.00     0.00  bool QAtomicOps<int>::ref<int>(std::atomic<int>&)
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::retranslateUi(QMainWindow*)
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)
+  0.00      0.00     0.00        1     0.00     0.00  Ui_GameView::retranslateUi(QDialog*)
+  0.00      0.00     0.00        1     0.00     0.00  Ui_GameView::setupUi(QDialog*)
+  0.00      0.00     0.00        1     0.00     0.00  (anonymous namespace)::initializer::initializer()
+  0.00      0.00     0.00        1     0.00     0.00  QTypedArrayData<char>::data()
+  0.00      0.00     0.00        1     0.00     0.00  QBasicAtomicInteger<int>::ref()
+  0.00      0.00     0.00        1     0.00     0.00  Game::Game()
+  0.00      0.00     0.00        1     0.00     0.00  QSet<int>::QSet()
+  0.00      0.00     0.00        1     0.00     0.00  User::GetUserLevel(QString, QString)
+  0.00      0.00     0.00        1     0.00     0.00  User::User()
+  0.00      0.00     0.00        1     0.00     0.00  Game2::qt_static_metacall(QObject*, QMetaObject::Call, int, void**)
+  0.00      0.00     0.00        1     0.00     0.00  Game2::on_backButton_clicked()
+  0.00      0.00     0.00        1     0.00     0.00  Game2::Game2(QWidget*, User*)
+  0.00      0.00     0.00        1     0.00     0.00  Game2::~Game2()
+  0.00      0.00     0.00        1     0.00     0.00  QHash<int, QHashDummyValue>::QHash()
+  0.00      0.00     0.00        1     0.00     0.00  QHash<int, QHashDummyValue>::~QHash()
+  0.00      0.00     0.00        1     0.00     0.00  QFlags<QMediaPlayer::Flag>::QFlags(int QFlags<QMediaPlayer::Flag>::Private::*)
+  0.00      0.00     0.00        1     0.00     0.00  QWidget::setGeometry(int, int, int, int)
+  0.00      0.00     0.00        1     0.00     0.00  Welcome::qt_static_metacall(QObject*, QMetaObject::Call, int, void**)
+  0.00      0.00     0.00        1     0.00     0.00  Welcome::on_userGame2Button_clicked()
+  0.00      0.00     0.00        1     0.00     0.00  Welcome::Welcome(QWidget*)
+  0.00      0.00     0.00        1     0.00     0.00  Welcome::~Welcome()
+  0.00      0.00     0.00        1     0.00     0.00  GameView::GameView(QWidget*)
+  0.00      0.00     0.00        1     0.00     0.00  GameView::~GameView()
+  0.00      0.00     0.00        1     0.00     0.00  GameView::~GameView()
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::retranslateUi(QDialog*)
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)
+  0.00      0.00     0.00        1     0.00     0.00  QIODevice::write(QByteArray const&)
+  0.00      0.00     0.00        1     0.00     0.00  QByteArray::size() const
+  0.00      0.00     0.00        1     0.00     0.00  QByteArray::constData() const
+  0.00      0.00     0.00        1     0.00     0.00  QJsonValueRef::toInt() const
+  0.00      0.00     0.00        1     0.00     0.00  QStaticStringData<13>::data_ptr() const
+  0.00      0.00     0.00        1     0.00     0.00  QStaticStringData<14>::data_ptr() const
+  0.00      0.00     0.00        1     0.00     0.00  QStaticStringData<17>::data_ptr() const
+  0.00      0.00     0.00        1     0.00     0.00  QStaticStringData<9>::data_ptr() const
+  0.00      0.00     0.00        1     0.00     0.00  QWidget::width() const
+  0.00      0.00     0.00        1     0.00     0.00  QWidget::height() const
+  0.00      0.00     0.00        1     0.00     0.00  std::__atomic_base<int>::operator++()
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#2}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#12}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#13}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#14}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#15}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#16}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#17}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#18}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#19}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#3}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#4}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#5}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#6}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#7}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#8}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#9}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#10}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#11}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Welcome::setupUi(QMainWindow*)::{lambda()#1}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_GameView::setupUi(QDialog*)::{lambda()#2}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_GameView::setupUi(QDialog*)::{lambda()#3}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_GameView::setupUi(QDialog*)::{lambda()#1}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#2}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#12}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#3}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#4}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#5}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#6}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#7}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#8}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#9}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#10}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#11}::operator()() const
+  0.00      0.00     0.00        1     0.00     0.00  Ui_Game2::setupUi(QDialog*)::{lambda()#1}::operator()() const
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00       9/347         GameView::metaObject() const [607]
+                0.00    0.00      94/347         Game2::metaObject() const [553]
+                0.00    0.00     244/347         Welcome::metaObject() const [606]
+[8]      0.0    0.00    0.00     347         QScopedPointer<QObjectData, QScopedPointerDeleter<QObjectData> >::operator->() const [8]
+-----------------------------------------------
+                0.00    0.00     110/110         QBasicAtomicInteger<int>::load() const [10]
+[9]      0.0    0.00    0.00     110         int QAtomicOps<int>::load<int>(std::atomic<int> const&) [9]
+                0.00    0.00     110/110         std::__atomic_base<int>::load(std::memory_order) const [11]
+-----------------------------------------------
+                0.00    0.00       2/110         QtPrivate::RefCount::ref() [47]
+                0.00    0.00      34/110         QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00      74/110         QtPrivate::RefCount::deref() [13]
+[10]     0.0    0.00    0.00     110         QBasicAtomicInteger<int>::load() const [10]
+                0.00    0.00     110/110         int QAtomicOps<int>::load<int>(std::atomic<int> const&) [9]
+-----------------------------------------------
+                0.00    0.00     110/110         int QAtomicOps<int>::load<int>(std::atomic<int> const&) [9]
+[11]     0.0    0.00    0.00     110         std::__atomic_base<int>::load(std::memory_order) const [11]
+                0.00    0.00     110/110         std::operator&(std::memory_order, std::__memory_order_modifier) [12]
+-----------------------------------------------
+                0.00    0.00     110/110         std::__atomic_base<int>::load(std::memory_order) const [11]
+[12]     0.0    0.00    0.00     110         std::operator&(std::memory_order, std::__memory_order_modifier) [12]
+-----------------------------------------------
+                0.00    0.00       1/74          QHash<int, QHashDummyValue>::~QHash() [76]
+                0.00    0.00       3/74          QByteArray::~QByteArray() [31]
+                0.00    0.00      70/74          QString::~QString() [14]
+[13]     0.0    0.00    0.00      74         QtPrivate::RefCount::deref() [13]
+                0.00    0.00      74/110         QBasicAtomicInteger<int>::load() const [10]
+                0.00    0.00      34/34          QBasicAtomicInteger<int>::deref() [17]
+-----------------------------------------------
+                0.00    0.00       1/68          GameView::GameView(QWidget*) [83]
+                0.00    0.00       1/68          Ui_GameView::retranslateUi(QDialog*) [62]
+                0.00    0.00       2/68          User::GetUserLevel(QString, QString) [69]
+                0.00    0.00       2/68          QJsonValue::QJsonValue(char const*) [43]
+                0.00    0.00       2/68          Game2::Game2(QWidget*, User*) [73]
+                0.00    0.00       4/68          Ui_GameView::setupUi(QDialog*) [63]
+                0.00    0.00       5/68          Welcome::Welcome(QWidget*) [81]
+                0.00    0.00       9/68          Ui_Game2::retranslateUi(QDialog*) [86]
+                0.00    0.00       9/68          Ui_Welcome::retranslateUi(QMainWindow*) [60]
+                0.00    0.00      13/68          Ui_Game2::setupUi(QDialog*) [87]
+                0.00    0.00      20/68          Ui_Welcome::setupUi(QMainWindow*) [61]
+[14]     0.0    0.00    0.00      68         QString::~QString() [14]
+                0.00    0.00      70/74          QtPrivate::RefCount::deref() [13]
+                0.00    0.00       8/8           QTypedArrayData<unsigned short>::deallocate(QArrayData*) [23]
+-----------------------------------------------
+                0.00    0.00       1/37          QStaticStringData<13>::data_ptr() const [92]
+                0.00    0.00       1/37          QStaticStringData<14>::data_ptr() const [93]
+                0.00    0.00       1/37          QStaticStringData<17>::data_ptr() const [94]
+                0.00    0.00       1/37          QArrayData::data() [58]
+                0.00    0.00       1/37          QStaticStringData<9>::data_ptr() const [95]
+                0.00    0.00       2/37          QString::QString(QString const&) [46]
+                0.00    0.00       2/37          QStaticStringData<11>::data_ptr() const [48]
+                0.00    0.00       2/37          QStaticStringData<5>::data_ptr() const [49]
+                0.00    0.00       3/37          QStaticStringData<16>::data_ptr() const [39]
+                0.00    0.00       3/37          QStaticStringData<8>::data_ptr() const [41]
+                0.00    0.00       3/37          QStaticStringData<7>::data_ptr() const [40]
+                0.00    0.00       4/37          QStaticStringData<15>::data_ptr() const [30]
+                0.00    0.00       6/37          QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       7/37          QStaticStringData<12>::data_ptr() const [28]
+[15]     0.0    0.00    0.00      37         qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00      34/34          QBasicAtomicInteger<int>::deref() [17]
+[16]     0.0    0.00    0.00      34         bool QAtomicOps<int>::deref<int>(std::atomic<int>&) [16]
+                0.00    0.00      34/34          std::__atomic_base<int>::operator--() [20]
+-----------------------------------------------
+                0.00    0.00      34/34          QtPrivate::RefCount::deref() [13]
+[17]     0.0    0.00    0.00      34         QBasicAtomicInteger<int>::deref() [17]
+                0.00    0.00      34/34          bool QAtomicOps<int>::deref<int>(std::atomic<int>&) [16]
+-----------------------------------------------
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#1}::operator()() const [132]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#2}::operator()() const [121]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#3}::operator()() const [123]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#4}::operator()() const [124]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#5}::operator()() const [125]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#6}::operator()() const [126]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#7}::operator()() const [127]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#8}::operator()() const [128]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#9}::operator()() const [129]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#10}::operator()() const [130]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#11}::operator()() const [131]
+                0.00    0.00       1/34          Ui_Game2::setupUi(QDialog*)::{lambda()#12}::operator()() const [122]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#1}::operator()() const [117]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#2}::operator()() const [99]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#3}::operator()() const [108]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#4}::operator()() const [109]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#5}::operator()() const [110]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#6}::operator()() const [111]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#7}::operator()() const [112]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#8}::operator()() const [113]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#9}::operator()() const [114]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#10}::operator()() const [115]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#11}::operator()() const [116]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#12}::operator()() const [100]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#13}::operator()() const [101]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#14}::operator()() const [102]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#15}::operator()() const [103]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#16}::operator()() const [104]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#17}::operator()() const [105]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#18}::operator()() const [106]
+                0.00    0.00       1/34          Ui_Welcome::setupUi(QMainWindow*)::{lambda()#19}::operator()() const [107]
+                0.00    0.00       1/34          Ui_GameView::setupUi(QDialog*)::{lambda()#1}::operator()() const [120]
+                0.00    0.00       1/34          Ui_GameView::setupUi(QDialog*)::{lambda()#2}::operator()() const [118]
+                0.00    0.00       1/34          Ui_GameView::setupUi(QDialog*)::{lambda()#3}::operator()() const [119]
+[18]     0.0    0.00    0.00      34         QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/34          QStaticStringData<13>::data_ptr() const [92]
+                0.00    0.00       1/34          QStaticStringData<14>::data_ptr() const [93]
+                0.00    0.00       1/34          QStaticStringData<17>::data_ptr() const [94]
+                0.00    0.00       1/34          QStaticStringData<9>::data_ptr() const [95]
+                0.00    0.00       2/34          QStaticStringData<11>::data_ptr() const [48]
+                0.00    0.00       2/34          QStaticStringData<5>::data_ptr() const [49]
+                0.00    0.00       3/34          QStaticStringData<16>::data_ptr() const [39]
+                0.00    0.00       3/34          QStaticStringData<8>::data_ptr() const [41]
+                0.00    0.00       3/34          QStaticStringData<7>::data_ptr() const [40]
+                0.00    0.00       4/34          QStaticStringData<15>::data_ptr() const [30]
+                0.00    0.00       6/34          QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       7/34          QStaticStringData<12>::data_ptr() const [28]
+[19]     0.0    0.00    0.00      34         QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00      34/110         QBasicAtomicInteger<int>::load() const [10]
+-----------------------------------------------
+                0.00    0.00      34/34          bool QAtomicOps<int>::deref<int>(std::atomic<int>&) [16]
+[20]     0.0    0.00    0.00      34         std::__atomic_base<int>::operator--() [20]
+-----------------------------------------------
+                0.00    0.00       1/20          Ui_GameView::setupUi(QDialog*) [63]
+                0.00    0.00       9/20          Ui_Game2::setupUi(QDialog*) [87]
+                0.00    0.00      10/20          Ui_Welcome::setupUi(QMainWindow*) [61]
+[21]     0.0    0.00    0.00      20         QFlags<Qt::AlignmentFlag>::QFlags(int QFlags<Qt::AlignmentFlag>::Private::*) [21]
+-----------------------------------------------
+                0.00    0.00       1/10          __static_initialization_and_destruction_0(int, int) [54]
+                0.00    0.00       1/10          __static_initialization_and_destruction_0(int, int) [55]
+                0.00    0.00       1/10          GameView::GameView(QWidget*) [83]
+                0.00    0.00       2/10          User::GetUserLevel(QString, QString) [69]
+                0.00    0.00       5/10          Welcome::Welcome(QWidget*) [81]
+[22]     0.0    0.00    0.00      10         QString::QString(char const*) [22]
+-----------------------------------------------
+                0.00    0.00       8/8           QString::~QString() [14]
+[23]     0.0    0.00    0.00       8         QTypedArrayData<unsigned short>::deallocate(QArrayData*) [23]
+-----------------------------------------------
+                0.00    0.00       7/7           QTypedArrayData<unsigned short>::sharedNull() [25]
+[24]     0.0    0.00    0.00       7         QArrayData::sharedNull() [24]
+-----------------------------------------------
+                0.00    0.00       7/7           QString::QString() [27]
+[25]     0.0    0.00    0.00       7         QTypedArrayData<unsigned short>::sharedNull() [25]
+                0.00    0.00       7/7           QArrayData::sharedNull() [24]
+-----------------------------------------------
+                0.00    0.00       1/7           Game2::Game2(QWidget*, User*) [73]
+                0.00    0.00       1/7           Welcome::Welcome(QWidget*) [81]
+                0.00    0.00       1/7           GameView::GameView(QWidget*) [83]
+                0.00    0.00       2/7           Ui_Game2::setupUi(QDialog*) [87]
+                0.00    0.00       2/7           Ui_Welcome::setupUi(QMainWindow*) [61]
+[26]     0.0    0.00    0.00       7         QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*) [26]
+-----------------------------------------------
+                0.00    0.00       1/7           Ui_Game2::retranslateUi(QDialog*) [86]
+                0.00    0.00       6/7           User::User() [70]
+[27]     0.0    0.00    0.00       7         QString::QString() [27]
+                0.00    0.00       7/7           QTypedArrayData<unsigned short>::sharedNull() [25]
+-----------------------------------------------
+                0.00    0.00       1/7           Ui_Game2::setupUi(QDialog*)::{lambda()#2}::operator()() const [121]
+                0.00    0.00       1/7           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#6}::operator()() const [111]
+                0.00    0.00       1/7           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#10}::operator()() const [115]
+                0.00    0.00       1/7           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#12}::operator()() const [100]
+                0.00    0.00       1/7           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#14}::operator()() const [102]
+                0.00    0.00       1/7           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#15}::operator()() const [103]
+                0.00    0.00       1/7           Ui_GameView::setupUi(QDialog*)::{lambda()#3}::operator()() const [119]
+[28]     0.0    0.00    0.00       7         QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       7/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       7/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/6           Ui_Game2::setupUi(QDialog*)::{lambda()#5}::operator()() const [125]
+                0.00    0.00       1/6           Ui_Game2::setupUi(QDialog*)::{lambda()#11}::operator()() const [131]
+                0.00    0.00       1/6           Ui_Game2::setupUi(QDialog*)::{lambda()#12}::operator()() const [122]
+                0.00    0.00       1/6           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#3}::operator()() const [108]
+                0.00    0.00       1/6           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#11}::operator()() const [116]
+                0.00    0.00       1/6           Ui_GameView::setupUi(QDialog*)::{lambda()#2}::operator()() const [118]
+[29]     0.0    0.00    0.00       6         QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       6/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       6/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/4           Ui_Game2::setupUi(QDialog*)::{lambda()#8}::operator()() const [128]
+                0.00    0.00       1/4           Ui_Game2::setupUi(QDialog*)::{lambda()#10}::operator()() const [130]
+                0.00    0.00       1/4           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#8}::operator()() const [113]
+                0.00    0.00       1/4           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#9}::operator()() const [114]
+[30]     0.0    0.00    0.00       4         QStaticStringData<15>::data_ptr() const [30]
+                0.00    0.00       4/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       4/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/3           User::GetUserLevel(QString, QString) [69]
+                0.00    0.00       2/3           Welcome::Welcome(QWidget*) [81]
+[31]     0.0    0.00    0.00       3         QByteArray::~QByteArray() [31]
+                0.00    0.00       3/74          QtPrivate::RefCount::deref() [13]
+                0.00    0.00       3/3           QTypedArrayData<char>::deallocate(QArrayData*) [33]
+-----------------------------------------------
+                0.00    0.00       3/3           QJsonObject::iterator::value() const [38]
+[32]     0.0    0.00    0.00       3         QJsonValueRef::QJsonValueRef(QJsonObject*, int) [32]
+-----------------------------------------------
+                0.00    0.00       3/3           QByteArray::~QByteArray() [31]
+[33]     0.0    0.00    0.00       3         QTypedArrayData<char>::deallocate(QArrayData*) [33]
+-----------------------------------------------
+                0.00    0.00       3/3           QWidget::resize(int, int) [37]
+[34]     0.0    0.00    0.00       3         QSize::QSize(int, int) [34]
+-----------------------------------------------
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*) [61]
+                0.00    0.00       2/3           Ui_Game2::setupUi(QDialog*) [87]
+[35]     0.0    0.00    0.00       3         QFlags<Qt::AlignmentFlag>::QFlags(Qt::AlignmentFlag) [35]
+-----------------------------------------------
+                0.00    0.00       1/3           User::GetUserLevel(QString, QString) [69]
+                0.00    0.00       2/3           Welcome::Welcome(QWidget*) [81]
+[36]     0.0    0.00    0.00       3         QFlags<QIODevice::OpenModeFlag>::QFlags(QIODevice::OpenModeFlag) [36]
+-----------------------------------------------
+                0.00    0.00       1/3           Ui_Game2::setupUi(QDialog*) [87]
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*) [61]
+                0.00    0.00       1/3           Ui_GameView::setupUi(QDialog*) [63]
+[37]     0.0    0.00    0.00       3         QWidget::resize(int, int) [37]
+                0.00    0.00       3/3           QSize::QSize(int, int) [34]
+-----------------------------------------------
+                0.00    0.00       3/3           User::GetUserLevel(QString, QString) [69]
+[38]     0.0    0.00    0.00       3         QJsonObject::iterator::value() const [38]
+                0.00    0.00       3/3           QJsonValueRef::QJsonValueRef(QJsonObject*, int) [32]
+-----------------------------------------------
+                0.00    0.00       1/3           Ui_Game2::setupUi(QDialog*)::{lambda()#7}::operator()() const [127]
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#4}::operator()() const [109]
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#7}::operator()() const [112]
+[39]     0.0    0.00    0.00       3         QStaticStringData<16>::data_ptr() const [39]
+                0.00    0.00       3/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       3/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/3           Ui_Game2::setupUi(QDialog*)::{lambda()#6}::operator()() const [126]
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#1}::operator()() const [117]
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#16}::operator()() const [104]
+[40]     0.0    0.00    0.00       3         QStaticStringData<7>::data_ptr() const [40]
+                0.00    0.00       3/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       3/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/3           Ui_Game2::setupUi(QDialog*)::{lambda()#4}::operator()() const [124]
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#5}::operator()() const [110]
+                0.00    0.00       1/3           Ui_GameView::setupUi(QDialog*)::{lambda()#1}::operator()() const [120]
+[41]     0.0    0.00    0.00       3         QStaticStringData<8>::data_ptr() const [41]
+                0.00    0.00       3/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       3/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/3           Ui_Game2::setupUi(QDialog*) [87]
+                0.00    0.00       1/3           Ui_Welcome::setupUi(QMainWindow*) [61]
+                0.00    0.00       1/3           Ui_GameView::setupUi(QDialog*) [63]
+[42]     0.0    0.00    0.00       3         QString::isEmpty() const [42]
+-----------------------------------------------
+                0.00    0.00       2/2           Welcome::Welcome(QWidget*) [81]
+[43]     0.0    0.00    0.00       2         QJsonValue::QJsonValue(char const*) [43]
+                0.00    0.00       2/2           QString::fromUtf8(char const*, int) [45]
+                0.00    0.00       2/68          QString::~QString() [14]
+-----------------------------------------------
+                0.00    0.00       1/2           QWidget::setGeometry(int, int, int, int) [78]
+                0.00    0.00       1/2           Ui_Welcome::setupUi(QMainWindow*) [61]
+[44]     0.0    0.00    0.00       2         QRect::QRect(int, int, int, int) [44]
+-----------------------------------------------
+                0.00    0.00       2/2           QJsonValue::QJsonValue(char const*) [43]
+[45]     0.0    0.00    0.00       2         QString::fromUtf8(char const*, int) [45]
+-----------------------------------------------
+                0.00    0.00       2/2           Game2::Game2(QWidget*, User*) [73]
+[46]     0.0    0.00    0.00       2         QString::QString(QString const&) [46]
+                0.00    0.00       2/37          qt_noop() [15]
+                0.00    0.00       2/2           QtPrivate::RefCount::ref() [47]
+-----------------------------------------------
+                0.00    0.00       2/2           QString::QString(QString const&) [46]
+[47]     0.0    0.00    0.00       2         QtPrivate::RefCount::ref() [47]
+                0.00    0.00       2/110         QBasicAtomicInteger<int>::load() const [10]
+                0.00    0.00       1/1           QBasicAtomicInteger<int>::ref() [66]
+-----------------------------------------------
+                0.00    0.00       1/2           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#17}::operator()() const [105]
+                0.00    0.00       1/2           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#18}::operator()() const [106]
+[48]     0.0    0.00    0.00       2         QStaticStringData<11>::data_ptr() const [48]
+                0.00    0.00       2/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       2/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/2           Ui_Game2::setupUi(QDialog*)::{lambda()#1}::operator()() const [132]
+                0.00    0.00       1/2           Ui_Game2::setupUi(QDialog*)::{lambda()#3}::operator()() const [123]
+[49]     0.0    0.00    0.00       2         QStaticStringData<5>::data_ptr() const [49]
+                0.00    0.00       2/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       2/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/2           main [6]
+                0.00    0.00       1/2           QWidget::width() const [96]
+[50]     0.0    0.00    0.00       2         QRect::width() const [50]
+-----------------------------------------------
+                0.00    0.00       1/2           main [6]
+                0.00    0.00       1/2           QWidget::height() const [97]
+[51]     0.0    0.00    0.00       2         QRect::height() const [51]
+-----------------------------------------------
+                0.00    0.00       1/1           (anonymous namespace)::initializer::initializer() [64]
+[52]     0.0    0.00    0.00       1         qInitResources_resources() [52]
+-----------------------------------------------
+                0.00    0.00       1/1           (anonymous namespace)::initializer::~initializer() [200]
+[53]     0.0    0.00    0.00       1         qCleanupResources_resources() [53]
+-----------------------------------------------
+                                   1             __static_initialization_and_destruction_0(int, int) [54]
+                0.00    0.00       1/1           __libc_csu_init [1011]
+[54]     0.0    0.00    0.00       1+1       __static_initialization_and_destruction_0(int, int) [54]
+                0.00    0.00       1/10          QString::QString(char const*) [22]
+                                   1             __static_initialization_and_destruction_0(int, int) [54]
+-----------------------------------------------
+                                   1             __static_initialization_and_destruction_0(int, int) [55]
+                0.00    0.00       1/1           __libc_csu_init [1011]
+[55]     0.0    0.00    0.00       1+1       __static_initialization_and_destruction_0(int, int) [55]
+                0.00    0.00       1/10          QString::QString(char const*) [22]
+                                   1             __static_initialization_and_destruction_0(int, int) [55]
+-----------------------------------------------
+                                   1             __static_initialization_and_destruction_0(int, int) [56]
+                0.00    0.00       1/1           __libc_csu_init [1011]
+[56]     0.0    0.00    0.00       1+1       __static_initialization_and_destruction_0(int, int) [56]
+                0.00    0.00       1/1           QSet<int>::QSet() [68]
+                                   1             __static_initialization_and_destruction_0(int, int) [56]
+-----------------------------------------------
+                                   1             __static_initialization_and_destruction_0(int, int) [57]
+                0.00    0.00       1/1           __libc_csu_init [1011]
+[57]     0.0    0.00    0.00       1+1       __static_initialization_and_destruction_0(int, int) [57]
+                0.00    0.00       1/1           (anonymous namespace)::initializer::initializer() [64]
+                                   1             __static_initialization_and_destruction_0(int, int) [57]
+-----------------------------------------------
+                0.00    0.00       1/1           QTypedArrayData<char>::data() [65]
+[58]     0.0    0.00    0.00       1         QArrayData::data() [58]
+                0.00    0.00       1/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/1           QBasicAtomicInteger<int>::ref() [66]
+[59]     0.0    0.00    0.00       1         bool QAtomicOps<int>::ref<int>(std::atomic<int>&) [59]
+                0.00    0.00       1/1           std::__atomic_base<int>::operator++() [98]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[60]     0.0    0.00    0.00       1         Ui_Welcome::retranslateUi(QMainWindow*) [60]
+                0.00    0.00       9/68          QString::~QString() [14]
+-----------------------------------------------
+                0.00    0.00       1/1           Welcome::Welcome(QWidget*) [81]
+[61]     0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*) [61]
+                0.00    0.00      20/68          QString::~QString() [14]
+                0.00    0.00      10/20          QFlags<Qt::AlignmentFlag>::QFlags(int QFlags<Qt::AlignmentFlag>::Private::*) [21]
+                0.00    0.00       2/7           QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*) [26]
+                0.00    0.00       1/3           QString::isEmpty() const [42]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#1}::operator()() const [117]
+                0.00    0.00       1/3           QWidget::resize(int, int) [37]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#2}::operator()() const [99]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#3}::operator()() const [108]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#4}::operator()() const [109]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#5}::operator()() const [110]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#6}::operator()() const [111]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#7}::operator()() const [112]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#8}::operator()() const [113]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#9}::operator()() const [114]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#10}::operator()() const [115]
+                0.00    0.00       1/3           QFlags<Qt::AlignmentFlag>::QFlags(Qt::AlignmentFlag) [35]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#11}::operator()() const [116]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#12}::operator()() const [100]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#13}::operator()() const [101]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#14}::operator()() const [102]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#15}::operator()() const [103]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#16}::operator()() const [104]
+                0.00    0.00       1/2           QRect::QRect(int, int, int, int) [44]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#17}::operator()() const [105]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#18}::operator()() const [106]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#19}::operator()() const [107]
+                0.00    0.00       1/1           Ui_Welcome::retranslateUi(QMainWindow*) [60]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*) [63]
+[62]     0.0    0.00    0.00       1         Ui_GameView::retranslateUi(QDialog*) [62]
+                0.00    0.00       1/68          QString::~QString() [14]
+-----------------------------------------------
+                0.00    0.00       1/1           GameView::GameView(QWidget*) [83]
+[63]     0.0    0.00    0.00       1         Ui_GameView::setupUi(QDialog*) [63]
+                0.00    0.00       4/68          QString::~QString() [14]
+                0.00    0.00       1/3           QString::isEmpty() const [42]
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*)::{lambda()#1}::operator()() const [120]
+                0.00    0.00       1/3           QWidget::resize(int, int) [37]
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*)::{lambda()#2}::operator()() const [118]
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*)::{lambda()#3}::operator()() const [119]
+                0.00    0.00       1/20          QFlags<Qt::AlignmentFlag>::QFlags(int QFlags<Qt::AlignmentFlag>::Private::*) [21]
+                0.00    0.00       1/1           Ui_GameView::retranslateUi(QDialog*) [62]
+-----------------------------------------------
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [57]
+[64]     0.0    0.00    0.00       1         (anonymous namespace)::initializer::initializer() [64]
+                0.00    0.00       1/1           qInitResources_resources() [52]
+-----------------------------------------------
+                0.00    0.00       1/1           QByteArray::constData() const [90]
+[65]     0.0    0.00    0.00       1         QTypedArrayData<char>::data() [65]
+                0.00    0.00       1/1           QArrayData::data() [58]
+-----------------------------------------------
+                0.00    0.00       1/1           QtPrivate::RefCount::ref() [47]
+[66]     0.0    0.00    0.00       1         QBasicAtomicInteger<int>::ref() [66]
+                0.00    0.00       1/1           bool QAtomicOps<int>::ref<int>(std::atomic<int>&) [59]
+-----------------------------------------------
+                0.00    0.00       1/1           Game2::Game2(QWidget*, User*) [73]
+[67]     0.0    0.00    0.00       1         Game::Game() [67]
+-----------------------------------------------
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [56]
+[68]     0.0    0.00    0.00       1         QSet<int>::QSet() [68]
+                0.00    0.00       1/1           QHash<int, QHashDummyValue>::QHash() [75]
+-----------------------------------------------
+                0.00    0.00       1/1           Game2::Game2(QWidget*, User*) [73]
+[69]     0.0    0.00    0.00       1         User::GetUserLevel(QString, QString) [69]
+                0.00    0.00       3/3           QJsonObject::iterator::value() const [38]
+                0.00    0.00       2/10          QString::QString(char const*) [22]
+                0.00    0.00       2/68          QString::~QString() [14]
+                0.00    0.00       1/3           QFlags<QIODevice::OpenModeFlag>::QFlags(QIODevice::OpenModeFlag) [36]
+                0.00    0.00       1/3           QByteArray::~QByteArray() [31]
+                0.00    0.00       1/1           QJsonValueRef::toInt() const [91]
+-----------------------------------------------
+                0.00    0.00       1/1           Welcome::on_userGame2Button_clicked() [80]
+[70]     0.0    0.00    0.00       1         User::User() [70]
+                0.00    0.00       6/7           QString::QString() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           Game2::qt_metacall(QMetaObject::Call, int, void**) [279]
+[71]     0.0    0.00    0.00       1         Game2::qt_static_metacall(QObject*, QMetaObject::Call, int, void**) [71]
+                0.00    0.00       1/1           Game2::on_backButton_clicked() [72]
+-----------------------------------------------
+                0.00    0.00       1/1           Game2::qt_static_metacall(QObject*, QMetaObject::Call, int, void**) [71]
+[72]     0.0    0.00    0.00       1         Game2::on_backButton_clicked() [72]
+-----------------------------------------------
+                0.00    0.00       1/1           Welcome::on_userGame2Button_clicked() [80]
+[73]     0.0    0.00    0.00       1         Game2::Game2(QWidget*, User*) [73]
+                0.00    0.00       2/2           QString::QString(QString const&) [46]
+                0.00    0.00       2/68          QString::~QString() [14]
+                0.00    0.00       1/7           QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*) [26]
+                0.00    0.00       1/1           Game::Game() [67]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+                0.00    0.00       1/1           GameView::GameView(QWidget*) [83]
+                0.00    0.00       1/1           User::GetUserLevel(QString, QString) [69]
+-----------------------------------------------
+                0.00    0.00       1/1           Welcome::on_userGame2Button_clicked() [80]
+[74]     0.0    0.00    0.00       1         Game2::~Game2() [74]
+                0.00    0.00       1/1           GameView::~GameView() [84]
+-----------------------------------------------
+                0.00    0.00       1/1           QSet<int>::QSet() [68]
+[75]     0.0    0.00    0.00       1         QHash<int, QHashDummyValue>::QHash() [75]
+-----------------------------------------------
+                0.00    0.00       1/1           QSet<int>::~QSet() [251]
+[76]     0.0    0.00    0.00       1         QHash<int, QHashDummyValue>::~QHash() [76]
+                0.00    0.00       1/74          QtPrivate::RefCount::deref() [13]
+-----------------------------------------------
+                0.00    0.00       1/1           GameView::GameView(QWidget*) [83]
+[77]     0.0    0.00    0.00       1         QFlags<QMediaPlayer::Flag>::QFlags(int QFlags<QMediaPlayer::Flag>::Private::*) [77]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[78]     0.0    0.00    0.00       1         QWidget::setGeometry(int, int, int, int) [78]
+                0.00    0.00       1/2           QRect::QRect(int, int, int, int) [44]
+-----------------------------------------------
+                0.00    0.00       1/1           Welcome::qt_metacall(QMetaObject::Call, int, void**) [458]
+[79]     0.0    0.00    0.00       1         Welcome::qt_static_metacall(QObject*, QMetaObject::Call, int, void**) [79]
+                0.00    0.00       1/1           Welcome::on_userGame2Button_clicked() [80]
+-----------------------------------------------
+                0.00    0.00       1/1           Welcome::qt_static_metacall(QObject*, QMetaObject::Call, int, void**) [79]
+[80]     0.0    0.00    0.00       1         Welcome::on_userGame2Button_clicked() [80]
+                0.00    0.00       1/1           User::User() [70]
+                0.00    0.00       1/1           Game2::Game2(QWidget*, User*) [73]
+                0.00    0.00       1/1           Game2::~Game2() [74]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[81]     0.0    0.00    0.00       1         Welcome::Welcome(QWidget*) [81]
+                0.00    0.00       5/10          QString::QString(char const*) [22]
+                0.00    0.00       5/68          QString::~QString() [14]
+                0.00    0.00       2/3           QFlags<QIODevice::OpenModeFlag>::QFlags(QIODevice::OpenModeFlag) [36]
+                0.00    0.00       2/3           QByteArray::~QByteArray() [31]
+                0.00    0.00       2/2           QJsonValue::QJsonValue(char const*) [43]
+                0.00    0.00       1/7           QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*) [26]
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+                0.00    0.00       1/1           QIODevice::write(QByteArray const&) [88]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[82]     0.0    0.00    0.00       1         Welcome::~Welcome() [82]
+-----------------------------------------------
+                0.00    0.00       1/1           Game2::Game2(QWidget*, User*) [73]
+[83]     0.0    0.00    0.00       1         GameView::GameView(QWidget*) [83]
+                0.00    0.00       1/7           QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*) [26]
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*) [63]
+                0.00    0.00       1/10          QString::QString(char const*) [22]
+                0.00    0.00       1/68          QString::~QString() [14]
+                0.00    0.00       1/1           QFlags<QMediaPlayer::Flag>::QFlags(int QFlags<QMediaPlayer::Flag>::Private::*) [77]
+-----------------------------------------------
+                0.00    0.00       1/1           Game2::~Game2() [74]
+[84]     0.0    0.00    0.00       1         GameView::~GameView() [84]
+                0.00    0.00       1/1           GameView::~GameView() [85]
+-----------------------------------------------
+                0.00    0.00       1/1           GameView::~GameView() [84]
+[85]     0.0    0.00    0.00       1         GameView::~GameView() [85]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[86]     0.0    0.00    0.00       1         Ui_Game2::retranslateUi(QDialog*) [86]
+                0.00    0.00       9/68          QString::~QString() [14]
+                0.00    0.00       1/7           QString::QString() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           Game2::Game2(QWidget*, User*) [73]
+[87]     0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*) [87]
+                0.00    0.00      13/68          QString::~QString() [14]
+                0.00    0.00       9/20          QFlags<Qt::AlignmentFlag>::QFlags(int QFlags<Qt::AlignmentFlag>::Private::*) [21]
+                0.00    0.00       2/7           QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*) [26]
+                0.00    0.00       2/3           QFlags<Qt::AlignmentFlag>::QFlags(Qt::AlignmentFlag) [35]
+                0.00    0.00       1/3           QString::isEmpty() const [42]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#1}::operator()() const [132]
+                0.00    0.00       1/3           QWidget::resize(int, int) [37]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#2}::operator()() const [121]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#3}::operator()() const [123]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#4}::operator()() const [124]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#5}::operator()() const [125]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#6}::operator()() const [126]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#7}::operator()() const [127]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#8}::operator()() const [128]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#9}::operator()() const [129]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#10}::operator()() const [130]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#11}::operator()() const [131]
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#12}::operator()() const [122]
+                0.00    0.00       1/1           Ui_Game2::retranslateUi(QDialog*) [86]
+-----------------------------------------------
+                0.00    0.00       1/1           Welcome::Welcome(QWidget*) [81]
+[88]     0.0    0.00    0.00       1         QIODevice::write(QByteArray const&) [88]
+                0.00    0.00       1/1           QByteArray::size() const [89]
+                0.00    0.00       1/1           QByteArray::constData() const [90]
+-----------------------------------------------
+                0.00    0.00       1/1           QIODevice::write(QByteArray const&) [88]
+[89]     0.0    0.00    0.00       1         QByteArray::size() const [89]
+-----------------------------------------------
+                0.00    0.00       1/1           QIODevice::write(QByteArray const&) [88]
+[90]     0.0    0.00    0.00       1         QByteArray::constData() const [90]
+                0.00    0.00       1/1           QTypedArrayData<char>::data() [65]
+-----------------------------------------------
+                0.00    0.00       1/1           User::GetUserLevel(QString, QString) [69]
+[91]     0.0    0.00    0.00       1         QJsonValueRef::toInt() const [91]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#2}::operator()() const [99]
+[92]     0.0    0.00    0.00       1         QStaticStringData<13>::data_ptr() const [92]
+                0.00    0.00       1/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       1/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#13}::operator()() const [101]
+[93]     0.0    0.00    0.00       1         QStaticStringData<14>::data_ptr() const [93]
+                0.00    0.00       1/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       1/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*)::{lambda()#9}::operator()() const [129]
+[94]     0.0    0.00    0.00       1         QStaticStringData<17>::data_ptr() const [94]
+                0.00    0.00       1/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       1/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*)::{lambda()#19}::operator()() const [107]
+[95]     0.0    0.00    0.00       1         QStaticStringData<9>::data_ptr() const [95]
+                0.00    0.00       1/34          QtPrivate::RefCount::isStatic() const [19]
+                0.00    0.00       1/37          qt_noop() [15]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[96]     0.0    0.00    0.00       1         QWidget::width() const [96]
+                0.00    0.00       1/2           QRect::width() const [50]
+-----------------------------------------------
+                0.00    0.00       1/1           main [6]
+[97]     0.0    0.00    0.00       1         QWidget::height() const [97]
+                0.00    0.00       1/2           QRect::height() const [51]
+-----------------------------------------------
+                0.00    0.00       1/1           bool QAtomicOps<int>::ref<int>(std::atomic<int>&) [59]
+[98]     0.0    0.00    0.00       1         std::__atomic_base<int>::operator++() [98]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[99]     0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#2}::operator()() const [99]
+                0.00    0.00       1/1           QStaticStringData<13>::data_ptr() const [92]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[100]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#12}::operator()() const [100]
+                0.00    0.00       1/7           QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[101]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#13}::operator()() const [101]
+                0.00    0.00       1/1           QStaticStringData<14>::data_ptr() const [93]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[102]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#14}::operator()() const [102]
+                0.00    0.00       1/7           QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[103]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#15}::operator()() const [103]
+                0.00    0.00       1/7           QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[104]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#16}::operator()() const [104]
+                0.00    0.00       1/3           QStaticStringData<7>::data_ptr() const [40]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[105]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#17}::operator()() const [105]
+                0.00    0.00       1/2           QStaticStringData<11>::data_ptr() const [48]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[106]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#18}::operator()() const [106]
+                0.00    0.00       1/2           QStaticStringData<11>::data_ptr() const [48]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[107]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#19}::operator()() const [107]
+                0.00    0.00       1/1           QStaticStringData<9>::data_ptr() const [95]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[108]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#3}::operator()() const [108]
+                0.00    0.00       1/6           QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[109]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#4}::operator()() const [109]
+                0.00    0.00       1/3           QStaticStringData<16>::data_ptr() const [39]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[110]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#5}::operator()() const [110]
+                0.00    0.00       1/3           QStaticStringData<8>::data_ptr() const [41]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[111]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#6}::operator()() const [111]
+                0.00    0.00       1/7           QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[112]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#7}::operator()() const [112]
+                0.00    0.00       1/3           QStaticStringData<16>::data_ptr() const [39]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[113]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#8}::operator()() const [113]
+                0.00    0.00       1/4           QStaticStringData<15>::data_ptr() const [30]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[114]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#9}::operator()() const [114]
+                0.00    0.00       1/4           QStaticStringData<15>::data_ptr() const [30]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[115]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#10}::operator()() const [115]
+                0.00    0.00       1/7           QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[116]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#11}::operator()() const [116]
+                0.00    0.00       1/6           QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Welcome::setupUi(QMainWindow*) [61]
+[117]    0.0    0.00    0.00       1         Ui_Welcome::setupUi(QMainWindow*)::{lambda()#1}::operator()() const [117]
+                0.00    0.00       1/3           QStaticStringData<7>::data_ptr() const [40]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*) [63]
+[118]    0.0    0.00    0.00       1         Ui_GameView::setupUi(QDialog*)::{lambda()#2}::operator()() const [118]
+                0.00    0.00       1/6           QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*) [63]
+[119]    0.0    0.00    0.00       1         Ui_GameView::setupUi(QDialog*)::{lambda()#3}::operator()() const [119]
+                0.00    0.00       1/7           QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_GameView::setupUi(QDialog*) [63]
+[120]    0.0    0.00    0.00       1         Ui_GameView::setupUi(QDialog*)::{lambda()#1}::operator()() const [120]
+                0.00    0.00       1/3           QStaticStringData<8>::data_ptr() const [41]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[121]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#2}::operator()() const [121]
+                0.00    0.00       1/7           QStaticStringData<12>::data_ptr() const [28]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[122]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#12}::operator()() const [122]
+                0.00    0.00       1/6           QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[123]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#3}::operator()() const [123]
+                0.00    0.00       1/2           QStaticStringData<5>::data_ptr() const [49]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[124]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#4}::operator()() const [124]
+                0.00    0.00       1/3           QStaticStringData<8>::data_ptr() const [41]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[125]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#5}::operator()() const [125]
+                0.00    0.00       1/6           QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[126]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#6}::operator()() const [126]
+                0.00    0.00       1/3           QStaticStringData<7>::data_ptr() const [40]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[127]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#7}::operator()() const [127]
+                0.00    0.00       1/3           QStaticStringData<16>::data_ptr() const [39]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[128]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#8}::operator()() const [128]
+                0.00    0.00       1/4           QStaticStringData<15>::data_ptr() const [30]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[129]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#9}::operator()() const [129]
+                0.00    0.00       1/1           QStaticStringData<17>::data_ptr() const [94]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[130]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#10}::operator()() const [130]
+                0.00    0.00       1/4           QStaticStringData<15>::data_ptr() const [30]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[131]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#11}::operator()() const [131]
+                0.00    0.00       1/6           QStaticStringData<10>::data_ptr() const [29]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+                0.00    0.00       1/1           Ui_Game2::setupUi(QDialog*) [87]
+[132]    0.0    0.00    0.00       1         Ui_Game2::setupUi(QDialog*)::{lambda()#1}::operator()() const [132]
+                0.00    0.00       1/2           QStaticStringData<5>::data_ptr() const [49]
+                0.00    0.00       1/34          QString::QString(QStringDataPtr) [18]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [52] qInitResources_resources() [36] QFlags<QIODevice::OpenModeFlag>::QFlags(QIODevice::OpenModeFlag) [96] QWidget::width() const
+  [53] qCleanupResources_resources() [45] QString::fromUtf8(char const*, int) [97] QWidget::height() const
+  [54] __static_initialization_and_destruction_0(int, int) (game1.cpp) [22] QString::QString(char const*) [19] QtPrivate::RefCount::isStatic() const
+  [55] __static_initialization_and_destruction_0(int, int) (game2.cpp) [46] QString::QString(QString const&) [11] std::__atomic_base<int>::load(std::memory_order) const
+  [56] __static_initialization_and_destruction_0(int, int) (spongeBob.cpp) [18] QString::QString(QStringDataPtr) [20] std::__atomic_base<int>::operator--()
+  [57] __static_initialization_and_destruction_0(int, int) (qrc_resources.cpp) [27] QString::QString() [98] std::__atomic_base<int>::operator++()
+  [15] qt_noop()              [14] QString::~QString()    [12] std::operator&(std::memory_order, std::__memory_order_modifier)
+  [24] QArrayData::sharedNull() [78] QWidget::setGeometry(int, int, int, int) [99] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#2}::operator()() const
+  [58] QArrayData::data()     [37] QWidget::resize(int, int) [100] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#12}::operator()() const
+  [59] bool QAtomicOps<int>::ref<int>(std::atomic<int>&) [79] Welcome::qt_static_metacall(QObject*, QMetaObject::Call, int, void**) [101] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#13}::operator()() const
+   [9] int QAtomicOps<int>::load<int>(std::atomic<int> const&) [80] Welcome::on_userGame2Button_clicked() [102] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#14}::operator()() const
+  [16] bool QAtomicOps<int>::deref<int>(std::atomic<int>&) [81] Welcome::Welcome(QWidget*) [103] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#15}::operator()() const
+  [31] QByteArray::~QByteArray() [82] Welcome::~Welcome() [104] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#16}::operator()() const
+  [43] QJsonValue::QJsonValue(char const*) [83] GameView::GameView(QWidget*) [105] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#17}::operator()() const
+  [60] Ui_Welcome::retranslateUi(QMainWindow*) [84] GameView::~GameView() [106] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#18}::operator()() const
+  [61] Ui_Welcome::setupUi(QMainWindow*) [85] GameView::~GameView() [107] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#19}::operator()() const
+  [62] Ui_GameView::retranslateUi(QDialog*) [86] Ui_Game2::retranslateUi(QDialog*) [108] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#3}::operator()() const
+  [63] Ui_GameView::setupUi(QDialog*) [87] Ui_Game2::setupUi(QDialog*) [109] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#4}::operator()() const
+  [64] (anonymous namespace)::initializer::initializer() (qrc_resources.cpp) [88] QIODevice::write(QByteArray const&) [110] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#5}::operator()() const
+  [32] QJsonValueRef::QJsonValueRef(QJsonObject*, int) [47] QtPrivate::RefCount::ref() [111] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#6}::operator()() const
+  [33] QTypedArrayData<char>::deallocate(QArrayData*) [13] QtPrivate::RefCount::deref() [112] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#7}::operator()() const
+  [65] QTypedArrayData<char>::data() [89] QByteArray::size() const [113] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#8}::operator()() const
+  [23] QTypedArrayData<unsigned short>::deallocate(QArrayData*) [90] QByteArray::constData() const [114] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#9}::operator()() const
+  [25] QTypedArrayData<unsigned short>::sharedNull() [38] QJsonObject::iterator::value() const [115] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#10}::operator()() const
+  [66] QBasicAtomicInteger<int>::ref() [91] QJsonValueRef::toInt() const [116] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#11}::operator()() const
+  [17] QBasicAtomicInteger<int>::deref() [8] QScopedPointer<QObjectData, QScopedPointerDeleter<QObjectData> >::operator->() const [117] Ui_Welcome::setupUi(QMainWindow*)::{lambda()#1}::operator()() const
+  [67] Game::Game()           [29] QStaticStringData<10>::data_ptr() const [118] Ui_GameView::setupUi(QDialog*)::{lambda()#2}::operator()() const
+  [68] QSet<int>::QSet()      [48] QStaticStringData<11>::data_ptr() const [119] Ui_GameView::setupUi(QDialog*)::{lambda()#3}::operator()() const
+  [69] User::GetUserLevel(QString, QString) [28] QStaticStringData<12>::data_ptr() const [120] Ui_GameView::setupUi(QDialog*)::{lambda()#1}::operator()() const
+  [70] User::User()           [92] QStaticStringData<13>::data_ptr() const [121] Ui_Game2::setupUi(QDialog*)::{lambda()#2}::operator()() const
+  [71] Game2::qt_static_metacall(QObject*, QMetaObject::Call, int, void**) [93] QStaticStringData<14>::data_ptr() const [122] Ui_Game2::setupUi(QDialog*)::{lambda()#12}::operator()() const
+  [72] Game2::on_backButton_clicked() [30] QStaticStringData<15>::data_ptr() const [123] Ui_Game2::setupUi(QDialog*)::{lambda()#3}::operator()() const
+  [73] Game2::Game2(QWidget*, User*) [39] QStaticStringData<16>::data_ptr() const [124] Ui_Game2::setupUi(QDialog*)::{lambda()#4}::operator()() const
+  [74] Game2::~Game2()        [94] QStaticStringData<17>::data_ptr() const [125] Ui_Game2::setupUi(QDialog*)::{lambda()#5}::operator()() const
+  [75] QHash<int, QHashDummyValue>::QHash() [49] QStaticStringData<5>::data_ptr() const [126] Ui_Game2::setupUi(QDialog*)::{lambda()#6}::operator()() const
+  [76] QHash<int, QHashDummyValue>::~QHash() [40] QStaticStringData<7>::data_ptr() const [127] Ui_Game2::setupUi(QDialog*)::{lambda()#7}::operator()() const
+  [44] QRect::QRect(int, int, int, int) [41] QStaticStringData<8>::data_ptr() const [128] Ui_Game2::setupUi(QDialog*)::{lambda()#8}::operator()() const
+  [34] QSize::QSize(int, int) [95] QStaticStringData<9>::data_ptr() const [129] Ui_Game2::setupUi(QDialog*)::{lambda()#9}::operator()() const
+  [77] QFlags<QMediaPlayer::Flag>::QFlags(int QFlags<QMediaPlayer::Flag>::Private::*) [10] QBasicAtomicInteger<int>::load() const [130] Ui_Game2::setupUi(QDialog*)::{lambda()#10}::operator()() const
+  [26] QFlags<Qt::WindowType>::QFlags(int QFlags<Qt::WindowType>::Private::*) [50] QRect::width() const [131] Ui_Game2::setupUi(QDialog*)::{lambda()#11}::operator()() const
+  [21] QFlags<Qt::AlignmentFlag>::QFlags(int QFlags<Qt::AlignmentFlag>::Private::*) [51] QRect::height() const [132] Ui_Game2::setupUi(QDialog*)::{lambda()#1}::operator()() const
+  [35] QFlags<Qt::AlignmentFlag>::QFlags(Qt::AlignmentFlag) [42] QString::isEmpty() const

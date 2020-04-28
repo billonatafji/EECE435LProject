@@ -15,6 +15,7 @@
 #include <QApplication>
 #include "game1.h"
 #include "game2.h"
+#include <QtMath>
 
 Header::Header(SpongeBob* player, int difficulty, QString username, QString game, bool paused, int time, int healthyItemsFed)
 {

@@ -10,6 +10,9 @@
 #include "stdlib.h"
 #include "game1.h"
 #include "game2.h"
+#include <QtMath>
+#include <QtMath>
+
 
 huItem::huItem(bool type,Header *header, QString game, QObject *parent, int strength, int interval) : QObject(parent)
 {

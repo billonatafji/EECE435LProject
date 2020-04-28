@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT += multimedia
+QT += multimedia widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -111,7 +111,6 @@ SUBDIRS += \
 RESOURCES += \
     resources.qrc
 
-QMAKE_MAKEFILE = Q_Makefile
 QMAKE_CXXFLAGS_DEBUG *= -pg
 QMAKE_LFLAGS_DEBUG *= -pg
 
